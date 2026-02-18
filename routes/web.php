@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\User\SampleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,4 +16,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::prefix('sample')->name('sample')->group(function () {
+    Route::controller(SampleController::class)->group(function () {
+        Route::get('/', 'index')->name('index');
+    });
 });
