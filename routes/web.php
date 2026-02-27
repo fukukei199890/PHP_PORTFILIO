@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\User\SampleController;
+use App\Http\Controllers\PrivacyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,3 +24,5 @@ Route::prefix('sample')->name('sample')->group(function () {
         Route::get('/', 'index')->name('index');
     });
 });
+
+Route::get('/privacy', [PrivacyController::class, 'index']);
