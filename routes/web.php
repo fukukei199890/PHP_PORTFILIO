@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\InquireryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\User\SampleController;
 use App\Http\Controllers\PrivacyController;
@@ -26,3 +27,6 @@ Route::prefix('sample')->name('sample')->group(function () {
 });
 
 Route::get('/privacy', [PrivacyController::class, 'index']);
+
+//福田お問い合わせページ作成
+Route::get('/inquirery', [InquireryController::class, 'index']);
