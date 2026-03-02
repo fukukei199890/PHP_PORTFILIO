@@ -9,6 +9,7 @@ use App\Http\Controllers\PostBeforeController;
 use App\Http\Controllers\AgreementsController;
 use App\Http\Controllers\MessageBeforeController;
 use App\Http\Controllers\ApplicationNotController;
+use App\Http\Controllers\MessageSelectController;
 use App\Http\Controllers\PasswordChangeController;
 use App\Http\Controllers\RegistrationCompleteController;
 use App\Http\Controllers\RequestMessageController;
@@ -61,3 +62,6 @@ Route::get('/registrationcomplete', [RegistrationCompleteController::class, 'ind
 
 //リクエスト画面ページ
 Route::get('/requestmessage', [RequestMessageController::class, 'index']);
+
+//メッセージ選択画面ページ
+Route::get('/messageselect', [MessageSelectController::class, 'index']);
