@@ -9,6 +9,8 @@ use App\Http\Controllers\PostBeforeController;
 use App\Http\Controllers\AgreementsController;
 use App\Http\Controllers\MessageBeforeController;
 use App\Http\Controllers\ApplicationNotController;
+use App\Http\Controllers\PasswordChangeController;
+use App\Http\Controllers\RegistrationCompleteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,3 +53,7 @@ Route::get('/messagebefore', [MessageBeforeController::class, 'index']);
 
 //ログイン前申請不可メッセージページ
 Route::get('/applicationnot', [ApplicationNotController::class, 'index']);
+//パスワード変更ページ
+Route::get('/passwordchange', [PasswordChangeController::class, 'index']);
+
+Route::get('/registrationcomplete', [RegistrationCompleteController::class, 'index']);
