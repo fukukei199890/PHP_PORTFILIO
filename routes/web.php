@@ -9,6 +9,7 @@ use App\Http\Controllers\PostBeforeController;
 use App\Http\Controllers\AgreementsController;
 use App\Http\Controllers\MessageBeforeController;
 use App\Http\Controllers\ApplicationNotController;
+use App\Http\Controllers\ExchangeConditionController;
 use App\Http\Controllers\MessageSelectController;
 use App\Http\Controllers\PasswordChangeController;
 use App\Http\Controllers\RegistrationCompleteController;
@@ -65,3 +66,7 @@ Route::get('/requestmessage', [RequestMessageController::class, 'index']);
 
 //メッセージ選択画面ページ
 Route::get('/messageselect', [MessageSelectController::class, 'index']);
+
+
+//交換完了確認ページ
+Route::get('/exchangecondition', [ExchangeConditionController::class, 'index']);
