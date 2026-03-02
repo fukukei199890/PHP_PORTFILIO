@@ -26,7 +26,12 @@ Route::prefix('sample')->name('sample')->group(function () {
     });
 });
 
+// プライバシーポリシー
 Route::get('/privacy', [PrivacyController::class, 'index']);
 
 //福田お問い合わせページ作成
 Route::get('/inquirery', [InquireryController::class, 'index']);
+
+// 利用規約
+Route::get('/agreements', [AgreementsController::class, 'index']);
+
