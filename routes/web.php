@@ -8,6 +8,7 @@ use App\Http\Controllers\SeachController;
 use App\Http\Controllers\PostBeforeController;
 use App\Http\Controllers\AgreementsController;
 use App\Http\Controllers\MessageBeforeController;
+use App\Http\Controllers\ApplicationNotController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,3 +48,6 @@ Route::get('/seach', [SeachController::class, 'index']);
 
 // ログイン前のメッセージ
 Route::get('/messagebefore', [MessageBeforeController::class, 'index']);
+
+//ログイン前申請不可メッセージページ
+Route::get('/applicationnot', [ApplicationNotController::class, 'index']);
