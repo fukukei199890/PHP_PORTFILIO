@@ -34,4 +34,12 @@ Route::get('/privacy', [PrivacyController::class, 'index']);
 Route::get('/inquirery', [InquireryController::class, 'index']);
 
 // 利用規約
+<<<<<<< HEAD
+Route::get('/agreements', [AgreementsController::class, 'index']);
+
+// ログイン前の出品
+Route::get('/postbefore', [PostBeforeController::class, 'index']);
+
+=======
 Route::get('/seach', [SeachController::class, 'index']);
+>>>>>>> origin/main
