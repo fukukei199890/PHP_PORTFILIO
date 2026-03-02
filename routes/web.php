@@ -7,6 +7,7 @@ use App\Http\Controllers\PrivacyController;
 use App\Http\Controllers\SeachController;
 use App\Http\Controllers\PostBeforeController;
 use App\Http\Controllers\AgreementsController;
+use App\Http\Controllers\MessageBeforeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,13 +33,17 @@ Route::prefix('sample')->name('sample')->group(function () {
 // プライバシーポリシー
 Route::get('/privacy', [PrivacyController::class, 'index']);
 
-//福田お問い合わせページ作成
+// 福田お問い合わせページ作成
 Route::get('/inquirery', [InquireryController::class, 'index']);
 
-// // 利用規約
+// 利用規約
 Route::get('/agreements', [AgreementsController::class, 'index']);
 
 // ログイン前の出品
 Route::get('/postbefore', [PostBeforeController::class, 'index']);
 
+// 検索
 Route::get('/seach', [SeachController::class, 'index']);
+
+// ログイン前のメッセージ
+Route::get('/messagebefore', [MessageBeforeController::class, 'index']);
