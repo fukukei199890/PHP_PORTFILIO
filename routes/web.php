@@ -11,6 +11,7 @@ use App\Http\Controllers\MessageBeforeController;
 use App\Http\Controllers\ApplicationNotController;
 use App\Http\Controllers\PasswordChangeController;
 use App\Http\Controllers\RegistrationCompleteController;
+use App\Http\Controllers\RequestMessageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,5 +56,8 @@ Route::get('/messagebefore', [MessageBeforeController::class, 'index']);
 Route::get('/applicationnot', [ApplicationNotController::class, 'index']);
 //パスワード変更ページ
 Route::get('/passwordchange', [PasswordChangeController::class, 'index']);
-
+//新規登録変更完了ページ
 Route::get('/registrationcomplete', [RegistrationCompleteController::class, 'index']);
+
+//リクエスト画面ページ
+Route::get('/requestmessage', [RequestMessageController::class, 'index']);
