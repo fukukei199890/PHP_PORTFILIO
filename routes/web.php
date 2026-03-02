@@ -35,3 +35,6 @@ Route::get('/inquirery', [InquireryController::class, 'index']);
 // 利用規約
 Route::get('/agreements', [AgreementsController::class, 'index']);
 
+// ログイン前の出品
+Route::get('/postbefore', [PostBeforeController::class, 'index']);
+
