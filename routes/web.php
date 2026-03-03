@@ -18,6 +18,7 @@ use App\Http\Controllers\RequestMessageController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PasswordChangeCompleteController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\RequestAnswerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -84,3 +85,6 @@ Route::get('/passwordchangecomplete', [PasswordChangeCompleteController::class, 
 
 // 出品画面
 Route::get('/post', [PostController::class, 'index']);
+
+// 交換確認リクエスト画面
+Route::get('/requestanswer', [RequestAnswerController::class, 'index']);
