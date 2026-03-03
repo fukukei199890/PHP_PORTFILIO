@@ -44,10 +44,7 @@ Route::get('/privacy', [PrivacyController::class, 'index']);
 Route::get('/inquirery', [InquireryController::class, 'index']);
 
 // 利用規約
-<<<<<<< HEAD
 // // 利用規約
-=======
->>>>>>> origin/main
 Route::get('/agreements', [AgreementsController::class, 'index']);
 
 // ログイン前の出品
@@ -58,8 +55,6 @@ Route::get('/seach', [SeachController::class, 'index']);
 
 // ログイン前のメッセージ
 Route::get('/messagebefore', [MessageBeforeController::class, 'index']);
-<<<<<<< HEAD
-=======
 
 //ログイン前申請不可メッセージページ
 Route::get('/applicationnot', [ApplicationNotController::class, 'index']);
@@ -77,4 +72,3 @@ Route::get('/messageselect', [MessageSelectController::class, 'index']);
 
 //交換完了確認ページ
 Route::get('/exchangecondition', [ExchangeConditionController::class, 'index']);
->>>>>>> origin/main
