@@ -9,12 +9,9 @@
 </head>
 
 <body>
-    <!-- 画像読込コードを記述する -->
-
-    <div>
-        <h2>お知らせはありません。</h2>
-        <p>ログイン後、使用が可能になります。</p>
-    </div>
+    <h1>ログインする</h1>
+<label for="email">メールアドレス:</label>
+<input type="email" id="email" name="user_email">
 </body>
 
 </html>
