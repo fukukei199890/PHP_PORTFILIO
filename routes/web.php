@@ -16,6 +16,7 @@ use App\Http\Controllers\PasswordChangeController;
 use App\Http\Controllers\RegistrationCompleteController;
 use App\Http\Controllers\RequestMessageController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PasswordChangeCompleteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -76,3 +77,6 @@ Route::get('/exchangecondition', [ExchangeConditionController::class, 'index']);
 
 //ログイン画面
 Route::get('/login', [LoginController::class, 'index']);
+
+// パスワード変更完了
+Route::get('/passwordchangecomplete', [PasswordChangeCompleteController::class, 'index']);
