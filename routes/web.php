@@ -75,8 +75,6 @@ Route::get('/messageselect', [MessageSelectController::class, 'index']);
 
 //交換完了確認ページ
 Route::get('/exchangecondition', [ExchangeConditionController::class, 'index']);
-<<<<<<< HEAD
-=======
 
 //ログイン画面
 Route::get('/login', [LoginController::class, 'index']);
@@ -86,4 +84,3 @@ Route::get('/passwordchangecomplete', [PasswordChangeCompleteController::class, 
 
 // 出品画面
 Route::get('/post', [PostController::class, 'index']);
->>>>>>> origin/main
