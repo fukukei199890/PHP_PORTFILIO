@@ -5,13 +5,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\User\SampleController;
 use App\Http\Controllers\PrivacyController;
 use App\Http\Controllers\SeachController;
-<<<<<<< HEAD
 use App\Http\Controllers\MessageBeforeController;
 
-=======
 use App\Http\Controllers\PostBeforeController;
 use App\Http\Controllers\AgreementsController;
->>>>>>> origin/main
 
 /*
 |--------------------------------------------------------------------------
@@ -40,19 +37,13 @@ Route::get('/privacy', [PrivacyController::class, 'index']);
 //福田お問い合わせページ作成
 Route::get('/inquirery', [InquireryController::class, 'index']);
 
-<<<<<<< HEAD
 // 利用規約
-=======
 // // 利用規約
->>>>>>> origin/main
 Route::get('/agreements', [AgreementsController::class, 'index']);
 
 // ログイン前の出品
 Route::get('/postbefore', [PostBeforeController::class, 'index']);
 
 Route::get('/seach', [SeachController::class, 'index']);
-<<<<<<< HEAD
 
 Route::get('/messagebefore', [MessageBeforeController::class, 'index']);
-=======
->>>>>>> origin/main
