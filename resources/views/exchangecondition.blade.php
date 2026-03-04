@@ -28,7 +28,8 @@
                     </h2>
 
                     {{-- フォーム --}}
-                    <form method="POST" action="" class="space-y-6">
+                    <!-- route関数はエイリアス（別名）phpのasみたいなもので指定してそのURLを呼び出す -->
+                    <form method="get" action="{{ route('rating') }}" class="space-y-6">
                         @csrf
 
                         {{-- はい --}}
@@ -42,6 +43,9 @@
                             はい
                         </button>
 
+                    </form>
+
+                    <form method="get" action="{{ route('message') }}" class="space-y-6">
                         {{-- いいえ --}}
                         <button type="submit"
                             name="action"

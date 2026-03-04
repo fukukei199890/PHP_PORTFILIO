@@ -21,6 +21,8 @@ use App\Http\Controllers\PasswordChangeCompleteController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\MessageSubmitController;
+use App\Http\Controllers\RatingController;
+use App\Http\Controllers\MessageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -95,6 +97,20 @@ Route::get('/post', [PostController::class, 'index']);
 // メッセージ送信画面
 Route::get('/messagesubmit', [MessageSubmitController::class, 'index']);
 
+// 交換完了送信画面
+Route::get('/eeeee', [RatingController::class, 'index'])->name('rating');
+
+// メッセージ取引画面
+Route::get('/message', [MessageController::class, 'index'])->name('message');
+
+
+
+
+
+
+
+
+//東郷先生記述
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
