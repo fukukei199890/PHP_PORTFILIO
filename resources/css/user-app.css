@@ -1,3 +1,11 @@
 a {
-    color: #f00 !important;
+    color: rgb(27, 35, 197) !important;
+}
+
+h2 {
+  font-family: "Arial Rounded MT Bold", "Hiragino Maru Gothic ProN", sans-serif;
+  font-size: 32px;
+  color: black;
+  text-align: center;
+  letter-spacing: 2px;
 }

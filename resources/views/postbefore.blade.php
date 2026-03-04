@@ -1,21 +1,50 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<x-user-layout>
+    <!DOCTYPE html>
+    <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Laravel</title>
-</head>
+        <title>Laravel</title>
+    </head>
 
-<body>
-    <!-- ↓画像読込コード記述する -->
+    <body>
 
+        <div class="min-h-screen bg-gray-100 flex flex-col justify-between">
 
-    <div>
-        <h2>出品できません</h2>
-        <p>ログイン後、使用が可能になります。</p>
-    </div>
-</body>
+            {{-- メインコンテンツ --}}
+            <div class="flex flex-col items-center pt-20 px-6 pb-24">
 
-</html>
+                {{-- 注意アイコン画像 --}}
+                <img src="{{ asset('images/attention.png') }}"
+                    alt="注意マーク画像"
+                    class="w-24 h-24 object-contain mb-6">
+
+                {{-- お知らせボックス --}}
+                <div class="bg-[#e8dddd] border border-[#c9a9a9] 
+                    rounded-[40px] 
+                    w-full max-w-md 
+                    p-10 text-center shadow-sm">
+
+                    <p class="text-lg font-medium mb-4">
+                        出品できません。
+                    </p>
+
+                    <p class="text-base">
+                        ログイン後、使用が可能になります
+                    </p>
+                </div>
+
+                {{-- ログインリンク --}}
+                <a href="{{ route('login') }}"
+                    class="mt-10 text-sky-500 font-medium hover:underline">
+                    ログインする
+                </a>
+
+            </div>
+
+        </div>
+
+    </html>
+</x-user-layout>

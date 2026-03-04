@@ -16,6 +16,7 @@ use App\Http\Controllers\PasswordChangeController;
 use App\Http\Controllers\RegistrationCompleteController;
 use App\Http\Controllers\RequestMessageController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\MypageBeforeController;
 use App\Http\Controllers\PasswordChangeCompleteController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
@@ -51,6 +52,9 @@ Route::get('/inquirery', [InquireryController::class, 'index']);
 // // 利用規約
 Route::get('/agreements', [AgreementsController::class, 'index']);
 
+// mypageBefore
+Route::get('/mypageBefore', [MypageBeforeController::class, 'index']);
+
 // ログイン前の出品
 Route::get('/postbefore', [PostBeforeController::class, 'index']);
 
@@ -77,8 +81,9 @@ Route::get('/messageselect', [MessageSelectController::class, 'index']);
 //交換完了確認ページ
 Route::get('/exchangecondition', [ExchangeConditionController::class, 'index']);
 
+//  画面遷移のテンプレートとして使ってください
 //ログイン画面
-Route::get('/login', [LoginController::class, 'index']);
+Route::get('/login', [LoginController::class, 'index'])->name('login');
 
 // パスワード変更完了
 Route::get('/passwordchangecomplete', [PasswordChangeCompleteController::class, 'index']);
