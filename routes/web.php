@@ -20,6 +20,7 @@ use App\Http\Controllers\MypageBeforeController;
 use App\Http\Controllers\PasswordChangeCompleteController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\MessageSubmitController;
 
 /*
 |--------------------------------------------------------------------------
@@ -90,6 +91,9 @@ Route::get('/passwordchangecomplete', [PasswordChangeCompleteController::class, 
 
 // 出品画面
 Route::get('/post', [PostController::class, 'index']);
+
+// メッセージ送信画面
+Route::get('/messagesubmit', [MessageSubmitController::class, 'index']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
