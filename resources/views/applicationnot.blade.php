@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <div>
+    <div class="container">
         <h2>申請できません</h2>
         <p>ログイン後、申請が可能になります。</p>
     </div>

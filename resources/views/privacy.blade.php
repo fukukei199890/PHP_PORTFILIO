@@ -5,13 +5,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+
     <title>Laravel</title>
 </head>
 
 <body>
 
     <div class="container">
-        <h1>プライバシーポリシー</h1>
+        <h1 class="bg-blue-400">プライバシーポリシー</h1>
 
         <p>当サービス（以下「当社」）は、ユーザーの個人情報の重要性を認識し、以下のとおりプライバシーポリシーを定めます。</p>
 
