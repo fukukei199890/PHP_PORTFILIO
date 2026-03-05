@@ -25,6 +25,7 @@ use App\Http\Controllers\MessageSubmitController;
 use App\Http\Controllers\RatingController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\MypageController;
+use App\Http\Controllers\MatchController;
 
 /*
 |--------------------------------------------------------------------------
