@@ -108,6 +108,8 @@ Route::get('/message', [MessageController::class, 'index'])->name('message');
 //ログイン後マイページ
 Route::get('/mypage', [MypageController::class, 'index']);
 
+Route::get('/match', [MatchController::class, 'index'])->name('match');
+
 
 // 新規登録画面
 Route::get('/registration', [RegistrationController::class, 'index'])->name('registration');
