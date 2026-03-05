@@ -48,14 +48,14 @@ Route::prefix('sample')->name('sample')->group(function () {
 });
 
 // プライバシーポリシー
-Route::get('/privacy', [PrivacyController::class, 'index']);
+Route::get('/privacy', [PrivacyController::class, 'index'])->name('privacy');
 
 // 福田お問い合わせページ作成
 Route::get('/inquirery', [InquireryController::class, 'index']);
 
 // 利用規約
 // // 利用規約
-Route::get('/agreements', [AgreementsController::class, 'index']);
+Route::get('/agreements', [AgreementsController::class, 'index'])->name('agreements');
 
 // mypageBefore
 Route::get('/mypageBefore', [MypageBeforeController::class, 'index']);
