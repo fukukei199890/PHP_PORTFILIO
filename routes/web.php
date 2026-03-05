@@ -25,6 +25,7 @@ use App\Http\Controllers\MessageSubmitController;
 use App\Http\Controllers\RatingController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\MypageController;
+use App\Http\Controllers\MatchController;
 
 /*
 |--------------------------------------------------------------------------
@@ -72,7 +73,7 @@ Route::get('/messagebefore', [MessageBeforeController::class, 'index']);
 //ログイン前申請不可メッセージページ
 Route::get('/applicationnot', [ApplicationNotController::class, 'index']);
 //パスワード変更ページ
-Route::get('/passwordchange', [PasswordChangeController::class, 'index']);
+Route::get('/passwordchange', [PasswordChangeController::class, 'index'])->name('passwordchange');
 //新規登録変更完了ページ
 Route::get('/registrationcomplete', [RegistrationCompleteController::class, 'index']);
 
@@ -88,7 +89,7 @@ Route::get('/exchangecondition', [ExchangeConditionController::class, 'index']);
 
 //  画面遷移のテンプレートとして使ってください
 //ログイン画面
-Route::get('/login', [LoginController::class, 'index'])->name('login');
+Route::get('/userlogin', [LoginController::class, 'index'])->name('userlogin');
 
 // パスワード変更完了
 Route::get('/passwordchangecomplete', [PasswordChangeCompleteController::class, 'index']);
