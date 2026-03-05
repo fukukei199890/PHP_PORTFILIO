@@ -20,24 +20,37 @@
             {{ $slot }}
         </main>
         <footer>
-            <nav class="flex flex-items-center justify-between flwx-wrap">
-                <div class="inline">
-                    <a href="">ホーム</a>
+            <!--  -->
+            <nav class="flex items-center justify-between flex-wrap max-w-md mx-auto">
+                <div class="flex flex-col items-center">
+                    <span class="text-xl">🏠</span>
+                    <span><a href="">ホーム</a></span>
                 </div>
-                <div class="inline">
-                    <a href="">探す</a>
+
+                <div class="flex flex-col items-center">
+                    <span class="text-xl">🔍</span>
+                    <span><a href="">探す</a></span>
                 </div>
-                <div class="inline">
-                    <a href="">出品</a>
+
+                <div class="flex flex-col items-center">
+                    <span class="text-xl">📷</span>
+                    <span><a href="">出品</a></span>
                 </div>
-                <div class="inline">
-                    <a href="">通知</a>
+
+                <div class="flex flex-col items-center relative">
+                    <span class="text-xl">🔔</span>
+                    <span><a href="">通知</a></span>
                 </div>
-                <div class="inline">
-                    <a href="">マイページ</a>
+
+                <div class="flex flex-col items-center">
+                    <span class="text-xl">👤</span>
+                    <span><a href="">マイページ</a></span>
                 </div>
-            </nav>
-        </footer>
+
+    </div>
+    </nav>
+    <!--  -->
+    </footer>
     </div>
 </body>
 
