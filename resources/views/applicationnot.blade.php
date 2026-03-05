@@ -1,50 +1,36 @@
 <x-user-layout>
-    <!DOCTYPE html>
-    <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+    <div class=" flex flex-col justify-between">
 
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        {{-- メインコンテンツ --}}
+        <div class="flex flex-col items-center pt-20 px-6 pb-24">
 
-        <title>Laravel</title>
-    </head>
+            {{-- 注意アイコン画像 --}}
+            <img src="{{ asset('images/attention.png') }}"
+                alt="注意マーク画像"
+                class="w-24 h-24 object-contain mb-6">
 
-    <body>
-
-        <div class="min-h-screen bg-gray-100 flex flex-col justify-between">
-
-            {{-- メインコンテンツ --}}
-            <div class="flex flex-col items-center pt-20 px-6 pb-24">
-
-                {{-- 注意アイコン画像 --}}
-                <img src="{{ asset('images/attention.png') }}"
-                    alt="注意マーク画像"
-                    class="w-24 h-24 object-contain mb-6">
-
-                {{-- カード --}}
-                <div class="bg-[#e8dddd] border border-[#c9a9a9] 
+            {{-- カード --}}
+            <div class="bg-[#e8dddd] border border-[#c9a9a9] 
                     rounded-[40px] 
                     w-full max-w-md 
                     p-10 text-center shadow-sm">
 
-                    <p class="text-lg font-medium mb-4">
-                        申請できません。
-                    </p>
+                <p class="text-lg font-medium mb-4">
+                    申請できません。
+                </p>
 
-                    <p class="text-base">
-                        ログイン後、使用が可能になります
-                    </p>
-                </div>
-
-                {{-- ログインリンク --}}
-                <a href="{{ route('login') }}"
-                    class="mt-10 text-sky-500 font-medium hover:underline">
-                    ログインする
-                </a>
-
+                <p class="text-base">
+                    ログイン後、使用が可能になります
+                </p>
             </div>
+
+            {{-- ログインリンク --}}
+            <a href="{{ route('login') }}"
+                class="mt-10 text-sky-500 font-medium hover:underline">
+                ログインする
+            </a>
 
         </div>
 
-    </html>
+    </div>
 </x-user-layout>

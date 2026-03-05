@@ -119,6 +119,11 @@ Route::post('/registration', [RegistrationController::class, 'store'])->name('re
 
 
 
+
+
+
+
+
 //東郷先生記述
 Route::get('/dashboard', function () {
     return view('dashboard');
