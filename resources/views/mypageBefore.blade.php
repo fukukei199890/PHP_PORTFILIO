@@ -17,3 +17,6 @@
         </form>
     </div>
 </x-user-layout>
+</x-user-layout>
+
+{{-- 練習用のテキストです --}}
