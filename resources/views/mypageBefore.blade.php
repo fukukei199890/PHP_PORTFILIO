@@ -3,10 +3,10 @@
         <h2 class="font-mono">マイページ</h2>
         <div class="grid grid-cols-2 gap-8 m-6">
             <form method="get" action="{{ route('login') }}">
-                <button class="font-mono rounded-md bg-blue-600">ログイン</button>
+                <button class="font-mono rounded-full bg-blue-600 text-white p-4">ログイン</button>
             </form>
             <form method="get" action="{{ route('registration') }}">
-                <button class="font-mono rounded-md bg-blue-600">新規登録</button>
+                <button class="font-mono rounded-full bg-blue-600 text-white p-4">新規登録</button>
             </form>
         </div>
         <form method="get" action="{{ route('agreements') }}" class="m-6">
