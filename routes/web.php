@@ -114,6 +114,11 @@ Route::get('/mypage', [MypageController::class, 'index']);
 
 
 
+
+
+
+
+
 //東郷先生記述
 Route::get('/dashboard', function () {
     return view('dashboard');
