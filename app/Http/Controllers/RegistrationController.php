@@ -25,6 +25,12 @@ class RegistrationController extends Controller
             'password' => $request->password
         ]);
 
-        return view('registrationcomplete');
+        // テスト用コード
+        $users = User::all();
+        // テスト用コード
+
+        // 第２引数をテスト用に追加しました。
+
+        return view('registrationcomplete', compact('users'));
     }
 }

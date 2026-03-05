@@ -15,6 +15,16 @@
     </div>
     <p>登録したパスワードでログインしてください</p>
     <a href="">ホームへ戻る</a>
+    {{-- テスト用コード --}}
+    <div>
+        <ul>
+            @foreach ($users as $user)
+                <li>name:{{ $user->name }}
+                <li>email:{{ $user->email }}
+            @endforeach
+        </ul>
+    </div>
+    {{-- テスト用コード --}}
 </body>
 
 </html>
