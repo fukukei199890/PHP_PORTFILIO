@@ -14,7 +14,6 @@ use App\Http\Controllers\ExchangeConditionController;
 use App\Http\Controllers\MessageSelectController;
 use App\Http\Controllers\PasswordChangeController;
 use App\Http\Controllers\RegistrationCompleteController;
-use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\RequestMessageController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MypageBeforeController;

@@ -14,7 +14,6 @@ use App\Http\Controllers\ExchangeConditionController;
 use App\Http\Controllers\MessageSelectController;
 use App\Http\Controllers\PasswordChangeController;
 use App\Http\Controllers\RegistrationCompleteController;
-use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\RequestMessageController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MypageBeforeController;
@@ -24,7 +23,6 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\MessageSubmitController;
 use App\Http\Controllers\RatingController;
 use App\Http\Controllers\MessageController;
-use App\Http\Controllers\MypageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -105,13 +103,9 @@ Route::get('/eeeee', [RatingController::class, 'index'])->name('rating');
 // メッセージ取引画面
 Route::get('/message', [MessageController::class, 'index'])->name('message');
 
-//ログイン後マイページ
-Route::get('/mypage', [MypageController::class, 'index']);
 
 
-// 新規登録画面
-Route::get('/registration', [RegistrationController::class, 'index'])->name('registration');
-Route::post('/registration', [RegistrationController::class, 'store'])->name('registration.store');
+
 
 
 
