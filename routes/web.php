@@ -23,6 +23,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\MessageSubmitController;
 use App\Http\Controllers\RatingController;
 use App\Http\Controllers\MessageController;
+use App\Http\Controllers\MypageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -102,6 +103,9 @@ Route::get('/eeeee', [RatingController::class, 'index'])->name('rating');
 
 // メッセージ取引画面
 Route::get('/message', [MessageController::class, 'index'])->name('message');
+
+//ログイン後マイページ
+Route::get('/mypage', [MypageController::class, 'index']);
 
 
 
