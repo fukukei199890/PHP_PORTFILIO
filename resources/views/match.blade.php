@@ -1,8 +1,8 @@
 <x-user-layout>
-    <div>
+    <div class="flex flex-col items-center">
         <p>条件がマッチしました！</p>
-        <form method="post" action="">
-            <button>チャットを開始します</button>
+        <form action="" method="post">
+            <button>チャットを開始</button>
         </form>
     </div>
 </x-user-layout>
