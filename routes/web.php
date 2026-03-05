@@ -14,6 +14,7 @@ use App\Http\Controllers\ExchangeConditionController;
 use App\Http\Controllers\MessageSelectController;
 use App\Http\Controllers\PasswordChangeController;
 use App\Http\Controllers\RegistrationCompleteController;
+use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\RequestMessageController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MypageBeforeController;
@@ -47,14 +48,14 @@ Route::prefix('sample')->name('sample')->group(function () {
 });
 
 // プライバシーポリシー
-Route::get('/privacy', [PrivacyController::class, 'index']);
+Route::get('/privacy', [PrivacyController::class, 'index'])->name('privacy');
 
 // 福田お問い合わせページ作成
 Route::get('/inquirery', [InquireryController::class, 'index']);
 
 // 利用規約
 // // 利用規約
-Route::get('/agreements', [AgreementsController::class, 'index']);
+Route::get('/agreements', [AgreementsController::class, 'index'])->name('agreements');
 
 // mypageBefore
 Route::get('/mypageBefore', [MypageBeforeController::class, 'index']);
@@ -108,8 +109,9 @@ Route::get('/message', [MessageController::class, 'index'])->name('message');
 Route::get('/mypage', [MypageController::class, 'index']);
 
 
-
-
+// 新規登録画面
+Route::get('/registration', [RegistrationController::class, 'index'])->name('registration');
+Route::post('/registration', [RegistrationController::class, 'store'])->name('registration.store');
 
 
 

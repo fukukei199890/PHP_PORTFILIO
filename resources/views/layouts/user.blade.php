@@ -19,6 +19,25 @@
         <main>
             {{ $slot }}
         </main>
+        <footer>
+            <nav class="flex flex-items-center justify-between flwx-wrap">
+                <div class="inline">
+                    <a href="">ホーム</a>
+                </div>
+                <div class="inline">
+                    <a href="">探す</a>
+                </div>
+                <div class="inline">
+                    <a href="">出品</a>
+                </div>
+                <div class="inline">
+                    <a href="">通知</a>
+                </div>
+                <div class="inline">
+                    <a href="">マイページ</a>
+                </div>
+            </nav>
+        </footer>
     </div>
 </body>
 
