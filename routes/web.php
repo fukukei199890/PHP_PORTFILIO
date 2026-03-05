@@ -23,6 +23,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\MessageSubmitController;
 use App\Http\Controllers\RatingController;
 use App\Http\Controllers\MessageController;
+use App\Http\Controllers\RegistrationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -104,8 +105,9 @@ Route::get('/eeeee', [RatingController::class, 'index'])->name('rating');
 Route::get('/message', [MessageController::class, 'index'])->name('message');
 
 
-
-
+// 新規登録画面
+Route::get('/registration', [RegistrationController::class, 'index'])->name('registration');
+Route::post('/registration', [RegistrationController::class, 'store'])->name('registration.store');
 
 
 
