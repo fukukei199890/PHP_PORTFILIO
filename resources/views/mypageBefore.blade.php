@@ -2,7 +2,7 @@
     <div class="grid place-items-center m-10">
         <h2 class="font-mono">マイページ</h2>
         <div class="grid grid-cols-2 gap-8 m-6">
-            <form method="get" action="{{ route('login') }}">
+            <form method="get" action="{{ route('userlogin') }}">
                 <button class="font-mono rounded-full bg-blue-600 text-white p-4">ログイン</button>
             </form>
             <form method="get" action="{{ route('registration') }}">
@@ -17,5 +17,7 @@
         </form>
     </div>
 </x-user-layout>
+</x-user-layout>
 
 {{-- 練習用のテキストです --}}
+<!-- practice -->
