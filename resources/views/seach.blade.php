@@ -13,13 +13,13 @@
             <button class="text-white bg-indigo-500 py-2 px-8 hover:bg-indigo-600 rounded text-lg w-full">検索</button>
             <div>
                 @if (isset($results))
-                    @foreach ($results as $item)
+                    @foreach ($results as $row)
                         <div>
                             {{-- ブラウザからはpublicフォルダがルートとして扱われる --}}
                             <img class="w-32" src="{{ asset('images/test/test.jpg') }}">
                             <div>
-                                <p>series:{{ $item->series_name }}</p>
-                                <p>name:{{ $item->char_name }}</p>
+                                <p>series:{{ $row->item->series_name }}</p>
+                                <p>name:{{ $row->item->char_name }}</p>
                             </div>
                         </div>
                     @endforeach
