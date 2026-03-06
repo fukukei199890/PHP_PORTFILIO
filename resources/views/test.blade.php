@@ -1,102 +1,83 @@
 <x-user-layout>
 
-<header class="max-w-md mx-auto">
-    <h2>aeaaaa</h2>
+<!-- ヘッダー -->
+<header class="max-w-md mx-auto border-b border-gray-200 flex justify-center items-center h-16">
+    <h2 class="font-lx">ログイン</h2>
 </header>
-    
-<!-- 出品商品 -->
-   <section class="text-gray-600 body-font">
-  <div class="container px-5 py-24 mx-auto">
-    <div class="flex flex-wrap -m-4">
-      <div class="p-4 md:w-1/3">
-        <div class="h-15 border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
-          <img class="lg:h-15 md:h-36 w-full object-cover object-center" src="  " alt="blog">
-          <div class="p-6">
-            <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">aeaaaaa</h2>
-            <h1 class="title-font text-lg font-medium text-gray-900 mb-3">bbbbbbbb</h1>
-            <p class="leading-relaxed mb-3">ccccccccccccccccccccc</p>
-            <div class="flex items-center flex-wrap ">
-              <a class="text-purple-500 inline-flex items-center md:mb-2 lg:mb-0">ddddddddd
-                <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M5 12h14"></path>
-                  <path d="M12 5l7 7-7 7"></path>
-                </svg>
-              </a>
-              <span class="text-gray-400 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1 border-r-2 border-gray-200">
-                <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                  <circle cx="12" cy="12" r="3"></circle>
-                </svg>1.2K
-              </span>
-              <span class="text-gray-400 inline-flex items-center leading-none text-sm">
-                <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-                  <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"></path>
-                </svg>6
+
+<!-- ボタン -->
+
+<div class="flex justify-center">
+    <form action="" method="" class="max-w-[240px] mx-auto text-center">
+        <button class="text-white bg-indigo-500 py-1.5 px-8 hover:bg-indigo-600 rounded text-lg ">
+            あああああ
+        </button>
+    </form>
+</div>
+<div class="flex justify-center">
+    <form action="" method="" class="max-w-[240px] mx-auto text-center">
+        <button class="text-white bg-indigo-500 py-1.5 px-8 hover:bg-indigo-600 rounded text-lg w-full">
+            あ
+        </button>
+    </form>
+</div>
+
+<div class="box-border size-32 border-4 p-4">
+    <form action="">
+        <button class="text-white bg-indigo-500 py-1.5 px-8 hover:bg-indigo-600 rounded text-lg w-full">
+            eeeeeee
+        </button>
+    </form>
+</div><div class="grid grid-cols-2 gap-2">
+    <form action="">
+        <button class="bg-blue-500 text-white p-2">
+            ee
+        </button>
+    </form>
+</div>
+
+<!-- 出品商品　コード途中 -->
+<section class="text-gray-600 body-font">
+  <div class="container px-2 py-6 mx-auto">
+    <div class="flex flex-wrap -m-1">
+      
+      <div class="p-1 w-1/2 md:w-1/3">
+        <div class="h-64 border-2 border-gray-200 rounded-lg overflow-hidden bg-white flex flex-col">
+          <img class="h-28 w-full object-cover object-center" src="https://dummyimage.com/720x400" alt="blog">
+          
+          <div class="p-2 flex-grow flex flex-col justify-between">
+            <div>
+              <h2 class="tracking-widest text-[10px] title-font font-medium text-gray-400 mb-0.5">CATEGORY</h2>
+              <h1 class="title-font text-sm font-bold text-gray-900 leading-tight line-clamp-2">The Catalyzer</h1>
+              <p class="text-[11px] leading-relaxed text-gray-500 line-clamp-1 mt-1">Photo booth fam kinfolk cold-pressed...</p>
+            </div>
+            
+            <div class="flex items-center mt-auto pt-1 border-t border-gray-100">
+              <span class="text-gray-400 inline-flex items-center leading-none text-[10px]">
+                <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>1.2K
               </span>
             </div>
           </div>
         </div>
       </div>
-      <!-- <div class="p-4 md:w-1/3">
-        <div class="h-15 border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
-          <img class="lg:h-15 md:h-36 w-full object-cover object-center" src="https://dummyimage.com/721x401" alt="blog">
-          <div class="p-6">
-            <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">aaaaa</h2>
-            <h1 class="title-font text-lg font-medium text-gray-900 mb-3">bbbbbbb</h1>
-            <p class="leading-relaxed mb-3">cccccccccccccccccccccccc</p>
-            <div class="flex items-center flex-wrap">
-              <a class="text-purple-500 inline-flex items-center md:mb-2 lg:mb-0">ddddddddd
-                <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M5 12h14"></path>
-                  <path d="M12 5l7 7-7 7"></path>
-                </svg>
-              </a>
-              <span class="text-gray-400 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1 border-r-2 border-gray-200">
-                <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                  <circle cx="12" cy="12" r="3"></circle>
-                </svg>1.2K
-              </span>
-              <span class="text-gray-400 inline-flex items-center leading-none text-sm">
-                <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-                  <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"></path>
-                </svg>6
-              </span>
+
+      <div class="p-1 w-1/2 md:w-1/3">
+        <div class="h-64 border-2 border-gray-200 rounded-lg overflow-hidden bg-white flex flex-col">
+          <img class="h-28 w-full object-cover object-center" src="https://dummyimage.com/721x401" alt="blog">
+          <div class="p-2 flex-grow flex flex-col justify-between">
+            <div>
+              <h2 class="text-[10px] text-gray-400 mb-0.5">CATEGORY</h2>
+              <h1 class="text-sm font-bold text-gray-900 leading-tight line-clamp-2">The 400 Blows</h1>
+              <p class="text-[11px] text-gray-500 line-clamp-1 mt-1">Photo booth fam kinfolk...</p>
             </div>
-          </div>
-        </div> -->
-      <!-- </div>
-      <div class="p-4 md:w-1/3">
-        <div class="h-15 border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
-          <img class="lg:h-15 md:h-36 w-full object-cover object-center" src="https://dummyimage.com/722x402" alt="blog">
-          <div class="p-6">
-            <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">aaaaaaa</h2>
-            <h1 class="title-font text-lg font-medium text-gray-900 mb-3">bbbbbbbbbbbb</h1>
-            <p class="leading-relaxed mb-3">cccccccccccc</p>
-            <div class="flex items-center flex-wrap ">
-              <a class="text-purple-500 inline-flex items-center md:mb-2 lg:mb-0">dddddddd
-                <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M5 12h14"></path>
-                  <path d="M12 5l7 7-7 7"></path>
-                </svg>
-              </a>
-              <span class="text-gray-400 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1 border-r-2 border-gray-200">
-                <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                  <circle cx="12" cy="12" r="3"></circle> -->
-                <!-- </svg>1.2K
-              </span> -->
-              <!-- <span class="text-gray-400 inline-flex items-center leading-none text-sm">
-                <svg class="w-4 h-4 mr-1" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-                  <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"></path>
-                </svg>6
-              </span>
+            <div class="flex items-center mt-auto pt-1 border-t border-gray-100">
+              <span class="text-gray-400 text-[10px]">1.2K views</span>
             </div>
           </div>
         </div>
-      </div> -->
+      </div>
+
     </div>
   </div>
 </section>
-
 </x-user-layout>
