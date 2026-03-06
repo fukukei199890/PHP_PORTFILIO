@@ -27,6 +27,7 @@ use App\Http\Controllers\MessageController;
 use App\Http\Controllers\MypageController;
 use App\Http\Controllers\MatchController;
 use App\Http\Controllers\RequestAnswerController;
+use App\Http\Controllers\TestController;
 
 /*
 |--------------------------------------------------------------------------
@@ -74,9 +75,9 @@ Route::get('/messagebefore', [MessageBeforeController::class, 'index']);
 //ログイン前申請不可メッセージページ
 Route::get('/applicationnot', [ApplicationNotController::class, 'index']);
 //パスワード変更ページ
-Route::get('/passwordchange', [PasswordChangeController::class, 'index'])->name('passwordchange');
+// Route::get('/passwordchange', [PasswordChangeController::class, 'index'])->name('passwordchange');
 //新規登録変更完了ページ
-Route::get('/registrationcomplete', [RegistrationCompleteController::class, 'index']);
+// Route::get('/registrationcomplete', [RegistrationCompleteController::class, 'index']);
 
 //リクエスト画面ページ
 Route::get('/requestmessage', [RequestMessageController::class, 'index']);
@@ -90,10 +91,10 @@ Route::get('/exchangecondition', [ExchangeConditionController::class, 'index']);
 
 //  画面遷移のテンプレートとして使ってください
 //ログイン画面
-Route::get('/userlogin', [LoginController::class, 'index'])->name('userlogin');
+// Route::get('/userlogin', [LoginController::class, 'index'])->name('userlogin');
 
 // パスワード変更完了
-Route::get('/passwordchangecomplete', [PasswordChangeCompleteController::class, 'index']);
+// Route::get('/passwordchangecomplete', [PasswordChangeCompleteController::class, 'index']);
 
 // 出品画面
 Route::get('/post', [PostController::class, 'index']);
@@ -122,10 +123,15 @@ Route::get('/registration', [RegistrationController::class, 'index'])->name('reg
 Route::post('/registration', [RegistrationController::class, 'store'])->name('registration.store');
 
 
+//tailwindテストページ
+Route::get('/test', [TestController::class, 'index']);
 
 
 
 
+// // 新規登録画面
+// Route::get('/registration', [RegistrationController::class, 'index'])->name('registration');
+// Route::post('/registration', [RegistrationController::class, 'store'])->name('registration.store');
 
 
 

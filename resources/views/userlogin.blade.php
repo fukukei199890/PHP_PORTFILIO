@@ -20,7 +20,8 @@
                 <input
                     type="password"
                     name="password"
-                    class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8">
+                    class="w-full bg-white rounded border border-gray-300 focus:bor
+                    der-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8">
             </div>
 
             <div class="flex justify-end mb-6">
