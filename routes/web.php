@@ -64,7 +64,7 @@ Route::get('/agreements', [AgreementsController::class, 'index'])->name('agreeme
 Route::get('/mypageBefore', [MypageBeforeController::class, 'index'])->name('mypagebefore');
 
 // ログイン前の出品
-Route::get('/postbefore', [PostBeforeController::class, 'index']);
+Route::get('/postbefore', [PostBeforeController::class, 'index'])->name('postbefore');
 
 // 検索
 Route::get('/seach', [SeachController::class, 'index'])->name('seach');
