@@ -18,6 +18,7 @@
                             {{-- ブラウザからはpublicフォルダがルートとして扱われる --}}
                             <img class="w-32" src="{{ asset('images/test/test.jpg') }}">
                             <div>
+                                {{-- ListedItem->itemプロパティ --}}
                                 <p>series:{{ $row->item->series_name }}</p>
                                 <p>name:{{ $row->item->char_name }}</p>
                             </div>
