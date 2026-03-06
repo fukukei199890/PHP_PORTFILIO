@@ -26,6 +26,7 @@ use App\Http\Controllers\RatingController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\MypageController;
 use App\Http\Controllers\MatchController;
+use App\Http\Controllers\TestController;
 
 /*
 |--------------------------------------------------------------------------
@@ -111,16 +112,15 @@ Route::get('/mypage', [MypageController::class, 'index']);
 
 Route::get('/match', [MatchController::class, 'index'])->name('match');
 
+//tailwindテストページ
+Route::get('/test', [TestController::class, 'index']);
+
+
+
 
 // // 新規登録画面
 // Route::get('/registration', [RegistrationController::class, 'index'])->name('registration');
 // Route::post('/registration', [RegistrationController::class, 'store'])->name('registration.store');
-
-
-
-
-
-
 
 
 

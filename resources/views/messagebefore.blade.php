@@ -11,7 +11,7 @@
 
     <body>
 
-        <div class="min-h-screen bg-gray-100 flex flex-col justify-between">
+        <div class=" bg-gray-100 flex flex-col justify-between">
 
             {{-- メインコンテンツ --}}
             <div class="flex flex-col items-center pt-20 px-6 pb-24">
