@@ -68,6 +68,7 @@ Route::get('/postbefore', [PostBeforeController::class, 'index']);
 
 // 検索
 Route::get('/seach', [SeachController::class, 'index']);
+Route::post('/seach', [SeachController::class, 'read'])->name('search.result');
 
 // ログイン前のメッセージ
 Route::get('/messagebefore', [MessageBeforeController::class, 'index']);
@@ -119,8 +120,8 @@ Route::get('/requestanswer', [RequestAnswerController::class, 'index'])->name('r
 
 
 // 新規登録画面
-Route::get('/registration', [RegistrationController::class, 'index'])->name('registration');
-Route::post('/registration', [RegistrationController::class, 'store'])->name('registration.store');
+// Route::get('/registration', [RegistrationController::class, 'index'])->name('registration');
+// Route::post('/registration', [RegistrationController::class, 'store'])->name('registration.store');
 
 
 //tailwindテストページ
