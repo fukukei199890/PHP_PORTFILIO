@@ -14,10 +14,14 @@
 
 <body class="font-sans antialiased">
 
-    <div>
-        <!-- Page Content -->
-        <main>
-            {{ $slot }}
+
+    <!-- Page Content -->
+    <div class="min-h-screen flex flex-col">
+
+        <main class="flex-grow pb-20">
+            <div class="max-w-md mx-auto px-4 py-6">
+                {{ $slot }}
+            </div>
         </main>
         <footer>
             <!--  -->
