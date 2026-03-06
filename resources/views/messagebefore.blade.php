@@ -37,7 +37,7 @@
                     </p>
                 </div>
 
-                {{-- ログインリンク --}}
+                {{-- ログインリンクをbrezeeのものに設定し直しました --}}
                 <a href="{{ route('login') }}"
                     class="mt-10 text-sky-500 font-medium hover:underline">
                     ログインする
