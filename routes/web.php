@@ -61,17 +61,17 @@ Route::get('/inquirery', [InquireryController::class, 'index']);
 Route::get('/agreements', [AgreementsController::class, 'index'])->name('agreements');
 
 // mypageBefore
-Route::get('/mypageBefore', [MypageBeforeController::class, 'index']);
+Route::get('/mypageBefore', [MypageBeforeController::class, 'index'])->name('mypagebefore');
 
 // ログイン前の出品
 Route::get('/postbefore', [PostBeforeController::class, 'index']);
 
 // 検索
-Route::get('/seach', [SeachController::class, 'index']);
+Route::get('/seach', [SeachController::class, 'index'])->name('seach');
 Route::post('/seach', [SeachController::class, 'read'])->name('search.result');
 
 // ログイン前のメッセージ
-Route::get('/messagebefore', [MessageBeforeController::class, 'index']);
+Route::get('/messagebefore', [MessageBeforeController::class, 'index'])->name('messagebefore');
 
 //ログイン前申請不可メッセージページ
 Route::get('/applicationnot', [ApplicationNotController::class, 'index']);
@@ -98,7 +98,7 @@ Route::get('/exchangecondition', [ExchangeConditionController::class, 'index']);
 // Route::get('/passwordchangecomplete', [PasswordChangeCompleteController::class, 'index']);
 
 // 出品画面
-Route::get('/post', [PostController::class, 'index']);
+Route::get('/post', [PostController::class, 'index'])->name('post');
 
 // メッセージ送信画面
 Route::get('/messagesubmit', [MessageSubmitController::class, 'index']);
@@ -110,7 +110,7 @@ Route::get('/eeeee', [RatingController::class, 'index'])->name('rating');
 Route::get('/message', [MessageController::class, 'index'])->name('message');
 
 //ログイン後マイページ
-Route::get('/mypage', [MypageController::class, 'index']);
+Route::get('/mypage', [MypageController::class, 'index'])->name('mypage');
 
 // マッチ申請
 Route::get('/match', [MatchController::class, 'index'])->name('match');

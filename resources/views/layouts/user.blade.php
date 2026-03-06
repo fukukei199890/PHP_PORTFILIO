@@ -33,22 +33,22 @@
 
                 <div class="flex flex-col items-center">
                     <span class="text-xl">🔍</span>
-                    <span><a href="">探す</a></span>
+                    <span><a href="{{ route('search.result') }}">探す</a></span>
                 </div>
 
                 <div class="flex flex-col items-center">
                     <span class="text-xl">📷</span>
-                    <span><a href="">出品</a></span>
+                    <span><a href="{{ route('post') }}">出品</a></span>
                 </div>
 
                 <div class="flex flex-col items-center relative">
                     <span class="text-xl">🔔</span>
-                    <span><a href="">通知</a></span>
+                    <span><a href="{{ route('messagebefore') }}">通知</a></span>
                 </div>
 
                 <div class="flex flex-col items-center">
                     <span class="text-xl">👤</span>
-                    <span><a href="">マイページ</a></span>
+                    <span><a href="{{ route('mypagebefore') }}">マイページ</a></span>
                 </div>
 
     </div>
