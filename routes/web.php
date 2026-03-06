@@ -26,6 +26,7 @@ use App\Http\Controllers\RatingController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\MypageController;
 use App\Http\Controllers\MatchController;
+use App\Http\Controllers\RequestAnswerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -109,7 +110,11 @@ Route::get('/message', [MessageController::class, 'index'])->name('message');
 //ログイン後マイページ
 Route::get('/mypage', [MypageController::class, 'index']);
 
+// マッチ申請
 Route::get('/match', [MatchController::class, 'index'])->name('match');
+
+// 交換確認リクエスト画面
+Route::get('/requestanswer', [RequestAnswerController::class, 'index'])->name('requestanswer');
 
 
 // 新規登録画面
