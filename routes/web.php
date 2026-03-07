@@ -11,6 +11,7 @@ use App\Http\Controllers\PostBeforeController;
 use App\Http\Controllers\AgreementsController;
 use App\Http\Controllers\ApplicationNotController;
 use App\Http\Controllers\ExchangeConditionController;
+use App\Http\Controllers\GoodsController;
 use App\Http\Controllers\MessageSelectController;
 use App\Http\Controllers\PasswordChangeController;
 use App\Http\Controllers\RegistrationCompleteController;
@@ -26,8 +27,10 @@ use App\Http\Controllers\RatingController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\MypageController;
 use App\Http\Controllers\MatchController;
+use App\Http\Controllers\RatingSubmitController;
 use App\Http\Controllers\RequestAnswerController;
 use App\Http\Controllers\TestController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -128,11 +131,11 @@ Route::get('/requestanswer', [RequestAnswerController::class, 'index'])->name('r
 Route::get('/test', [TestController::class, 'index']);
 
 
+//商品詳細ページ作成03-07
+Route::get('/goods', [GoodsController::class, 'index']);
 
-
-// // 新規登録画面
-// Route::get('/registration', [RegistrationController::class, 'index'])->name('registration');
-// Route::post('/registration', [RegistrationController::class, 'store'])->name('registration.store');
+//評価送信ページ作成03-07
+Route::get('/ratingsubmit', [RatingSubmitController::class, 'index']);
 
 
 
