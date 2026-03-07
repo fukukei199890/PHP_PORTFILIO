@@ -1,0 +1,36 @@
+<x-user-layout>
+    <div class=" bg-gray-100 flex flex-col justify-between">
+
+        {{-- メインコンテンツ --}}
+        <div class="flex flex-col items-center pt-20 px-6 pb-24">
+
+            {{-- 注意アイコン画像 --}}
+            <img src="{{ asset('images/attention.png') }}"
+                alt="注意マーク画像"
+                class="w-24 h-24 object-contain mb-6">
+
+            {{-- カード --}}
+            <div class="bg-[#e8dddd] border border-[#c9a9a9] 
+                    rounded-[40px] 
+                    w-full max-w-md 
+                    p-10 text-center shadow-sm">
+
+                <p class="text-lg font-medium mb-4">
+                    商品の出品が完了しました。
+                </p>
+
+                <p class="text-base">
+                    条件がマッチするまでお待ちください。
+                </p>
+            </div>
+
+            {{-- ログインリンク --}}
+            <a href="{{ route('login') }}"
+                class="mt-10 text-sky-500 font-medium hover:underline">
+                ホームへ戻る
+            </a>
+
+        </div>
+
+    </div>
+</x-user-layout>

@@ -30,7 +30,7 @@ use App\Http\Controllers\MatchController;
 use App\Http\Controllers\RatingSubmitController;
 use App\Http\Controllers\RequestAnswerController;
 use App\Http\Controllers\TestController;
-
+use App\Http\Controllers\WaitController;
 
 /*
 |--------------------------------------------------------------------------
@@ -137,6 +137,8 @@ Route::get('/goods', [GoodsController::class, 'index']);
 //評価送信ページ作成03-07
 Route::get('/ratingsubmit', [RatingSubmitController::class, 'index']);
 
+//商品出品リクエスト待ちページ作成03-07
+Route::get('/wait', [WaitController::class, 'index']);
 
 
 //東郷先生記述
