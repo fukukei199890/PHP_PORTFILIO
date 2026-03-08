@@ -23,8 +23,15 @@ class PostController extends Controller
             'exchange_area' => $request->exchange_area,
             'is_trading' => $request->integer('is_trading')
         ]);
+        //佐藤
+        // return view('wait');
 
-        return view('wait');
+        //福田waitページにシリーズ名とキャラ名を表示
+        return redirect()->route('wait')->with([
+            'series_name' => $register->series_name,
+            'char_name' => $register->char_name
+
+        ]);
     }
 
     //

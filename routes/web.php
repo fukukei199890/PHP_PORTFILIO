@@ -143,7 +143,7 @@ Route::get('/goods', [GoodsController::class, 'index']);
 Route::get('/ratingsubmit', [RatingSubmitController::class, 'index']);
 
 //商品出品リクエスト待ちページ作成03-07
-Route::get('/wait', [WaitController::class, 'index']);
+Route::get('/wait', [WaitController::class, 'index'])->name('wait');
 
 
 //東郷先生記述
