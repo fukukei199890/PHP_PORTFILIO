@@ -15,8 +15,9 @@ return new class extends Migration
     {
         Schema::create('listed_items', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('item_id')->constrained()->cascadeOnDelete();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->string('series_name')->nullable(); //item_tableから統合したカラム
+            $table->string('char_name');    //item_tableから統合したカラム
             $table->boolean('is_opend')->nullable();
             $table->string('exchange_area');
             $table->integer('is_trading');

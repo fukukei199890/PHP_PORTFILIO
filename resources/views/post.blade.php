@@ -1,5 +1,5 @@
 <x-user-layout>
-    <form action="" method="POST" enctype="multipart/form-data"
+    <form action="{{ route('post.store') }}" method="POST" enctype="multipart/form-data"
         class="bg-white p-6 rounded-lg shadow space-y-4">
 
         @csrf
@@ -20,6 +20,9 @@
         </div>
 
         <!-- シリーズ -->
+        <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+        <input type="hidden" name="is_trading" value="0">
+
         <div>
             <input type="text"
                 name="series_name"
@@ -30,7 +33,7 @@
         <!-- キャラ -->
         <div>
             <input type="text"
-                name="character_name"
+                name="char_name"
                 placeholder="キャラ名 ※必須"
                 required
                 class="w-full border rounded px-3 py-2">
@@ -48,6 +51,16 @@
                 <input type="radio" name="is_opened" value="1">
                 開封済
             </label>
+
+            <div>
+
+                <select name="exchange_area">
+                    <option value="miyazaki_station">宮崎駅</option>
+                    <option value="aeon">イオン</option>
+                    <option value="daie">ダイエー</option>
+
+                </select>
+            </div>
 
         </div>
 

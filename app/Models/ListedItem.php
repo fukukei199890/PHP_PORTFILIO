@@ -9,9 +9,13 @@ class ListedItem extends Model
 {
     use HasFactory;
 
-    // この出品物に紐付いているアイテムを取得
-    public function item()
-    {
-        return $this->belongsTo(Item::class, 'item_id');
-    }
+    protected $fillable = [
+        // 書き込みを許可するカラム
+        'user_id',
+        'series_name',
+        'char_name',
+        'is_opend',
+        'exchange_area',
+        'is_trading'
+    ];
 }
