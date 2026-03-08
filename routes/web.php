@@ -29,6 +29,7 @@ use App\Http\Controllers\MypageController;
 use App\Http\Controllers\MatchController;
 use App\Http\Controllers\RatingSubmitController;
 use App\Http\Controllers\RequestAnswerController;
+use App\Http\Controllers\RequestController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\WaitController;
 
@@ -121,6 +122,9 @@ Route::get('/match', [MatchController::class, 'index'])->name('match');
 
 // 交換確認リクエスト画面
 Route::get('/requestanswer', [RequestAnswerController::class, 'index'])->name('requestanswer');
+
+//リクエストメッセージ申請ページ作成
+Route::get('/request', [RequestController::class, 'index']);
 
 
 // 新規登録画面
