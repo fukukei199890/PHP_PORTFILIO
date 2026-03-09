@@ -24,37 +24,69 @@
             </div>
         </main>
         <footer>
-            <!--  -->
+            <!-- グローバルナビゲーション -->
             <nav class="flex items-center justify-between flex-wrap max-w-md mx-auto">
+
+                <!-- ホーム -->
                 <div class="flex flex-col items-center">
                     <span class="text-xl">🏠</span>
                     <span><a href="">ホーム</a></span>
                 </div>
 
+                <!-- 探す -->
                 <div class="flex flex-col items-center">
                     <span class="text-xl">🔍</span>
-                    <span><a href="">探す</a></span>
+                    <span><a href="{{ route('seach') }}">探す</a></span>
                 </div>
 
+                <!-- 出品（ログイン前後で遷移先変更） -->
                 <div class="flex flex-col items-center">
                     <span class="text-xl">📷</span>
-                    <span><a href="">出品</a></span>
+
+                    {{-- ログイン後 --}}
+                    @auth
+                    <span><a href="{{ route('post') }}">出品</a></span>
+                    @endauth
+
+                    {{-- ログイン前 --}}
+                    @guest
+                    <span><a href="{{ route('postbefore') }}">出品</a></span>
+                    @endguest
+
                 </div>
 
+                <!-- 通知 -->
                 <div class="flex flex-col items-center relative">
                     <span class="text-xl">🔔</span>
-                    <span><a href="">通知</a></span>
+
+                    {{-- ログイン後 --}}
+                    @auth
+                    <span><a href="{{ route('message') }}">通知</a></span>
+                    @endauth
+
+                    {{-- ログイン前 --}}
+                    @guest
+                    <span><a href="{{ route('messagebefore') }}">通知</a></span>
+                    @endguest
                 </div>
 
+                <!-- マイページ -->
                 <div class="flex flex-col items-center">
                     <span class="text-xl">👤</span>
-                    <span><a href="">マイページ</a></span>
+
+                    {{-- ログイン後 --}}
+                    @auth
+                    <span><a href="{{ route('mypage') }}">マイページ</a></span>
+                    @endauth
+
+                    {{-- ログイン前 --}}
+                    @guest
+                    <span><a href="{{ route('mypagebefore') }}">マイページ</a></span>
+                    @endguest
                 </div>
 
-    </div>
-    </nav>
-    <!--  -->
-    </footer>
+            </nav>
+        </footer>
     </div>
 </body>
 

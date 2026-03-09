@@ -5,7 +5,7 @@
         <div class="flex flex-col items-center pt-20 px-6 pb-24">
 
             {{-- 注意アイコン画像 --}}
-            <img src="{{ asset('images/attention.png') }}"
+            <img src="{{ asset('images/ratingsubmit.png') }}"
                 alt="注意マーク画像"
                 class="w-24 h-24 object-contain mb-6">
 
@@ -16,18 +16,18 @@
                     p-10 text-center shadow-sm">
 
                 <p class="text-lg font-medium mb-4">
-                    申請できません。
+                    評価を送信しました
                 </p>
 
                 <p class="text-base">
-                    ログイン後、使用が可能になります
+                    評価が完了しました！スムーズな取引をありがとうございました。また素敵な出会いがありますように！
                 </p>
             </div>
 
             {{-- ログインリンク --}}
-            <a href="{{ route('login') }}"
+            <a href=""
                 class="mt-10 text-sky-500 font-medium hover:underline">
-                ログインする
+                ホームへ戻る
             </a>
 
         </div>
