@@ -26,13 +26,13 @@
 
                     {{-- フォーム --}}
                     <!-- route関数はエイリアス（別名）phpのasみたいなもので指定してそのURLを呼び出す -->
-    <form method="get" action="{{ route('rating') }}" class="space-y-6">
+    <form method="get" action="{{ route('match') }}" class="space-y-6">
         @csrf
 
         {{-- はい --}}
         <button type="submit"
             name="action"
-            value="yes"
+            value="{{ $request_id }}"
             class="w-40 py-3 
                                bg-gray-200 border border-black 
                                rounded-xl 
@@ -53,5 +53,5 @@
                                hover:bg-gray-300 transition">
             いいえ
         </button>
-    </form> -->
+    </form>
 </x-user-layout>

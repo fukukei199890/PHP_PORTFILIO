@@ -9,26 +9,42 @@ use App\Models\ListedItem;
 use App\Models\Item;
 use App\Models\Thread;
 
+use App\Models\TradeRequest;
+
 class MatchController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        if(Auth::check()){ 
-            $item = ListedItem::with('images')->where('user_id',Auth::user()->id)->get(); // urlを返す
-            return view('match',compact('item'));
-        }else{
-            return view('match');
-        }
+        // リクエストID
+        $request_id = $request->input('action');
+
+        session(['current_request_id' => $request_id]);
+
+        // リクエスト者の名前
+        $sender_data = TradeRequest::with('user')->where('id', $request_id)->first();
+        $user_name = $sender_data->user->name;
+
+
+        return view('match', compact('request_id', 'user_name'));
     }
 
-    // public function start_chat(Request $request)
-    // {
-    //     $chat_data = Thread::create([
-    //         'sender_id' = $request->name,
-    //         'receiver_id' = Auth::user()->id,
-    //         'listed_item_id' ,
-    //         'is_matched' = false
-    //     ]);
-    //     return view('message-select')
-    // }
+    public function start_deal()
+    {
+        $request_data = TradeRequest::where('id', session('current_request_id'))->first();
+
+        if ($request_data) {
+            // request statusをfalseに書き換える
+            $request_data->status = false;
+            $request_data->save();
+
+            $thread = Thread::create([
+                'sender_id' => $request_data->user_id,
+                'receiver_id' => Auth::user()->id,
+                'listed_item_id' => $request_data->listed_item_id,
+                'is_matched' => false
+            ]);
+        }
+
+        return view('seach');
+    }
 }

@@ -51,7 +51,8 @@ class RequestAnswerController extends Controller
                 'score',
                 'my_series',
                 'my_char',
-                'request_text'
+                'request_text',
+                'request_id'
             )
         );
     }

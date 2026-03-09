@@ -1,11 +1,11 @@
 <x-user-layout>
-    <div class="flex flex-col items-center">
-        <p>条件がマッチしました！</p>
-        <div>
-            {{ $item }}
-        </div>
-        <form action="" method="post">
-            <button>チャットを開始</button>
-        </form>
+    <p>条件がマッチしました！</p>
+    <p>{{ $request_id }}</p>
+    <p>あなたは:{{ Auth::user()->name }}</p>
+    <p>相手は::{{$user_name }}</p>
+    <form action="{{ route('match.start_deal') }}" method="post">
+        @CSRF
+        <button>チャットを開始</button>
+    </form>
     </div>
 </x-user-layout>

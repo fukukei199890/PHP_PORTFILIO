@@ -125,6 +125,7 @@ Route::get('/mypage', [MypageController::class, 'index'])->name('mypage');
 
 // マッチ申請
 Route::get('/match', [MatchController::class, 'index'])->name('match');
+Route::post('/match', [MatchController::class, 'start_deal'])->name('match.start_deal');
 
 // 交換確認リクエスト画面
 Route::get('/requestanswer', [RequestAnswerController::class, 'index'])->name('requestanswer');
