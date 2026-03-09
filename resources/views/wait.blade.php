@@ -16,6 +16,16 @@
                     出品が完了しました！
                 </p>
 
+                {{-- 画像表示 --}}
+                <!-- 追記福田 -->
+                @if(session('image'))
+                <div class="mb-6">
+                    <img
+                        src="{{ asset('storage/' . session('image')) }}"
+                        class="w-48 h-48 object-cover mx-auto rounded-2xl border border-gray-300 shadow">
+                </div>
+                @endif
+
                 {{-- セッションデータがある場合のみ表示 --}}
                 @if(session('series_name') || session('char_name'))
                 <div class="bg-white/60 rounded-2xl p-4 mb-6 text-left border border-white/40">

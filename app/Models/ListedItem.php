@@ -18,4 +18,9 @@ class ListedItem extends Model
         'exchange_area',
         'is_trading'
     ];
+    //リレーションに紐づける
+    public function images()
+    {
+        return $this->hasMany(Image::class);
+    }
 }
