@@ -5,7 +5,7 @@
             <form method="get" action="{{ route('login') }}">
                 <button class="font-mono rounded-full bg-blue-600 text-white p-4">ログイン</button>
             </form>
-            <form method="get" action="">
+            <form method="get" action="{{ route('register') }}">
                 <button class="font-mono rounded-full bg-blue-600 text-white p-4">新規登録</button>
             </form>
         </div>

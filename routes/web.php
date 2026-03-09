@@ -151,8 +151,7 @@ Route::get('/ratingsubmit', [RatingSubmitController::class, 'index']);
 //商品出品リクエスト待ちページ作成03-07
 Route::get('/wait', [WaitController::class, 'index'])->name('wait');
 
-//商品出品リクエスト待ちページ作成03-09
-Route::get('/top', [TopController::class, 'index']);
+
 
 
 

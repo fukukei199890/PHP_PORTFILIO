@@ -15,7 +15,7 @@ class UserLayout extends Component
      * Get the view / contents that represents the component.
      */
     public function render(): View
-    {   
+    {
 
         // $request_count = TradeRequest::whereIn('id')->count();
 
@@ -26,10 +26,10 @@ class UserLayout extends Component
             // その商品IDたちに対して届いているリクエストを数える
             // whereIn('カラム名', 配列) の形にするのがポイント
             $request_count = TradeRequest::whereIn('listed_item_id', $my_item_ids)
-            ->where('status',1)->count();
+                ->where('status', 1)->count();
         }
 
-        return view('layouts.user',compact('request_count'));
+        return view('layouts.user');
         // ['is_icon' => $is_icon,B 'aaa' => $aaa]
         // comact('''is_icon', 'aaa')
     }

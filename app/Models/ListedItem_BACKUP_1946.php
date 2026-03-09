@@ -9,13 +9,11 @@ class ListedItem extends Model
 {
     use HasFactory;
 
-<<<<<<< HEAD
     // この出品物に紐付いているアイテムを取得
     // このModelがItemモデルの子要素になっていると宣言している
     // 言い換え）item_idは外部キーで、それはitemsテーブルに存在することを宣言している
     // 具体的には、ListedItemのインスタンスはitemプロパティを通じてItemモデルのインスタンスを利用できるようになる
     public function item()
-=======
     protected $fillable = [
         // 書き込みを許可するカラム
         'user_id',
@@ -27,7 +25,6 @@ class ListedItem extends Model
     ];
     //リレーションに紐づける
     public function images()
->>>>>>> origin/no21-update-fukuda-0309
     {
         return $this->hasMany(Image::class);
     }
