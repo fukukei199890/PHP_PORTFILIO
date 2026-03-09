@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Thread extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        // 書き込みを許可するカラム
+        'sender_id',
+        'receiver_id',
+        'listed_item_id',
+        'is_matched'
+    ];
 }
