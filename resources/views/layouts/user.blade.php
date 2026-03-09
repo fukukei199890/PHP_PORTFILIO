@@ -30,7 +30,7 @@
                 <!-- ホーム -->
                 <div class="flex flex-col items-center">
                     <span class="text-xl">🏠</span>
-                    <span><a href="">ホーム</a></span>
+                    <span><a href="{{ route('top') }}">ホーム</a></span>
                 </div>
 
                 <!-- 探す -->
