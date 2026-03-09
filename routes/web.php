@@ -45,9 +45,14 @@ use App\Http\Controllers\WaitController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+//追加福田
+Route::get('/', [TopController::class, 'index'])->name('top');
+
 
 Route::prefix('sample')->name('sample')->group(function () {
     Route::controller(SampleController::class)->group(function () {
