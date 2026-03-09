@@ -27,5 +27,11 @@
                 @endif
             </div>
         </form>
+        <!-- 練習用のコードです -->
+        <div>
+            {{Auth::user()}}
+            {{$test[1]}}
+        </div>
+        <!-- ここまで -->
     </div>
 </x-user-layout>

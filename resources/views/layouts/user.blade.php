@@ -57,8 +57,6 @@
 
                 <!-- 通知 -->
                 <div class="flex flex-col items-center relative">
-                    <span class="text-xl">🔔</span>
-
                     {{-- ログイン後 --}}
                     @auth
                     <span><a href="{{ route('message') }}">通知</a></span>
