@@ -31,6 +31,7 @@ use App\Http\Controllers\RatingSubmitController;
 use App\Http\Controllers\RequestAnswerController;
 use App\Http\Controllers\RequestController;
 use App\Http\Controllers\TestController;
+use App\Http\Controllers\TopController;
 use App\Http\Controllers\WaitController;
 
 /*
@@ -144,6 +145,11 @@ Route::get('/ratingsubmit', [RatingSubmitController::class, 'index']);
 
 //商品出品リクエスト待ちページ作成03-07
 Route::get('/wait', [WaitController::class, 'index'])->name('wait');
+
+//商品出品リクエスト待ちページ作成03-09
+Route::get('/top', [TopController::class, 'index']);
+
+
 
 
 //東郷先生記述
