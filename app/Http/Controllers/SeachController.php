@@ -6,14 +6,21 @@ use Illuminate\Http\Request;
 use App\Models\ListedItem;
 use App\Models\Item;
 
+// 練習用のコードです
+use App\Models\User;
+// ここまで
+
 class SeachController extends Controller
 {
     //
     public function index()
     {
-        $test = ['test','test2'];
+        // 練習用のコードです
+        $test = User::whereIn('id',[2,4,6,8,100])->get();
+        // ここまで
 
-        return view('seach', compact('test'));
+
+        return view('seach', compact('test')); // 第２引数以降は練習用のコードです
     }
 
     public function read(Request $request)

@@ -59,7 +59,11 @@
                 <div class="flex flex-col items-center relative">
                     {{-- ログイン後 --}}
                     @auth
-                    <span><a href="{{ route('message') }}">通知</a></span>
+                    @if($request_count>0)
+                    <span><a href="">{{$request_count}}</a></span>
+                    @else
+                    <span><a href="{{ route('message') }}">通知なし</a></span>
+                    @endif
                     @endauth
 
                     {{-- ログイン前 --}}
