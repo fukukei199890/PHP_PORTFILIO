@@ -19,16 +19,15 @@ class MypageController extends Controller
         $reviews = null;
 
         $reviews = Review::where('reviewed_user_id', Auth::user()->id)->get();
-        if (isset($reviews)) {
             foreach ($reviews as $row) {
                 $count++;
                 $total += $row->score;
             }
-
-            $score = $total / $count;
-        } else {
-            $score = 0;
-        }
+            if ($count>0) {
+                $score = $total / $count;
+            } else {
+                $score = 0;
+            }
 
         return view('mypage', compact('score'));
     }
