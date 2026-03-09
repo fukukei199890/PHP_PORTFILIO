@@ -57,12 +57,6 @@
 
                 <!-- 通知 -->
                 <div class="flex flex-col items-center relative">
-                    @if($is_icon)
-                        <span class="text-xl">🔔</span>
-                    @else
-                        <span class="text-xl">通知あり</span>
-                    @endif
-
                     {{-- ログイン後 --}}
                     @auth
                     <span><a href="{{ route('message') }}">通知</a></span>

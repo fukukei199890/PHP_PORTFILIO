@@ -11,7 +11,9 @@ class SeachController extends Controller
     //
     public function index()
     {
-        return view('seach');
+        $test = ['test','test2'];
+
+        return view('seach', compact('test'));
     }
 
     public function read(Request $request)
