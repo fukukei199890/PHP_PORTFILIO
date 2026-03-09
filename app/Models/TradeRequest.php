@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class TradeRequest extends Model
 {
     use HasFactory;
+
+    public function listed_item()
+    {
+        return $this->belongsTo(ListedItem::class);
+    }
 }

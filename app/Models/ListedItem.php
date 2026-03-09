@@ -18,4 +18,9 @@ class ListedItem extends Model
         'exchange_area',
         'is_trading'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
