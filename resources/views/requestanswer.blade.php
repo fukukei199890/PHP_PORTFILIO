@@ -1,6 +1,19 @@
 <x-user-layout>
-    
-        <div class="min-h-screen bg-gray-100 flex flex-col justify-between">
+
+    <div>
+        <!-- ユーザー名 -->
+        <p>{{ $user_name }}</p>
+        <!-- スコア -->
+        <p>{{ $score }}</p>
+        <!-- 出品物情報 -->
+        <p>{{ $my_series }}</p>
+        <p>{{ $my_char }}</p>
+        <!-- リクエスト文 -->
+        <!-- リクエスト側がアイテム情報と交換場所を持つ必要あり -->
+        <p>{{ $request_text }}</p>
+    </div>
+
+    <!-- <div class="min-h-screen bg-gray-100 flex flex-col justify-between">
             <p>お相手が見つかりました</p>
             {{-- 中央エリア --}}
             <div class="flex flex-1 items-center justify-center px-6 pb-24">
@@ -13,32 +26,32 @@
 
                     {{-- フォーム --}}
                     <!-- route関数はエイリアス（別名）phpのasみたいなもので指定してそのURLを呼び出す -->
-                    <form method="get" action="{{ route('rating') }}" class="space-y-6">
-                        @csrf
+    <form method="get" action="{{ route('rating') }}" class="space-y-6">
+        @csrf
 
-                        {{-- はい --}}
-                        <button type="submit"
-                            name="action"
-                            value="yes"
-                            class="w-40 py-3 
+        {{-- はい --}}
+        <button type="submit"
+            name="action"
+            value="yes"
+            class="w-40 py-3 
                                bg-gray-200 border border-black 
                                rounded-xl 
                                hover:bg-gray-300 transition">
-                            はい
-                        </button>
+            はい
+        </button>
 
-                    </form>
+    </form>
 
-                    <form method="get" action="{{ route('message') }}" class="space-y-6">
-                        {{-- いいえ --}}
-                        <button type="submit"
-                            name="action"
-                            value="no"
-                            class="w-40 py-3 
+    <form method="get" action="{{ route('message') }}" class="space-y-6">
+        {{-- いいえ --}}
+        <button type="submit"
+            name="action"
+            value="no"
+            class="w-40 py-3 
                                bg-gray-200 border border-black 
                                rounded-xl 
                                hover:bg-gray-300 transition">
-                            いいえ
-                        </button>
-                    </form>
+            いいえ
+        </button>
+    </form> -->
 </x-user-layout>
