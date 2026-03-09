@@ -18,16 +18,13 @@ class ListedItem extends Model
         'exchange_area',
         'is_trading'
     ];
-<<<<<<< HEAD
 
     public function user()
     {
         return $this->belongsTo(User::class);
-=======
     //リレーションに紐づける
     public function images()
     {
         return $this->hasMany(Image::class);
->>>>>>> origin/no4-create-fukuda-0309
     }
 }
