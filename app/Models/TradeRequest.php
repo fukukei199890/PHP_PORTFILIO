@@ -13,4 +13,9 @@ class TradeRequest extends Model
     {
         return $this->belongsTo(ListedItem::class);
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

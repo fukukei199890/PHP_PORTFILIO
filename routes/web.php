@@ -33,7 +33,7 @@ use App\Http\Controllers\RequestController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\TopController;
 use App\Http\Controllers\WaitController;
-
+use App\Http\Controllers\RequestSelectController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -151,6 +151,8 @@ Route::get('/ratingsubmit', [RatingSubmitController::class, 'index']);
 //商品出品リクエスト待ちページ作成03-07
 Route::get('/wait', [WaitController::class, 'index'])->name('wait');
 
+// リクエストセレクトコントローラー
+Route::get('/requestSelect', [RequestSelectController::class, 'index'])->name('requestSelect');
 
 
 
