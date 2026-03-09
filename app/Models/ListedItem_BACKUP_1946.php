@@ -25,10 +25,6 @@ class ListedItem extends Model
         'exchange_area',
         'is_trading'
     ];
-
-    public function user()
-    {
-        return $this->belongsTo(User::class);
     //リレーションに紐づける
     public function images()
 >>>>>>> origin/no21-update-fukuda-0309
