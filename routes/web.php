@@ -95,7 +95,7 @@ Route::get('/requestmessage', [RequestMessageController::class, 'index']);
 
 //メッセージ選択画面ページ
 Route::get('/messageselect', [MessageSelectController::class, 'index']);
-Route::post('/messageselect', [MessageSelectController::class,'start_talk'])->name('startTalk');
+Route::post('/messageselect', [MessageSelectController::class, 'start_talk'])->name('startTalk');
 
 
 //交換完了確認ページ
@@ -120,7 +120,7 @@ Route::get('/eeeee', [RatingController::class, 'index'])->name('rating');
 
 // メッセージ取引画面
 Route::get('/message', [MessageController::class, 'index'])->name('message');
-Route::post('/message', [MessageController::class,'create_message'])->name('create_message');
+Route::post('/message', [MessageController::class, 'create_message'])->name('create_message');
 
 //ログイン後マイページ
 Route::get('/mypage', [MypageController::class, 'index'])->name('mypage');
@@ -146,7 +146,7 @@ Route::get('/test', [TestController::class, 'index']);
 
 
 //商品詳細ページ作成03-07
-Route::get('/goods', [GoodsController::class, 'index']);
+Route::get('/goods', [GoodsController::class, 'index'])->name('goods');
 
 //評価送信ページ作成03-07
 Route::get('/ratingsubmit', [RatingSubmitController::class, 'index']);
