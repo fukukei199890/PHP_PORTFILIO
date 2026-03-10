@@ -4,40 +4,28 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\ListedItem;
-use App\Models\Item;
-
-// 練習用のコードです
-use App\Models\User;
-// ここまで
+use App\Models\Image;
 
 class SeachController extends Controller
 {
     //
     public function index()
     {
-        // 練習用のコードです
-        $test = User::whereIn('id',[2,4,6,8,100])->get();
-        // ここまで
-
-
-        return view('seach', compact('test')); // 第２引数以降は練習用のコードです
+        return view('seach');
     }
 
     public function read(Request $request)
     {
-        // requestオブジェクトからinputプロパティのname="search"を取得
-        $keyword = $request->input('search');
+        // ヴァリデーション
+        // ヴァリデーションに失敗した場合は自動でback()する
+        $validated = $request->validate([
+            // 20文字以下に制限
+            'search' => 'required|max:20'
+        ]);
 
-        //  Itemモデルのインスタンスを生成
-        // 条件はchar_nameが検索キーワードと同じ
-        // 検索結果をidのみの配列として itemIdsに格納している
-        $itemIds = Item::where('char_name', 'LIKE', "%{$keyword}%")->pluck('id');
-
-        // withの意味はListedItemの要素に加えて、紐づけられたitemの要素も取得する
-        // ここで、itemはListedItemないで定義したメソッド
-        // メソッドitemを通じてListedItemとItemが結びつく
-        // whereInの意味は$itemIdsの配列の要素である'item_id'のデータを取り出すこと
-        $results = ListedItem::with('item')->whereIn('item_id', $itemIds)->get();
+        $results = ListedItem::with('images')
+        ->where('char_name','LIKE','%'. $validated['search'] .'%')
+        ->get();
 
         return view('seach', compact('results'));
     }
