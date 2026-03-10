@@ -16,7 +16,7 @@ class MessageSelectController extends Controller
     {
         // 自分が受信者であるスレッドを、関連データと一緒に取得
         $requests = Thread::with(['sender', 'receiver'])
-        ->where('receiver_id', Auth::id())
+        ->where('receiver_id', Auth::id())->orWhere('sender_id',Auth::id())
         ->get();
 
         return view('messageselect', compact('requests'));

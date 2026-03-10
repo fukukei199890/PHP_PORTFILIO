@@ -2,8 +2,9 @@
     <ul>
         @forelse ($requests as $thread)
             <li>    
-                {{-- 相手ユーザー --}}
-                <p>相手ユーザー: {{ $thread->sender->name }}</p>
+                {{-- 取引ユーザー --}}
+                <p>出品側:{{$thread->receiver->name}}</p>
+                <p>送り手:{{ $thread->sender->name }}</p>
                 {{-- 相手ユーザーが設定している交換エリア --}}
                 <p>{{$thread->sender->user_area}}</p>
 

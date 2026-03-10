@@ -15,6 +15,7 @@ class MessageController extends Controller
         // thread_id
         $thread_id = session('current_thread_id');
 
+        // スレッドのメッセージの取得
         $message_data = Message::where('thread_id',$thread_id)->get();
 
         return view('message',compact([
@@ -25,6 +26,7 @@ class MessageController extends Controller
 
     public function create_message(Request $request)
     {
+        // メッセージの作成
         $message = Message::create([
             'thread_id' => session('current_thread_id'),
             'user_id' => Auth::user()->id,
