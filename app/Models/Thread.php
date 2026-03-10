@@ -16,4 +16,19 @@ class Thread extends Model
         'listed_item_id',
         'is_matched'
     ];
+
+    public function listed_item()
+    {
+        return $this->belongsTo(ListedItem::class);
+    }
+
+    public function sender()
+    {
+        return $this->belongsTo(User::class, 'sender_id');
+    }
+
+    public function receiver()
+    {
+        return $this->belongsTo(User::class, 'receiver_id');
+    }
 }

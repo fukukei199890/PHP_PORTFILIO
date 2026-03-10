@@ -24,7 +24,6 @@ class MatchController extends Controller
         $sender_data = TradeRequest::with('user')->where('id', $request_id)->first();
         $user_name = $sender_data->user->name;
 
-
         return view('match', compact('request_id', 'user_name'));
     }
 
@@ -45,6 +44,8 @@ class MatchController extends Controller
             ]);
         }
 
-        return view('seach');
+        // リダイレクト
+        // 別のコントローラーに再接続
+        return redirect()->action([MessageSelectController::class, 'index']);
     }
 }
