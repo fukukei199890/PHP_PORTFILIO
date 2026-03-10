@@ -84,7 +84,7 @@ Route::post('/seach', [SeachController::class, 'read'])->name('search.result');
 Route::get('/messagebefore', [MessageBeforeController::class, 'index'])->name('messagebefore');
 
 //ログイン前申請不可メッセージページ
-Route::get('/applicationnot', [ApplicationNotController::class, 'index']);
+Route::get('/applicationnot', [ApplicationNotController::class, 'index'])->name('applicationnot');
 //パスワード変更ページ
 // Route::get('/passwordchange', [PasswordChangeController::class, 'index'])->name('passwordchange');
 //新規登録変更完了ページ
@@ -133,7 +133,7 @@ Route::post('/match', [MatchController::class, 'start_deal'])->name('match.start
 Route::get('/requestanswer', [RequestAnswerController::class, 'index'])->name('requestanswer');
 
 //リクエストメッセージ申請ページ作成
-Route::get('/request', [RequestController::class, 'index']);
+Route::get('/request', [RequestController::class, 'index'])->name('request');
 
 
 // 新規登録画面
@@ -146,7 +146,7 @@ Route::get('/test', [TestController::class, 'index']);
 
 
 //商品詳細ページ作成03-07
-Route::get('/goods', [GoodsController::class, 'index'])->name('goods');
+Route::get('/goods/{id}', [GoodsController::class, 'show'])->name('goods');
 
 //評価送信ページ作成03-07
 Route::get('/ratingsubmit', [RatingSubmitController::class, 'index']);

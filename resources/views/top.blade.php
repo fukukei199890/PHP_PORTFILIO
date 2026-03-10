@@ -68,7 +68,7 @@ bg-gradient-to-r from-green-300 to-red-400 shadow">
                     <div class="text-center">
 
                         @if($item->images->first())
-                        <a href="{{ route('goods') }}">
+                        <a href="{{ route('goods', $item->id) }}">
                             <img
                                 src="{{ asset('storage/'.$item->images->first()->image_url) }}"
                                 class="border mb-2 w-full">
