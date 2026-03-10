@@ -120,6 +120,7 @@ Route::get('/eeeee', [RatingController::class, 'index'])->name('rating');
 
 // メッセージ取引画面
 Route::get('/message', [MessageController::class, 'index'])->name('message');
+Route::post('/message', [MessageController::class,'create_message'])->name('create_message');
 
 //ログイン後マイページ
 Route::get('/mypage', [MypageController::class, 'index'])->name('mypage');
