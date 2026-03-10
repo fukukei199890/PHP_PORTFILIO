@@ -95,6 +95,7 @@ Route::get('/requestmessage', [RequestMessageController::class, 'index']);
 
 //メッセージ選択画面ページ
 Route::get('/messageselect', [MessageSelectController::class, 'index']);
+Route::post('/messageselect', [MessageSelectController::class,'start_talk'])->name('startTalk');
 
 
 //交換完了確認ページ

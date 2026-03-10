@@ -21,4 +21,10 @@ class MessageSelectController extends Controller
 
         return view('messageselect', compact('requests'));
     }
+
+    public function start_talk(Request $request)
+    {
+        session(['current_thread_id' => $request->input('thread_id')]);
+        return  redirect()->action([MessageController::class, 'index']);
+    }
 }

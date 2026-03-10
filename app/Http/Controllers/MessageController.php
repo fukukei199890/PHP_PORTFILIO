@@ -7,8 +7,11 @@ use Illuminate\Http\Request;
 class MessageController extends Controller
 {
     //
-    public function index()
+    public function index(Request $request)
     {
-        return view('message');
+        // thread_id
+        $thread_id = session('current_thread_id');
+
+        return view('message',compact('thread_id'));
     }
 }

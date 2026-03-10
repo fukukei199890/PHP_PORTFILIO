@@ -7,8 +7,10 @@
                 {{-- 相手ユーザーが設定している交換エリア --}}
                 <p>{{$thread->sender->user_area}}</p>
 
-                <form method="" action="">
+                <form method="post" action="{{ route('startTalk') }}">
                     @csrf
+                    {{-- thread_idの値をわたす --}}
+                    <input type="hidden" name="thread_id" value="{{ $thread->id }}">
                     <button>トーク開始</button>
                 </form>
             </li>
