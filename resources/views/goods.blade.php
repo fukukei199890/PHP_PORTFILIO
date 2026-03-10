@@ -51,7 +51,9 @@
 
             <div class="flex justify-between items-center">
                 <p>求める商品</p>
-                <button class="border px-4 py-1">選択する</button>
+                <a href="{{ route('goodsselect') }}">
+                    <button class="border px-4 py-1">選択する</button>
+                </a>
             </div>
 
         </div>

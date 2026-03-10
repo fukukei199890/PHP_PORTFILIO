@@ -12,6 +12,7 @@ use App\Http\Controllers\AgreementsController;
 use App\Http\Controllers\ApplicationNotController;
 use App\Http\Controllers\ExchangeConditionController;
 use App\Http\Controllers\GoodsController;
+use App\Http\Controllers\GoodsSelectController;
 use App\Http\Controllers\MessageSelectController;
 use App\Http\Controllers\PasswordChangeController;
 use App\Http\Controllers\RegistrationCompleteController;
@@ -157,6 +158,9 @@ Route::get('/wait', [WaitController::class, 'index'])->name('wait');
 // リクエストセレクトコントローラー
 Route::get('/requestSelect', [RequestSelectController::class, 'index'])->name('requestSelect');
 
+
+//福田商品選択ページ作成03-10
+Route::get('/goodsselect', [GoodsSelectController::class, 'index'])->name('goodsselect');
 
 
 
