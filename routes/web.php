@@ -115,8 +115,8 @@ Route::post('/post', [PostController::class, 'store'])->name('post.store');
 // メッセージ送信画面
 Route::get('/messagesubmit', [MessageSubmitController::class, 'index']);
 
-// 交換完了送信画面
-Route::get('/eeeee', [RatingController::class, 'index'])->name('rating');
+// 交換完了送信画面 /{id}
+Route::get('/rating', [RatingController::class, 'index'])->name('rating');
 
 // メッセージ取引画面
 Route::get('/message', [MessageController::class, 'index'])->name('message');
