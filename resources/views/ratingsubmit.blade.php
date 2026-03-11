@@ -33,4 +33,8 @@
         </div>
 
     </div>
+
+    @isset($e)
+    <p>{{$e}}</p>
+    @endisset
 </x-user-layout>

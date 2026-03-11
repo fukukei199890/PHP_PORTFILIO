@@ -156,7 +156,7 @@ Route::get('/goods/select/{id}', [GoodsController::class, 'select'])->name('good
 Route::post('/goods/select', [GoodsController::class, 'storeSelect'])->name('goods.select.store');
 
 //評価送信ページ作成03-07
-Route::get('/ratingsubmit', [RatingSubmitController::class, 'index']);
+Route::get('/ratingsubmit', [RatingSubmitController::class, 'index'])->name('ratingsubmit');
 
 //商品出品リクエスト待ちページ作成03-07
 Route::get('/wait', [WaitController::class, 'index'])->name('wait');

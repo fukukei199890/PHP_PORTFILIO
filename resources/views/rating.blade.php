@@ -1,7 +1,6 @@
 <x-user-layout>
     <head>
         <script src="https://cdn.tailwindcss.com"></script>
-        <input type="hidden" name="rating" id="rating-value" value="0">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     </head>
     <div class="bg-gray-100 flex flex-col items-center pb-20 min-h-screen">
@@ -14,8 +13,9 @@
         <!-- 画像挿入 -->
         <img src="{{ asset('images/hand.png') }}" alt="" class="w-24 h-24 object-contain mb-6 mx-auto">
         <p class="text-xl mb-8">{{ $user->name ?? 'ゲスト' }}さんとの交換はどうでしたか？</p>
-        <form action="ratingsubmit" method="post" class="flex flex-col items-center text-center">
+        <form action="{{route('rating.store')}}" method="post" class="flex flex-col items-center text-center">
             @csrf {{-- Laravelでフォームを送る時はこれが必要 --}}
+            <input type="hidden" name="rating" id="rating-value" value="0">
             <div class="flex justify-center space-x-2 text-4xl mb-6 cursor-pointer" id="star-group">
                 <i class="far fa-star text-gray-300 star-btn" data-num="1"></i>
                 <i class="far fa-star text-gray-300 star-btn" data-num="2"></i>
@@ -68,5 +68,22 @@
             </button>
         </form>
     </div>
+
+    @if ($errors->any())
+    <div style="color: red;">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
+<form action="/ratingsubmit" method="POST">
+    @csrf
+    @error('rating')
+        <span style="color: red;">{{ $message }}</span>
+    @enderror
+</form>
 
 </x-user-layout>

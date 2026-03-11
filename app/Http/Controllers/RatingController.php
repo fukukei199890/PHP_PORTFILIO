@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
-use App\Models\Rating;
+use App\Models\Review;
+use Illuminate\Support\Facades\Auth;
+
 
 class RatingController extends Controller
 {
@@ -19,6 +21,9 @@ class RatingController extends Controller
 
     public function store(Request $request)
     {
+        // TODO 評価された人のidを取得する
+        $reviewedUserId = 2;
+
         // 1. バリデーション（入力チェック）
         $request->validate([
             'rating' => [
@@ -28,22 +33,27 @@ class RatingController extends Controller
                 'max:5'
                 ], // 星は1〜5の間
             'comment' => [
-                'nullable', // 空でもOK
+                'required', // 空NG
                 'string', // 文字列
                 'max:255'
-                ]     // コメントは空でもOK、最大255文字
+                ]     // コメントは空NG、最大255文字
         ]);
 
         // 2. データベースに保存
         // Review::create は「新しいレコードを作る」という意味
+        try {
         Review::create([
-            'reviewed_user_id' => auth()->id(),      // 評価をした人（自分）のID
-            'reviewed_user_id' => $request->id,    // 評価された人（相手）のID
+            'reviewing_user_id' => Auth::user()->id,      // 評価をした人（自分）のID
+            'reviewed_user_id' => $reviewedUserId,    // 評価された人（相手）のID
             'score' => $request->rating,   // 星の数
             'review_text' => $request->comment, // コメント
         ]);
+        }catch(QueryException $e){
+            return view('ratigsubmit',compact($e));
+        }
 
         // 3. 完了したら評価送信完了画面にいく
+        // return view('ratingsubmit');]
         return redirect()->route('ratingsubmit');
     }
 }
