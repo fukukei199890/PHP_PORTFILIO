@@ -118,6 +118,7 @@ Route::get('/messagesubmit', [MessageSubmitController::class, 'index']);
 
 // 交換完了送信画面 /{id}
 Route::get('/rating/{id?}', [RatingController::class, 'index'])->name('rating');
+Route::post('/rating/{id?}',[RatingController::class, 'store'])->name('rating.store');
 
 // メッセージ取引画面
 Route::get('/message', [MessageController::class, 'index'])->name('message');

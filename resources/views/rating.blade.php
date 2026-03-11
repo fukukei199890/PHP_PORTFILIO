@@ -1,9 +1,13 @@
 <x-user-layout>
     <head>
         <script src="https://cdn.tailwindcss.com"></script>
+        <input type="hidden" name="rating" id="rating-value" value="0">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     </head>
     <div class="bg-gray-100 flex flex-col items-center pb-20 min-h-screen">
+        <div class="mt-8 pb-4 text-gray-600 font-bold">
+            {{ $user->name ?? 'ゲスト' }} さんの評価
+        </div>
         <div class="text-center">
             <h2 class="text-3xl font-bold mb-4">交換が完了しました！</h2>
         </div>
@@ -12,7 +16,36 @@
         <p class="text-xl mb-8">{{ $user->name ?? 'ゲスト' }}さんとの交換はどうでしたか？</p>
         <form action="ratingsubmit" method="post" class="flex flex-col items-center text-center">
             @csrf {{-- Laravelでフォームを送る時はこれが必要 --}}
-            <div class="flex justify-center space-x-2 text-4xl mb-6" id="star-group">
+            <div class="flex justify-center space-x-2 text-4xl mb-6 cursor-pointer" id="star-group">
+                <i class="far fa-star text-gray-300 star-btn" data-num="1"></i>
+                <i class="far fa-star text-gray-300 star-btn" data-num="2"></i>
+                <i class="far fa-star text-gray-300 star-btn" data-num="3"></i>
+                <i class="far fa-star text-gray-300 star-btn" data-num="4"></i>
+                <i class="far fa-star text-gray-300 star-btn" data-num="5"></i>
+                <script>
+                    const stars = document.querySelectorAll('.star-btn');
+                    const ratingInput = document.getElementById('rating-value');
+
+                    stars.forEach(star => {
+                        star.addEventListener('click', () => {
+                            const num = star.getAttribute('data-num'); // 1〜5を取得
+                            ratingInput.value = num; // 隠し箱に数字を入れる
+
+                            // 星の色を更新する
+                            stars.forEach(s => {
+                                if (s.getAttribute('data-num') <= num) {
+                                    s.classList.remove('far', 'text-gray-300');
+                                    s.classList.add('fas', 'text-yellow-400'); // 塗りつぶす
+                                } else {
+                                    s.classList.remove('fas', 'text-yellow-400');
+                                    s.classList.add('far', 'text-gray-300');   // 空にする
+                                }
+                            });
+                        });
+                    });
+                </script>
+            </div>
+            <!-- <div class="flex justify-center space-x-2 text-4xl mb-6" id="star-group">
                 {{-- 黄色の塗りつぶし星 --}}
                 <i class="fas fa-star text-yellow-400"></i>
                 <i class="fas fa-star text-yellow-400"></i>
@@ -20,7 +53,7 @@
                 {{-- グレーの空の星 --}}
                 <i class="far fa-star text-gray-300 star-btn"></i>
                 <i class="far fa-star text-gray-300 star-btn"></i>
-            </div>
+            </div> -->
         <div class="w-full max-w-sm mb-8 px-4">
             <textarea 
                 name="comment" 
