@@ -12,6 +12,7 @@ use App\Http\Controllers\AgreementsController;
 use App\Http\Controllers\ApplicationNotController;
 use App\Http\Controllers\ExchangeConditionController;
 use App\Http\Controllers\GoodsController;
+use App\Http\Controllers\GoodsSelectController;
 use App\Http\Controllers\MessageSelectController;
 use App\Http\Controllers\PasswordChangeController;
 use App\Http\Controllers\RegistrationCompleteController;
@@ -84,7 +85,7 @@ Route::post('/seach', [SeachController::class, 'read'])->name('search.result');
 Route::get('/messagebefore', [MessageBeforeController::class, 'index'])->name('messagebefore');
 
 //ログイン前申請不可メッセージページ
-Route::get('/applicationnot', [ApplicationNotController::class, 'index']);
+Route::get('/applicationnot', [ApplicationNotController::class, 'index'])->name('applicationnot');
 //パスワード変更ページ
 // Route::get('/passwordchange', [PasswordChangeController::class, 'index'])->name('passwordchange');
 //新規登録変更完了ページ
@@ -95,7 +96,7 @@ Route::get('/requestmessage', [RequestMessageController::class, 'index']);
 
 //メッセージ選択画面ページ
 Route::get('/messageselect', [MessageSelectController::class, 'index']);
-Route::post('/messageselect', [MessageSelectController::class,'start_talk'])->name('startTalk');
+Route::post('/messageselect', [MessageSelectController::class, 'start_talk'])->name('startTalk');
 
 
 //交換完了確認ページ
@@ -115,12 +116,13 @@ Route::post('/post', [PostController::class, 'store'])->name('post.store');
 // メッセージ送信画面
 Route::get('/messagesubmit', [MessageSubmitController::class, 'index']);
 
-// 交換完了送信画面
-Route::get('/eeeee', [RatingController::class, 'index'])->name('rating');
+// 交換完了送信画面 /{id}
+Route::get('/rating/{id?}', [RatingController::class, 'index'])->name('rating');
+Route::post('/rating/{id?}', [RatingController::class, 'store'])->name('rating.store');
 
 // メッセージ取引画面
 Route::get('/message', [MessageController::class, 'index'])->name('message');
-Route::post('/message', [MessageController::class,'create_message'])->name('create_message');
+Route::post('/message', [MessageController::class, 'create_message'])->name('create_message');
 
 //ログイン後マイページ
 Route::get('/mypage', [MypageController::class, 'index'])->name('mypage');
@@ -133,7 +135,7 @@ Route::post('/match', [MatchController::class, 'start_deal'])->name('match.start
 Route::get('/requestanswer', [RequestAnswerController::class, 'index'])->name('requestanswer');
 
 //リクエストメッセージ申請ページ作成
-Route::get('/request', [RequestController::class, 'index']);
+Route::post('/request', [RequestController::class, 'index'])->name('request');
 
 
 // 新規登録画面
@@ -145,11 +147,16 @@ Route::get('/request', [RequestController::class, 'index']);
 Route::get('/test', [TestController::class, 'index']);
 
 
+
 //商品詳細ページ作成03-07
-Route::get('/goods', [GoodsController::class, 'index']);
+
+Route::get('/goods/{id}', [GoodsController::class, 'show'])->name('goods');
+Route::get('/goods/select/{id}', [GoodsController::class, 'select'])->name('goods.select');
+
+Route::post('/goods/select', [GoodsController::class, 'storeSelect'])->name('goods.select.store');
 
 //評価送信ページ作成03-07
-Route::get('/ratingsubmit', [RatingSubmitController::class, 'index']);
+Route::get('/ratingsubmit', [RatingSubmitController::class, 'index'])->name('ratingsubmit');
 
 //商品出品リクエスト待ちページ作成03-07
 Route::get('/wait', [WaitController::class, 'index'])->name('wait');
@@ -158,8 +165,21 @@ Route::get('/wait', [WaitController::class, 'index'])->name('wait');
 Route::get('/requestSelect', [RequestSelectController::class, 'index'])->name('requestSelect');
 
 
+// --- 追記・修正部分 ---
 
+// 1. 商品選択画面の表示
+Route::get('/goodsselect', [GoodsSelectController::class, 'index'])->name('goodsselect');
 
+// 2. 選択した内容をセッションに保存して、メッセージ入力画面へリダイレクト
+Route::post('/goodsselect', [GoodsSelectController::class, 'test'])->name('goodsselect.test');
+
+Route::get('/request/confirm', function () {
+    return view('request');
+})->name('request.confirm');
+// 4. 最後にDBに保存するルート
+Route::post('/request/store', [GoodsSelectController::class, 'store'])->name('request.store');
+
+// --- ここまで ---
 
 //東郷先生記述
 Route::get('/dashboard', function () {

@@ -60,6 +60,7 @@ bg-gradient-to-r from-green-300 to-red-400 shadow">
                     新着出品
                 </p>
 
+
                 <div class="grid grid-cols-3 gap-4">
 
                     @foreach($items as $item)
@@ -67,9 +68,11 @@ bg-gradient-to-r from-green-300 to-red-400 shadow">
                     <div class="text-center">
 
                         @if($item->images->first())
-                        <img
-                            src="{{ asset('storage/'.$item->images->first()->image_url) }}"
-                            class="border mb-2 w-full">
+                        <a href="{{ route('goods', $item->id) }}">
+                            <img
+                                src="{{ asset('storage/'.$item->images->first()->image_url) }}"
+                                class="border mb-2 w-full">
+                        </a>
                         @endif
 
                         <p class="text-xs leading-tight">

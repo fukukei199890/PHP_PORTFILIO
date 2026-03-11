@@ -1,39 +1,32 @@
 <x-user-layout>
 
-    <form action="{{ route('post.store') }}"
+    <form action="{{ route('request') }}"
         method="POST"
         enctype="multipart/form-data"
         class="bg-white p-6 rounded-lg shadow space-y-4">
 
         @csrf
 
+
+
         <!-- タイトル -->
         <div class="text-center">
-            <h2 class="text-lg font-medium mb-4">出品する</h2>
+            <h2 class="text-lg font-medium mb-4">選択する</h2>
         </div>
 
         <!-- 画像 -->
         <div>
-
             <label class="block mb-2 font-medium">
-                画像（1〜4枚）
+                画像
             </label>
+
             <div class="grid grid-cols-2 gap-2">
-
-                <input type="file" name="images[]" accept="image/*" class="border p-2 rounded">
-                <input type="file" name="images[]" accept="image/*" class="border p-2 rounded">
-                <input type="file" name="images[]" accept="image/*" class="border p-2 rounded">
-                <input type="file" name="images[]" accept="image/*" class="border p-2 rounded">
-
+                <input type="file" name="image" accept="image/*" class="border p-2 rounded">
             </div>
         </div>
 
-        <!-- hidden -->
-        <input type="hidden" name="is_trading" value="0">
-
         <!-- シリーズ -->
         <div>
-
             <label class="block text-sm mb-1">
                 シリーズ名
             </label>
@@ -42,12 +35,10 @@
                 name="series_name"
                 placeholder="シリーズ名"
                 class="w-full border rounded px-3 py-2">
-
         </div>
 
         <!-- キャラ -->
         <div>
-
             <label class="block text-sm mb-1">
                 キャラ名（必須）
             </label>
@@ -57,12 +48,10 @@
                 placeholder="キャラ名 ※必須"
                 required
                 class="w-full border rounded px-3 py-2">
-
         </div>
 
         <!-- 状態 -->
         <div>
-
             <label class="block text-sm mb-2">
                 商品状態
             </label>
@@ -80,50 +69,18 @@
                 </label>
 
             </div>
-
-        </div>
-
-        <!-- 交換場所 -->
-        <div>
-
-            <label class="block text-sm mb-1">
-                交換場所
-            </label>
-
-            <select name="exchange_area" class="w-full border rounded px-3 py-2">
-
-                <option value="miyazaki_station">宮崎駅</option>
-                <option value="aeon">イオン</option>
-                <option value="daie">ダイエー</option>
-
-            </select>
-
-        </div>
-
-        <!-- 求める商品 -->
-        <div>
-
-            <label class="block text-sm mb-1">
-                求める商品
-            </label>
-
-            <textarea
-                name="request_message"
-                placeholder="求める商品"
-                class="w-full border rounded px-3 py-2"
-                rows="3"></textarea>
-
         </div>
 
         <!-- 出品ボタン -->
-        <button
-            type="submit"
-            class="w-full bg-blue-500 text-white py-3 rounded-full font-semibold hover:bg-blue-600">
 
-            出品する
-
-        </button>
-
+        <div class="flex justify-end gap-4">
+            <button type="button" onclick="history.back()" class="px-4 py-2 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300 transition">
+                戻る
+            </button>
+            <button type="submit" class="px-6 py-2 bg-indigo-600 text-white font-bold rounded-md hover:bg-indigo-700 transition shadow-sm">
+                リクエスト申請ページに移動
+            </button>
+        </div>
     </form>
 
 </x-user-layout>
