@@ -26,14 +26,9 @@ class SeachController extends Controller
         ]);
 
         $results = ListedItem::with('images')
-<<<<<<< HEAD
         ->where('char_name','LIKE','%'. $validated['search'] .'%')
         ->where('is_opend', $validated['is_opened'])
         ->get();
-=======
-            ->where('char_name', 'LIKE', '%' . $validated['search'] . '%')
-            ->get();
->>>>>>> origin/main
 
         return view('seach', compact('results'));
     }
