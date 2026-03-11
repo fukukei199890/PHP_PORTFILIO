@@ -54,9 +54,23 @@
 
             <div class="flex justify-between items-center">
                 <p>求める商品</p>
+                <p>{{ $item->request_message }}</p>
+
+            </div>
+
+            <div>
                 <a href="{{ route('goodsselect',$item->id) }}">
                     <button class="border px-4 py-1">選択する</button>
                 </a>
+
+                @isset($result)
+
+                <p>{{ $result->char_name }}</p>
+                <p>{{ $result->series_name }}</p>
+                <p>{{ $result->is_opened }}</p>
+
+                @endisset
+
             </div>
 
         </div>
@@ -66,7 +80,7 @@
             @auth
             <a href="{{ route('request') }}">
                 <button class="w-full border py-3 bg-gray-200 text-lg">
-                    マッチ申請
+                    リクエスト申請
                 </button>
 
             </a>
@@ -76,7 +90,7 @@
             @guest
             <a href="{{ route('applicationnot') }}">
                 <button class="w-full border py-3 bg-gray-200 text-lg">
-                    マッチ申請
+                    リクエスト申請
                 </button>
             </a>
             @endguest
@@ -86,10 +100,5 @@
     </div>
     @endisset
 
-    @isset($result)
-
-    <p>{{ $result }}</p>
-
-    @endisset
 
 </x-user-layout>
