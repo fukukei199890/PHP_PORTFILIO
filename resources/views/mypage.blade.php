@@ -1,8 +1,10 @@
 <x-user-layout>
     <!-- ログイン情報 -->
+     <h1 class="text-center text-3xl font-bold">マイページ</h1>
+     <p>{{ Auth::user()->icon_url }}</p>
     <p>{{ Auth::user()->name }}</p>
-    <p>評価;{{ $score }}</p>
-    <a href="{{ route('profile.edit') }}" class="inline-flex items-center px-4 py-2  border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150">
+    <p>評価:{{ $score }}</p>
+    <a href="{{ route('profile.edit') }}" class="inline-flex items-center px-8 py-2  border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150">
         プロフィールを編集する
     </a>
     <div class="grid grid-cols-2 gap-8 m-6">
@@ -13,20 +15,26 @@
             <button class="font-mono rounded-full bg-blue-600 text-white p-4">取引完了</button>
         </form>
     </div>
+    <form action="get" action="" class="m-6">
+        <button class="font-mono">お気に入りに登録した商品</button>
+    </form>
     <form method="get" action="{{ route('agreements') }}" class="m-6">
         <button class="font-mono">利用規約</button>
     </form>
     <form method="get" action="{{ route('privacy') }}" class="m-6">
         <button class="font-mono">プライバシーポリシー</button>
     </form>
+    <form method="get" action="{{ route('inquiry') }}" class="m-6">
+        <button class="font-mono">お問い合わせ</button>
+    </form>
 
-    <form method="POST" action="{{ route('logout') }}">
+    <form method="POST" action="{{ route('logout') }}" class="text-center">
         @csrf
 
         <a href="{{ route('logout') }}"
             onclick="event.preventDefault();
                         this.closest('form').submit();"
-            class="text-red-600 hover:underline">
+            class="text-red-600 hover:underline text-center">
             ログアウト
         </a>
     </form>

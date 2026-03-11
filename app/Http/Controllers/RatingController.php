@@ -41,17 +41,13 @@ class RatingController extends Controller
 
         // 2. データベースに保存
         // Review::create は「新しいレコードを作る」という意味
-        try {
         Review::create([
             'reviewing_user_id' => Auth::user()->id,      // 評価をした人（自分）のID
             'reviewed_user_id' => $reviewedUserId,    // 評価された人（相手）のID
             'score' => $request->rating,   // 星の数
             'review_text' => $request->comment, // コメント
         ]);
-        }catch(QueryException $e){
-            return view('ratigsubmit',compact($e));
-        }
-
+        
         // 3. 完了したら評価送信完了画面にいく
         // return view('ratingsubmit');]
         return redirect()->route('ratingsubmit');

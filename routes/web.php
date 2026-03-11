@@ -65,7 +65,7 @@ Route::prefix('sample')->name('sample')->group(function () {
 Route::get('/privacy', [PrivacyController::class, 'index'])->name('privacy');
 
 // 福田お問い合わせページ作成
-Route::get('/inquirery', [InquireryController::class, 'index']);
+Route::get('/inquirery', [InquireryController::class, 'index'])->name('inquirery');
 
 // 利用規約
 // // 利用規約
