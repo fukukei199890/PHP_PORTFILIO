@@ -18,7 +18,7 @@
     <!-- Page Content -->
     <div class="min-h-screen flex flex-col">
 
-        <main class="flex-grow pb-20">
+        <main class="flex-grow">
             <div class="max-w-md mx-auto px-4 py-6">
                 {{ $slot }}
             </div>
