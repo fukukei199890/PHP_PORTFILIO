@@ -146,8 +146,13 @@ Route::get('/request', [RequestController::class, 'index'])->name('request');
 Route::get('/test', [TestController::class, 'index']);
 
 
+
 //商品詳細ページ作成03-07
+
 Route::get('/goods/{id}', [GoodsController::class, 'show'])->name('goods');
+Route::get('/goods/select/{id}', [GoodsController::class, 'select'])->name('goods.select');
+
+Route::post('/goods/select', [GoodsController::class, 'storeSelect'])->name('goods.select.store');
 
 //評価送信ページ作成03-07
 Route::get('/ratingsubmit', [RatingSubmitController::class, 'index']);
@@ -161,6 +166,8 @@ Route::get('/requestSelect', [RequestSelectController::class, 'index'])->name('r
 
 //福田商品選択ページ作成03-10
 Route::get('/goodsselect', [GoodsSelectController::class, 'index'])->name('goodsselect');
+//FORMを送信するのでPost
+Route::post('/goodsselect', [GoodsSelectController::class, 'test'])->name('goodsselect.test');
 
 
 

@@ -1,5 +1,8 @@
 <x-user-layout>
 
+
+
+    @isset($item)
     <div class="max-w-md mx-auto bg-gray-100 min-h-screen">
 
         <!-- タイトル -->
@@ -51,7 +54,7 @@
 
             <div class="flex justify-between items-center">
                 <p>求める商品</p>
-                <a href="{{ route('goodsselect') }}">
+                <a href="{{ route('goodsselect',$item->id) }}">
                     <button class="border px-4 py-1">選択する</button>
                 </a>
             </div>
@@ -81,5 +84,12 @@
         </div>
 
     </div>
+    @endisset
+
+    @isset($result)
+
+    <p>{{ $result }}</p>
+
+    @endisset
 
 </x-user-layout>

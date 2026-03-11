@@ -18,6 +18,8 @@ class GoodsController extends Controller
     {
         $item = ListedItem::findOrFail($id);
 
+        session(['current_item_id' => $id]);
+
         return view('goods', compact('item'));
     }
 }

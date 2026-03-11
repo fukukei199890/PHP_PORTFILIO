@@ -18,14 +18,15 @@ class SeachController extends Controller
     {
         // ヴァリデーション
         // ヴァリデーションに失敗した場合は自動でback()する
+        // $request->inpiut('')
         $validated = $request->validate([
             // 20文字以下に制限
             'search' => 'required|max:20'
         ]);
 
         $results = ListedItem::with('images')
-        ->where('char_name','LIKE','%'. $validated['search'] .'%')
-        ->get();
+            ->where('char_name', 'LIKE', '%' . $validated['search'] . '%')
+            ->get();
 
         return view('seach', compact('results'));
     }
