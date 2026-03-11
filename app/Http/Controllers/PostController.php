@@ -28,7 +28,8 @@ class PostController extends Controller
                 'char_name' => $request->char_name,
                 'is_opened' => $request->is_opened,
                 'exchange_area' => $request->exchange_area,
-                'is_trading' => $request->integer('is_trading')
+                'is_trading' => $request->integer('is_trading'),
+                'request_message' => $request->request_message
             ]);
 
             // 画像保存処理

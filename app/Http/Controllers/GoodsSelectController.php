@@ -19,6 +19,7 @@ class GoodsSelectController extends Controller
 
     public function test(Request $request)
     {
+
         // $data = TradeRequest::create([
         //     'request_series'=> $request->input('series_name'),
         //     'request_char'=> $request -> input('char_name'),
@@ -28,20 +29,23 @@ class GoodsSelectController extends Controller
 
         // ]);
 
-        $result = $request->input('char_name');
+
+        // $char_name = $request->input('char_name');
+        // $series_name = $request->input('series_name');
+        // $is_opened = $request->input('is_opened');
 
         // session('キー' => '値') という書き方をします
         // session(['sato_char_name' => $request->input('series_name')]);
 
         // $result = session('sato_char_name');
 
-
+        $result = $request;
 
 
         //福田
-
         $item = ListedItem::findOrFail(session('current_item_id'));
 
-        return view('goods', compact('result', 'item'));
+
+        return view('goods', compact('item', 'result'));
     }
 }

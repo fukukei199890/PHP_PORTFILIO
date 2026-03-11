@@ -22,9 +22,6 @@
 
             <div class="grid grid-cols-2 gap-2">
                 <input type="file" name="images[]" accept="image/*" class="border p-2 rounded">
-                <input type="file" name="images[]" accept="image/*" class="border p-2 rounded">
-                <input type="file" name="images[]" accept="image/*" class="border p-2 rounded">
-                <input type="file" name="images[]" accept="image/*" class="border p-2 rounded">
             </div>
         </div>
 

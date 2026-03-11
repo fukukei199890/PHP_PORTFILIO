@@ -21,7 +21,8 @@ class ListedItem extends Model
         'char_name',
         'is_opend',
         'exchange_area',
-        'is_trading'
+        'is_trading',
+        'request_message'
     ];
 
     public function user()
