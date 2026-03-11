@@ -1,6 +1,6 @@
 <x-user-layout>
 
-    <form action="{{ route('goodsselect.test') }}"
+    <form action="{{ route('request') }}"
         method="POST"
         enctype="multipart/form-data"
         class="bg-white p-6 rounded-lg shadow space-y-4">
@@ -17,11 +17,11 @@
         <!-- 画像 -->
         <div>
             <label class="block mb-2 font-medium">
-                画像（1〜4枚）
+                画像
             </label>
 
             <div class="grid grid-cols-2 gap-2">
-                <input type="file" name="images[]" accept="image/*" class="border p-2 rounded">
+                <input type="file" name="image" accept="image/*" class="border p-2 rounded">
             </div>
         </div>
 
@@ -72,12 +72,15 @@
         </div>
 
         <!-- 出品ボタン -->
-        <button
-            type="submit"
-            class="w-full bg-blue-500 text-white py-3 rounded-full font-semibold hover:bg-blue-600">
-            選択する
-        </button>
 
+        <div class="flex justify-end gap-4">
+            <button type="button" onclick="history.back()" class="px-4 py-2 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300 transition">
+                戻る
+            </button>
+            <button type="submit" class="px-6 py-2 bg-indigo-600 text-white font-bold rounded-md hover:bg-indigo-700 transition shadow-sm">
+                リクエスト申請ページに移動
+            </button>
+        </div>
     </form>
 
 </x-user-layout>

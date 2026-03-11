@@ -5,11 +5,17 @@
                 交換申請
             </h2>
 
+            @if(session('temp_trade_data'))
+            <div class="mb-6 p-4 bg-blue-50 rounded-lg text-sm text-blue-800">
+                <strong>選択中の商品:</strong> {{ session('temp_trade_data')['request_char'] }}
+            </div>
+            @endif
+
             <p class="text-sm text-gray-600 mb-4">
                 トレード相手に送るメッセージを入力してください。
             </p>
 
-            <form method="POST" action="" enctype="multipart/form-data">
+            <form method="POST" action="">
                 @csrf
 
                 <div class="mb-6">
@@ -23,13 +29,6 @@
                         class="w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 p-3 bg-gray-50"
                         placeholder="例：こちらのアイテムと交換をお願いしたいです。よろしくお願いします。"
                         required></textarea>
-                </div>
-
-                <div class="mb-6">
-                    <label class="block text-sm font-medium text-gray-700 mb-2">
-                        参考画像（任意）
-                    </label>
-                    <input type="file" name="images" class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100">
                 </div>
 
                 <div class="flex justify-end gap-4">

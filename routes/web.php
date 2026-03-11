@@ -118,7 +118,7 @@ Route::get('/messagesubmit', [MessageSubmitController::class, 'index']);
 
 // 交換完了送信画面 /{id}
 Route::get('/rating/{id?}', [RatingController::class, 'index'])->name('rating');
-Route::post('/rating/{id?}',[RatingController::class, 'store'])->name('rating.store');
+Route::post('/rating/{id?}', [RatingController::class, 'store'])->name('rating.store');
 
 // メッセージ取引画面
 Route::get('/message', [MessageController::class, 'index'])->name('message');
@@ -135,7 +135,7 @@ Route::post('/match', [MatchController::class, 'start_deal'])->name('match.start
 Route::get('/requestanswer', [RequestAnswerController::class, 'index'])->name('requestanswer');
 
 //リクエストメッセージ申請ページ作成
-Route::get('/request', [RequestController::class, 'index'])->name('request');
+Route::post('/request', [RequestController::class, 'index'])->name('request');
 
 
 // 新規登録画面
@@ -165,13 +165,21 @@ Route::get('/wait', [WaitController::class, 'index'])->name('wait');
 Route::get('/requestSelect', [RequestSelectController::class, 'index'])->name('requestSelect');
 
 
-//福田商品選択ページ作成03-10
+// --- 追記・修正部分 ---
+
+// 1. 商品選択画面の表示
 Route::get('/goodsselect', [GoodsSelectController::class, 'index'])->name('goodsselect');
-//FORMを送信するのでPost
+
+// 2. 選択した内容をセッションに保存して、メッセージ入力画面へリダイレクト
 Route::post('/goodsselect', [GoodsSelectController::class, 'test'])->name('goodsselect.test');
 
+Route::get('/request/confirm', function () {
+    return view('request');
+})->name('request.confirm');
+// 4. 最後にDBに保存するルート
+Route::post('/request/store', [GoodsSelectController::class, 'store'])->name('request.store');
 
-
+// --- ここまで ---
 
 //東郷先生記述
 Route::get('/dashboard', function () {
