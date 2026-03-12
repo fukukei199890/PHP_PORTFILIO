@@ -7,23 +7,24 @@ use Illuminate\Http\Request;
 use App\Models\TradeRequest;
 use App\Models\User;
 use App\Models\Review;
-use App\Models\Listeditem;
-use App\Models\ListedItem as ModelsListedItem;
+use App\Models\ListedItem;
 
 class RequestAnswerController extends Controller
 {
     public function index(Request $request)
     {
-        // リクエストのid
-        $request_id = $request->input('request_id');
+        // リクエストのidをセッションに保存
+        session(['current_request_id'=> $request->input('request_id')]);
 
-        // リクエスト者の名前
-        $sender_data = TradeRequest::with('user')->where('id', $request_id)->first();
-        $user_name = $sender_data->user->name;
+        // リクエスト情報objectを作成
+        $requestData = TradeRequest::with('listed_item','user')
+        ->where('id',session('current_request_id'))
+        ->first();
 
         // リクエスト者のスコア
         $count = 0;
-        $reviews = Review::where('reviewed_user_id', $sender_data->user->id)->get();
+        $total = 0;
+        $reviews = Review::where('reviewed_user_id', $requestData->user_id)->get();
         foreach ($reviews as $row) {
             $count++;
             $total += $row->score;
@@ -34,26 +35,30 @@ class RequestAnswerController extends Controller
             $score = 0;
         }
 
-        // 出品物情報
-        $listed_item_data = ModelsListedItem::where('id', $sender_data->listed_item_id)->first();
-        $my_series = $listed_item_data->series_name;
-        $my_char = $listed_item_data->char_name;
-
-        // リクエスト文
-        $request_text = $sender_data->request_message;
-        // あなたのアイテム
-
-
         return  view(
             'requestanswer',
             compact(
-                'user_name',
+                'requestData',
                 'score',
-                'my_series',
-                'my_char',
-                'request_text',
-                'request_id'
             )
         );
+    }
+
+    public function make_match(){
+
+        // リクエストデータを取得
+        $requestData = TradeRequest::with('user')->where('id',session('current_request_id'))->first();
+
+        // リクエストデータから出品物idを取得
+        $listedItemData = ListedItem::find($requestData->listed_item_id);
+
+        // 出品物のステータスを交換中にする
+        if($listedItemData){
+            $listedItemData->is_trading = 1;
+            $listedItemData->save();
+        }
+
+
+        return view('match',compact('requestData'));
     }
 }

@@ -45,12 +45,12 @@
 
                     {{-- ログイン後 --}}
                     @auth
-                    <span><a href="{{ route('post') }}">出品</a></span>
+                        <span><a href="{{ route('post') }}">出品</a></span>
                     @endauth
 
                     {{-- ログイン前 --}}
                     @guest
-                    <span><a href="{{ route('postbefore') }}">出品</a></span>
+                        <span><a href="{{ route('postbefore') }}">出品</a></span>
                     @endguest
 
                 </div>
@@ -59,16 +59,16 @@
                 <div class="flex flex-col items-center relative">
                     {{-- ログイン後 --}}
                     @auth
-                    @if($request_count>0)
-                    <span><a href="">{{$request_count}}</a></span>
-                    @else
-                    <span><a href="{{ route('message') }}">通知なし</a></span>
-                    @endif
+                        @if ($request_count > 0)
+                            <span><a href="{{ route('messageselect') }}">{{ $request_count }}</a></span>
+                        @else
+                            <span><a href="{{ route('messageselect') }}">通知なし</a></span>
+                        @endif
                     @endauth
 
                     {{-- ログイン前 --}}
                     @guest
-                    <span><a href="{{ route('messagebefore') }}">通知</a></span>
+                        <span><a href="{{ route('messageselect') }}">通知</a></span>
                     @endguest
                 </div>
 
@@ -78,12 +78,12 @@
 
                     {{-- ログイン後 --}}
                     @auth
-                    <span><a href="{{ route('mypage') }}">マイページ</a></span>
+                        <span><a href="{{ route('mypage') }}">マイページ</a></span>
                     @endauth
 
                     {{-- ログイン前 --}}
                     @guest
-                    <span><a href="{{ route('mypagebefore') }}">マイページ</a></span>
+                        <span><a href="{{ route('mypagebefore') }}">マイページ</a></span>
                     @endguest
                 </div>
 

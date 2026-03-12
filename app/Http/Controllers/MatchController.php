@@ -13,18 +13,12 @@ use App\Models\TradeRequest;
 
 class MatchController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
-        // リクエストID
-        $request_id = $request->input('action');
+        // リクエスト者の情報
+        $sender_data = TradeRequest::with('user')->where('id', session('current_request_id'))->first();
 
-        session(['current_request_id' => $request_id]);
-
-        // リクエスト者の名前
-        $sender_data = TradeRequest::with('user')->where('id', $request_id)->first();
-        $user_name = $sender_data->user->name;
-
-        return view('match', compact('request_id', 'user_name'));
+        return view('match', compact('sender_data'));
     }
 
     public function start_deal()

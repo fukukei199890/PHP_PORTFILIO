@@ -11,7 +11,15 @@ class TradeRequest extends Model
 
     protected $fillable = [
         // 書き込みを許可するカラム
-        'status'
+        'status',
+        'request_series',
+        'request_char',
+        'request_message',
+        'image_url',
+        'is_opened',
+        'user_id',
+        'listed_item_id'
+
     ];
 
     public function listed_item()
