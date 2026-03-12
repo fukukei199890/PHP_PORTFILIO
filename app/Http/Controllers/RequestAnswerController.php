@@ -47,7 +47,7 @@ class RequestAnswerController extends Controller
     public function make_match(){
 
         // リクエストデータを取得
-        $requestData = TradeRequest::where('id',session('current_request_id'))->first();
+        $requestData = TradeRequest::with('user')->where('id',session('current_request_id'))->first();
 
         // リクエストデータから出品物idを取得
         $listedItemData = ListedItem::find($requestData->listed_item_id);
@@ -58,6 +58,7 @@ class RequestAnswerController extends Controller
             $listedItemData->save();
         }
 
-        return view('match');
+
+        return view('match',compact('requestData'));
     }
 }
