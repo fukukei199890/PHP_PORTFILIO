@@ -12,12 +12,12 @@
                 @isset($result->series_name)
                 <p class="text-lg font-bold">{{ $result->series_name }}</p>
                 @else
-                <p>series_nameが空です</p>
+
                 @endisset
                 @isset($result->char_name)
                 <p class="text-sm text-gray-600">{{ $result->char_name }}</p>
                 @else
-                <p>char_nameが空です</p>
+
                 @endisset
                 @if($result->is_opened==0)
                 <!-- 未開封のとき -->
