@@ -11,7 +11,8 @@
             {{-- リクエストメッセージ --}}
             <p>メッセージ:{{ $row->request_message }}</p>
             <form method="get" action="{{ route('requestanswer') }}">
-                <button name="request_id" value="{{ $row->id }}">リクエストを受ける</button>
+                <input type="hidden" name="request_id" value="{{ $row->id }}">
+                <button name="submit">リクエストを受ける</button>
             </form>
         @endforeach
     </ul>

@@ -7,8 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\TradeRequest;
 use App\Models\User;
 use App\Models\Review;
-use App\Models\Listeditem;
-use App\Models\ListedItem as ModelsListedItem;
+use App\Models\ListedItem;
 
 class RequestAnswerController extends Controller
 {
@@ -17,13 +16,14 @@ class RequestAnswerController extends Controller
         // リクエストのidをセッションに保存
         session(['current_request_id'=> $request->input('request_id')]);
 
-        // リクエスト情報のテーブルを作成
+        // リクエスト情報objectを作成
         $requestData = TradeRequest::with('listed_item','user')
         ->where('id',session('current_request_id'))
         ->first();
 
         // リクエスト者のスコア
         $count = 0;
+        $total = 0;
         $reviews = Review::where('reviewed_user_id', $requestData->user_id)->get();
         foreach ($reviews as $row) {
             $count++;
@@ -42,5 +42,23 @@ class RequestAnswerController extends Controller
                 'score',
             )
         );
+    }
+
+    public function make_match(){
+
+        // リクエストデータを取得
+        $requestData = TradeRequest::with('user')->where('id',session('current_request_id'))->first();
+
+        // リクエストデータから出品物idを取得
+        $listedItemData = ListedItem::find($requestData->listed_item_id);
+
+        // 出品物のステータスを交換中にする
+        if($listedItemData){
+            $listedItemData->is_trading = 1;
+            $listedItemData->save();
+        }
+
+
+        return view('match',compact('requestData'));
     }
 }
