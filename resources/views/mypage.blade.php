@@ -1,8 +1,11 @@
 <x-user-layout>
     <!-- ログイン情報 -->
-     <h1 class="text-center text-3xl font-bold">マイページ</h1>
-     <p>{{ Auth::user()->icon_url }}</p>
-    <p>{{ Auth::user()->name }}</p>
+    <h1 class="text-center text-3xl font-bold">マイページ</h1>
+    <div class="flex">
+        <img src="{{ Auth::user()->icon_url }}" alt="ユーザーアイコン"
+            class="item-center rounded-full objectcover">
+        <p>{{ Auth::user()->name }}</p>
+    </div>
     <p>評価:{{ $score }}</p>
     <a href="{{ route('profile.edit') }}" class="inline-flex items-center px-8 py-2  border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150">
         プロフィールを編集する
