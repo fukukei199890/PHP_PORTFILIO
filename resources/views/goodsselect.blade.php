@@ -77,9 +77,11 @@
             <button type="button" onclick="history.back()" class="px-4 py-2 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300 transition">
                 戻る
             </button>
+
             <button type="submit" class="px-6 py-2 bg-indigo-600 text-white font-bold rounded-md hover:bg-indigo-700 transition shadow-sm">
                 リクエスト申請ページに移動
             </button>
+            </a>
         </div>
     </form>
 
