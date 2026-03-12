@@ -2,15 +2,14 @@
 
     <div>
         <!-- ユーザー名 -->
-        <p>{{ $user_name }}</p>
+        <p>{{ $requestData->user->name }}</p>
         <!-- スコア -->
         <p>{{ $score }}</p>
-        <!-- 出品物情報 -->
-        <p>{{ $my_series }}</p>
-        <p>{{ $my_char }}</p>
+        <!-- リクエスト側のアイテム -->
+        <p>{{ $requestData->request_series }}</p>
+        <p>{{ $requestData->request_char }}</p>
         <!-- リクエスト文 -->
-        <!-- リクエスト側がアイテム情報と交換場所を持つ必要あり -->
-        <p>{{ $request_text }}</p>
+        <p>{{ $requestData->requestMessage }}</P>
     </div>
 
     <!-- <div class="min-h-screen bg-gray-100 flex flex-col justify-between">
@@ -30,9 +29,7 @@
         @csrf
 
         {{-- はい --}}
-        <button type="submit"
-            name="action"
-            value="{{ $request_id }}"
+        <button type="submit" name="action"
             class="w-40 py-3 
                                bg-gray-200 border border-black 
                                rounded-xl 
@@ -44,9 +41,7 @@
 
     <form method="get" action="{{ route('message') }}" class="space-y-6">
         {{-- いいえ --}}
-        <button type="submit"
-            name="action"
-            value="no"
+        <button type="submit" name="action" value="no"
             class="w-40 py-3 
                                bg-gray-200 border border-black 
                                rounded-xl 
