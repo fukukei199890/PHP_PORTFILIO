@@ -133,6 +133,7 @@ Route::post('/match', [MatchController::class, 'start_deal'])->name('match.start
 
 // 交換確認リクエスト画面
 Route::get('/requestanswer', [RequestAnswerController::class, 'index'])->name('requestanswer');
+Route::post('/requestanswer',[RequestAnswerController::class, 'make_match'])->name('requestanswer.make_match')
 
 //リクエストメッセージ申請ページ作成
 Route::post('/request', [RequestController::class, 'index'])->name('request');

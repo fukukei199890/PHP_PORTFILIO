@@ -46,4 +46,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(ListedItem::class);
     }
+
+    // tradeRequestと1対1関係で自分が親側
+    public function tradeRequest(): HasOne
+    {
+        return $this->hasOne(TradeRequest::class);
+    }
 }
