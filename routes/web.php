@@ -95,7 +95,7 @@ Route::get('/applicationnot', [ApplicationNotController::class, 'index'])->name(
 Route::get('/requestmessage', [RequestMessageController::class, 'index']);
 
 //メッセージ選択画面ページ
-Route::get('/messageselect', [MessageSelectController::class, 'index']);
+Route::get('/messageselect', [MessageSelectController::class, 'index'])->name('messageselect');
 Route::post('/messageselect', [MessageSelectController::class, 'start_talk'])->name('startTalk');
 
 
