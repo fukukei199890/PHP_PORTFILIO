@@ -27,7 +27,7 @@
     <form method="get" action="{{ route('privacy') }}" class="m-6">
         <button class="font-mono">プライバシーポリシー</button>
     </form>
-    <form method="get" action="{{ route('inquiry') }}" class="m-6">
+    <form method="get" action="{{ route('inquirery') }}" class="m-6">
         <button class="font-mono">お問い合わせ</button>
     </form>
 
