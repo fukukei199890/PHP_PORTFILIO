@@ -172,7 +172,7 @@ Route::get('/requestSelect', [RequestSelectController::class, 'index'])->name('r
 Route::get('/goodsselect', [GoodsSelectController::class, 'index'])->name('goodsselect');
 
 // 2. 選択した内容をセッションに保存して、メッセージ入力画面へリダイレクト
-Route::post('/goodsselect', [GoodsSelectController::class, 'test'])->name('goodsselect.test');
+Route::post('/goodsselect', [GoodsSelectController::class, 'select'])->name('aaaa');
 
 Route::get('/request/confirm', function () {
     return view('request');

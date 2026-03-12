@@ -72,26 +72,18 @@ class GoodsSelectController extends Controller
 
     // ...
 
-    public function test(Request $request)
+    public function select(Request $request)
     {
-        // 1. ユーザーが入力した内容をセットにする
-        $tempData = [
-            'listed_item_id' => session('current_item_id'),
-            'request_series' => $request->input('series_name') ?? '',
-            'request_char'   => $request->input('char_name'),
-            'is_opened'      => $request->input('is_opened', 0),
-        ];
+        session([
+            'current_series_name' => $request->input('series_name'),
+            'current_char_name' => $request->input('char_name'),
+            'current_is_opened' => $request->input('is_opened')
+        ]);
 
-        // 2. セッション(ポケット)に入れる
-        // ※ $request->session()->put() を使うとより確実です
-        $request->session()->put('temp_trade_data', $tempData);
-
-        // 3. 重要！ここでポケットのチャックを閉める（保存を確定させる）
-        $request->session()->save();
-
+        $result = $request;
 
         // 4. 次の「リクエスト申請ページ（窓口）」へ移動する
-        return redirect()->route('request.confirm');
+        return view('request', compact('result'));
     }
 
     public function store(Request $request)

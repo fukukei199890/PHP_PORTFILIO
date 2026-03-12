@@ -1,6 +1,6 @@
 <x-user-layout>
 
-    <form action="{{ route('request') }}"
+    <form action="{{ route('aaaa') }}"
         method="POST"
         enctype="multipart/form-data"
         class="bg-white p-6 rounded-lg shadow space-y-4">
