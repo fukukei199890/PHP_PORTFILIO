@@ -74,53 +74,54 @@ class GoodsSelectController extends Controller
 
     public function test(Request $request)
     {
-        $currentItemId = session('current_item_id');
-        $path = '';
-
-        if ($request->hasFile('image')) {
-            $path = $request->file('image')->store('requests', 'public');
-        }
-
-        // セッションにデータをセット
+        // 1. ユーザーが入力した内容をセットにする
         $tempData = [
-            'listed_item_id' => $currentItemId,
+            'listed_item_id' => session('current_item_id'),
             'request_series' => $request->input('series_name') ?? '',
             'request_char'   => $request->input('char_name'),
             'is_opened'      => $request->input('is_opened', 0),
-            'image_url'      => $path,
         ];
 
-        // ★ 修正ポイント: put のあとに save() を追加
+        // 2. セッション(ポケット)に入れる
+        // ※ $request->session()->put() を使うとより確実です
         $request->session()->put('temp_trade_data', $tempData);
+
+        // 3. 重要！ここでポケットのチャックを閉める（保存を確定させる）
         $request->session()->save();
 
+
+        // 4. 次の「リクエスト申請ページ（窓口）」へ移動する
         return redirect()->route('request.confirm');
     }
 
-    // ★最終的にメッセージと一緒にDB保存するメソッド
     public function store(Request $request)
     {
+        // ポケット(セッション)から以前のデータを取り出す
         $data = session('temp_trade_data');
 
+        // もしポケットが空っぽならエラー（不正なアクセスやタイムアウト）
         if (!$data) {
-            return redirect()->route('goodsselect.index')->with('error', 'セッションがタイムアウトしました。');
+            return redirect()->route('goodsselect')->with('error', 'やり直してください');
         }
 
-        // ここで初めてDBに保存
+        // ここで初めて届いた画像を保存して、その「住所(パス)」を取得する
+        $path = $request->hasFile('image') ? $request->file('image')->store('requests', 'public') : '';
+
+        // 【合体！】以前のデータ($data) ＋ 新しい画像パス ＋ メッセージ をDBへ
         TradeRequest::create([
-            'user_id'        => Auth::id(),
+            'user_id'        => auth()->id(),
             'listed_item_id' => $data['listed_item_id'],
             'request_series' => $data['request_series'],
             'request_char'   => $data['request_char'],
             'is_opened'      => $data['is_opened'],
-            'image_url'      => $data['image_url'],
-            'message'        => $request->input('message'), // テキストエリアの内容
+            'image_url'      => $path,
+            'message'        => $request->input('message'),
             'status'         => 1
         ]);
 
-        // セッションをクリア
+        // 用が済んだのでポケット(セッション)を空にする
         session()->forget('temp_trade_data');
 
-        return redirect()->route('home')->with('success', '申請を送信しました！');
+        return redirect()->route('home');
     }
 }

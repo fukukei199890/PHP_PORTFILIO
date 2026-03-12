@@ -14,16 +14,6 @@
             <h2 class="text-lg font-medium mb-4">選択する</h2>
         </div>
 
-        <!-- 画像 -->
-        <div>
-            <label class="block mb-2 font-medium">
-                画像
-            </label>
-
-            <div class="grid grid-cols-2 gap-2">
-                <input type="file" name="image" accept="image/*" class="border p-2 rounded">
-            </div>
-        </div>
 
         <!-- シリーズ -->
         <div>

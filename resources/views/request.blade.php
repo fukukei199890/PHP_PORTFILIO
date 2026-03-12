@@ -1,4 +1,5 @@
 <x-user-layout>
+    {{ dd(session('temp_trade_data')) }}
     <div class="max-w-2xl mx-auto py-8 px-4">
         <div class="bg-white shadow-md rounded-lg p-6 border border-gray-200">
             <h2 class="text-2xl font-bold text-gray-800 mb-6 border-b pb-2">
@@ -6,16 +7,29 @@
             </h2>
 
             @if(session('temp_trade_data'))
-            <div class="mb-6 p-4 bg-blue-50 rounded-lg text-sm text-blue-800">
-                <strong>選択中の商品:</strong> {{ session('temp_trade_data')['request_char'] }}
+            <div class="mb-6 p-4 bg-gray-50 rounded-lg border">
+                <p class="text-sm font-bold text-gray-500">申請アイテム情報</p>
+                <p class="text-lg font-bold">{{ session('temp_trade_data.request_char') }}</p>
+                <p class="text-sm text-gray-600">{{ session('temp_trade_data.request_series') }}</p>
             </div>
             @endif
+
+            <!-- 画像 -->
+            <div>
+                <label class="block mb-2 font-medium">
+                    画像
+                </label>
+
+                <div class="grid grid-cols-2 gap-2">
+                    <input type="file" name="image" accept="image/*" class="border p-2 rounded">
+                </div>
+            </div>
 
             <p class="text-sm text-gray-600 mb-4">
                 トレード相手に送るメッセージを入力してください。
             </p>
 
-            <form method="POST" action="">
+            <form method="POST" action="" enctype="multipart/form-data">
                 @csrf
 
                 <div class="mb-6">
