@@ -28,7 +28,7 @@ class MessageController extends Controller
     {
         // メッセージの作成
         $message = Message::create([
-            'thread_id' => session('current_thread_id'),
+            'thread_id' => $request->input('thread_id') ?? session('current_thread_id'),
             'user_id' => Auth::user()->id,
             'message_text' => $request->input('message_text')
         ]);

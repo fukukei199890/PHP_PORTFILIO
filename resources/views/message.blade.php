@@ -21,6 +21,7 @@
     <form method="post" action="{{ route('create_message') }}">
         @csrf
         <p>メッセージ</p>
+        <input type="hidden" name="thread_id" value="{{ $thread_id }}">
         <input type="text" name="message_text">
         <button type="submit" name="submit">送信</button>
     </form>
