@@ -26,6 +26,7 @@
     </form>
     <form method="post" action="{{ route('message.complete') }}">
         @csrf
+        <input type="hidden" name="thread_id" value="{{ $thread_id }}">
         <button type="submit" name="complete">取引完了</button>
     </form>
 </x-user-layout>
