@@ -22,4 +22,12 @@ class GoodsController extends Controller
 
         return view('goods', compact('item'));
     }
+
+    public function select(Request $request)
+    {
+        // 商品idをセッションに保存する
+        session(['current_item_id' => $request->input('listed_item_id')]);
+
+        return view('goodsselect');
+    }
 }

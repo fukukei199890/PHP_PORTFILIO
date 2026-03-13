@@ -127,8 +127,6 @@ Route::post('/message/complete', [MessageController::class, 'complete'])->name('
 
 //ログイン後マイページ
 Route::get('/mypage', [MypageController::class, 'index'])->name('mypage');
-// アイコン更新処理（追記）
-Route::patch('/mypage/icon', [MypageController::class, 'updateIcon'])->name('profile.update_icon');
 
 // マッチ申請
 Route::get('/match', [MatchController::class, 'index'])->name('match');
@@ -139,7 +137,9 @@ Route::get('/requestanswer', [RequestAnswerController::class, 'index'])->name('r
 Route::post('/requestanswer', [RequestAnswerController::class, 'make_match'])->name('requestanswer.make_match');
 
 //リクエストメッセージ申請ページ作成
+
 Route::post('/request', [RequestController::class, 'index'])->name('request');
+Route::post('/request/store', [RequestController::class, 'store'])->name('request.store');
 
 
 // 新規登録画面
@@ -155,9 +155,7 @@ Route::get('/test', [TestController::class, 'index']);
 //商品詳細ページ作成03-07
 
 Route::get('/goods/{id}', [GoodsController::class, 'show'])->name('goods');
-Route::get('/goods/select/{id}', [GoodsController::class, 'select'])->name('goods.select');
-
-Route::post('/goods/select', [GoodsController::class, 'storeSelect'])->name('goods.select.store');
+Route::post('/goods/select', [GoodsController::class, 'select'])->name('goods.select');
 
 //評価送信ページ作成03-07
 Route::get('/ratingsubmit', [RatingSubmitController::class, 'index'])->name('ratingsubmit');
@@ -173,15 +171,11 @@ Route::get('/requestSelect', [RequestSelectController::class, 'index'])->name('r
 
 // 1. 商品選択画面の表示
 Route::get('/goodsselect', [GoodsSelectController::class, 'index'])->name('goodsselect');
-
-// 2. 選択した内容をセッションに保存して、メッセージ入力画面へリダイレクト
-Route::post('/goodsselect', [GoodsSelectController::class, 'select'])->name('goodsselect');
+Route::post('/goodsselect/select', [GoodsSelectController::class, 'select'])->name('goodsselect.select');
 
 Route::get('/request/confirm', function () {
     return view('request');
 })->name('request.confirm');
-// 4. 最後にDBに保存するルート
-Route::post('/request/store', [GoodsSelectController::class, 'store'])->name('request.store');
 
 // --- ここまで ---
 

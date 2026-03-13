@@ -75,45 +75,17 @@ class GoodsSelectController extends Controller
     public function select(Request $request)
     {
         session([
-            'current_series_name' => $request->input('series_name'),
-            'current_char_name' => $request->input('char_name'),
-            'current_is_opened' => $request->input('is_opened')
+            'temp_trade_data' =>
+            [
+                'current_series_name' => $request->input('series_name'),
+                'current_char_name' => $request->input('char_name'),
+                'current_is_opened' => $request->input('is_opened')
+            ]
         ]);
 
         $result = $request;
 
         // 4. 次の「リクエスト申請ページ（窓口）」へ移動する
         return view('request', compact('result'));
-    }
-
-    public function store(Request $request)
-    {
-        // ポケット(セッション)から以前のデータを取り出す
-        $data = session('temp_trade_data');
-
-        // もしポケットが空っぽならエラー（不正なアクセスやタイムアウト）
-        if (!$data) {
-            return redirect()->route('goodsselect')->with('error', 'やり直してください');
-        }
-
-        // ここで初めて届いた画像を保存して、その「住所(パス)」を取得する
-        $path = $request->hasFile('image') ? $request->file('image')->store('requests', 'public') : '';
-
-        // 【合体！】以前のデータ($data) ＋ 新しい画像パス ＋ メッセージ をDBへ
-        TradeRequest::create([
-            'user_id'        => auth()->id(),
-            'listed_item_id' => $data['listed_item_id'],
-            'request_series' => $data['request_series'],
-            'request_char'   => $data['request_char'],
-            'is_opened'      => $data['is_opened'],
-            'image_url'      => $path,
-            'message'        => $request->input('message'),
-            'status'         => 1
-        ]);
-
-        // 用が済んだのでポケット(セッション)を空にする
-        session()->forget('temp_trade_data');
-
-        return redirect()->route('home');
     }
 }
