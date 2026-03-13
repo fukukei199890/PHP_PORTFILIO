@@ -1,5 +1,7 @@
 <x-user-layout>
 
+
+
     <div class="max-w-2xl mx-auto py-8 px-4">
         <div class="bg-white shadow-md rounded-lg p-6 border border-gray-200">
             <h2 class="text-2xl font-bold text-gray-800 mb-6 border-b pb-2">
@@ -10,21 +12,21 @@
             <div class="mb-6 p-4 bg-gray-50 rounded-lg border">
                 <p class="text-sm font-bold text-gray-500">申請アイテム情報</p>
                 @isset($result->series_name)
-                <p class="text-lg font-bold">{{ $result->series_name }}</p>
+                <p class="text-sm text-gray-600">シリーズ名:{{ $result->series_name }}</p>
                 @else
 
                 @endisset
                 @isset($result->char_name)
-                <p class="text-sm text-gray-600">{{ $result->char_name }}</p>
+                <p class="text-sm text-gray-600">アイテム:名{{ $result->char_name }}</p>
                 @else
 
                 @endisset
                 @if($result->is_opened==0)
                 <!-- 未開封のとき -->
-                <p>未開封</p>
+                <p class="text-sm text-gray-600">状態:未開封</p>
                 @else
                 <!-- 開封済みのとき -->
-                <p>開封</p>
+                <p class="text-sm text-gray-600">状態:開封</p>
                 @endif
             </div>
 
@@ -44,7 +46,7 @@
                 トレード相手に送るメッセージを入力してください。
             </p>
 
-            <form method="POST" action="" enctype="multipart/form-data">
+            <form method="POST" action="{{ route('request.store') }}" enctype="multipart/form-data">
                 @csrf
 
                 <div class="mb-6">

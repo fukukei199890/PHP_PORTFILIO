@@ -75,9 +75,12 @@ class GoodsSelectController extends Controller
     public function select(Request $request)
     {
         session([
-            'current_series_name' => $request->input('series_name'),
-            'current_char_name' => $request->input('char_name'),
-            'current_is_opened' => $request->input('is_opened')
+            'temp_trade_data' =>
+            [
+                'current_series_name' => $request->input('series_name'),
+                'current_char_name' => $request->input('char_name'),
+                'current_is_opened' => $request->input('is_opened')
+            ]
         ]);
 
         $result = $request;
@@ -102,11 +105,12 @@ class GoodsSelectController extends Controller
         // 【合体！】以前のデータ($data) ＋ 新しい画像パス ＋ メッセージ をDBへ
         TradeRequest::create([
             'user_id'        => auth()->id(),
-            'listed_item_id' => $data['listed_item_id'],
-            'request_series' => $data['request_series'],
-            'request_char'   => $data['request_char'],
-            'is_opened'      => $data['is_opened'],
+            'listed_item_id' => $request->input('listed_item_id'),
+            'request_series' => $data['current_series_name'],
+            'request_char'   => $data['current_char_name'],
+            'is_opened'      => $data['current_is_opened'],
             'image_url'      => $path,
+
             'message'        => $request->input('message'),
             'status'         => 1
         ]);

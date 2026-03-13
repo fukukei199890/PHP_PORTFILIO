@@ -126,8 +126,6 @@ Route::post('/message', [MessageController::class, 'create_message'])->name('cre
 
 //ログイン後マイページ
 Route::get('/mypage', [MypageController::class, 'index'])->name('mypage');
-// アイコン更新処理（追記）
-Route::patch('/mypage/icon', [MypageController::class, 'updateIcon'])->name('profile.update_icon');
 
 // マッチ申請
 Route::get('/match', [MatchController::class, 'index'])->name('match');
@@ -156,7 +154,7 @@ Route::get('/test', [TestController::class, 'index']);
 Route::get('/goods/{id}', [GoodsController::class, 'show'])->name('goods');
 Route::get('/goods/select/{id}', [GoodsController::class, 'select'])->name('goods.select');
 
-Route::post('/goods/select', [GoodsController::class, 'storeSelect'])->name('goods.select.store');
+Route::post('/goods/select', [GoodsController::class, 'store'])->name('goods.select.store');
 
 //評価送信ページ作成03-07
 Route::get('/ratingsubmit', [RatingSubmitController::class, 'index'])->name('ratingsubmit');
