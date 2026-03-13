@@ -4,17 +4,28 @@
     <div class="flex">
         <img src="{{ Auth::user()->icon_url }}" alt="ユーザーアイコン"
             class="item-center rounded-full objectcover">
-        <p>{{ Auth::user()->name }}</p>
+        <div class="flex flex-col text-2xl">
+            <p>{{ Auth::user()->name }}</p>
+            <p>★:{{ $score }}</p>
+        </div>
     </div>
-    <p>評価:{{ $score }}</p>
-    <a href="{{ route('profile.edit') }}" class="inline-flex items-center px-8 py-2  border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150">
-        プロフィールを編集する
-    </a>
-    <div class="grid grid-cols-2 gap-8 m-6">
-        <form method="get" action="">
+    <div class="flex justify-center">
+    <!-- aタグのclass
+     1、2行目ボタンの見た目
+     3、4行目クリック時、フォーカス時の見た目 -->
+        <a href="{{ route('profile.edit') }}"
+        class="inline-flex items-center px-8 py-2  border border-transparent rounded-md
+        font-semibold text-sm text-white tracking-widest
+        hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 transition ease-in-out duration-150
+        focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+            プロフィールを編集する
+        </a>
+    </div>
+    <div class="grid grid-cols-2 gap-8 m-6 justify-items-center">
+        <form method="get" action="" class="item-center">
             <button class="font-mono rounded-full bg-blue-600 text-white p-4">出品中</button>
         </form>
-        <form method="get" action="">
+        <form method="get" action="" class="item-center">
             <button class="font-mono rounded-full bg-blue-600 text-white p-4">取引完了</button>
         </form>
     </div>

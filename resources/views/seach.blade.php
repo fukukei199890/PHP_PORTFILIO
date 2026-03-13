@@ -12,26 +12,29 @@
             </div>
             <button class="text-white bg-indigo-500 py-2 px-8 hover:bg-indigo-600 rounded text-lg w-full">検索</button>
         </form>
-        @isset($results) {{-- $resultsの存在を確認 --}}          
-            @if($results->isEmpty())  {{-- $resultsの値が空でないかを確認 --}}
-            <p>検索結果なし</p>
-            @else        
+        @isset($results) {{-- $resultsの存在を確認 --}}
+        @if($results->isEmpty()) {{-- $resultsの値が空でないかを確認 --}}
+        <p>検索結果なし</p>
+        @else
+        <div>
+            @foreach ($results as $row)
             <div>
-                @foreach ($results as $row)
-                    <div>
-                        {{-- ブラウザからはpublicフォルダがルートとして扱われる --}}
-                        {{-- null安全演算子 --}}
-                        {{-- 左辺がnullの時プロパティを実行せずnullを返す --}}
-                        <img class="w-32" src="{{ asset('storage/'.$row->images->first()?->image_url) }}">
-                        <div>
-                            {{-- ListedItem --}}
-                            <p>series:{{ $row->series_name }}</p>
-                            <p>name:{{ $row->char_name }}</p>
-                        </div>
-                    </div>
-                @endforeach
+                {{-- ブラウザからはpublicフォルダがルートとして扱われる --}}
+                {{-- null安全演算子 --}}
+                {{-- 左辺がnullの時プロパティを実行せずnullを返す --}}
+                <!-- 福田追記 -->
+                <a href="{{ route('goods', $row->id) }}">
+                    <img class="w-32" src="{{ asset('storage/'.$row->images->first()?->image_url) }}">
+                </a>
+                <div>
+                    {{-- ListedItem --}}
+                    <p>series:{{ $row->series_name }}</p>
+                    <p>name:{{ $row->char_name }}</p>
+                </div>
             </div>
-            @endif
+            @endforeach
+        </div>
+        @endif
         @endisset
     </div>
 </x-user-layout>

@@ -133,7 +133,7 @@ Route::post('/match', [MatchController::class, 'start_deal'])->name('match.start
 
 // 交換確認リクエスト画面
 Route::get('/requestanswer', [RequestAnswerController::class, 'index'])->name('requestanswer');
-Route::post('/requestanswer',[RequestAnswerController::class, 'make_match'])->name('requestanswer.make_match');
+Route::post('/requestanswer', [RequestAnswerController::class, 'make_match'])->name('requestanswer.make_match');
 
 //リクエストメッセージ申請ページ作成
 Route::post('/request', [RequestController::class, 'index'])->name('request');
@@ -172,7 +172,7 @@ Route::get('/requestSelect', [RequestSelectController::class, 'index'])->name('r
 Route::get('/goodsselect', [GoodsSelectController::class, 'index'])->name('goodsselect');
 
 // 2. 選択した内容をセッションに保存して、メッセージ入力画面へリダイレクト
-Route::post('/goodsselect', [GoodsSelectController::class, 'test'])->name('goodsselect.test');
+Route::post('/goodsselect', [GoodsSelectController::class, 'select'])->name('goodsselect');
 
 Route::get('/request/confirm', function () {
     return view('request');

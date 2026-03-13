@@ -50,28 +50,37 @@
                 <p>求める商品</p>
                 <p>{{ $item->request_message }}</p>
             </div>
-
             <div class="py-4">
-                <a href="{{ route('goodsselect',$item->id) }}">
+                {{-- ログインしている場合 --}}
+                @auth
+                <a href="{{ route('goodsselect', $item->id) }}">
                     <button class="w-full border border-indigo-500 text-indigo-500 px-4 py-2 rounded hover:bg-indigo-50 transition">
                         交換する商品を選択する
                     </button>
                 </a>
+                @endauth
+
+                {{-- ログインしていない場合 --}}
+                @guest
+                <a href="{{ route('applicationnot') }}">
+                    <button class="w-full border border-gray-400 text-gray-500 px-4 py-2 rounded hover:bg-gray-100 transition">
+                        ログインして交換を申し込む
+                    </button>
+                </a>
+                @endguest
+            </div>
+
+            <div class="p-4">
+
+                <a href="{{ route('top') }}">
+                    <button class="w-full border py-3   'bg-gray-200 text-gray-500' ">
+                        ホームに戻る
+                    </button>
+                </a>
+
             </div>
 
         </div>
-
-        <div class="p-4">
-
-            <a href="{{ route('top') }}">
-                <button class="w-full border py-3   'bg-gray-200 text-gray-500' ">
-                    ホームに戻る
-                </button>
-            </a>
-
-        </div>
-
-    </div>
 
 
 </x-user-layout>
