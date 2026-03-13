@@ -3,37 +3,35 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Exception;
 
 use App\Models\TradeRequest;
 use App\Models\User;
 use App\Models\Review;
 use App\Models\ListedItem;
+use App\Models\Thread;
 
 class RequestAnswerController extends Controller
 {
     public function index(Request $request)
     {
         // リクエストのidをセッションに保存
-        session(['current_request_id'=> $request->input('request_id')]);
+        session(['current_request_id' => $request->input('request_id')]);
 
         // リクエスト情報objectを作成
-        $requestData = TradeRequest::with('listed_item','user')
-        ->where('id',session('current_request_id'))
-        ->first();
+        $requestData = TradeRequest::with('listed_item', 'user')
+            ->where('id', session('current_request_id'))
+            ->first();
 
         // リクエスト者のスコア
         $count = 0;
         $total = 0;
         $reviews = Review::where('reviewed_user_id', $requestData->user_id)->get();
-        foreach ($reviews as $row) {
-            $count++;
-            $total += $row->score;
-        }
-        if ($count > 0) {
-            $score = $total / $count;
-        } else {
-            $score = 0;
-        }
+
+        // SQLのAVG関数を使用
+        $score = Review::where('reviewed_user_id', $requestData->user_id)->avg('score') ?? 0;
 
         return  view(
             'requestanswer',
@@ -44,21 +42,56 @@ class RequestAnswerController extends Controller
         );
     }
 
-    public function make_match(){
+    public function make_match(Request $request)
+    {
+        // リクエストIDをフォーム送信から取得し、フォーム送信からの取得に失敗したらセッションから取得
+        $requestId = $request->input('request_id') ?? session('current_request_id');
 
-        // リクエストデータを取得
-        $requestData = TradeRequest::with('user')->where('id',session('current_request_id'))->first();
-
-        // リクエストデータから出品物idを取得
-        $listedItemData = ListedItem::find($requestData->listed_item_id);
-
-        // 出品物のステータスを交換中にする
-        if($listedItemData){
-            $listedItemData->is_trading = 1;
-            $listedItemData->save();
+        if (!$requestId) {
+            // $requestIdが存在しないとき
+            return redirect()->back()->with('error', 'セッション切れです');
         }
 
+        try {
+            // トランザクション開始
+            $requestData = DB::transaction(function () use ($requestId) {
+                // リクエストデータを取得
+                $requestData = TradeRequest::with('user')->where('id', $requestId)->first();
 
-        return view('match',compact('requestData'));
+                // ここから出品物ステータス更新処理
+                // リクエストデータから出品物idを取得
+                $listedItemData = ListedItem::find($requestData->listed_item_id);
+
+                // 出品物のステータスを交換中にする
+                if ($listedItemData) {
+                    $listedItemData->is_trading = 1;
+                    $listedItemData->save();
+                }
+                // ここまで出品物ステータス更新処理
+                
+                // ここからスレッド作成処理
+                // 現在の取引関係者のスレッドを作成
+                $current_thread = Thread::where('receiver_id',Auth::user()->id)
+                ->where('sender_id',$requestData->user_id)
+                ->first();
+
+                if(!$current_thread){
+                     $thread = Thread::create([
+                    'sender_id' => $requestData->user_id,
+                    'receiver_id' => Auth::user()->id,
+                    'listed_item_id' => $requestData->listed_item_id,
+                    'is_matched' => false
+                    ]);
+                }
+                // ここまでスレッド作成処理
+
+                return $requestData;
+            });
+            return view('match', compact('requestData'));
+        } catch (\Exception $e) {
+            // トランザクション失敗
+            report($e);
+            return redirect()->back()->with('error', 'マッチング処理中にエラーが発生しました');
+        }
     }
 }

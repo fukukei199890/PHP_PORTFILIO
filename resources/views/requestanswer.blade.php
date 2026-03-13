@@ -18,22 +18,10 @@
             <p>{{ $requestData->requestMessage }}</P>
         </div>
 
-        <!-- <div class="min-h-screen bg-gray-100 flex flex-col justify-between">
-                                                                <p>お相手が見つかりました</p>
-                                                                {{-- 中央エリア --}}
-                                                                <div class="flex flex-1 items-center justify-center px-6 pb-24">
-
-                                                                    {{-- カード --}}
-                                                                    <div class="bg-[#e8dddd] border border-[#c9a9a9] 
-                    rounded-[40px] 
-                    w-full max-w-md 
-                    p-10 text-center shadow-sm">
-
-                                                                        {{-- フォーム --}}
-                                                                        <!-- route関数はエイリアス（別名）phpのasみたいなもので指定してそのURLを呼び出す -->
+        {{-- はい --}}
         <form method="post" action="{{ route('requestanswer.make_match') }}" class="space-y-6">
             @csrf
-            {{-- はい --}}
+            <input type="hidden" name="request_id" value="{{ $requestData->id }}">
             <button type="submit" name="action"
                 class="w-40 py-3 
                                bg-gray-200 border border-black 
@@ -44,9 +32,9 @@
 
         </form>
 
+        {{-- いいえ --}}
         <form method="post" action="{{ route('requestanswer.make_match') }}" class="space-y-6">
             @csrf
-            {{-- いいえ --}}
             <button type="submit" name="action" value="no"
                 class="w-40 py-3 
                                bg-gray-200 border border-black 
