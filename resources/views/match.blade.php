@@ -1,10 +1,63 @@
 <x-user-layout>
-    <p>条件がマッチしました！</p>
-    <p>あなたは:{{ Auth::user()->name }}</p>
-    <p>相手は::{{ $requestData->user->name }}</p>
-    <form action="{{ route('match.start_deal') }}" method="post">
-        @CSRF
-        <button>チャットを開始</button>
-    </form>
+    <div class="max-w-md mx-auto min-h-screen bg-white flex flex-col items-center justify-center px-6">
+
+        {{-- マッチングアイコン（中央の円） --}}
+        <div class="mb-8 flex items-center justify-center">
+            <div class="relative flex items-center">
+                {{-- あなたのアイコン（仮） --}}
+                <div class="w-20 h-20 bg-gray-100 border-2 border-gray-900 rounded-full flex items-center justify-center z-10 shadow-sm">
+                    <i class="fa-solid fa-user text-3xl text-gray-800"></i>
+                </div>
+
+                {{-- つなぎのアイコン --}}
+                <div class="w-12 h-12 bg-gray-900 rounded-full flex items-center justify-center -mx-4 z-20 shadow-md">
+                    <i class="fa-solid fa-handshake text-white text-xl"></i>
+                </div>
+
+                {{-- 相手のアイコン（仮） --}}
+                <div class="w-20 h-20 bg-gray-50 border-2 border-gray-300 rounded-full flex items-center justify-center z-10 shadow-sm">
+                    <i class="fa-solid fa-user text-3xl text-gray-400"></i>
+                </div>
+            </div>
+        </div>
+
+        {{-- テキストエリア --}}
+        <div class="text-center space-y-2 mb-10">
+            <h1 class="text-2xl font-black text-gray-900 tracking-tighter italic uppercase">Match!</h1>
+            <p class="text-sm text-gray-500 font-medium">条件がマッチしました！</p>
+        </div>
+
+        {{-- ユーザー名の比較 --}}
+        <div class="w-full bg-gray-50 rounded-3xl p-6 mb-12 border border-gray-100">
+            <div class="flex flex-col gap-4">
+                <div class="flex justify-between items-center">
+                    <span class="text-xs font-bold text-gray-400 uppercase tracking-widest">あなた</span>
+                    <span class="text-lg font-bold text-gray-900">{{ Auth::user()->name }}</span>
+                </div>
+
+                <div class="border-t border-dashed border-gray-200"></div>
+
+                <div class="flex justify-between items-center">
+                    <span class="text-xs font-bold text-gray-400 uppercase tracking-widest">お相手</span>
+                    <span class="text-lg font-bold text-gray-900">{{ $requestData->user->name }}</span>
+                </div>
+            </div>
+        </div>
+
+        {{-- アクションボタン --}}
+        <div class="w-full space-y-4">
+            <form action="{{ route('match.start_deal') }}" method="post" class="w-full">
+                @csrf
+                <input type="hidden" name="request_id" value="{{ $requestData ->id }}">
+                <input type="hidden" name="thread_id" value="{{ $current_thread->id }}">
+                <button class="w-full bg-gray-900 text-white text-lg py-4 rounded-full font-bold shadow-lg
+                               hover:bg-black active:scale-[0.98] transition-all flex items-center justify-center gap-2">
+                    <i class="fa-regular fa-comments"></i>
+                    チャットを開始する
+                </button>
+            </form>
+
+        </div>
+
     </div>
 </x-user-layout>

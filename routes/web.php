@@ -122,12 +122,11 @@ Route::post('/rating/{id?}', [RatingController::class, 'store'])->name('rating.s
 
 // メッセージ取引画面
 Route::get('/message', [MessageController::class, 'index'])->name('message');
-Route::post('/message', [MessageController::class, 'create_message'])->name('create_message');
+Route::post('/message/send', [MessageController::class, 'create_message'])->name('create_message');
+Route::post('/message/complete', [MessageController::class, 'complete'])->name('message.complete');
 
 //ログイン後マイページ
 Route::get('/mypage', [MypageController::class, 'index'])->name('mypage');
-// アイコン更新処理（追記）
-Route::patch('/mypage/icon', [MypageController::class, 'updateIcon'])->name('profile.update_icon');
 
 // マッチ申請
 Route::get('/match', [MatchController::class, 'index'])->name('match');
@@ -154,9 +153,9 @@ Route::get('/test', [TestController::class, 'index']);
 //商品詳細ページ作成03-07
 
 Route::get('/goods/{id}', [GoodsController::class, 'show'])->name('goods');
-Route::get('/goods/select/{id}', [GoodsController::class, 'select'])->name('goods.select');
+Route::post('/goods/select/{id}', [GoodsController::class, 'select'])->name('goods.select');
 
-Route::post('/goods/select', [GoodsController::class, 'storeSelect'])->name('goods.select.store');
+Route::post('/goods/select', [GoodsController::class, 'store'])->name('goods.select.store');
 
 //評価送信ページ作成03-07
 Route::get('/ratingsubmit', [RatingSubmitController::class, 'index'])->name('ratingsubmit');
@@ -174,7 +173,7 @@ Route::get('/requestSelect', [RequestSelectController::class, 'index'])->name('r
 Route::get('/goodsselect', [GoodsSelectController::class, 'index'])->name('goodsselect');
 
 // 2. 選択した内容をセッションに保存して、メッセージ入力画面へリダイレクト
-Route::post('/goodsselect', [GoodsSelectController::class, 'select'])->name('goodsselect');
+Route::post('/goodsselect/select', [GoodsSelectController::class, 'select'])->name('goodsselect.select');
 
 Route::get('/request/confirm', function () {
     return view('request');
