@@ -6,17 +6,18 @@
             <div class="relative flex items-center">
                 {{-- あなたのアイコン（仮） --}}
                 <div class="w-20 h-20 bg-gray-100 border-2 border-gray-900 rounded-full flex items-center justify-center z-10 shadow-sm">
-                    <i class="fa-solid fa-user text-3xl text-gray-800"></i>
+                    <img src="{{ Auth::user()->icon_url ?: asset('images/default-icon.png') }}"
+                        alt="ユーザーアイコン"
+                        class="w-20 h-20 rounded-full object-cover border-2 border-white shadow-sm bg-gray-200">
                 </div>
 
-                {{-- つなぎのアイコン --}}
-                <div class="w-12 h-12 bg-gray-900 rounded-full flex items-center justify-center -mx-4 z-20 shadow-md">
-                    <i class="fa-solid fa-handshake text-white text-xl"></i>
-                </div>
 
-                {{-- 相手のアイコン（仮） --}}
+
+                {{-- 相手のアイコン --}}
                 <div class="w-20 h-20 bg-gray-50 border-2 border-gray-300 rounded-full flex items-center justify-center z-10 shadow-sm">
-                    <i class="fa-solid fa-user text-3xl text-gray-400"></i>
+                    <img src="{{ $requestData->user->icon_url ?: asset('images/default-icon.png') }}"
+                        alt="{{ $requestData->user->name }}さんのアイコン"
+                        class="w-20 h-20 rounded-full object-cover border-2 border-white shadow-sm bg-gray-200">
                 </div>
             </div>
         </div>
