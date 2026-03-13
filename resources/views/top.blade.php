@@ -1,9 +1,9 @@
 <x-user-layout>
 
-    <div class=" pb-20">
+    <div class=" pb-10">
 
         <!-- ヘッダー -->
-        <div class="flex justify-between items-center p-4 bg-white">
+        <div class="flex justify-between items-center bg-white">
 
             <img src="{{ asset('images/logo.png') }}" class="h-20">
 
@@ -11,19 +11,19 @@
 
 
         <!-- ヒーロー -->
-        <div class="text-center py-16 bg-cover bg-center"
-            style="background-image: url('{{ asset('images/hero-bg.png') }}');">
+        <div class="text-center py-12 bg-cover bg-center"
+            style="background-image: url('{{ asset('images/toppage.png') }}');">
 
-            <h1 class="text-2xl font-bold mb-6 tracking-widest">
+            <h1 class="text-xl font-bold mt-6 tracking-normal">
                 いらないガチャ、交換しませんか？
             </h1>
-            <p class="text-gray-600 mb-6">
+            <p class="text-gray-600 mb-6 text-sm">
                 あなたのダブり、誰かの欲しいかも。
             </p>
 
             <a href="{{ route('seach') }}"
-                class="inline-block px-10 py-3 text-white text-lg rounded-full
-bg-gradient-to-r from-green-300 to-red-400 shadow">
+                class="inline-block px-10 py-3 text-white text-lg rounded-full 
+                bg-gradient-to-r from-green-300 to-red-400 shadow">
 
                 交換を探す
 
