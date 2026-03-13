@@ -35,4 +35,9 @@ class MessageController extends Controller
 
         return  redirect()->action([MessageController::class, 'index']);
     }
+
+    public function complete()
+    {
+        return view('exchangecondition');
+    }
 }
