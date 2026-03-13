@@ -126,6 +126,8 @@ Route::post('/message', [MessageController::class, 'create_message'])->name('cre
 
 //ログイン後マイページ
 Route::get('/mypage', [MypageController::class, 'index'])->name('mypage');
+// アイコン更新処理（追記）
+Route::patch('/mypage/icon', [MypageController::class, 'updateIcon'])->name('profile.update_icon');
 
 // マッチ申請
 Route::get('/match', [MatchController::class, 'index'])->name('match');
