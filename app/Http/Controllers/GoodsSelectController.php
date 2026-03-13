@@ -105,7 +105,7 @@ class GoodsSelectController extends Controller
         // 【合体！】以前のデータ($data) ＋ 新しい画像パス ＋ メッセージ をDBへ
         TradeRequest::create([
             'user_id'        => auth()->id(),
-            'listed_item_id' => $request->input('listed_item_id'),
+            'listed_item_id' => session('current_item_id'),
             'request_series' => $data['current_series_name'],
             'request_char'   => $data['current_char_name'],
             'is_opened'      => $data['current_is_opened'],

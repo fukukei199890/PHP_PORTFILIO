@@ -153,7 +153,7 @@ Route::get('/test', [TestController::class, 'index']);
 //商品詳細ページ作成03-07
 
 Route::get('/goods/{id}', [GoodsController::class, 'show'])->name('goods');
-Route::get('/goods/select/{id}', [GoodsController::class, 'select'])->name('goods.select');
+Route::post('/goods/select/{id}', [GoodsController::class, 'select'])->name('goods.select');
 
 Route::post('/goods/select', [GoodsController::class, 'store'])->name('goods.select.store');
 
@@ -173,7 +173,7 @@ Route::get('/requestSelect', [RequestSelectController::class, 'index'])->name('r
 Route::get('/goodsselect', [GoodsSelectController::class, 'index'])->name('goodsselect');
 
 // 2. 選択した内容をセッションに保存して、メッセージ入力画面へリダイレクト
-Route::post('/goodsselect', [GoodsSelectController::class, 'select'])->name('goodsselect');
+Route::post('/goodsselect/select', [GoodsSelectController::class, 'select'])->name('goodsselect.select');
 
 Route::get('/request/confirm', function () {
     return view('request');

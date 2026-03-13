@@ -53,13 +53,11 @@
             <div class="py-4">
                 {{-- ログインしている場合 --}}
                 @auth
-                <form action="{{ route('goods.select') }}" method="post">
-                    @csrf
-                    <input type="hidden" name="listed_item_id" value="$item->id">
+                <a href="{{ route('goodsselect') }}">
                     <button class="w-full border border-indigo-500 text-indigo-500 px-4 py-2 rounded hover:bg-indigo-50 transition">
                         交換する商品を選択する
                     </button>
-                </form>
+                </a>
                 @endauth
 
                 {{-- ログインしていない場合 --}}
