@@ -21,37 +21,43 @@ class MypageController extends Controller
         $reviews = null;
 
         $reviews = Review::where('reviewed_user_id', Auth::user()->id)->get();
-            foreach ($reviews as $row) {
-                $count++;
-                $total += $row->score;
-            }
-            if ($count>0) {
-                $score = $total / $count;
-            } else {
-                $score = 0;
-            }
+        foreach ($reviews as $row) {
+            $count++;
+            $total += $row->score;
+        }
+        if ($count > 0) {
+            $score = $total / $count;
+        } else {
+            $score = 0;
+        }
 
         return view('mypage', compact('score'));
     }
-
     public function updateIcon(Request $request)
-{
-    $request->validate([
-        'icon' => 'required|image|max:2048',
-    ]);
+    {
+        // 1. バリデーション（10MBまで許可）
+        $request->validate([
+            'icon' => 'required|image|mimes:jpeg,png,jpg,gif|max:10240',
+        ]);
 
-    $user = Auth::user();
+        $user = Auth::user();
 
-    if ($request->hasFile('icon')) {
-        // 画像を public ディスクの icons フォルダに保存
-        $path = $request->file('icon')->store('icons', 'public');
+        if ($request->hasFile('icon')) {
+            // 2. 古いアイコン画像がある場合、ストレージから削除して整理する
+            if ($user->icon_url) {
+                // DBに保存されている "/storage/icons/xxx.jpg" からパスを抽出して削除
+                $oldFilePath = str_replace('/storage/', '', $user->icon_url);
+                Storage::disk('public')->delete($oldFilePath);
+            }
 
-        // モデルの 'icon_url' カラムに保存
-        // Storage::url($path) で "/storage/icons/xxx.jpg" という文字列が入ります
-        $user->icon_url = Storage::url($path);
-        $user->save();
+            // 3. 新しい画像を保存
+            $path = $request->file('icon')->store('icons', 'public');
+
+            // 4. DBを更新
+            $user->icon_url = Storage::url($path);
+            $user->save();
+        }
+
+        return back()->with('status', 'アイコンを更新しました！');
     }
-
-    return back()->with('status', 'アイコンを更新しました！');
-}
 }
