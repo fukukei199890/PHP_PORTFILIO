@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Thread extends Model
 {
@@ -30,5 +31,10 @@ class Thread extends Model
     public function receiver()
     {
         return $this->belongsTo(User::class, 'receiver_id');
+    }
+
+    public function participants()
+    {
+        return Auth::user()->id  === $this->sender_id ? $this->receiver_id : $this->sender_id;
     }
 }
