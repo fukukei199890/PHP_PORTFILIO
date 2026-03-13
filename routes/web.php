@@ -122,8 +122,8 @@ Route::post('/rating/{id?}', [RatingController::class, 'store'])->name('rating.s
 
 // メッセージ取引画面
 Route::get('/message', [MessageController::class, 'index'])->name('message');
-Route::post('/message', [MessageController::class, 'create_message'])->name('create_message');
-Route::post('/message', [MessageController::class, 'complete'])->name('message.complete');
+Route::post('/message/send', [MessageController::class, 'create_message'])->name('create_message');
+Route::post('/message/complete', [MessageController::class, 'complete'])->name('message.complete');
 
 //ログイン後マイページ
 Route::get('/mypage', [MypageController::class, 'index'])->name('mypage');
