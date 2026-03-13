@@ -26,11 +26,17 @@ class MessageController extends Controller
 
     public function create_message(Request $request)
     {
+        // ヴァリデーション
+        $validated = $request->validate([
+            'thread_id' => 'required|integer',
+            'message_text' => 'required|string'
+        ]);
+
         // メッセージの作成
         $message = Message::create([
-            'thread_id' => $request->input('thread_id') ?? session('current_thread_id'),
+            'thread_id' => $validated['thread_id'] ?? session('current_thread_id'),
             'user_id' => Auth::user()->id,
-            'message_text' => $request->input('message_text')
+            'message_text' => $validated['message_text']
         ]);
 
         return  redirect()->action([MessageController::class, 'index']);
