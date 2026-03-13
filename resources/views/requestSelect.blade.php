@@ -20,6 +20,24 @@
 
                 </div>
 
+                {{-- 画像 --}}
+                <div class="mb-4">
+                    <p class="text-[11px] text-gray-500 mb-1">相手の提示商品</p>
+                    <div class="bg-gray-50 rounded-lg p-3 text-center">
+                        @if($row->image_url)
+                        {{-- 画像が存在する場合 --}}
+                        <img src="{{ asset('storage/' . $row->image_url) }}"
+                            alt="リクエスト画像"
+                            class="mx-auto h-40 object-contain rounded-md shadow-sm">
+                        @else
+                        {{-- 画像がない場合のプレースホルダー --}}
+                        <div class="h-40 flex items-center justify-center bg-gray-200 rounded-md">
+                            <p class="text-xs text-gray-400">画像なし</p>
+                        </div>
+                        @endif
+                    </div>
+                </div>
+
                 {{-- 対象アイテム情報 --}}
                 <div class="mb-4">
                     <p class="text-[11px] text-gray-500 mb-1">出品物</p>
