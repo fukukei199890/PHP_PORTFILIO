@@ -47,13 +47,13 @@ class RequestController extends Controller
             'is_opened'      => $data['current_is_opened'],
             'image_url'      => $path,
 
-            'message'        => $request->input('message'),
+            'request_message'        => $request->input('request_message'),
             'status'         => 1
         ]);
 
         // 用が済んだのでポケット(セッション)を空にする
         session()->forget('temp_trade_data');
 
-        return redirect()->route('top');
+        return redirect()->route('top')->with('status', 'リクエストを申請しました!');
     }
 }
