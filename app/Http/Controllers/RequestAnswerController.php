@@ -54,7 +54,7 @@ class RequestAnswerController extends Controller
 
         try {
             // トランザクション開始
-            $requestData = DB::transaction(function () use ($requestId) {
+            $result = DB::transaction(function () use ($requestId) {
                 // リクエストデータを取得
                 $requestData = TradeRequest::with('user')->where('id', $requestId)->first();
 
@@ -82,12 +82,28 @@ class RequestAnswerController extends Controller
                     'listed_item_id' => $requestData->listed_item_id,
                     'is_matched' => false
                     ]);
+                    // current_threadを作成
+                    $current_thread = Thread::where('receiver_id',Auth::user()->id)
+                    ->where('sender_id',$requestData->user_id)
+                    ->first();
                 }
                 // ここまでスレッド作成処理
 
-                return $requestData;
+                // ここからリクエストステータスの書き換え
+                $requestData->status = false;
+                $requestData->save();
+                // ここまでリクエストステータスの書き換え
+
+                // returnは値ひとつしか返せないので連想配列を返す。
+                return [
+                    'requestData' => $requestData,
+                    'current_thread' => $current_thread
+                ];
             });
-            return view('match', compact('requestData'));
+            return view('match', [
+                'requestData' => $result['requestData'],
+                'current_thread' => $result['current_thread']
+                ]);
         } catch (\Exception $e) {
             // トランザクション失敗
             report($e);
