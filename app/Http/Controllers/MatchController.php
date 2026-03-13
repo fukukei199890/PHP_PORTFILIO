@@ -21,25 +21,21 @@ class MatchController extends Controller
         return view('match', compact('sender_data'));
     }
 
-    public function start_deal()
+    public function start_deal(Request $request)
     {
-        $request_data = TradeRequest::where('id', session('current_request_id'))->first();
+        $requestId = $request->input('request_id') ?? session('current_request_id');
 
-        if ($request_data) {
-            // request statusをfalseに書き換える
-            $request_data->status = false;
-            $request_data->save();
-
-            $thread = Thread::create([
-                'sender_id' => $request_data->user_id,
-                'receiver_id' => Auth::user()->id,
-                'listed_item_id' => $request_data->listed_item_id,
-                'is_matched' => false
-            ]);
+        if(!$requestId){
+            return redirect()->back()->with('error','セッションがタイムアウトしました');
         }
 
+        $requestData = TradeRequest::where('id',$requestId)->first();
         // リダイレクト
         // 別のコントローラーに再接続
-        return redirect()->action([MessageSelectController::class, 'index']);
+
+        $thread_id = $request->input('thread_id');
+        session(['current_thread_id' => $thread_id]);
+
+        return redirect()->action([MessageController::class, 'index'])->with('thread_id',$thread_id);
     }
 }

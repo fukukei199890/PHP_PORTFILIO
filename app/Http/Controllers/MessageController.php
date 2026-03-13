@@ -10,10 +10,10 @@ use App\Models\Message;
 class MessageController extends Controller
 {
     //
-    public function index()
+    public function index(Request $request)
     {
         // thread_id
-        $thread_id = session('current_thread_id');
+        $thread_id = $request->input('thread_id') ?? session('current_thread_id');
 
         // スレッドのメッセージの取得
         $message_data = Message::where('thread_id',$thread_id)->get();
