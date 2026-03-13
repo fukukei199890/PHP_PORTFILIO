@@ -25,6 +25,7 @@
         <button type="submit" name="submit">送信</button>
     </form>
     <form method="post" action="{{ route('message.complete') }}">
+        @csrf
         <button type="submit" name="complete">取引完了</button>
     </form>
 </x-user-layout>
