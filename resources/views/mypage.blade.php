@@ -22,6 +22,7 @@
         </a>
     </div>
     <div class="grid grid-cols-2 gap-8 m-6 justify-items-center">
+        <!-- TODO 出品中、取引完了、お気に入りの画面遷移 -->
         <form method="get" action="" class="item-center">
             <button class="font-mono rounded-full bg-blue-600 text-white p-4">出品中</button>
         </form>
