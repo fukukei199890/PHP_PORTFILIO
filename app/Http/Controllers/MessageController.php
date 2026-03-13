@@ -36,8 +36,10 @@ class MessageController extends Controller
         return  redirect()->action([MessageController::class, 'index']);
     }
 
-    public function complete()
+    public function complete(Request $request)
     {
-        return view('exchangecondition');
+        $thread_id = $request->input('thread_id') ?? session('current_thread_id');
+
+        return view('exchangecondition',compact('thread_id'));
     }
 }

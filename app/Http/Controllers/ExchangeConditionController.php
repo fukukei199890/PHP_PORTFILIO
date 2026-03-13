@@ -7,8 +7,10 @@ use Illuminate\Http\Request;
 class ExchangeConditionController extends Controller
 {
     //
-    public function index()
+    public function index(Request $request)
     {
-        return view('exchangecondition');
+        $thread_id = $request->input('thread_id') ?? session('current_thread_id');
+
+        return view('exchangecondition', compact('thread_id'));
     }
 }

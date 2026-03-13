@@ -17,7 +17,8 @@
             <div class="flex flex-1 items-center justify-center px-6 pb-24">
 
                 {{-- カード --}}
-                <div class="bg-[#e8dddd] border border-[#c9a9a9] 
+                <div
+                    class="bg-[#e8dddd] border border-[#c9a9a9] 
                     rounded-[40px] 
                     w-full max-w-md 
                     p-10 text-center shadow-sm">
@@ -31,11 +32,9 @@
                     <!-- route関数はエイリアス（別名）phpのasみたいなもので指定してそのURLを呼び出す -->
                     <form method="get" action="{{ route('rating') }}" class="space-y-6">
                         @csrf
-
                         {{-- はい --}}
-                        <button type="submit"
-                            name="action"
-                            value="yes"
+                        <input type="hidden" name="thread_id" value="{{ $thread_id }}">
+                        <button type="submit" name="action" value="yes"
                             class="w-40 py-3 
                                bg-gray-200 border border-black 
                                rounded-xl 
@@ -47,9 +46,7 @@
 
                     <form method="get" action="{{ route('message') }}" class="space-y-6">
                         {{-- いいえ --}}
-                        <button type="submit"
-                            name="action"
-                            value="no"
+                        <button type="submit" name="action" value="no"
                             class="w-40 py-3 
                                bg-gray-200 border border-black 
                                rounded-xl 
