@@ -5,7 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+use App\Notifications\MessageReceived;
+
 use App\Models\Message;
+use App\Models\User;
+use App\Models\Thread;
 
 class MessageController extends Controller
 {
@@ -38,6 +42,24 @@ class MessageController extends Controller
             'user_id' => Auth::user()->id,
             'message_text' => $validated['message_text']
         ]);
+
+        // 3. 通知処理の追加
+        // thread_id から Thread モデルを取得
+        $thread = Thread::find($validated['thread_id']);
+    
+        if ($thread) {
+            // 自分ではない方の ID を取得
+            $recipientId = ($thread->sender_id === Auth::id()) ? $thread->receiver_id : $thread->sender_id;
+            
+            // 通知を送る相手を取得
+            $recipient = User::find($recipientId);
+
+            if ($recipient) {
+                // 通知を実行
+                $recipient->notify(new MessageReceived($message));
+            }
+        }
+        // ここまで通知処理
 
         return  redirect()->action([MessageController::class, 'index']);
     }
