@@ -12,7 +12,9 @@
 
                 {{-- アイコン代わりのアバター --}}
                 <div class="shrink-0 w-14 h-14 bg-gray-200 rounded-full flex items-center justify-center border border-gray-100">
-                    <i class="fa-solid fa-user text-2xl text-gray-400"></i>
+                    <img src="{{ $thread->sender->icon_url ?: asset('images/default-icon.png') }}"
+                        alt="{{ $thread->sender->name }}さんのアイコン"
+                        class="w-full h-full rounded-full object-cover border-2 border-white shadow-sm bg-gray-200">
                 </div>
 
                 {{-- コンテンツ --}}

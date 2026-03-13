@@ -14,7 +14,12 @@
         </div>
 
         <div class="flex items-center gap-3 p-4 border-b">
-            <div class="w-12 h-12 bg-gray-400 rounded-full"></div>
+            {{-- 相手のアイコン --}}
+            <div class="w-20 h-20 bg-gray-50 border-2 border-gray-300 rounded-full flex items-center justify-center z-10 shadow-sm">
+                <img src="{{ $item->user->icon_url ?: asset('images/default-icon.png') }}"
+                    alt="{{ $item->user->name }}さんのアイコン"
+                    class="w-20 h-20 rounded-full object-cover border-2 border-white shadow-sm bg-gray-200">
+            </div>
             <p class="text-lg font-semibold">{{ $item->user->name ?? '出品者' }}</p>
         </div>
 
