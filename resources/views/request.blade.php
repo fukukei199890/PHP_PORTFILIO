@@ -30,7 +30,7 @@
                 @endif
             </div>
 
-            <form action="{{ route('goods.select') }}" method="post">
+            <form action="{{ route('request.store') }}" method="post">
                 @csrf
                 <input type="hidden" name="listed_item_id" value="$item->id">
                 <!-- 画像 -->
@@ -65,9 +65,9 @@
                     </div>
 
                     <div class="flex justify-end gap-4">
-                        <button type="button" onclick="history.back()" class="px-4 py-2 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300 transition">
+                        <!-- <button type="button" onclick="history.back()" class="px-4 py-2 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300 transition">
                             戻る
-                        </button>
+                        </button> -->
                         <button type="submit" class="px-6 py-2 bg-indigo-600 text-white font-bold rounded-md hover:bg-indigo-700 transition shadow-sm">
                             申請を送信する
                         </button>

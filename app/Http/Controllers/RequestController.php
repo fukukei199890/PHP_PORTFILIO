@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+use App\Models\TradeRequest;
+
 class RequestController extends Controller
 {
     public function index(Request $request)
@@ -21,5 +23,37 @@ class RequestController extends Controller
 
             return redirect()->route('applicationnot');
         }
+    }
+
+    public function store(Request $request)
+    {
+        // ポケット(セッション)から以前のデータを取り出す
+        $data = session('temp_trade_data');
+
+        // もしポケットが空っぽならエラー（不正なアクセスやタイムアウト）
+        if (!$data) {
+            return redirect()->route('request.store')->with('error', 'やり直してください');
+        }
+
+        // ここで初めて届いた画像を保存して、その「住所(パス)」を取得する
+        $path = $request->hasFile('image') ? $request->file('image')->store('requests', 'public') : '';
+
+        // 【合体！】以前のデータ($data) ＋ 新しい画像パス ＋ メッセージ をDBへ
+        TradeRequest::create([
+            'user_id'        => auth()->id(),
+            'listed_item_id' => session('current_item_id'),
+            'request_series' => $data['current_series_name'],
+            'request_char'   => $data['current_char_name'],
+            'is_opened'      => $data['current_is_opened'],
+            'image_url'      => $path,
+
+            'message'        => $request->input('message'),
+            'status'         => 1
+        ]);
+
+        // 用が済んだのでポケット(セッション)を空にする
+        session()->forget('temp_trade_data');
+
+        return redirect()->route('top');
     }
 }
