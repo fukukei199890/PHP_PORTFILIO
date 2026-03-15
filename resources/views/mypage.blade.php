@@ -63,7 +63,7 @@
         {{-- ステータス別ボタン（グリッド） --}}
         <div class="grid grid-cols-2 gap-3 px-6 mb-10">
             {{-- 出品中ボタン --}}
-            <a href="#" class="bg-white border border-gray-900 text-gray-900 text-center py-5 rounded-2xl text-sm font-bold hover:bg-gray-50 transition shadow-sm flex flex-col items-center gap-1">
+            <a href="{{ route('listing') }}" class="bg-white border border-gray-900 text-gray-900 text-center py-5 rounded-2xl text-sm font-bold hover:bg-gray-50 transition shadow-sm flex flex-col items-center gap-1">
                 <span class="text-xs text-gray-400 font-normal italic">出品中</span>
                 出品中
             </a>

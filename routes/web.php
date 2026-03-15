@@ -13,6 +13,7 @@ use App\Http\Controllers\ApplicationNotController;
 use App\Http\Controllers\ExchangeConditionController;
 use App\Http\Controllers\GoodsController;
 use App\Http\Controllers\GoodsSelectController;
+use App\Http\Controllers\ListingController;
 use App\Http\Controllers\MessageSelectController;
 use App\Http\Controllers\PasswordChangeController;
 use App\Http\Controllers\RegistrationCompleteController;
@@ -166,6 +167,9 @@ Route::get('/wait', [WaitController::class, 'index'])->name('wait');
 
 // リクエストセレクトコントローラー
 Route::get('/requestSelect', [RequestSelectController::class, 'index'])->name('requestSelect');
+
+//福田出品中の商品ページ
+Route::get('/listing', [ListingController::class, 'index'])->name('listing');
 
 
 // --- 追記・修正部分 ---
