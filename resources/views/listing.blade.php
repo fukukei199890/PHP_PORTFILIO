@@ -29,7 +29,13 @@
                         <i class="fas fa-map-marker-alt mr-1"></i>{{ $item->exchange_area }}
                     </span>
 
-                    <a href="#" class="text-xs font-bold text-gray-900 border border-gray-900 px-3 py-1 rounded-lg">削除</a>
+                    <form action="{{ route('listing.destroy', $item->id) }}" method="POST" onsubmit="return confirm('本当に削除しますか？');">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="text-xs font-bold text-red-600 border border-red-600 px-3 py-1 rounded-lg hover:bg-red-50 transition">
+                            削除
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>
