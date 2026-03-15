@@ -53,8 +53,8 @@
             </a>
         </div>
 
-        <footer class="mt-16 text-center text-[10px] text-gray-300">
+        <div class="mt-16 text-center text-[10px] text-gray-300">
             <p>© 2026 MyService. All Rights Reserved.</p>
-        </footer>
+        </div>
     </div>
 </x-user-layout>
