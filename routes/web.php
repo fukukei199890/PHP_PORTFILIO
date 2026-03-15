@@ -170,7 +170,7 @@ Route::get('/requestSelect', [RequestSelectController::class, 'index'])->name('r
 
 //福田出品中の商品ページ
 Route::get('/listing', [ListingController::class, 'index'])->name('listing');
-
+Route::delete('/listing/{listedItem}', [ListingController::class, 'destroy'])->name('listing.destroy');
 
 // --- 追記・修正部分 ---
 
