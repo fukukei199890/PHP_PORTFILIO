@@ -68,7 +68,7 @@
                 </form>
 
                 {{-- キャンセルするボタン --}}
-                <form method="post" action="{{ route('requestanswer.make_match') }}" class="w-full max-w-[320px]">
+                <!-- <form method="post" action="{{ route('requestanswer.make_match') }}" class="w-full max-w-[320px]">
                     @csrf
                     <input type="hidden" name="action" value="no">
                     <button type="submit"
@@ -78,7 +78,7 @@
                    active:shadow-none active:translate-y-0.5 transition-all">
                         キャンセルする
                     </button>
-                </form>
+                </form> -->
             </div>
             @else
             <div class="text-center pt-20">

@@ -24,7 +24,7 @@
                         <div class="flex-1">
                             <p class="text-xl font-black text-gray-900">{{ Auth::user()->name }}</p>
                             <div class="flex items-center gap-1 mt-1">
-                                <span class="text-sm font-bold text-gray-400 italic">SCORE</span>
+                                <span class="text-sm font-bold text-gray-400 italic">評価</span>
                                 <span class="text-lg font-black text-gray-900">★{{ $score }}</span>
                             </div>
                         </div>
@@ -32,7 +32,7 @@
 
                     {{-- アイコン更新エリア --}}
                     <div class="border-t border-gray-200 pt-4 mt-2">
-                        <label class="block text-[10px] font-bold text-gray-400 uppercase tracking-tighter mb-2">Change Avatar</label>
+                        <label class="block text-[10px] font-bold text-gray-400 uppercase tracking-tighter mb-2">アイコンを更新する</label>
                         <div class="flex items-center gap-2">
                             <input type="file" name="icon"
                                 class="block w-full text-[10px] text-gray-500
