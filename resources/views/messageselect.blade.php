@@ -53,9 +53,7 @@
             @empty
             {{-- データがない時の表示 --}}
             <div class="flex flex-col items-center justify-center pt-32 px-10 text-center">
-                <div class="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center mb-4">
-                    <i class="fa-regular fa-comments text-3xl text-gray-300"></i>
-                </div>
+
                 <p class="text-gray-500 font-medium">表示できるメッセージがありません</p>
                 <p class="text-gray-400 text-xs mt-2">交換が成立すると、ここにスレッドが表示されます。</p>
             </div>

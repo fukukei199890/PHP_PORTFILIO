@@ -1,36 +1,26 @@
 <x-user-layout>
-    <div class=" bg-gray-100 flex flex-col justify-between">
 
-        {{-- メインコンテンツ --}}
-        <div class="flex flex-col items-center pt-20 px-6 pb-24">
+    <div class="max-w-md mx-auto min-h-screen bg-gray-50 pb-20">
 
-            {{-- 注意アイコン画像 --}}
-            <img src="{{ asset('images/attention.png') }}"
-                alt="注意マーク画像"
-                class="w-24 h-24 object-contain mb-6">
 
-            {{-- カード --}}
-            <div class="bg-[#e8dddd] border border-[#c9a9a9] 
-                    rounded-[40px] 
-                    w-full max-w-md 
-                    p-10 text-center shadow-sm">
 
-                <p class="text-lg font-medium mb-4">
-                    申請できません。
-                </p>
 
-                <p class="text-base">
-                    ログイン後、使用が可能になります
-                </p>
-            </div>
+        <div class="flex flex-col items-center justify-center pt-32 px-10 text-center">
 
+            <p class="text-gray-500 font-medium">申請できません。</p>
+            <p class="text-gray-400 text-xs mt-2">ログイン後、使用が可能になります。</p>
             {{-- ログインリンク --}}
             <a href="{{ route('login') }}"
                 class="mt-10 text-sky-500 font-medium hover:underline">
                 ログインする
             </a>
-
         </div>
+
+    </div>
+
+
+
+    </div>
 
     </div>
 </x-user-layout>
