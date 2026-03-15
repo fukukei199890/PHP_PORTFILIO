@@ -11,6 +11,7 @@ use App\Http\Controllers\PostBeforeController;
 use App\Http\Controllers\AgreementsController;
 use App\Http\Controllers\ApplicationNotController;
 use App\Http\Controllers\ExchangeConditionController;
+use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\GoodsController;
 use App\Http\Controllers\GoodsSelectController;
 use App\Http\Controllers\ListingController;
@@ -170,7 +171,10 @@ Route::get('/requestSelect', [RequestSelectController::class, 'index'])->name('r
 
 //福田出品中の商品ページ
 Route::get('/listing', [ListingController::class, 'index'])->name('listing');
+Route::delete('/listing/{listedItem}', [ListingController::class, 'destroy'])->name('listing.destroy');
 
+//お気に入り商品ページ
+Route::get('/favorite', [FavoriteController::class, 'index'])->name('favorite');
 
 // --- 追記・修正部分 ---
 

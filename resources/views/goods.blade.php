@@ -11,6 +11,12 @@
                 src="{{ asset('storage/'.$item->images->first()->image_url) }}"
                 class="mx-auto w-40">
             @endif
+            <form action="" method="POST">
+                @csrf
+                <button type="submit" class="flex items-center gap-1 text-gray-400 hover:text-red-400 transition">
+                    <span class="text-xl">♡</span> お気に入り登録
+                </button>
+            </form>
         </div>
 
         <div class="flex items-center gap-3 p-4 border-b">

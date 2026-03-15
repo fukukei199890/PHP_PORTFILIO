@@ -77,6 +77,11 @@
 
         {{-- メニューリスト --}}
         <div class="px-4 border-t border-gray-100">
+
+            <a href="{{ route('favorite') }}" class="flex items-center justify-between py-5 border-b border-gray-50 px-4 hover:bg-gray-50 group">
+                <span class="text-sm font-medium text-gray-700 group-hover:text-gray-900">お気に入り登録した商品</span>
+                <i class="fa-solid fa-chevron-right text-xs text-gray-300 group-hover:text-gray-900"></i>
+            </a>
             <a href="{{ route('agreements') }}" class="flex items-center justify-between py-5 border-b border-gray-50 px-4 hover:bg-gray-50 group">
                 <span class="text-sm font-medium text-gray-700 group-hover:text-gray-900">利用規約</span>
                 <i class="fa-solid fa-chevron-right text-xs text-gray-300 group-hover:text-gray-900"></i>
