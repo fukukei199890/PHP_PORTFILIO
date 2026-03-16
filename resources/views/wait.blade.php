@@ -7,7 +7,7 @@
 
 
             {{-- カード --}}
-            <div class="bg-[#e8dddd] border border-[#c9a9a9] 
+            <div class="bg-[#FFFFFF] border border-[#FFFFFF] 
                     rounded-[40px] 
                     w-full max-w-md 
                     p-10 text-center shadow-sm">
