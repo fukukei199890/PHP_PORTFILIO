@@ -67,7 +67,7 @@
                         @if (Auth::user()->unreadNotifications)
                             @foreach (Auth::user()->unreadNotifications as $notification)
                                 @if ($loop->last)
-                                    <a href="">
+                                    <a href="{{ route('messageReceived') }}">
                                         <p>{{ $loop->iteration }}</p>
                                     </a>
                                 @endif
