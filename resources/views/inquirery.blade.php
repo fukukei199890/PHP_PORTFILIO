@@ -1,14 +1,12 @@
 <x-user-layout>
     <div>
-        <h1 class="text-3xl text-center font-bold mb-4">
-            お問い合わせ
-        </h1>
-        <hr class="border-t border-gray-300 mb-6">
+        <h1 class="text-lg font-black mb-8 text-center text-gray-900  mx-auto w-full pb-2">お問い合わせ</h1>
+
         <p class="mb-2">
             サービスに関するお問い合わせは、以下のフォームよりご連絡ください。
         </p>
         <p class="mb-2">当社サービスに関するご質問・ご相談は、下記フォームよりお問い合わせください。 内容確認後、担当よりご連絡いたします。</p>
-        <p class="mb-4">※通常2〜3営業日以内にご返信いたします。 
+        <p class="mb-4">※通常2〜3営業日以内にご返信いたします。
             <br>※内容によっては回答いたしかねる場合がございます。
         </p>
 

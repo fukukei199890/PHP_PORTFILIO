@@ -3,7 +3,8 @@
 
     <div class="max-w-md mx-auto bg-gray-100 min-h-screen">
 
-        <h1 class="text-center text-xl py-4 border-b">商品ページ</h1>
+
+        <h1 class="text-center text-lg py-4 border-b text-gray-900 ">商品ページ</h1>
 
         <div class="p-4 border-b text-center">
             @if($item->images->first())

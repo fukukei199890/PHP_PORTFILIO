@@ -11,7 +11,7 @@
 
         <!-- タイトル -->
         <div class="text-center">
-            <h2 class="text-lg font-medium mb-4">選択する</h2>
+            <h1 class="text-center text-lg py-4 border-b text-gray-900 ">選択する</h1>
         </div>
 
 
