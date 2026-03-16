@@ -37,6 +37,8 @@ use App\Http\Controllers\TestController;
 use App\Http\Controllers\TopController;
 use App\Http\Controllers\WaitController;
 use App\Http\Controllers\RequestSelectController;
+use App\Http\Controllers\MessageReceivedController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -185,6 +187,8 @@ Route::post('/goodsselect/select', [GoodsSelectController::class, 'select'])->na
 Route::get('/request/confirm', function () {
     return view('request');
 })->name('request.confirm');
+
+Route::get('/messageReceived',[MessageReceivedController::class,'index'])->name('messageReceived');
 
 // --- ここまで ---
 
