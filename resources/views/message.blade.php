@@ -33,11 +33,4 @@
         <input type="hidden" name="thread_id" value="{{ $thread_id }}">
         <button type="submit" name="complete">取引完了</button>
     </form>
-    {{-- ここから通知のテスト --}}
-    @foreach (Auth::user()->unreadNotifications as $notification)
-        <ul>
-            <li>{{ $notification->data['sender_name'] }}さんからのメッセージがあります</li>
-        </ul>
-    @endforeach
-    {{-- ここまで通知のテスト --}}
 </x-user-layout>
