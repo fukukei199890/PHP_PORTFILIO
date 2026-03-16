@@ -47,7 +47,10 @@
                     {{-- 交換場所 (リクエストメッセージを利用) --}}
                     <div class="flex items-start text-gray-900">
                         <span class="w-16 shrink-0"></span>
-                        <p>交換場所：{{ $requestData->requestMessage }}</p>
+                        <!-- <p>交換場所：{{ $requestData->requestMessage }}</p> -->
+
+                        {{-- 修正後（リレーション先のlisted_itemから取得する場合） --}}
+                        <p>交換場所：{{ $requestData->listed_item->exchange_area }}</p>
                     </div>
                 </div>
             </div>
