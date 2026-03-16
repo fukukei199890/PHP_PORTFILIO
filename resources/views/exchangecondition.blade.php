@@ -18,7 +18,7 @@
 
                 {{-- カード --}}
                 <div
-                    class="bg-[#e8dddd] border border-[#c9a9a9] 
+                    class="bg-[#FFFFFF] border border-[#FFFFFF] 
                     rounded-[40px] 
                     w-full max-w-md 
                     p-10 text-center shadow-sm">
@@ -35,11 +35,8 @@
                         {{-- はい --}}
                         <input type="hidden" name="thread_id" value="{{ $thread_id }}">
                         <button type="submit" name="action" value="yes"
-                            class="w-40 py-3 
-                               bg-gray-200 border border-black 
-                               rounded-xl 
-                               hover:bg-gray-300 transition">
-                            はい
+                            class="w-40 py-3 bg-blue-500 text-white py-3 rounded-full font-semibold hover:bg-blue-600 border border-white">
+                                はい
                         </button>
 
                     </form>
@@ -47,10 +44,7 @@
                     <form method="get" action="{{ route('message') }}" class="space-y-6">
                         {{-- いいえ --}}
                         <button type="submit" name="action" value="no"
-                            class="w-40 py-3 
-                               bg-gray-200 border border-black 
-                               rounded-xl 
-                               hover:bg-gray-300 transition">
+                            class="w-40 py-3 bg-blue-500 text-white py-3 rounded-full font-semibold hover:bg-blue-600 border border-white">
                             いいえ
                         </button>
                     </form>
