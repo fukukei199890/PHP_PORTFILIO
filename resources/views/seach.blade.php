@@ -10,7 +10,9 @@
                 <label>未開封</label>
                 <input type="radio" id="not_opend" name="is_opened" value="0">
             </div>
-            <button class="text-white bg-indigo-500 py-2 px-8 hover:bg-indigo-600 rounded text-lg w-full">検索</button>
+            <button class="w-full bg-blue-500 text-white py-3 rounded-full font-semibold hover:bg-blue-600 border border-white">
+                検索
+            </button>
         </form>
         @isset($results) {{-- $resultsの存在を確認 --}}
         @if($results->isEmpty()) {{-- $resultsの値が空でないかを確認 --}}
