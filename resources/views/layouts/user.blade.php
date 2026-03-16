@@ -45,12 +45,12 @@
 
                     {{-- ログイン後 --}}
                     @auth
-                    <span><a href="{{ route('post') }}">出品</a></span>
+                        <span><a href="{{ route('post') }}">出品</a></span>
                     @endauth
 
                     {{-- ログイン前 --}}
                     @guest
-                    <span><a href="{{ route('postbefore') }}">出品</a></span>
+                        <span><a href="{{ route('postbefore') }}">出品</a></span>
                     @endguest
 
                 </div>
@@ -60,16 +60,23 @@
                     <span class="text-xl">🔔</span>
                     {{-- ログイン後 --}}
                     @auth
-                    @if ($request_count > 0)
-                    <span><a href="{{ route('messageselect') }}">{{ $request_count }}</a></span>
-                    @else
-                    <span><a href="{{ route('messageselect') }}">通知なし</a></span>
-                    @endif
+                        {{-- 通知の数を表示 --}}
+                        @if (Auth::user()->unreadNotifications)
+                            @foreach (Auth::user()->unreadNotifications as $notification)
+                                @if ($loop->last)
+                                    <a href="">
+                                        <p>{{ $loop->iteration }}</p>
+                                    </a>
+                                @endif
+                            @endforeach
+                        @else
+                            <span><a href="{{ route('messageselect') }}">通知なし</a></span>
+                        @endif
                     @endauth
 
                     {{-- ログイン前 --}}
                     @guest
-                    <span><a href="{{ route('messageselect') }}">通知</a></span>
+                        <span><a href="{{ route('messageselect') }}">通知</a></span>
                     @endguest
                 </div>
 
@@ -79,12 +86,12 @@
 
                     {{-- ログイン後 --}}
                     @auth
-                    <span><a href="{{ route('requestSelect') }}">リクエスト</a></span>
+                        <span><a href="{{ route('requestSelect') }}">リクエスト</a></span>
                     @endauth
 
                     {{-- ログイン前 --}}
                     @guest
-                    <span><a href="{{ route('requestSelect') }}">リクエスト</a></span>
+                        <span><a href="{{ route('requestSelect') }}">リクエスト</a></span>
                     @endguest
                 </div>
 
@@ -94,12 +101,12 @@
 
                     {{-- ログイン後 --}}
                     @auth
-                    <span><a href="{{ route('mypage') }}">マイページ</a></span>
+                        <span><a href="{{ route('mypage') }}">マイページ</a></span>
                     @endauth
 
                     {{-- ログイン前 --}}
                     @guest
-                    <span><a href="{{ route('mypagebefore') }}">マイページ</a></span>
+                        <span><a href="{{ route('mypagebefore') }}">マイページ</a></span>
                     @endguest
                 </div>
 
