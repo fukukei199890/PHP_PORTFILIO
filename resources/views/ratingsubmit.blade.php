@@ -10,7 +10,7 @@
                 class="w-24 h-24 object-contain mb-6">
 
             {{-- カード --}}
-            <div class="bg-[#e8dddd] border border-[#c9a9a9] 
+            <div class="bg-[#FFFFFF] border border-[#FFFFFF] 
                     rounded-[40px] 
                     w-full max-w-md 
                     p-10 text-center shadow-sm">
@@ -26,7 +26,8 @@
 
             {{-- ログインリンク --}}
             <a href=""
-                class="mt-10 text-sky-500 font-medium hover:underline">
+                class="mt-10 text-sky-600 font-medium hover:text-sky-700 hover:underline flex items-center gap-1 transition">
+
                 ホームへ戻る
             </a>
 

@@ -49,7 +49,7 @@
 
             <a href="{{ route('top') }}"
                 class="mt-10 text-sky-600 font-medium hover:text-sky-700 hover:underline flex items-center gap-1 transition">
-                <span>←</span>
+
                 <span>ホームへ戻る</span>
             </a>
 
