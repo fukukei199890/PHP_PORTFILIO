@@ -16,14 +16,17 @@
 
 
     <!-- Page Content -->
-    <div class="min-h-screen flex flex-col">
+    <div class="min-h-screen flex flex-col pb-20">
 
         <main class="flex-grow">
             <div class="max-w-md mx-auto px-4 py-6">
                 {{ $slot }}
             </div>
         </main>
-        <footer>
+        <!-- Tailwindが効かなかったのでstyleタグを使用しています -->
+        <!-- <footer class="fixed bottom-0 left-0 right-0 w-full bg-white border-t border-gray-200 z-[9999]"> -->
+            <footer style="position: fixed !important; bottom: 0 !important; left: 0; width: 100%; background-color: white;  z-index: 9999;">
+                       <!-- fixed bottom-0 left-0 w-full bg-white border-t border-gray-200 z-50 -->
             <!-- グローバルナビゲーション -->
             <nav class="flex items-center justify-between flex-wrap max-w-md mx-auto">
 
