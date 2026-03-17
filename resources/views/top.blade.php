@@ -24,18 +24,23 @@
         <div class="text-center py-12 bg-cover bg-center"
             style="background-image: url('{{ asset('images/toppage.png') }}');">
 
-            <h1 class="text-xl font-bold mt-6 tracking-normal">
+
+            <h1 class="text-lg font-bold mt-6 tracking-normal text-gray-900  mx-auto w-full pb-2">
                 いらないガチャ、交換しませんか？
             </h1>
             <p class="text-gray-600 mb-6 text-sm">
                 あなたのダブり、誰かの欲しいかも。
             </p>
 
-            <a href="{{ route('seach') }}"
-                class="inline-block px-10 py-3 text-white text-lg rounded-full 
-                bg-gradient-to-r from-green-300 to-red-400 shadow">
+            <a href="{{ route('seach') }}">
+                <button
+                    type="submit"
+                    class="px-10 bg-blue-500 text-white py-3 rounded-full font-semibold hover:bg-blue-600">
+                    交換を探す
 
-                交換を探す
+                </button>
+
+
 
             </a>
 
