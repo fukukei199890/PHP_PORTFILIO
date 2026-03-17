@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class ListedItem extends Model
 {
@@ -38,5 +39,16 @@ class ListedItem extends Model
     public function threads()
     {
         return $this->hasMany(Thread::class);
+    }
+
+    //追記福田お気に入り登録をしているかの判定
+
+    public function favorites()
+    {
+        return $this->hasMany(Favoriteitem::class);
+    }
+    public function is_favorites_by_auth_user()
+    {
+        return $this->favorites()->where('user_id', \Auth::id())->exists();
     }
 }

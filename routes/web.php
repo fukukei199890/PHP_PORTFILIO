@@ -177,6 +177,17 @@ Route::delete('/listing/{listedItem}', [ListingController::class, 'destroy'])->n
 
 //お気に入り商品ページ
 Route::get('/favorite', [FavoriteController::class, 'index'])->name('favorite');
+Route::middleware(['auth'])->group(function () {
+
+    // お気に入り登録：POST送信
+    // {listed_item_id} の部分は、ボタンが押された商品のIDが自動で入ります
+    Route::post('/goods/{listed_item_id}/favorite', [FavoriteController::class, 'store'])
+        ->name('favorites.store');
+
+    // お気に入り解除：DELETE送信
+    Route::delete('/goods/{listed_item_id}/unfavorite', [FavoriteController::class, 'destroy'])
+        ->name('favorites.destroy');
+});
 
 // --- 追記・修正部分 ---
 
@@ -188,7 +199,7 @@ Route::get('/request/confirm', function () {
     return view('request');
 })->name('request.confirm');
 
-Route::get('/messageReceived',[MessageReceivedController::class,'index'])->name('messageReceived');
+Route::get('/messageReceived', [MessageReceivedController::class, 'index'])->name('messageReceived');
 
 // --- ここまで ---
 
