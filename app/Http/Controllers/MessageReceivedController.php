@@ -14,12 +14,18 @@ class MessageReceivedController extends Controller
     }
 
     public function read($id, Request $request) {
-        // 既読にする通知を取得
-        $notification = Auth::user()->unreadNotifications->find($id);
+        // 通知IDから通知情報を取得
+        $notification = Auth::user()->notifications()->find($id);
 
-        if ($notification) {
-            $notification->markAsRead();
+        if($notification) {
+            $sender_id = $notification->data['sender_id'];
         }
+
+        // 既読にする通知を取得
+        // sender_idが同じ通知を一括で既読にする
+        $notification = Auth::user()->unreadNotifications()
+        ->where('data->sender_id',$sender_id)
+        ->update(['read_at' => now()]);
 
         // threa_idの取得
         $thread = Thread::where(function($q) use ($request) {
@@ -31,9 +37,9 @@ class MessageReceivedController extends Controller
         )->first();
 
         if (!$thread) {
-        // デバッグ用に情報を出してリダイレクト
+        // デバック用のリダイレクト
         return redirect()->back()->with('error', 'スレッドが見つかりません。相手ID:' . $request->input('sender_id'));
-    }
+        }
 
         $thread_id = $thread->id;
 
