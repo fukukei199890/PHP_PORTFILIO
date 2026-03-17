@@ -14,8 +14,10 @@ class FavoriteController extends Controller
      */
     public function index()
     {
-        // ログイン中のユーザーがお気に入りした商品を取得する処理を将来的にここへ書きます
-        return view('favorite');
+        $favorite_items = \App\Models\FavoriteItem::where('user_id', \Auth::id())
+            ->with('listedItem.images') // 商品画像も一緒に取得
+            ->get();
+        return view('favorite', compact('favorite_items'));
     }
 
     /**

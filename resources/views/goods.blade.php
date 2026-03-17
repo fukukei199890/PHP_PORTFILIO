@@ -27,7 +27,7 @@
                     alt="{{ $item->user->name }}さんのアイコン"
                     class="w-20 h-20 rounded-full object-cover border-2 border-white shadow-sm bg-gray-200">
             </div>
-            <p class="text-lg font-semibold">{{ $item->user->name ?? '出品者' }}</p>
+            <p class="text-lg font-semibold">出品者:{{ $item->user->name ?? '出品者' }}</p>
         </div>
 
         <div class="p-4 space-y-2">

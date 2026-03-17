@@ -10,22 +10,16 @@
     </div>
     @endif
 
-    <div class=" pb-10">
+    <div class="pb-10">
 
-        <!-- ヘッダー -->
         <div class="flex justify-between items-center bg-white">
-
             <img src="{{ asset('images/logo.png') }}" class="h-20">
-
         </div>
 
-
-        <!-- ヒーロー -->
         <div class="text-center py-12 bg-cover bg-center"
             style="background-image: url('{{ asset('images/toppage.png') }}');">
 
-
-            <h1 class="text-lg font-bold mt-6 tracking-normal text-gray-900  mx-auto w-full pb-2">
+            <h1 class="text-lg font-bold mt-6 tracking-normal text-gray-900 mx-auto w-full pb-2">
                 いらないガチャ、交換しませんか？
             </h1>
             <p class="text-gray-600 mb-6 text-sm">
@@ -33,85 +27,63 @@
             </p>
 
             <a href="{{ route('seach') }}">
-                <button
-                    type="submit"
+                <button type="submit"
                     class="px-10 bg-blue-500 text-white py-3 rounded-full font-semibold hover:bg-blue-600">
                     交換を探す
-
                 </button>
-
-
-
             </a>
-
-
         </div>
 
-
-
-        <!-- 人気商品 -->
         <div class="px-6 mt-6">
-
             <div class="bg-[#e7dcc6] rounded-[30px] p-4 border border-yellow-400">
-
                 <p class="mb-3 font-bold">
                     人気商品
                 </p>
-
-
-
+                <div class="grid grid-cols-3 gap-4">
+                    @foreach($favorite_item as $fav)
+                    @php $favItem = $fav->listedItem; @endphp
+                    <div class="text-center">
+                        @if($favItem && $favItem->images->isNotEmpty())
+                        <a href="{{ route('goods', $favItem->id) }}">
+                            <img src="{{ asset('storage/'.$favItem->images->first()->image_url) }}"
+                                class="border mb-2 w-full aspect-square object-cover rounded-lg">
+                        </a>
+                        <p class="text-[10px] leading-tight line-clamp-1">{{ $favItem->series_name }}</p>
+                        @endif
+                    </div>
+                    @endforeach
+                </div>
             </div>
-
         </div>
 
-
-
-        <!-- 新着出品 -->
         <div class="px-6 mt-6">
-
             <div class="border border-red-400 rounded-[30px] p-4">
-
                 <p class="mb-4 font-bold">
                     新着出品
                 </p>
 
-
                 <div class="grid grid-cols-3 gap-4">
-
                     @foreach($items as $item)
-
                     <div class="text-center">
-
-                        @if($item->images->first())
+                        @if($item->images->isNotEmpty())
                         <a href="{{ route('goods', $item->id) }}">
-                            <img
-                                src="{{ asset('storage/'.$item->images->first()->image_url) }}"
-                                class="border mb-2 w-full">
+                            <img src="{{ asset('storage/'.$item->images->first()->image_url) }}"
+                                class="border mb-2 w-full aspect-square object-cover rounded-lg">
                         </a>
                         @endif
 
-                        <p class="text-xs leading-tight">
+                        <p class="text-[10px] font-medium leading-tight line-clamp-1">
                             {{ $item->series_name }}
                         </p>
-
-                        <p class="text-xs text-gray-500">
+                        <p class="text-[10px] text-gray-500 line-clamp-1">
                             {{ $item->char_name }}
                         </p>
-
                     </div>
-
                     @endforeach
-
                 </div>
-
             </div>
-
         </div>
 
     </div>
-
-
-
-
 
 </x-user-layout>

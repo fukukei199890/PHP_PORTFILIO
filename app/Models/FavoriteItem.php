@@ -9,7 +9,7 @@ class FavoriteItem extends Model
 {
     use HasFactory;
 
-    protected $table = 'favorite.items';
+    protected $table = 'favorite_items';
 
     //許可する項目
     protected $fillable = [
