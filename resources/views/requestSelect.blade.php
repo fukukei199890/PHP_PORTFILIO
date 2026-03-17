@@ -59,8 +59,7 @@
                 <form method="get" action="{{ route('requestanswer') }}">
                     <input type="hidden" name="request_id" value="{{ $row->id }}">
                     <button type="submit"
-                        class="w-full bg-gray-900 text-white py-3 rounded-xl font-bold text-sm
-                                   hover:bg-gray-800 active:scale-[0.98] transition-all shadow-md">
+                        class="w-full bg-blue-500 text-white py-3 rounded-xl font-bold text-sm">
                         リクエスト詳細を確認する
                     </button>
                 </form>

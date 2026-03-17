@@ -47,17 +47,17 @@
 
         {{-- アクションボタン --}}
         <div class="w-full space-y-4">
-            <form action="{{ route('match.start_deal') }}" method="post" class="w-full">
+
+            <form action="{{ route('match.start_deal') }}" method="post" class="w-full flex justify-center">
                 @csrf
-                <input type="hidden" name="request_id" value="{{ $requestData ->id }}">
+                <input type="hidden" name="request_id" value="{{ $requestData->id }}">
                 <input type="hidden" name="thread_id" value="{{ $current_thread->id }}">
-                <button class="w-full bg-gray-900 text-white text-lg py-4 rounded-full font-bold shadow-lg
-                               hover:bg-black active:scale-[0.98] transition-all flex items-center justify-center gap-2">
-                    <i class="fa-regular fa-comments"></i>
-                    チャットを開始する
+
+                <button type="submit"
+                    class="w-full max-w-[280px] bg-blue-500 text-white py-3.5 rounded-full font-bold hover:bg-blue-600 shadow-md transition-all active:scale-95">
+                    取引を開始する
                 </button>
             </form>
-
         </div>
 
     </div>
