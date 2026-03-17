@@ -56,6 +56,7 @@ class MessageReceived extends Notification
     {
         return [
             'message_id' => $this->messageData->id,
+            'sender_id' => $this->messageData->user_id,
             'sender_name' => $this->messageData->sender->name
         ];
     }

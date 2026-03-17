@@ -14,7 +14,7 @@ class MessageSelectController extends Controller
     //
     public function index()
     {
-        // 自分が受信者であるスレッドを、関連データと一緒に取得
+        // 自分が受信者または送信者であるスレッドを、関連データと一緒に取得
         $requests = Thread::with(['sender', 'receiver'])
         ->where('receiver_id', Auth::id())->orWhere('sender_id',Auth::id())
         ->get();
