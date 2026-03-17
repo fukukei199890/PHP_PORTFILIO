@@ -39,16 +39,17 @@
                 <p class="mb-3 font-bold">
                     人気商品
                 </p>
+
                 <div class="grid grid-cols-3 gap-4">
                     @foreach($favorite_item as $fav)
-                    @php $favItem = $fav->listedItem; @endphp
+
                     <div class="text-center">
-                        @if($favItem && $favItem->images->isNotEmpty())
-                        <a href="{{ route('goods', $favItem->id) }}">
-                            <img src="{{ asset('storage/'.$favItem->images->first()->image_url) }}"
+                        @if($fav->images->isNotEmpty())
+                        <a href="{{ route('goods', $fav->id) }}">
+                            <img src="{{ asset('storage/'.$fav->images->first()->image_url) }}"
                                 class="border mb-2 w-full aspect-square object-cover rounded-lg">
                         </a>
-                        <p class="text-[10px] leading-tight line-clamp-1">{{ $favItem->series_name }}</p>
+                        <p class="text-[10px] leading-tight line-clamp-1">{{ $fav->series_name }}</p>
                         @endif
                     </div>
                     @endforeach

@@ -6,6 +6,7 @@ use App\Models\ListedItem;
 use App\Models\FavoriteItem;
 
 use Illuminate\Http\Request;
+use League\CommonMark\Extension\CommonMark\Node\Inline\Link;
 
 class TopController extends Controller
 {
@@ -17,11 +18,12 @@ class TopController extends Controller
             ->take(3) // 表示数
             ->get();
 
-        $favorite_item = FavoriteItem::with('listedItem.images')
-            ->latest()
-            ->take(3) // 表示数
+        //お気に入りの表示   
+        $favorite_item = ListedItem::with('images')
+            ->withCount('favoriteItem') // お気に入りテーブルとのリレーション名を指定
+            ->orderBy('favorite_item_count', 'desc') // カウントが多い順
+            ->take(3)
             ->get();
-
         return view('top', compact('items', 'favorite_item'));
     }
 }
