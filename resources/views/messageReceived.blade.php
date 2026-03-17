@@ -1,8 +1,16 @@
 <x-user-layout>
-    {{-- <ul>
+    <ul>
         @foreach (Auth::user()->unreadNotifications as $notification)
-            <li>{{ $notification->sender_name }}からのメッセージがあります</li>
+            <li>
+                <p>{{ $notification->data['sender_name'] }}からのメッセージがあります</p>
+                <form method="post" action="{{ 'messageReceived.read', $notification->id }}">
+                    @csrf
+                    @method('PATCH')
+                    <button type="submit">
+                        確認
+                    </button>
+                </form>
+            </li>
         @endforeach
-    </ul> --}}
-    <h1>a</h1>
+    </ul>
 </x-user-layout>
