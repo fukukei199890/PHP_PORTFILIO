@@ -84,7 +84,17 @@
 
                     {{-- ログイン後 --}}
                     @auth
-                        <span><a href="{{ route('requestSelect') }}">リクエスト</a></span>
+                        @php
+                            $count = Auth::user()
+                                ->notifications()
+                                ->where('type', 'App\Notifications\RequestReceived')
+                                ->count();
+                        @endphp
+                        @if ($count > 0)
+                            <span><a href="{{ route('requestSelect') }}">{{ $count }}</a></span>
+                        @else
+                            <span><a href="{{ route('requestSelect') }}">リクエスト</a></span>
+                        @endif
                     @endauth
 
                     {{-- ログイン前 --}}
