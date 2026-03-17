@@ -190,6 +190,10 @@ Route::get('/request/confirm', function () {
 
 Route::get('/messageReceived',[MessageReceivedController::class,'index'])->name('messageReceived');
 
+// ミドルウェアのルーティング
+Route::middleware('auth')->group(function() {
+    Route::patch('/notifications/{id}/read',[MessageReceivedController::class,'read'])->name('messageReceived.read');
+});
 // --- ここまで ---
 
 //東郷先生記述
