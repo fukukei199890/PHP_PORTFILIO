@@ -25,8 +25,9 @@
         </main>
         <!-- Tailwindが効かなかったのでstyleタグを使用しています -->
         <!-- <footer class="fixed bottom-0 left-0 right-0 w-full bg-white border-t border-gray-200 z-[9999]"> -->
-            <footer style="position: fixed !important; bottom: 0 !important; left: 0; width: 100%; background-color: white;  z-index: 9999;">
-                       <!-- fixed bottom-0 left-0 w-full bg-white border-t border-gray-200 z-50 -->
+        <footer
+            style="position: fixed !important; bottom: 0 !important; left: 0; width: 100%; background-color: white;  z-index: 9999;">
+            <!-- fixed bottom-0 left-0 w-full bg-white border-t border-gray-200 z-50 -->
             <!-- グローバルナビゲーション -->
             <nav class="flex items-center justify-between flex-wrap max-w-md mx-auto">
 
@@ -65,13 +66,7 @@
                     @auth
                         {{-- 通知の数を表示 --}}
                         @if (Auth::user()->unreadNotifications)
-                            @foreach (Auth::user()->unreadNotifications as $notification)
-                                @if ($loop->last)
-                                    <a href="{{ route('messageReceived') }}">
-                                        <p>{{ $loop->iteration }}</p>
-                                    </a>
-                                @endif
-                            @endforeach
+                            <a href="{{ route('messageReceived') }}">{{ Auth::user()->unreadNotifications->count() }}</a>
                         @else
                             <span><a href="{{ route('messageselect') }}">通知なし</a></span>
                         @endif
