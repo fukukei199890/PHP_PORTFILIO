@@ -21,6 +21,7 @@ use App\Http\Controllers\RegistrationCompleteController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\RequestMessageController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ManualController;
 use App\Http\Controllers\MypageBeforeController;
 use App\Http\Controllers\PasswordChangeCompleteController;
 use App\Http\Controllers\PostController;
@@ -202,6 +203,10 @@ Route::get('/request/confirm', function () {
 Route::get('/messageReceived', [MessageReceivedController::class, 'index'])->name('messageReceived');
 
 // --- ここまで ---
+
+
+//マニュアルページ作成
+Route::get('/manual', [ManualController::class, 'index'])->name('manual');
 
 //東郷先生記述
 Route::get('/dashboard', function () {
