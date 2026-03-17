@@ -43,12 +43,12 @@ class ListedItem extends Model
 
     //追記福田お気に入り登録をしているかの判定
 
-    public function favorites()
+    public function favoriteItem()
     {
-        return $this->hasMany(Favoriteitem::class);
+        return $this->hasMany(FavoriteItem::class);
     }
     public function is_favorites_by_auth_user()
     {
-        return $this->favorites()->where('user_id', \Auth::id())->exists();
+        return $this->favoriteItem()->where('user_id', Auth::id())->exists();
     }
 }
