@@ -190,10 +190,6 @@ Route::get('/request/confirm', function () {
 
 Route::get('/messageReceived',[MessageReceivedController::class,'index'])->name('messageReceived');
 
-// ミドルウェアのルーティング
-Route::middleware('auth')->group(function() {
-    Route::patch('/notifications/{id}/read',[MessageReceivedController::class,'read'])->name('messageReceived.read');
-});
 // --- ここまで ---
 
 //東郷先生記述
@@ -205,6 +201,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::patch('/notifications/{id}/read',[MessageReceivedController::class,'read'])->name('messageReceived.read');
 });
 
 require __DIR__ . '/auth.php';
