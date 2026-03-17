@@ -64,7 +64,7 @@ class MessageController extends Controller
         // ここまで通知処理
 
         return redirect()->route('message', ['thread_id' => $validated['thread_id']])
-            ->with('status', 'メッセージを送信しました');
+            ->with('message', 'メッセージを送信しました');
     }
 
     public function complete(Request $request)
