@@ -1,6 +1,6 @@
 <x-user-layout>
 
-    {{-- statusという名前でメッセージが届いていたら表示する --}}
+    <!-- {{-- statusという名前でメッセージが届いていたら表示する --}}
     @if (session('status'))
     <div class="max-w-md mx-auto mt-4 mx-4 px-4 py-3 rounded-xl bg-green-100 border border-green-200 text-green-700 flex items-center gap-2 shadow-sm">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
@@ -8,7 +8,9 @@
         </svg>
         <span class="font-bold text-sm">{{ session('status') }}</span>
     </div>
-    @endif
+    @endif -->
+
+
 
     <div class="pb-10">
 

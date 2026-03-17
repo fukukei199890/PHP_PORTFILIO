@@ -14,7 +14,7 @@ class FavoriteController extends Controller
      */
     public function index()
     {
-        $favorite_items = \App\Models\FavoriteItem::where('user_id', \Auth::id())
+        $favorite_items = \App\Models\FavoriteItem::where('user_id', Auth::id())
             ->with('listedItem.images') // 商品画像も一緒に取得
             ->get();
         return view('favorite', compact('favorite_items'));
@@ -37,7 +37,7 @@ class FavoriteController extends Controller
             ]);
         }
 
-        return back(); // ボタンを押した元のページに戻る
+        return back()->with('message', 'お気に入りに追加しました');
     }
 
     /**
