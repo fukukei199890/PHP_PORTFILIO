@@ -1,13 +1,4 @@
 <x-user-layout>
-    <!DOCTYPE html>
-    <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <title>交換確認画面</title>
-    </head>
 
     <body>
 
@@ -36,7 +27,7 @@
                         <input type="hidden" name="thread_id" value="{{ $thread_id }}">
                         <button type="submit" name="action" value="yes"
                             class="w-40 py-3 bg-blue-500 text-white py-3 rounded-full font-semibold hover:bg-blue-600 border border-white">
-                                はい
+                            はい
                         </button>
 
                     </form>
