@@ -65,10 +65,10 @@
                     {{-- ログイン後 --}}
                     @auth
                         {{-- 通知の数を表示 --}}
-                        @if (Auth::user()->unreadNotifications)
+                        @if (Auth::user()->unreadNotifications and Auth::user()->unreadNotificaions > 0)
                             <a href="{{ route('messageReceived') }}">{{ Auth::user()->unreadNotifications->count() }}</a>
                         @else
-                            <span><a href="{{ route('messageselect') }}">通知なし</a></span>
+                            <span>通知なし</a></span>
                         @endif
                     @endauth
 
