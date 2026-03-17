@@ -20,12 +20,14 @@ class MessageController extends Controller
         $thread_id = $request->input('thread_id') ?? session('current_thread_id');
 
         // スレッドのメッセージの取得
-        $message_data = Message::where('thread_id',$thread_id)->get();
+        $message_data = Message::where('thread_id', $thread_id)
+            ->with('user') //福田追加
+            ->get();
 
-        return view('message',compact([
+        return view('message', compact([
             'thread_id',
             'message_data'
-            ]));
+        ]));
     }
 
     public function create_message(Request $request)
@@ -46,11 +48,11 @@ class MessageController extends Controller
         // 3. 通知処理の追加
         // thread_id から Thread モデルを取得
         $thread = Thread::find($validated['thread_id']);
-    
+
         if ($thread) {
             // 自分ではない方の ID を取得
             $recipientId = ($thread->sender_id === Auth::id()) ? $thread->receiver_id : $thread->sender_id;
-            
+
             // 通知を送る相手を取得
             $recipient = User::find($recipientId);
 
@@ -62,13 +64,13 @@ class MessageController extends Controller
         // ここまで通知処理
 
         return redirect()->route('message', ['thread_id' => $validated['thread_id']])
-                 ->with('status', 'メッセージを送信しました');
+            ->with('status', 'メッセージを送信しました');
     }
 
     public function complete(Request $request)
     {
         $thread_id = $request->input('thread_id') ?? session('current_thread_id');
 
-        return view('exchangecondition',compact('thread_id'));
+        return view('exchangecondition', compact('thread_id'));
     }
 }
