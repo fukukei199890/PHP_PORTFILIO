@@ -73,7 +73,13 @@
                     {{-- ログイン後 --}}
                     @auth
                         {{-- 通知の数を表示 --}}
-                        @if (Auth::user()->unreadNotifications and Auth::user()->unreadNotifications->count() > 0)
+                        @php
+                            $count = Auth::user()
+                                ->unreadNotifications()
+                                ->where('type', 'App\Notifications\MessageReceived')
+                                ->count();
+                        @endphp
+                        @if ($count > 0)
                             <a href="{{ route('messageReceived') }}">{{ Auth::user()->unreadNotifications->count() }}</a>
                         @else
                             <span>通知なし</a></span>
@@ -94,7 +100,7 @@
                     @auth
                         @php
                             $count = Auth::user()
-                                ->notifications()
+                                ->unreadNotifications()
                                 ->where('type', 'App\Notifications\RequestReceived')
                                 ->count();
                         @endphp
