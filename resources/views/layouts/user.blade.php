@@ -13,6 +13,14 @@
 </head>
 
 <body class="font-sans antialiased">
+    @if (session('message'))
+        <div class="max-w-md mx-auto mt-4 px-4">
+            <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-xl relative text-sm font-bold shadow-sm"
+                role="alert">
+                <span class="block sm:inline">{{ session('message') }}</span>
+            </div>
+        </div>
+    @endif
 
 
     <!-- Page Content -->

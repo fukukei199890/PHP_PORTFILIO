@@ -1,4 +1,8 @@
 <x-user-layout>
+    <div class="bg-gray-800 text-white text-[10px] py-2 px-4 rounded-md mb-6 shadow-md flex justify-between items-center">
+        <span>⚠️ 出会い目的・犯罪行為・詐欺は即時アカウント停止対象となります</span>
+        <span class="opacity-70">監視システム稼働中</span>
+    </div>
     <div class="max-w-2xl mx-auto p-4 bg-gray-50 min-h-screen">
         {{-- メッセージ表示エリア --}}
         <div class="bg-white rounded-lg shadow-sm p-6 mb-6">
@@ -15,10 +19,20 @@
                 </div>
                 @else
                 {{-- 相手の投稿（左側） --}}
-                <div class="flex justify-start">
-                    <div class="bg-gray-200 text-gray-800 rounded-2xl px-4 py-2 max-w-xs shadow-sm">
-                        <p class="text-xs text-gray-500 mb-1">ID: {{ $row->user_id }}</p>
-                        <p class="text-sm">{{ $row->message_text }}</p>
+                <div class="flex justify-start items-end space-x-2">
+                    {{-- アイコン画像 --}}
+                    <img src="{{ $row->user->icon_url ?? asset('images/default-icon.png') }}"
+                        alt="icon"
+                        class="w-8 h-8 rounded-full object-cover border border-gray-200">
+
+                    <div>
+                        {{-- 名前（メッセージの上に小さく表示） --}}
+                        <p class="text-xs text-gray-500 ml-1 mb-1">{{ $row->user->name }}</p>
+
+                        {{-- メッセージ --}}
+                        <div class="bg-gray-200 text-gray-800 rounded-2xl px-4 py-2 max-w-xs shadow-sm">
+                            <p class="text-sm">{{ $row->message_text }}</p>
+                        </div>
                     </div>
                 </div>
                 @endif

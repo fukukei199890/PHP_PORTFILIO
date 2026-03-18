@@ -42,6 +42,11 @@
                 サポートと規約
             </p>
 
+            <a href="{{ route('manual') }}" class="flex items-center justify-between py-4 px-4 bg-gray-50 rounded-2xl group hover:bg-gray-100 transition-all">
+                <span class="text-xs font-bold text-gray-600 group-hover:text-gray-900">使い方を見る</span>
+                <i class="fa-solid fa-chevron-right text-[10px] text-gray-300 group-hover:translate-x-1 transition-transform"></i>
+            </a>
+
             <a href="{{ route('agreements') }}" class="flex items-center justify-between py-4 px-4 bg-gray-50 rounded-2xl group hover:bg-gray-100 transition-all">
                 <span class="text-xs font-bold text-gray-600 group-hover:text-gray-900">利用規約</span>
                 <i class="fa-solid fa-chevron-right text-[10px] text-gray-300 group-hover:translate-x-1 transition-transform"></i>

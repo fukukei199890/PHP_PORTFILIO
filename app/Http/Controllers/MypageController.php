@@ -58,6 +58,6 @@ class MypageController extends Controller
             $user->save();
         }
 
-        return back()->with('status', 'アイコンを更新しました！');
+        return back();
     }
 }
