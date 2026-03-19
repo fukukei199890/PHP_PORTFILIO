@@ -25,6 +25,16 @@ class RequestAnswerController extends Controller
             ->where('id', session('current_request_id'))
             ->first();
 
+            // --- 【追加】ここから通知を既読にする処理 ---
+        $notification = Auth::user()->unreadNotifications()
+        ->where('data->requestId', $requestData->id)
+        ->first();
+
+        if ($notification) {
+            $notification->markAsRead();
+        }
+    // --- 【追加】ここまで ---
+
         // リクエスト者のスコア
         $count = 0;
         $total = 0;
@@ -32,6 +42,8 @@ class RequestAnswerController extends Controller
 
         // SQLのAVG関数を使用
         $score = Review::where('reviewed_user_id', $requestData->user_id)->avg('score') ?? 0;
+
+        
 
         return  view(
             'requestanswer',

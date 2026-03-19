@@ -56,6 +56,8 @@ class RequestReceived extends Notification
     public function toArray($notifiable)
     {
         return [
+            // この配列が自動的にJSONに変換され
+            // notificationテーブルのdataに書き込まれる
             'requestId' => $this->requestData->id,
             'sender_id' => $this->requestData->sender_id,
             'sender_name' => $this->requestData->sender_name
