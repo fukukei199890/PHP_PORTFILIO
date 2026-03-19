@@ -16,7 +16,7 @@ class RatingController extends Controller
         $user = User::findOrFail($id);
 
         // 取得した相手の情報を 'user' という名前でViewに渡す ['user' => $user]
-        return view('rating',['user' => $user]);
+        return view('rating', ['user' => $user]);
     }
 
     public function store(Request $request)
@@ -31,12 +31,12 @@ class RatingController extends Controller
                 'integer', // 整数
                 'min:1',
                 'max:5'
-                ], // 星は1〜5の間
+            ], // 星は1〜5の間
             'comment' => [
                 'required', // 空NG
                 'string', // 文字列
                 'max:255'
-                ]     // コメントは空NG、最大255文字
+            ]     // コメントは空NG、最大255文字
         ]);
 
         // 2. データベースに保存
@@ -47,7 +47,7 @@ class RatingController extends Controller
             'score' => $request->rating,   // 星の数
             'review_text' => $request->comment, // コメント
         ]);
-        
+
         // 3. 完了したら評価送信完了画面にいく
         // return view('ratingsubmit');]
         return redirect()->route('ratingsubmit');
