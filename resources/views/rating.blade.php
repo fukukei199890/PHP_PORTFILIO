@@ -17,6 +17,7 @@
             @csrf {{-- Laravelでフォームを送る時はこれが必要 --}}
             {{-- 追加：評価対象のユーザーIDを送信する --}}
             <input type="hidden" name="reviewed_user_id" value="{{ $user->id }}">
+            <input type="hidden" name="thread_id" value="{{ $thread_id }}">
             <input type="hidden" name="rating" id="rating-value" value="0">
             <div class="flex justify-center space-x-2 text-4xl mb-6 cursor-pointer" id="star-group">
                 <i class="far fa-star text-gray-300 star-btn" data-num="1"></i>
