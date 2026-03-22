@@ -39,40 +39,61 @@
 
         <!--検討中中 -->
         <div x-data="{ 
-        active: 0, 
-        bgStyles: [
-            { from: 'from-blue-50', to: 'to-indigo-100/50', dot1: 'bg-purple-200', dot2: 'bg-blue-200' },
-            { from: 'from-pink-50', to: 'to-rose-100/50', dot1: 'bg-orange-200', dot2: 'bg-red-200' },
-            { from: 'from-green-50', to: 'to-emerald-100/50', dot1: 'bg-yellow-200', dot2: 'bg-teal-200' }
-        ]
-     }"
-            x-init="setInterval(() => active = (active + 1) % bgStyles.length, 3000)"
-            class="text-center py-12 px-4 relative overflow-hidden transition-all duration-1000 ease-in-out"
-            :class="bgStyles[active].from + ' ' + bgStyles[active].to">
+    active: 0, 
+    contents: [
+        { 
+            title: 'いらないガチャ、交換しませんか？', 
+            subtitle: 'あなたのダブり、誰かの欲しいかも。',
+            bg: 'bg-blue-50', glow: 'bg-blue-200/50' 
+        },
+        { 
+            title: '欲しかったあのキャラが見つかる', 
+            subtitle: '宮崎市のユーザーと直接手渡しで交換。',
+            bg: 'bg-rose-50', glow: 'bg-rose-200/50' 
+        },
+        { 
+            title: 'お金を使わずにコンプリート', 
+            subtitle: 'ダブりをお宝に変える、新しい仕組み。',
+            bg: 'bg-emerald-50', glow: 'bg-emerald-200/50' 
+        }
+    ]
+}"
+            x-init="setInterval(() => active = (active + 1) % contents.length, 3500)"
+            class="text-center py-8 px-4 relative overflow-hidden transition-colors duration-1000 ease-in-out"
+            :class="contents[active].bg">
 
-            <div class="absolute -top-10 -left-10 w-40 h-40 rounded-full mix-blend-multiply filter blur-xl opacity-70 transition-colors duration-1000"
-                :class="bgStyles[active].dot1"></div>
-            <div class="absolute -bottom-10 -right-10 w-40 h-40 rounded-full mix-blend-multiply filter blur-xl opacity-70 transition-colors duration-1000"
-                :class="bgStyles[active].dot2"></div>
+            <div class="absolute inset-0 flex items-center justify-center">
+                <div class="w-64 h-64 rounded-full filter blur-[80px] transition-colors duration-1000 opacity-60"
+                    :class="contents[active].glow"></div>
+            </div>
 
             <div class="relative z-10 max-w-lg mx-auto">
-                <h1 class="text-base md:text-lg font-semibold tracking-tight text-gray-700 mb-1">
-                    いらないガチャ、交換しませんか？
-                </h1>
-                <p class="text-sm md:text-base text-gray-500 mb-6">
-                    あなたのダブり、誰かの欲しいかも。
-                </p>
+                <div class="h-28 flex flex-col justify-center relative w-full overflow-hidden">
+                    <template x-for="(item, index) in contents" :key="index">
+                        <div x-show="active === index"
+                            x-transition:enter="transition ease-out duration-1000"
+                            x-transition:enter-start="opacity-0 transform translate-x-8"
+                            x-transition:enter-end="opacity-100 transform translate-x-0"
+                            x-transition:leave="transition ease-in duration-500"
+                            x-transition:leave-start="opacity-100 transform translate-x-0"
+                            x-transition:leave-end="opacity-0 transform -translate-x-8"
+                            class="absolute inset-0 flex flex-col justify-center items-center">
 
-                <a href="{{ route('seach') }}">
-                    <button type="submit"
-                        class="px-10 bg-blue-500 text-white py-3 rounded-full font-semibold shadow-lg hover:bg-blue-600 transition-all">
-                        交換を探す
+                            <h1 x-text="item.title" class="text-lg md:text-xl font-bold tracking-tight text-gray-800 mb-2"></h1>
+                            <p x-text="item.subtitle" class="text-sm md:text-base text-gray-600 mb-6"></p>
+                        </div>
+                    </template>
+                </div>
+
+                <a href="{{ route('manual') }}" class="inline-block mt-4">
+                    <button type="button"
+                        class="px-10 bg-blue-500 text-white py-3 rounded-full font-semibold shadow-md hover:bg-blue-600 transition-all hover:shadow-lg active:scale-95">
+                        初めての方はこちら
                     </button>
                 </a>
-
-
             </div>
         </div>
+
         <div class="px-6 mt-8">
             <div class="flex items-center justify-between mb-3 px-1">
                 <h2 class="font-bold text-gray-800 text-base flex items-center gap-1">
