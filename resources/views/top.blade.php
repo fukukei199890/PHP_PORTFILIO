@@ -1,9 +1,22 @@
 <x-user-layout>
     <div class="pb-10 bg-gray-50 min-h-screen">
 
-        <div class="flex justify-between items-center bg-white shadow-sm px-4">
-            <img src="{{ asset('images/logo.png') }}" class="h-16">
-        </div>
+        <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100 px-4 h-16 flex justify-between items-center">
+            <a href="/" class="flex items-center gap-2">
+                <img src="{{ asset('images/logo.png') }}" class="h-10 w-10 object-contain">
+                <p class="text-lg font-bold tracking-tighter text-gray-800">
+                    ガチャトレ
+                </p>
+            </a>
+
+            <div class="flex items-center gap-3">
+                <a href="{{ route('seach') }}" class="p-2 text-gray-500 hover:bg-gray-100 rounded-full transition-all">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </a>
+            </div>
+        </header>
         <!-- 元々の記述 -->
         <!-- <div class="text-center py-12 bg-cover bg-center"
             style="background-image: url('{{ asset('images/toppage.png') }}');">
@@ -33,7 +46,7 @@
             { from: 'from-green-50', to: 'to-emerald-100/50', dot1: 'bg-yellow-200', dot2: 'bg-teal-200' }
         ]
      }"
-            x-init="setInterval(() => active = (active + 1) % bgStyles.length, 5000)"
+            x-init="setInterval(() => active = (active + 1) % bgStyles.length, 3000)"
             class="text-center py-12 px-4 relative overflow-hidden transition-all duration-1000 ease-in-out"
             :class="bgStyles[active].from + ' ' + bgStyles[active].to">
 
@@ -69,7 +82,7 @@
             </div>
 
             <div class="bg-white rounded-[24px] p-4 shadow-sm border border-gray-100">
-                <div class="flex overflow-x-auto gap-4 pb-2 snap-x snap-mandatory scrollbar-hide" style="-ms-overflow-style: none; scrollbar-width: none;">
+                <div class="flex overflow-x-auto gap-4 pb-2 snap-x snap-mandatory">
                     @foreach($favorite_item as $fav)
                     <div class="text-center flex-shrink-0 w-24 snap-start">
                         @if($fav->images->isNotEmpty())
@@ -101,7 +114,7 @@
             </div>
 
             <div class="bg-white rounded-[24px] p-4 shadow-sm border border-gray-100">
-                <div class="flex overflow-x-auto gap-4 pb-2 snap-x snap-mandatory scrollbar-hide" style="-ms-overflow-style: none; scrollbar-width: none;">
+                <div class="flex overflow-x-auto gap-4 pb-2 snap-x snap-mandatory">
                     @foreach($items as $item)
                     <div class="text-center flex-shrink-0 w-24 snap-start">
                         @if($item->images->isNotEmpty())
