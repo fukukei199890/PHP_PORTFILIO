@@ -21,14 +21,20 @@ class SeachController extends Controller
         // $request->inpiut('')
         $validated = $request->validate([
             // 20文字以下に制限
-            'search' => 'required|max:20'
-            'is_opened' => 'boolean'
+            'search_char' => 'nullable | max:20',
+            'search_series' => 'required | max:50',
+            'is_opened' => 'nullable | boolean'
         ]);
-
-        $results = ListedItem::with('images')
-        ->where('char_name','LIKE','%'. $validated['search'] .'%')
-        ->where('is_opend', $validated['is_opened'])
-        ->get();
+            
+            $results = ListedItem::with('images')
+            ->where('series_name','LIKE','%'. $validated['search_series'] .'%')
+            ->when($validated['search_char'], function($query, $seach_char){
+                return $query->where('char_name','LIKE','%'. $seach_char .'%');
+            })->when(isset($validated['is_opend']), function($query) use ($validated){
+                return $query->where('is_opend',$validated['is_opened']);
+            })
+            ->get();
+        
 
         return view('seach', compact('results'));
     }
