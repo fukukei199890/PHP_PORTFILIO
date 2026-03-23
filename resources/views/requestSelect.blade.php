@@ -12,9 +12,8 @@
 
                 <div class="flex justify-between items-start mb-3 border-b border-gray-100 pb-2">
                     <div>
-                        <span class="text-[10px] text-gray-400 block uppercase tracking-wider">Request ID: {{ $row->id }}</span>
                         <p class="font-bold text-gray-900">
-                            <i class="fa-regular fa-user mr-1 text-gray-400"></i>{{ $row->user->name }} さん
+                            <i class="fa-regular fa-user mr-1 text-gray-400"></i>{{ $row->user->name }} さんからのリクエスト
                         </p>
                     </div>
 
@@ -40,7 +39,7 @@
 
                 {{-- 対象アイテム情報 --}}
                 <div class="mb-4">
-                    <p class="text-[11px] text-gray-500 mb-1">出品物</p>
+                    <p class="text-[11px] text-gray-500 mb-1">自分の出品物</p>
                     <div class="bg-gray-50 rounded-lg p-3">
                         <p class="text-sm font-medium text-gray-800">{{ $row->listed_item->series_name }}</p>
                         <p class="text-sm text-gray-600">{{ $row->listed_item->char_name }}</p>
