@@ -68,12 +68,13 @@
                     </button>
                 </form>
 
-                {{-- キャンセルが必要な場合はここをアンコメント --}}
-                {{--
-                <button type="button" class="text-sm text-gray-500 font-medium hover:underline">
-                    今回は見送る
-                </button> 
-                --}}
+                <form method="POST" action="">
+                    @csrf
+                    <input type="hidden" name="action" value="no">
+                    <button type="submit" class="text-sm text-gray-500 hover:text-red-500">
+                        今回は見送る
+                    </button>
+                </form>
             </div>
 
             @else

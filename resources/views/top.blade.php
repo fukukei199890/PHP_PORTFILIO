@@ -5,7 +5,7 @@
             <a href="/" class="flex items-center gap-2">
                 <img src="{{ asset('images/logo.png') }}" class="h-10 w-10 object-contain">
                 <p class="text-lg font-bold tracking-tighter text-gray-800">
-                    ガチャトレ
+                    capsule link
                 </p>
             </a>
 
@@ -159,9 +159,4 @@
 
     </div>
 
-    <style>
-        .scrollbar-hide::-webkit-scrollbar {
-            display: none;
-        }
-    </style>
 </x-user-layout>

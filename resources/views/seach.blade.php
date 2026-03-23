@@ -2,8 +2,8 @@
     <div>
         <form method="post" action="{{ route('search.result') }}">
             @csrf
-            <input type="text" name="search_series" placeholder="シリーズ名：必須"
-                class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8">
+            <input type="text" name="search_series" placeholder="シリーズ名"
+                class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8" required>
             <input type="text" name="search_char" placeholder="キャラクター名"
                 class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8">
             <div>
@@ -17,30 +17,38 @@
                 検索
             </button>
         </form>
-        @isset($results) {{-- $resultsの存在を確認 --}}
-            @if ($results->isEmpty())
-                {{-- $resultsの値が空でないかを確認 --}}
-                <p>検索結果なし</p>
-            @else
-                <div>
-                    @foreach ($results as $row)
-                        <div>
-                            {{-- ブラウザからはpublicフォルダがルートとして扱われる --}}
-                            {{-- null安全演算子 --}}
-                            {{-- 左辺がnullの時プロパティを実行せずnullを返す --}}
-                            <!-- 福田追記 -->
-                            <a href="{{ route('goods', $row->id) }}">
-                                <img class="w-32" src="{{ asset('storage/' . $row->images->first()?->image_url) }}">
-                            </a>
-                            <div>
-                                {{-- ListedItem --}}
-                                <p>series:{{ $row->series_name }}</p>
-                                <p>name:{{ $row->char_name }}</p>
-                            </div>
-                        </div>
-                    @endforeach
+        <hr class="my-8">
+
+        {{-- 検索結果表示エリア --}}
+        @isset($results)
+        @if ($results->isEmpty())
+        <div class="text-center py-10">
+            <p class="text-gray-500 text-lg">該当する商品は見つかりませんでした。</p>
+        </div>
+        @else
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            @foreach ($results as $row)
+            <div class="border rounded-lg overflow-hidden bg-white shadow-sm hover:shadow-md transition shadow-sm">
+                <a href="{{ route('goods', $row->id) }}" class="block">
+                    {{-- 画像の表示 --}}
+                    <div class="aspect-square bg-gray-100 flex items-center justify-center">
+                        @if($row->images->first())
+                        <img class="object-cover w-full h-full" src="{{ asset('storage/' . $row->images->first()->image_url) }}" alt="{{ $row->series_name }}">
+                        @else
+                        <span class="text-gray-400">No Image</span>
+                        @endif
+                    </div>
+                </a>
+                <div class="p-4 text-sm">
+                    <p class="text-gray-500 mb-1">シリーズ</p>
+                    <p class="font-bold text-gray-800 mb-2">{{ $row->series_name }}</p>
+                    <p class="text-gray-500 mb-1">キャラクター</p>
+                    <p class="font-bold text-gray-800">{{ $row->char_name }}</p>
                 </div>
-            @endif
+            </div>
+            @endforeach
+        </div>
+        @endif
         @endisset
     </div>
 </x-user-layout>
