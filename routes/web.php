@@ -105,7 +105,8 @@ Route::post('/messageselect', [MessageSelectController::class, 'start_talk'])->n
 
 
 //交換完了確認ページ
-Route::get('/exchangecondition', [ExchangeConditionController::class, 'index']);
+Route::get('/exchangecondition', [ExchangeConditionController::class, 'index'])->name('exchange');
+Route::post('exchangecondition/complete',[ExchangeConditionController::class,'complete'])->name('exchange.complete');
 
 //  画面遷移のテンプレートとして使ってください
 //ログイン画面

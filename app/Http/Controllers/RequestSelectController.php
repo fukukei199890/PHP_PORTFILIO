@@ -15,6 +15,8 @@ class RequestSelectController extends Controller
         $tradeRequests = TradeRequest::with('listed_item', 'user') // TradeRequestをlisted_itemとuserに対してそれぞれリレーション
             ->whereHas('listed_item', function ($query) { // リレーション先のテーブルに対するwhere句
                 $query->where('user_id', Auth::id()); //listedItemのuser_idがログインユーザーと等しい
+            })->whereHas('listed_item', function ($query){
+                $query->where('is_trading',1);
             })
             ->get();
 

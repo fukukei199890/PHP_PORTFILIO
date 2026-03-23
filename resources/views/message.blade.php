@@ -58,6 +58,7 @@
                     送信
                 </button>
             </form>
+            <p>※送信ボタンを連打するとメッセージを送れない場合があります</p>
 
             {{-- 取引完了ボタン --}}
             <form method="post" action="{{ route('message.complete') }}" class="text-center">

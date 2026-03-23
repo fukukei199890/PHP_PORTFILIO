@@ -30,7 +30,7 @@
 
                     {{-- フォーム --}}
                     <!-- route関数はエイリアス（別名）phpのasみたいなもので指定してそのURLを呼び出す -->
-                    <form method="get" action="{{ route('rating') }}" class="space-y-6">
+                    <form method="post" action="{{ route('exchange.complete') }}" class="space-y-6">
                         @csrf
                         {{-- はい --}}
                         <input type="hidden" name="thread_id" value="{{ $thread_id }}">
