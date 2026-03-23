@@ -38,6 +38,18 @@ class MessageController extends Controller
             'message_text' => 'required|string'
         ]);
 
+        // 連投の制限
+        // 最後に投稿されたメッセージの取得
+        $lastMessage = Message::where('user_id',Auth::user()->id)
+        ->orderBy('created_at','desc') // 作成時の降順に並べ替える
+        ->first(); // 降順の一番上、すなわち最新のメッセージを取得
+
+        if ($lastMessage && $validated['message_text'] === $lastMessage->message_text){
+            // 最新のメッセージと投稿されたメッセージが等しい時
+            return redirect()->back()->with('error','同じメッセージを続けて送信をしないでください。');
+        }
+        // ここまで連投の制限
+
         // メッセージの作成
         $message = Message::create([
             'thread_id' => $validated['thread_id'] ?? session('current_thread_id'),

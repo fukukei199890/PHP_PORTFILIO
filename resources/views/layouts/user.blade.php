@@ -13,11 +13,12 @@
 </head>
 
 <body class="font-sans antialiased">
-    @if (session('message'))
+    @if (session('message') || session('error'))
         <div class="max-w-md mx-auto mt-4 px-4">
-            <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-xl relative text-sm font-bold shadow-sm"
+            {{-- 動的にクラスを切り替え：errorがあれば赤、なければ緑 --}}
+            <div class="{{ session('error') ? 'bg-red-100 border-red-400 text-red-700' : 'bg-green-100 border-green-400 text-green-700' }} border px-4 py-3 rounded-xl relative text-sm font-bold shadow-sm"
                 role="alert">
-                <span class="block sm:inline">{{ session('message') }}</span>
+                <span class="block sm:inline">{{ session('error') ?? session('message') }}</span>
             </div>
         </div>
     @endif
