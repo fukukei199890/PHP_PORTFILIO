@@ -31,7 +31,7 @@
                     <div class="grid grid-cols-1 gap-2">
                         {{-- name="image" が重要 --}}
                         <input type="file" name="image" accept="image/*"
-                            class="border p-2 rounded w-full bg-gray-50">
+                            class="border p-2 rounded w-full bg-gray-50" required>
                     </div>
                 </div>
 

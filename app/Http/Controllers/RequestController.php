@@ -59,16 +59,16 @@ class RequestController extends Controller
 
         // 3. 通知処理の追加
         // 出品物とユーザーをリレーション
-        $listed_item = ListedItem::where('id',session('current_item_id'))->first();
+        $listed_item = ListedItem::where('id', session('current_item_id'))->first();
         // 受信者
         // この場合はリクエスト対象の出品物の出品車
         $recipient = User::find($listed_item->user_id);
-            if ($recipient) {
-                // 通知を実行
-                $recipient->notify(new RequestReceived($tradeRequest));
-            }
+        if ($recipient) {
+            // 通知を実行
+            $recipient->notify(new RequestReceived($tradeRequest));
+        }
         // ここまで通知処理
 
-        return redirect()->route('top')->with('status', 'リクエストを申請しました!');
+        return redirect()->route('top')->with('message', 'リクエストを申請しました!');
     }
 }

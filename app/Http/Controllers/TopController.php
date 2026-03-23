@@ -15,14 +15,14 @@ class TopController extends Controller
     {
         $items = ListedItem::with('images')
             ->latest()
-            ->take(3) // 表示数
+            ->take(10) // 表示数
             ->get();
 
         //お気に入りの表示   
         $favorite_item = ListedItem::with('images')
             ->withCount('favoriteItem') // お気に入りテーブルとのリレーション名を指定
             ->orderBy('favorite_item_count', 'desc') // カウントが多い順
-            ->take(3)
+            ->take(10)
             ->get();
         return view('top', compact('items', 'favorite_item'));
     }
