@@ -91,12 +91,13 @@
                     交換場所
                 </label>
 
-                <select name="exchange_area" class="w-full border rounded px-3 py-2">
-
+                <select name="exchange_area" class="w-full border rounded px-3 py-2 text-gray-700 focus:ring-blue-500 focus:border-blue-500">
+                    <option value="">選択してください</option>
                     <option value="miyazaki_station">宮崎駅</option>
-                    <option value="aeon">イオン</option>
-                    <option value="daie">ダイエー</option>
-
+                    <option value="miyako_city">南宮崎駅・宮交シティ</option>
+                    <option value="aeon">イオンモール宮崎</option>
+                    <option value="carino">カリーノ宮崎（旧ダイエー）</option>
+                    <option value="other">その他（チャットで相談）</option>
                 </select>
 
             </div>

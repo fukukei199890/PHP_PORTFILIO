@@ -51,4 +51,19 @@ class ListedItem extends Model
     {
         return $this->favoriteItem()->where('user_id', Auth::id())->exists();
     }
+
+    //日本語で表示
+    public function getExchangeAreaLabelAttribute()
+    {
+        $areas = [
+            'miyazaki_station' => '宮崎駅',
+            'miyako_city'      => '南宮崎駅・宮交シティ',
+            'aeon'             => 'イオンモール宮崎',
+            'carino'           => 'カリーノ宮崎（旧ダイエー）',
+            'other'            => 'その他（チャットで相談）',
+        ];
+
+        // DBの値が空、もしくはリストにない場合は「未設定」などを返す
+        return $areas[$this->exchange_area] ?? '未設定';
+    }
 }
