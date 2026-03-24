@@ -36,11 +36,13 @@
                         <div class="flex items-center gap-2">
                             <input type="file" name="icon"
                                 class="block w-full text-[10px] text-gray-500
-                                       file:mr-3 file:py-1.5 file:px-3
-                                       file:rounded-full file:border file:border-gray-300
-                                       file:text-[10px] file:font-bold file:bg-white
-                                       file:text-gray-700 hover:file:bg-gray-50" />
-                            <button type="submit" class="shrink-0 bg-gray-900 text-white text-[10px] font-bold px-4 py-2 rounded-full hover:bg-black transition shadow-md">
+                                        file:mr-3 file:px-3 file:py-1.5
+                                        file:rounded-full file:border file:border-gray-300
+                                        file:bg-white file:text-gray-700 file:text-[10px] file:font-bold
+                                        hover:file:bg-gray-50" />
+
+                            <button type="submit"
+                                class="shrink-0 bg-blue-600 text-white text-[10px] font-bold px-4 py-2 rounded-full transition">
                                 更新
                             </button>
                         </div>
@@ -105,12 +107,13 @@
         <div class="mt-12 px-10">
             <form method="POST" action="{{ route('logout') }}">
                 @csrf
-                <button type="submit" class="w-full py-4 text-gray-400 text-sm font-bold hover:text-red-500 transition border border-transparent hover:border-red-100 rounded-full">
+                <button type="submit" class="w-full bg-blue-500 text-white py-3 rounded-xl font-bold text-sm">
 
                     ログアウト
                 </button>
             </form>
         </div>
+        {{-- copyright --}}
 
         <div class="mt-16 text-center text-[10px] text-gray-300">
             <p>© 2026 MyService. All Rights Reserved.</p>

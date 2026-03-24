@@ -1,5 +1,6 @@
 <x-user-layout>
-    <div class="bg-gray-100 flex flex-col justify-between">
+
+    <div class="max-w-md mx-auto min-h-screen bg-gray-50 pb-20">
 
         {{-- メインコンテンツ --}}
         <div class="flex flex-col items-center pt-20 px-6 pb-24">
@@ -43,15 +44,22 @@
                 <p class="text-base text-gray-700 leading-relaxed">
                     条件がマッチするまで<br>そのままお待ちください。
                 </p>
+                {{-- リンク --}}
+
+                <div class="p-4">
+
+                    <a href="{{ route('top') }}">
+                        <button type="submit" class="w-full bg-blue-500 text-white py-3 rounded-xl font-bold text-sm">
+                            ホームに戻る
+                        </button>
+                    </a>
+
+                </div>
             </div>
 
-            {{-- リンク --}}
 
-            <a href="{{ route('top') }}"
-                class="mt-10 text-sky-600 font-medium hover:text-sky-700 hover:underline flex items-center gap-1 transition">
 
-                <span>ホームへ戻る</span>
-            </a>
+
 
         </div>
 

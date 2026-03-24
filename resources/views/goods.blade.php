@@ -75,7 +75,7 @@
 
                 {{-- ログインしていない場合 --}}
                 @guest
-                <a href="{{ route('applicationnot') }}">
+                <a href="{{ route('login') }}">
                     <button class="w-full border border-gray-400 text-gray-500 px-4 py-2 rounded hover:bg-gray-100 transition">
                         ログインして交換を申し込む
                     </button>
@@ -86,7 +86,7 @@
             <div class="p-4">
 
                 <a href="{{ route('top') }}">
-                    <button class="w-full border py-3   'bg-gray-200 text-gray-500' ">
+                    <button type="submit" class="w-full bg-blue-500 text-white py-3 rounded-xl font-bold text-sm">
                         ホームに戻る
                     </button>
                 </a>

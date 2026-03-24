@@ -5,15 +5,21 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     </head>
     <div class="bg-gray-50 flex flex-col items-center justify-center min-h-screen px-6 py-12">
-        <div class="mt-8 pb-4 text-gray-600 font-bold">
+        <div class="mt-8 pb-4 text-gray-600 font-bold flex items-center gap-x-3">
             {{ $user->name ?? 'ゲスト' }} さんの評価
+            <!-- 福田追加 -->
+            <img src="{{ $user->icon_url ?? asset('images/default-icon.png') }}" alt="icon"
+                class="w-12 h-12 rounded-full object-cover border border-gray-200">
         </div>
+
         <div class="text-center">
             <h2 class="text-3xl font-bold mb-4">交換が完了しました！</h2>
         </div>
+
         <!-- 画像挿入 -->
         <!-- <img src="{{ asset('images/hand.png') }}" alt="" class="w-24 h-24 object-contain mb-6 mx-auto"> -->
         <p class="text-base mb-8">{{ $user->name ?? 'ゲスト' }}さんとの交換はどうでしたか？</p>
+
         <form action="{{route('rating.store')}}" method="post" class="flex flex-col items-center text-center">
             @csrf {{-- Laravelでフォームを送る時はこれが必要 --}}
             {{-- 追加：評価対象のユーザーIDを送信する --}}
