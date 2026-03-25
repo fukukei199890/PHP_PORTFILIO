@@ -81,8 +81,8 @@
                             x-transition:leave-end="opacity-0 transform -translate-x-8"
                             class="absolute inset-0 flex flex-col justify-center items-center">
 
-                            <h2 x-text="item.title" class="text-lg md:text-xl font-bold tracking-tight text-gray-800 mb-2"></h2>
-                            <p x-text="item.subtitle" class="text-sm md:text-base text-gray-600 mb-6"></p>
+                            <h2 x-text="item.title" class="text-sm  font-semibold tracking-tight text-gray-800 mb-2"></h2>
+                            <p x-text="item.subtitle" class="text-sm  text-gray-600 mb-6"></p>
                         </div>
                     </template>
                 </div>

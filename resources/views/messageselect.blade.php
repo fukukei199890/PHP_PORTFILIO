@@ -26,7 +26,7 @@
                         </p>
                         <span
                             class="text-[10px] text-gray-400 font-medium px-2 py-0.5 border border-gray-200 rounded-full uppercase">
-                            Matching
+                            マッチング中
                         </span>
                     </div>
 

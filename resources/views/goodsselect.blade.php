@@ -1,65 +1,52 @@
 <x-user-layout>
-    <div class="max-w-md mx-auto bg-white min-h-screen shadow-sm">
+    <div class="max-w-md mx-auto bg-gray-50 min-h-screen p-4">
+
         <form action="{{ route('goodsselect.select') }}" method="POST" enctype="multipart/form-data"
-            class="bg-white p-6 rounded-lg shadow space-y-4">
+            class="bg-white p-6 rounded-2xl shadow-sm space-y-6">
 
             @csrf
-
             <input type="hidden" name="item_id" value="{{ $itemId }}">
 
-            <!-- 見出し -->
-            <h2 class="text-center text-lg py-4 border-b text-gray-900 ">交換に出す商品</h2>
+            <h2 class="text-center text-lg font-bold text-gray-800 pb-4 border-b border-gray-100">
+                交換に出す商品
+            </h2>
 
-            <!-- シリーズ -->
-            <div>
-                <label class="block text-sm mb-1">
-                    シリーズ名
-                </label>
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-gray-400 mb-1 uppercase">シリーズ名</label>
+                    <input type="text" name="series_name" placeholder="ちいかわ お座りぬいぐるみ"
+                        class="w-full border-gray-200 rounded-lg px-3 py-2 focus:ring-blue-500 focus:border-blue-500">
+                </div>
 
-                <input type="text" name="series_name" placeholder="ちいかわ お座りぬいぐるみ" class="w-full border rounded px-3 py-2">
-            </div>
-
-            <!-- キャラ -->
-            <div>
-                <label class="block text-sm mb-1">
-                    キャラ名（必須）
-                </label>
-
-                <input type="text" name="char_name" placeholder="ハチワレ" required
-                    class="w-full border rounded px-3 py-2">
-            </div>
-
-            <!-- 状態 -->
-            <div>
-                <label class="block text-sm mb-2">
-                    商品状態
-                </label>
-
-                <div class="flex items-center gap-6">
-
-                    <label class="flex items-center gap-2">
-                        <input type="radio" name="is_opened" value="0">
-                        未開封
-                    </label>
-
-                    <label class="flex items-center gap-2">
-                        <input type="radio" name="is_opened" value="1">
-                        開封済
-                    </label>
-
+                <div>
+                    <label class="block text-xs font-bold text-gray-400 mb-1 uppercase">キャラ名（必須）</label>
+                    <input type="text" name="char_name" placeholder="ハチワレ" required
+                        class="w-full border-gray-200 rounded-lg px-3 py-2 focus:ring-blue-500 focus:border-blue-500">
                 </div>
             </div>
 
-            <!-- 出品ボタン -->
+            <div>
+                <label class="block text-xs font-bold text-gray-400 mb-2 uppercase">商品状態</label>
+                <div class="flex items-center gap-6 text-gray-600">
+                    <label class="flex items-center gap-2 cursor-pointer">
+                        <input type="radio" name="is_opened" value="0" checked class="text-blue-500 focus:ring-blue-500">
+                        <span class="text-sm">未開封</span>
+                    </label>
+                    <label class="flex items-center gap-2 cursor-pointer">
+                        <input type="radio" name="is_opened" value="1" class="text-blue-500 focus:ring-blue-500">
+                        <span class="text-sm">開封済</span>
+                    </label>
+                </div>
+            </div>
 
-            <div class="pt-8 space-y-4">
+            <div class="pt-6 space-y-3">
                 <button type="submit"
                     class="w-full bg-blue-500 text-white py-4 rounded-xl font-bold hover:bg-blue-600 shadow-md active:scale-[0.98] transition-all">
                     次へ進む
                 </button>
 
                 <button type="button" onclick="history.back()"
-                    class="w-full text-gray-400 text-sm font-medium hover:text-gray-600 transition-colors">
+                    class="w-full text-gray-400 text-sm font-medium hover:text-gray-600 transition-colors py-2">
                     キャンセルして戻る
                 </button>
             </div>

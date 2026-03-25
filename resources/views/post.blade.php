@@ -16,7 +16,7 @@
 
             <!-- 画像 -->
             <div>
-                <label class="block mb-2 font-medium">
+                <label class="block mb-2 font-sm">
                     画像（1〜4枚）<span class="text-red-500 text-xs">※1枚目は必須</span>
                 </label>
                 <div class="grid grid-cols-2 gap-2">

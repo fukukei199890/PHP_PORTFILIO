@@ -1,9 +1,9 @@
 <x-user-layout>
 
-    <div class="max-w-md mx-auto bg-gray-100 min-h-screen">
+    <div class="max-w-md mx-auto bg-gray-50 min-h-screen">
 
 
-        <h2 class="text-center text-lg py-4 border-b text-gray-900 ">商品ページ</h2>
+        <h2 class="text-center text-lg py-4 border-b text-gray-900  ">商品ページ</h2>
 
         <div class="p-4 border-b text-center">
             @if($item->images->first())
@@ -26,7 +26,7 @@
                     alt="{{ $item->user->name }}さんのアイコン"
                     class="w-20 h-20 rounded-full object-cover border-2 border-white shadow-sm bg-gray-200">
             </div>
-            <p class="text-lg font-semibold">出品者:{{ $item->user->name ?? '出品者' }}</p>
+            <p class="text-base font-semibold">出品者:{{ $item->user->name ?? '出品者' }}</p>
         </div>
 
         <div class="p-4 space-y-2">

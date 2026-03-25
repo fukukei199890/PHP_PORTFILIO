@@ -1,9 +1,7 @@
 <x-user-layout>
     <div class="max-w-2xl mx-auto py-8 px-6 text-gray-700">
+        <h2 class="text-center text-lg py-4 border-b text-gray-900 ">プライバシーポリシー</h2>
 
-        <h1 class="text-lg font-black mb-8 text-center text-gray-900 mx-auto w-full pb-2">
-            プライバシーポリシー
-        </h1>
 
         <p class="mb-10 text-xs leading-relaxed text-gray-500">
             当サービス（以下「当社」）は、ユーザーの個人情報の重要性を認識し、
