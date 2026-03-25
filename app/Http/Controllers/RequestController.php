@@ -42,16 +42,17 @@ class RequestController extends Controller
         $path = $request->hasFile('image') ? $request->file('image')->store('requests', 'public') : '';
 
         // 【合体！】以前のデータ($data) ＋ 新しい画像パス ＋ メッセージ をDBへ
-        $tradeRequest = TradeRequest::create([
-            'user_id'        => auth()->id(),
-            'listed_item_id' => session('current_item_id'),
-            'request_series' => $data['current_series_name'],
+        // 同じユーザーから同じ出品物に対してのリクエストがある場合は
+        // 以前の内容を上書きする
+        $tradeRequest = TradeRequest::updateOrCreate([
+            ['user_id'        => auth()->id(),
+            'listed_item_id' => session('current_item_id')],
+            ['request_series' => $data['current_series_name'],
             'request_char'   => $data['current_char_name'],
             'is_opened'      => $data['current_is_opened'],
             'image_url'      => $path,
-
             'request_message'        => $request->input('request_message'),
-            'status'         => 1
+            'status'         => 1]
         ]);
 
         // 用が済んだのでポケット(セッション)を空にする
