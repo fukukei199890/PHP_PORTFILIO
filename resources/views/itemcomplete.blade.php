@@ -38,10 +38,6 @@
                         {{ $item->deleted_at->format('Y/m/d') }} 完了
                     </span>
 
-                    {{-- 削除ボタンの代わりに「完了」ステータスを表示 --}}
-                    <div class="text-[10px] font-bold text-gray-500 bg-gray-100 px-3 py-1 rounded-lg border border-gray-200">
-                        取引完了
-                    </div>
                 </div>
             </div>
         </div>
