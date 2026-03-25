@@ -100,9 +100,8 @@
                     {{-- ログイン後 --}}
                     @auth
                         @php
-                            $count = Auth::user()
-                                ->unreadNotifications()
-                                ->where('type', 'App\Notifications\RequestReceived')
+                            $count = DB::table('trade_requests')
+                                ->where('id', Auth::user()->id)
                                 ->count();
                         @endphp
                         @if ($count > 0)
