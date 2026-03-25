@@ -19,73 +19,28 @@ class GoodsSelectController extends Controller
 
         return view('goodsselect');
     }
-
-    // public function test(Request $request)
-    // {
-
-    //     $currentItemId = session('current_item_id');
-
-
-    //     $path = ''; // 初期値を空文字にする（DBエラー回避）
-
-    //     // HTMLの name="image" と一致させる
-    //     if ($request->hasFile('image')) {
-    //         // storage/app/public/requests フォルダに保存し、そのパスを $path に入れる
-    //         $path = $request->file('image')->store('requests', 'public');
-    //     }
-
-    //     // 2. データベース保存
-    //     $traderequest = TradeRequest::create([
-    //         'listed_item_id' => $currentItemId,
-    //         'request_series' => $request->input('series_name') ?? '',
-    //         'request_char'   => $request->input('char_name'),
-    //         'is_opened'      => $request->input('is_opened', 0),
-    //         'image_url'      => $path, // 保存したパス（成功なら requests/xxx.jpg）を保存
-    //         'user_id'        => Auth::user()->id,
-    //         'status'         => 1
-    //     ]);
-
-    //     // $image = Image::create([
-
-    //     // ]);
-
-
-    //     // $char_name = $request->input('char_name');
-    //     // $series_name = $request->input('series_name');
-    //     // $is_opened = $request->input('is_opened');
-
-    //     // session('キー' => '値') という書き方をします
-    //     // session(['sato_char_name' => $request->input('series_name')]);
-
-    //     // $result = session('sato_char_name');
-
-    //     $result = $traderequest;
-
-
-    //     //福田 既存のlisted itemをセッションで保存している
-    //     $item = ListedItem::findOrFail(session('current_item_id'));
-
-
-    //     return view('goods', compact('item', 'result'));
-    // }
-
-
-    // ...
-
+    
     public function select(Request $request)
     {
-        session([
-            'temp_trade_data' =>
-            [
-                'current_series_name' => $request->input('series_name'),
-                'current_char_name' => $request->input('char_name'),
-                'current_is_opened' => $request->input('is_opened')
-            ]
-        ]);
+    // 1. バリデーション
+    $request->validate([
+        'item_id'   => 'required|exists:listed_items,id', // IDが存在するかチェック
+        'char_name' => 'required|string',
+    ]);
 
-        $result = $request;
+    // 2. データをまとめてセッションに保存
+    session([
+        'temp_trade_data' => [
+            'item_id'             => $request->input('item_id'), // ここで保存！
+            'current_series_name' => $request->input('series_name'),
+            'current_char_name'   => $request->input('char_name'),
+            'current_is_opened'   => $request->input('is_opened'),
+        ]
+    ]);
 
-        // 4. 次の「リクエスト申請ページ（窓口）」へ移動する
-        return view('request', compact('result'));
-    }
+    // viewに渡すデータの作成
+    $result = session('temp_trade_data');
+
+    return view('request', compact('result'));
+}
 }

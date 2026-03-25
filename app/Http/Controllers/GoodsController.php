@@ -25,9 +25,16 @@ class GoodsController extends Controller
 
     public function select(Request $request)
     {
-        // 商品idをセッションに保存する
-        session(['current_item_id' => $request->input('listed_item_id')]);
+        $itemId = $request->input('listed_item_id');
 
-        return view('goodsselect');
+        // 1. 個別のIDとしても保存（念のため）
+        session(['current_item_id' => $itemId]);
+
+        // 2. 次の GoodsSelectController で使う temp_trade_data の土
+        session(['temp_trade_data' => [
+            'item_id' => $itemId
+        ]]);
+
+        return view('goodsselect', compact('itemId'));
     }
 }
