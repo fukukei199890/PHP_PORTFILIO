@@ -71,7 +71,7 @@
             </a>
 
             {{-- 取引完了ボタン --}}
-            <a href="#" class="bg-white border border-gray-900 text-gray-900 text-center py-5 rounded-2xl text-sm font-bold hover:bg-gray-50 transition shadow-sm flex flex-col items-center gap-1">
+            <a href="{{ route('itemcomplete') }}" class="bg-white border border-gray-900 text-gray-900 text-center py-5 rounded-2xl text-sm font-bold hover:bg-gray-50 transition shadow-sm flex flex-col items-center gap-1">
                 <span class="text-xs text-gray-400 font-normal italic"></span>
                 取引完了
             </a>

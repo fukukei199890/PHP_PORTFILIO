@@ -14,6 +14,7 @@ use App\Http\Controllers\ExchangeConditionController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\GoodsController;
 use App\Http\Controllers\GoodsSelectController;
+use App\Http\Controllers\ItemCompleteController;
 use App\Http\Controllers\ListingController;
 use App\Http\Controllers\MessageSelectController;
 use App\Http\Controllers\PasswordChangeController;
@@ -106,7 +107,7 @@ Route::post('/messageselect', [MessageSelectController::class, 'start_talk'])->n
 
 //交換完了確認ページ
 Route::get('/exchangecondition', [ExchangeConditionController::class, 'index'])->name('exchange');
-Route::post('exchangecondition/complete',[ExchangeConditionController::class,'complete'])->name('exchange.complete');
+Route::post('exchangecondition/complete', [ExchangeConditionController::class, 'complete'])->name('exchange.complete');
 
 //  画面遷移のテンプレートとして使ってください
 //ログイン画面
@@ -142,7 +143,7 @@ Route::post('/match', [MatchController::class, 'start_deal'])->name('match.start
 // 交換確認リクエスト画面
 Route::get('/requestanswer', [RequestAnswerController::class, 'index'])->name('requestanswer');
 Route::post('/requestanswer/make_match', [RequestAnswerController::class, 'make_match'])->name('requestanswer.make_match');
-Route::post('/requestanswer/delete', [RequestAnswerController::class,'delete'])->name('requestanswer.delete');
+Route::post('/requestanswer/delete', [RequestAnswerController::class, 'delete'])->name('requestanswer.delete');
 
 //リクエストメッセージ申請ページ作成
 
@@ -209,6 +210,9 @@ Route::get('/messageReceived', [MessageReceivedController::class, 'index'])->nam
 
 //マニュアルページ作成
 Route::get('/manual', [ManualController::class, 'index'])->name('manual');
+
+//取引完了商品表示ページ
+Route::get('/itemcomplete', [ItemCompleteController::class, 'index'])->name('itemcomplete');
 
 //東郷先生記述
 Route::get('/dashboard', function () {
