@@ -87,8 +87,13 @@ class RequestAnswerController extends Controller
                 ->where('sender_id',$requestData->user_id)
                 ->first();
 
-                if(!$current_thread){
-                     $thread = Thread::create([
+                if($current_thread){
+                    // 既にスレッドが存在する場合（過去に取引をしたことがある場合）
+                    // threadのlisted_item_idを現在の取引のものに書き換える
+                    $current_thread->update(['listed_item_id'=>$requestData->listed_item_id]);
+                }else{
+                    // スレッドが存在しないとき
+                    $thread = Thread::create([
                     'sender_id' => $requestData->user_id,
                     'receiver_id' => Auth::user()->id,
                     'listed_item_id' => $requestData->listed_item_id,
