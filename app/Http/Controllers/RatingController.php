@@ -12,19 +12,19 @@ use App\Models\ListedItem;
 
 class RatingController extends Controller
 {
-    public function index(Request $request) 
+    public function index(Request $request)
     {
         // thread_idを取得
         $thread_id = $request->input('thread_id');
 
         // threadsとlisted_itemsをリレーション
         // $thread = Thread::with('user')->where('id',$thread_id);
-        $thread = Thread::findOrFail($thread_id);     
+        $thread = Thread::findOrFail($thread_id);
 
         // 自分のid
         $myId = Auth::id();
 
-            // --- ここで分岐ロジック ---
+        // --- ここで分岐ロジック ---
         if ($thread->sender_id == $myId) {
             // 自分が「出品者」なら、評価する相手は「購入者」
             $receiverId = $thread->receiver_id;
@@ -37,10 +37,10 @@ class RatingController extends Controller
         $user = User::findOrFail($receiverId);
 
         // Viewに渡す
-            return view('rating', [
-                'user' => $user,
-                'thread_id' => $thread_id
-            ]);
+        return view('rating', [
+            'user' => $user,
+            'thread_id' => $thread_id
+        ]);
 
         // 送られてきた $id (相手のユーザーID) で検索
         $user = User::findOrFail($id);
@@ -50,27 +50,28 @@ class RatingController extends Controller
     }
 
     public function store(Request $request)
-    {       
+    {
 
         // 1. バリデーション（入力チェック）
-        $request->validate([
-            'rating' => [
-                'required', // 必須入力
-                'integer', // 整数
-                'min:1',
-                'max:5'
-            ], // 星は1〜5の間
-            'comment' => [
-                'required', // 空NG
-                'string', // 文字列
-                'max:255'
-            ]     // コメントは空NG、最大255文字
+        $request->validate(
+            [
+                'rating' => [
+                    'required', // 必須入力
+                    'integer', // 整数
+                    'min:1',
+                    'max:5'
+                ], // 星は1〜5の間
+                'comment' => [
+                    'required', // 空NG
+                    'string', // 文字列
+                    'max:255'
                 ]     // コメントは空NG、最大255文字
+            ]     // コメントは空NG、最大255文字
 
-        ]);
-        
-            // 変数に代入（existsチェック済みなので安心）
-            $reviewedUserId = $request->reviewed_user_id;
+        );
+
+        // 変数に代入（existsチェック済みなので安心）
+        $reviewedUserId = $request->reviewed_user_id;
 
         // 2. データベースに保存
         // Review::create は「新しいレコードを作る」という意味
