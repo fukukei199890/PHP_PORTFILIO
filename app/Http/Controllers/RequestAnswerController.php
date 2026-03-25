@@ -127,7 +127,9 @@ class RequestAnswerController extends Controller
         // フォーム送信またはセッションからリクエストidの受け取り
         $request_id = $request->input('request_id') ?? session('current_request_id');
 
-        DB::table('trade_requests')->where('id', $request_id)->delete(); // リクエストDBからリクエストを削除
+        
+        $current_request = TradeRequest::where('id',$request_id)->first();
+        $current_request -> delete(); // リクエストDBからリクエストを削除
 
         return redirect()->route('requestSelect')->with('message','リクエストを拒否しました');
     }

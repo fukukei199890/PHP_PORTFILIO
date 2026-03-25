@@ -101,10 +101,12 @@
                     @auth
                         @php
                             $count = DB::table('trade_requests')
-                                // trade_requestsのlisted_item_id と listed_itemsのid を結合
                                 ->join('listed_items', 'trade_requests.listed_item_id', '=', 'listed_items.id')
-                                // その出品物の持ち主が自分であること
                                 ->where('listed_items.user_id', '=', Auth::id())
+                                // リクエストがソフトデリートされていないか
+                                ->whereNull('trade_requests.deleted_at')
+                                // 出品物がソフトデリートされていないか
+                                ->whereNull('listed_items.deleted_at')
                                 ->count();
                         @endphp
                         @if ($count > 0)

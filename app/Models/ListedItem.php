@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class ListedItem extends Model
 {
@@ -66,4 +67,8 @@ class ListedItem extends Model
         // DBの値が空、もしくはリストにない場合は「未設定」などを返す
         return $areas[$this->exchange_area] ?? '未設定';
     }
+
+    // ソフトデリートの導入
+    use SoftDeletes;
+    protected $dates = ['deleted_at'];
 }

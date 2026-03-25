@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Database\Eloquent\SoftDeletes;
 class TradeRequest extends Model
 {
     use HasFactory;
@@ -31,4 +31,8 @@ class TradeRequest extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    // ソフトデリートの導入
+    use SoftDeletes;
+    protected $dates = ['deleted_at'];
 }
