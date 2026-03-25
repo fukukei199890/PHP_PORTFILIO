@@ -1,5 +1,8 @@
 <x-user-layout>
     <div>
+
+        <!-- 見出し -->
+        <h2 class="text-center text-lg py-4 border-b text-gray-900 ">検索する</h2>
         <form method="post" action="{{ route('search.result') }}">
             @csrf
             <input type="text" name="search_series" placeholder="シリーズ名"

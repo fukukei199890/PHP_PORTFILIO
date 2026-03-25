@@ -1,72 +1,68 @@
 <x-user-layout>
+    <div class="max-w-md mx-auto bg-white min-h-screen shadow-sm">
+        <form action="{{ route('goodsselect.select') }}" method="POST" enctype="multipart/form-data"
+            class="bg-white p-6 rounded-lg shadow space-y-4">
 
-    <form action="{{ route('goodsselect.select') }}" method="POST" enctype="multipart/form-data"
-        class="bg-white p-6 rounded-lg shadow space-y-4">
+            @csrf
 
-        @csrf
+            <input type="hidden" name="item_id" value="{{ $itemId }}">
 
-        <input type="hidden" name="item_id" value="{{ $itemId }}">
+            <!-- 見出し -->
+            <h2 class="text-center text-lg py-4 border-b text-gray-900 ">交換に出す商品</h2>
 
-        <!-- タイトル -->
-        <div class="text-center">
-            <h1 class="text-center text-lg py-4 border-b text-gray-900 ">選択する</h1>
-        </div>
-
-
-        <!-- シリーズ -->
-        <div>
-            <label class="block text-sm mb-1">
-                シリーズ名
-            </label>
-
-            <input type="text" name="series_name" placeholder="シリーズ名" class="w-full border rounded px-3 py-2">
-        </div>
-
-        <!-- キャラ -->
-        <div>
-            <label class="block text-sm mb-1">
-                キャラ名（必須）
-            </label>
-
-            <input type="text" name="char_name" placeholder="キャラ名 ※必須" required
-                class="w-full border rounded px-3 py-2">
-        </div>
-
-        <!-- 状態 -->
-        <div>
-            <label class="block text-sm mb-2">
-                商品状態
-            </label>
-
-            <div class="flex items-center gap-6">
-
-                <label class="flex items-center gap-2">
-                    <input type="radio" name="is_opened" value="0">
-                    未開封
+            <!-- シリーズ -->
+            <div>
+                <label class="block text-sm mb-1">
+                    シリーズ名
                 </label>
 
-                <label class="flex items-center gap-2">
-                    <input type="radio" name="is_opened" value="1">
-                    開封済
-                </label>
-
+                <input type="text" name="series_name" placeholder="ちいかわ お座りぬいぐるみ" class="w-full border rounded px-3 py-2">
             </div>
-        </div>
 
-        <!-- 出品ボタン -->
+            <!-- キャラ -->
+            <div>
+                <label class="block text-sm mb-1">
+                    キャラ名（必須）
+                </label>
 
-        <div class="flex justify-end gap-4">
-            <button type="button" onclick="history.back()"
-                class="px-4 py-2 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300 transition">
-                戻る
-            </button>
+                <input type="text" name="char_name" placeholder="ハチワレ" required
+                    class="w-full border rounded px-3 py-2">
+            </div>
 
-            <button type="submit"
-                class="px-6 py-2 bg-indigo-600 text-white font-bold rounded-md hover:bg-indigo-700 transition shadow-sm">
-                リクエスト申請ページに移動
-            </button>
-            </a>
-        </div>
-    </form>
+            <!-- 状態 -->
+            <div>
+                <label class="block text-sm mb-2">
+                    商品状態
+                </label>
 
+                <div class="flex items-center gap-6">
+
+                    <label class="flex items-center gap-2">
+                        <input type="radio" name="is_opened" value="0">
+                        未開封
+                    </label>
+
+                    <label class="flex items-center gap-2">
+                        <input type="radio" name="is_opened" value="1">
+                        開封済
+                    </label>
+
+                </div>
+            </div>
+
+            <!-- 出品ボタン -->
+
+            <div class="pt-8 space-y-4">
+                <button type="submit"
+                    class="w-full bg-blue-500 text-white py-4 rounded-xl font-bold hover:bg-blue-600 shadow-md active:scale-[0.98] transition-all">
+                    次へ進む
+                </button>
+
+                <button type="button" onclick="history.back()"
+                    class="w-full text-gray-400 text-sm font-medium hover:text-gray-600 transition-colors">
+                    キャンセルして戻る
+                </button>
+            </div>
+        </form>
+    </div>
 </x-user-layout>

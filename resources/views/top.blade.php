@@ -4,9 +4,9 @@
         <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100 px-4 h-16 flex justify-between items-center">
             <a href="/" class="flex items-center gap-2">
                 <img src="{{ asset('images/logo.png') }}" class="h-10 w-10 object-contain">
-                <p class="text-lg font-bold tracking-tighter text-gray-800">
+                <h1 class="text-lg font-bold tracking-tighter text-gray-800 tracking-tighter italic uppercase">
                     capsule link
-                </p>
+                </h1>
             </a>
 
             <div class="flex items-center gap-3">
@@ -38,9 +38,11 @@
 
 
         <!--検討中中 -->
-        <div x-data="{ 
-    active: 0, 
-    contents: [
+        <div x-data="
+    { 
+            active: 0, 
+            contents:
+     [
         { 
             title: 'いらないガチャ、交換しませんか？', 
             subtitle: 'あなたのダブり、誰かの欲しいかも。',
@@ -56,8 +58,8 @@
             subtitle: 'ダブりをお宝に変える、新しい仕組み。',
             bg: 'bg-emerald-50', glow: 'bg-emerald-200/50' 
         }
-    ]
-}"
+     ]
+    }"
             x-init="setInterval(() => active = (active + 1) % contents.length, 3500)"
             class="text-center py-8 px-4 relative overflow-hidden transition-colors duration-1000 ease-in-out"
             :class="contents[active].bg">
@@ -79,7 +81,7 @@
                             x-transition:leave-end="opacity-0 transform -translate-x-8"
                             class="absolute inset-0 flex flex-col justify-center items-center">
 
-                            <h1 x-text="item.title" class="text-lg md:text-xl font-bold tracking-tight text-gray-800 mb-2"></h1>
+                            <h2 x-text="item.title" class="text-lg md:text-xl font-bold tracking-tight text-gray-800 mb-2"></h2>
                             <p x-text="item.subtitle" class="text-sm md:text-base text-gray-600 mb-6"></p>
                         </div>
                     </template>
@@ -96,9 +98,9 @@
 
         <div class="px-6 mt-8">
             <div class="flex items-center justify-between mb-3 px-1">
-                <h2 class="font-bold text-gray-800 text-base flex items-center gap-1">
+                <h3 class="font-bold text-gray-800 text-base flex items-center gap-1">
                     <span class="text-orange-500">🔥</span> 人気の商品
-                </h2>
+                </h3>
                 {{-- <a href="#" class="text-xs text-blue-500 font-medium">すべて見る</a> --}}
             </div>
 
@@ -129,9 +131,9 @@
 
         <div class="px-6 mt-8">
             <div class="flex items-center justify-between mb-3 px-1">
-                <h2 class="font-bold text-gray-800 text-base flex items-center gap-1">
+                <h3 class="font-bold text-gray-800 text-base flex items-center gap-1">
                     <span class="text-blue-500">✨</span> 新着の出品
-                </h2>
+                </h3>
             </div>
 
             <div class="bg-white rounded-[24px] p-4 shadow-sm border border-gray-100">

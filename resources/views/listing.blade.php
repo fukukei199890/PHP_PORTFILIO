@@ -1,5 +1,7 @@
 <x-user-layout>
     <div class="grid grid-cols-1 gap-4 px-6 pb-20">
+        <!-- 見出し -->
+        <h2 class="text-center text-lg py-4  ">出品中の商品</h2>
         @forelse($items as $item)
         <div class="bg-white border border-gray-200 rounded-2xl p-4 shadow-sm flex gap-4">
             {{-- 画像表示 --}}

@@ -1,21 +1,20 @@
 <x-user-layout>
+    <div class="max-w-md mx-auto bg-gray-100 min-h-screen">
 
-    <form action="{{ route('post.store') }}"
-        method="POST"
-        enctype="multipart/form-data"
-        class="bg-white p-6 rounded-lg shadow space-y-4">
+        <form action="{{ route('post.store') }}"
+            method="POST"
+            enctype="multipart/form-data"
+            class="bg-white p-6 rounded-lg shadow space-y-4">
 
-        @csrf
+            @csrf
 
-        <!-- タイトル -->
-        <div class="text-center">
-            <h2 class="text-lg font-medium mb-4">出品する</h2>
-        </div>
+            <!-- 各ページ見出し -->
 
-        <!-- 画像 -->
-        <div>
+            <h2 class="text-center text-lg py-4 border-b text-gray-900 ">出品する</h2>
 
 
+
+            <!-- 画像 -->
             <div>
                 <label class="block mb-2 font-medium">
                     画像（1〜4枚）<span class="text-red-500 text-xs">※1枚目は必須</span>
@@ -41,7 +40,7 @@
 
                 <input type="text"
                     name="series_name"
-                    placeholder="シリーズ名"
+                    placeholder="例：ちいかわ お座りぬいぐるみ"
                     class="w-full border rounded px-3 py-2">
 
             </div>
@@ -55,7 +54,7 @@
 
                 <input type="text"
                     name="char_name"
-                    placeholder="キャラ名 ※必須"
+                    placeholder="ちいかわ"
                     required
                     class="w-full border rounded px-3 py-2">
 
@@ -88,7 +87,7 @@
             <div>
 
                 <label class="block text-sm mb-1">
-                    交換場所
+                    主な交換希望場所
                 </label>
 
                 <select name="exchange_area" class="w-full border rounded px-3 py-2 text-gray-700 focus:ring-blue-500 focus:border-blue-500">
@@ -106,14 +105,15 @@
             <div>
 
                 <label class="block text-sm mb-1">
-                    求める商品
+                    探しているキャラ・条件
                 </label>
 
                 <textarea
                     name="request_message"
-                    placeholder="求める商品"
+                    placeholder="例：同シリーズのうさぎを探しています。仕事終わりの18時以降に駅前で交換希望です。"
                     class="w-full border rounded px-3 py-2"
-                    rows="3"></textarea>
+                    rows="3">
+                </textarea>
 
             </div>
 
@@ -126,6 +126,6 @@
 
             </button>
 
-    </form>
-
+        </form>
+    </div>
 </x-user-layout>
