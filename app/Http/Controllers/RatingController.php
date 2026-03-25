@@ -65,24 +65,27 @@ class RatingController extends Controller
                 'string', // 文字列
                 'max:255'
             ]     // コメントは空NG、最大255文字
-                ]     // コメントは空NG、最大255文字
-
-        ]);
+            ]     // コメントは空NG、最大255文字
+        );
         
-            // 変数に代入（existsチェック済みなので安心）
-            $reviewedUserId = $request->reviewed_user_id;
+        // 変数に代入（existsチェック済みなので安心）
+        $reviewedUserId = $request->reviewed_user_id;
 
-        // 2. データベースに保存
-        // Review::create は「新しいレコードを作る」という意味
-        Review::create([
-            'reviewing_user_id' => Auth::user()->id,      // 評価をした人（自分）のID
-            'reviewed_user_id' => $reviewedUserId,    // 評価された人（相手）のID
-            'score' => $request->rating,   // 星の数
-            'review_text' => $request->comment, // コメント
-        ]);
+        // updateOrCreateは存在すればupdate、そうでないならinsert
+        // 第1引数は検索条件。
+        // 存在すれば第２引数でupdate
+        // 存在しなければ、第１引数と第２引数でcreate
+        Review::updateOrCreate(
+        [
+            'reviewing_user_id' => Auth::user()->id,
+            'reviewed_user_id' => $reviewedUserId,
+        ],
+        [
+            'score' => $request->rating,
+            'review_text' => $request->comment,
+        ]
+    );
 
-        // 3. 完了したら評価送信完了画面にいく
-        // return view('ratingsubmit');]
         return redirect()->route('ratingsubmit');
     }
 }
