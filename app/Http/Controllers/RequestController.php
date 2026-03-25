@@ -35,7 +35,7 @@ class RequestController extends Controller
 
         // もしポケットが空っぽならエラー（不正なアクセスやタイムアウト）
         if (!$data) {
-            return redirect()->route('request.store')->with('error', 'やり直してください');
+            return redirect()->route('top')->with('error', 'セッションがタイムアウトしました。最初からやり直してください。');
         }
 
         // ここで初めて届いた画像を保存して、その「住所(パス)」を取得する
@@ -48,13 +48,13 @@ class RequestController extends Controller
             // 第1引数：検索条件
             [
                 'user_id'        => Auth::user()->id,
-                'listed_item_id' => session('current_item_id')
+                'listed_item_id' => $data['item_id']
             ],
             // 第2引数：更新または新規作成時の値
             [
                 'request_series'  => $data['current_series_name'],
                 'request_char'    => $data['current_char_name'],
-                'is_opened'       => $data['current_is_opened'],
+                'is_opened' => (int)($data['current_is_opened'] ?? 0),
                 'image_url'       => $path,
                 'request_message' => $request->input('request_message'),
                 'status'          => 1
@@ -66,13 +66,13 @@ class RequestController extends Controller
 
         // 3. 通知処理の追加
         // 出品物とユーザーをリレーション
-        $listed_item = ListedItem::where('id', session('current_item_id'))->first();
-        // 受信者
-        // この場合はリクエスト対象の出品物の出品車
-        $recipient = User::find($listed_item->user_id);
-        if ($recipient) {
-            // 通知を実行
-            $recipient->notify(new RequestReceived($tradeRequest));
+        $listed_item = ListedItem::find($data['item_id']);
+
+        if ($listed_item) {
+            $recipient = User::find($listed_item->user_id);
+            if ($recipient) {
+                $recipient->notify(new RequestReceived($tradeRequest));
+            }
         }
         // ここまで通知処理
 
