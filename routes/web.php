@@ -141,7 +141,8 @@ Route::post('/match', [MatchController::class, 'start_deal'])->name('match.start
 
 // 交換確認リクエスト画面
 Route::get('/requestanswer', [RequestAnswerController::class, 'index'])->name('requestanswer');
-Route::post('/requestanswer', [RequestAnswerController::class, 'make_match'])->name('requestanswer.make_match');
+Route::post('/requestanswer/make_match', [RequestAnswerController::class, 'make_match'])->name('requestanswer.make_match');
+Route::post('/requestanswer/delete', [RequestAnswerController::class,'delete'])->name('requestanswer.delete');
 
 //リクエストメッセージ申請ページ作成
 
