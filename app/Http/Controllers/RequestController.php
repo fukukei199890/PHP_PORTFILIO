@@ -30,7 +30,7 @@ class RequestController extends Controller
 
     public function store(Request $request)
     {
-        // ポケット(セッション)から以前のデータを取り出す
+        // セッションから以前のデータを取り出す
         $data = session('temp_trade_data');
 
         // もしポケットが空っぽならエラー（不正なアクセスやタイムアウト）
@@ -44,16 +44,22 @@ class RequestController extends Controller
         // 【合体！】以前のデータ($data) ＋ 新しい画像パス ＋ メッセージ をDBへ
         // 同じユーザーから同じ出品物に対してのリクエストがある場合は
         // 以前の内容を上書きする
-        $tradeRequest = TradeRequest::updateOrCreate([
-            ['user_id'        => auth()->id(),
-            'listed_item_id' => session('current_item_id')],
-            ['request_series' => $data['current_series_name'],
-            'request_char'   => $data['current_char_name'],
-            'is_opened'      => $data['current_is_opened'],
-            'image_url'      => $path,
-            'request_message'        => $request->input('request_message'),
-            'status'         => 1]
-        ]);
+        $tradeRequest = TradeRequest::updateOrCreate(
+            // 第1引数：検索条件
+            [
+                'user_id'        => Auth::user()->id,
+                'listed_item_id' => session('current_item_id')
+            ],
+            // 第2引数：更新または新規作成時の値
+            [
+                'request_series'  => $data['current_series_name'],
+                'request_char'    => $data['current_char_name'],
+                'is_opened'       => $data['current_is_opened'],
+                'image_url'       => $path,
+                'request_message' => $request->input('request_message'),
+                'status'          => 1
+            ]
+        );
 
         // 用が済んだのでポケット(セッション)を空にする
         session()->forget('temp_trade_data');

@@ -1,13 +1,11 @@
 <x-user-layout>
 
-    <form action="{{ route('goodsselect.select') }}"
-        method="POST"
-        enctype="multipart/form-data"
+    <form action="{{ route('goodsselect.select') }}" method="POST" enctype="multipart/form-data"
         class="bg-white p-6 rounded-lg shadow space-y-4">
 
         @csrf
 
-
+        <input type="hidden" name="item_id" value="{{ $itemId }}">
 
         <!-- タイトル -->
         <div class="text-center">
@@ -21,10 +19,7 @@
                 シリーズ名
             </label>
 
-            <input type="text"
-                name="series_name"
-                placeholder="シリーズ名"
-                class="w-full border rounded px-3 py-2">
+            <input type="text" name="series_name" placeholder="シリーズ名" class="w-full border rounded px-3 py-2">
         </div>
 
         <!-- キャラ -->
@@ -33,10 +28,7 @@
                 キャラ名（必須）
             </label>
 
-            <input type="text"
-                name="char_name"
-                placeholder="キャラ名 ※必須"
-                required
+            <input type="text" name="char_name" placeholder="キャラ名 ※必須" required
                 class="w-full border rounded px-3 py-2">
         </div>
 
@@ -64,11 +56,13 @@
         <!-- 出品ボタン -->
 
         <div class="flex justify-end gap-4">
-            <button type="button" onclick="history.back()" class="px-4 py-2 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300 transition">
+            <button type="button" onclick="history.back()"
+                class="px-4 py-2 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300 transition">
                 戻る
             </button>
 
-            <button type="submit" class="px-6 py-2 bg-indigo-600 text-white font-bold rounded-md hover:bg-indigo-700 transition shadow-sm">
+            <button type="submit"
+                class="px-6 py-2 bg-indigo-600 text-white font-bold rounded-md hover:bg-indigo-700 transition shadow-sm">
                 リクエスト申請ページに移動
             </button>
             </a>

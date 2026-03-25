@@ -76,15 +76,15 @@ class RatingController extends Controller
         // 存在すれば第２引数でupdate
         // 存在しなければ、第１引数と第２引数でcreate
         Review::updateOrCreate(
-        [
-            'reviewing_user_id' => Auth::user()->id,
-            'reviewed_user_id' => $reviewedUserId,
-        ],
-        [
-            'score' => $request->rating,
-            'review_text' => $request->comment,
-        ]
-    );
+            [
+                'reviewing_user_id' => Auth::user()->id,
+                'reviewed_user_id' => $reviewedUserId,
+            ],
+            [
+                'score' => $request->rating,
+                'review_text' => $request->comment,
+            ]
+        );
 
         return redirect()->route('ratingsubmit');
     }
