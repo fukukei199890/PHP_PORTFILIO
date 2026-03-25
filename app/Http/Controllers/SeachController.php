@@ -28,14 +28,13 @@ class SeachController extends Controller
             
             $results = ListedItem::with('images')
             ->where('series_name','LIKE','%'. $validated['search_series'] .'%')
-            ->when($validated['search_char'], function($query, $seach_char){
+            ->when($validated['search_char'], function($query, $seach_char){ // 第一引数が存在するときのみ、第２引数のメソッドを実行する
                 return $query->where('char_name','LIKE','%'. $seach_char .'%');
-            })->when(isset($validated['is_opend']), function($query) use ($validated){
+            })->when(isset($validated['is_opend']), function($query) use ($validated){ //is_openedはbooleanなのでissetを使わないと存在を判定できない。またissetを通すので変数名が上のように自動で変換されない
                 return $query->where('is_opend',$validated['is_opened']);
             })
             ->get();
         
-
         return view('seach', compact('results'));
     }
 }

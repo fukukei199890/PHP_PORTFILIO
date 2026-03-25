@@ -27,7 +27,7 @@ class RequestAnswerController extends Controller
 
             // --- 【追加】ここから通知を既読にする処理 ---
         $notification = Auth::user()->unreadNotifications()
-        ->where('data->requestId', $requestData->id)
+        ->where('data->requestId', session('current_request_id'))
         ->first();
 
         if ($notification) {
@@ -121,5 +121,14 @@ class RequestAnswerController extends Controller
             report($e);
             return redirect()->back()->with('error', 'マッチング処理中にエラーが発生しました');
         }
+    }
+
+    public function delete(Request $request){
+        // フォーム送信またはセッションからリクエストidの受け取り
+        $request_id = $request->input('request_id') ?? session('current_request_id');
+
+        DB::table('trade_requests')->where('id', $request_id)->delete(); // リクエストDBからリクエストを削除
+
+        return redirect()->route('requestSelect')->with('message','リクエストを拒否しました');
     }
 }
