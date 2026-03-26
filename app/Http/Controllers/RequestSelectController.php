@@ -20,6 +20,9 @@ class RequestSelectController extends Controller
             })
             ->get();
 
-        return view('requestSelect', compact('tradeRequests'));
+        $sendRequests = TradeRequest::with('listed_item.user', 'user')
+            ->where('user_id', Auth::id())->get();
+
+        return view('requestSelect', compact('tradeRequests','sendRequests'));
     }
 }
