@@ -15,6 +15,7 @@ class TopController extends Controller
     public function index()
     {
         $items = ListedItem::with('images')
+            ->where('user_id','!=',Auth::user()->id)
             ->latest()
             ->take(10) // 表示数
             ->get();
