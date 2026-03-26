@@ -23,9 +23,19 @@ class ReviewResource extends Resource
     {
         return $form
             ->schema([
+                Forms\Components\Select::make('raviewing_user_id')
+                    ->label('評価した人')
+                    ->relationship('reviewingUser', 'name') // リレーションから名前を選択
+                    ->searchable()
+                    ->required(),
+                Forms\Components\Select::make('raviewed_user_id')
+                    ->label('評価された人')
+                    ->relationship('reviewedUser', 'name')
+                    ->searchable()
+                    ->required(),
                 Forms\Components\TextInput::make('score')->required()->label('スコア'),
-
-                //
+                Forms\Components\TextInput::make('review_text')->required()->label('コメント'),
+                // 
             ]);
     }
 
@@ -33,7 +43,16 @@ class ReviewResource extends Resource
     {
         return $table
             ->columns([
+                // 「reviewingUser（リレーション）」の「name（ユーザー名）」を出す
+                Tables\Columns\TextColumn::make('reviewingUser.name')
+                    ->label('評価した人')
+                    ->searchable(),
+                // 「reviewedUser（リレーション）」の「name（ユーザー名）」を出す
+                Tables\Columns\TextColumn::make('reviewedUser.name')
+                    ->label('評価された人')
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('score')->label('スコア'),
+                Tables\Columns\TextColumn::make('review_text')->label('コメント'),
                 //
             ])
             ->filters([
