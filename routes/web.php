@@ -132,6 +132,7 @@ Route::get('/message', [MessageController::class, 'index'])->name('message');
 Route::post('/message/send', [MessageController::class, 'create_message'])->name('create_message');
 Route::post('/message/complete', [MessageController::class, 'complete'])->name('message.complete');
 Route::post('/message/edit',[MessageController::class, 'update'])->name('message.update');
+Route::post('/message/delete',[MessageController::class, 'delete'])->name('message.delete');
 
 //ログイン後マイページ
 Route::get('/mypage', [MypageController::class, 'index'])->name('mypage');

@@ -12,8 +12,9 @@
                     @foreach ($message_data as $row)
                         @if ($row->user_id == Auth::user()->id)
                             {{-- 自分の投稿（右側） --}}
-                            <div x-data="{ isEditing: false }">
-                                <template x-if="!isEditing">
+                            <div x-data="{ isEditing: false, isDeleting: false }">
+                                <template x-if="!isEditing && !isDeleting">
+                                    {{-- 通常の表示 --}}
                                     <div class="flex flex-col justify-end">
                                         <div class="bg-blue-500 text-white rounded-2xl px-4 py-2 max-w-xs shadow-sm">
                                             <!-- <p class="text-xs opacity-75 mb-1">あなた</p> -->
@@ -23,11 +24,14 @@
                                             <li>
                                                 <button @click="isEditing = true" type="submit">edit</button>
                                             </li>
-                                            <li class="text-red-500">delete</li>
+                                            <li class="text-red-500">
+                                                <button @click="isDeleting = true" type="submit">delete</button>
+                                            </li>
                                         </ul>
                                     </div>
                                 </template>
                                 <template x-if="isEditing">
+                                    {{-- 編集中の表示 --}}
                                     <div>
                                         <form method="post" action="{{ route('message.update') }}">
                                             @csrf
@@ -36,6 +40,26 @@
                                             <button type="submit">編集完了</button>
                                         </form>
                                         <button @click="isEditing = false" type="submit">編集中止</button>
+                                    </div>
+                                </template>
+                                <template x-if="isDeleting">
+                                    <div class="flex flex-col justify-end">
+                                        <div class="bg-blue-500 text-white rounded-2xl px-4 py-2 max-w-xs shadow-sm">
+                                            <!-- <p class="text-xs opacity-75 mb-1">あなた</p> -->
+                                            <p class="text-sm">{{ $row->message_text }}</p>
+                                        </div>
+                                        <ul class="flex gap-3 text-xs">
+                                            <li class="text-red-500">
+                                                <form method="post" action="{{ route('message.delete') }}">
+                                                    @csrf
+                                                    <input type="hidden" name="messageId" value="{{ $row->id }}">
+                                                    <button type="submit">削除実行</button>
+                                                </form>
+                                            </li>
+                                            <li>
+                                                <button @click="isDeleting = false" type="submit">削除中止</button>
+                                            </li>
+                                        </ul>
                                     </div>
                                 </template>
                             </div>
