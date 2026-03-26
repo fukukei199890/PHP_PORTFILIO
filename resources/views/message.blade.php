@@ -18,30 +18,30 @@
                                     <p class="text-sm">{{ $row->message_text }}</p>
                                 </div>
                                 <ul class="flex gap-3 text-xs">
-                                    <li>edit</li>
+                                    <li>
+                                        <form method="post" action="{{ route('message.update') }}">
+                                            @csrf
+                                            <input type="hidden" name="messageId" value="{{ $row->id }}">
+                                            <button type="submit">edit</button>
+                                        </form>
+                                    </li>
                                     <li class="text-red-500">delete</li>
                                 </ul>
                             </div>
                         @else
                             {{-- 相手の投稿（左側） --}}
-                            <div class="flex flex-col justify-start items-end space-x-2">
+                            <div class="flex justify-start items-end space-x-2">
                                 {{-- アイコン画像 --}}
+                                <img src="{{ $row->user->icon_url ?? asset('images/default-icon.png') }}" alt="icon"
+                                    class="w-8 h-8 rounded-full object-cover border border-gray-200">
                                 <div>
-                                    <img src="{{ $row->user->icon_url ?? asset('images/default-icon.png') }}" alt="icon"
-                                        class="w-8 h-8 rounded-full object-cover border border-gray-200">
-                                    <div>
-                                        {{-- 名前（メッセージの上に小さく表示） --}}
-                                        <p class="text-xs text-gray-500 ml-1 mb-1">{{ $row->user->name }}</p>
-                                        {{-- メッセージ --}}
-                                        <div class="bg-gray-200 text-gray-800 rounded-2xl px-4 py-2 max-w-xs shadow-sm">
-                                            <p class="text-sm">{{ $row->message_text }}</p>
-                                        </div>
+                                    {{-- 名前（メッセージの上に小さく表示） --}}
+                                    <p class="text-xs text-gray-500 ml-1 mb-1">{{ $row->user->name }}</p>
+                                    {{-- メッセージ --}}
+                                    <div class="bg-gray-200 text-gray-800 rounded-2xl px-4 py-2 max-w-xs shadow-sm">
+                                        <p class="text-sm">{{ $row->message_text }}</p>
                                     </div>
                                 </div>
-                                <ul class="flex gap-3 text-xs">
-                                    <li>edit</li>
-                                    <li class="text-red-500">delete</li>
-                                </ul>
                             </div>
                         @endif
                     @endforeach
