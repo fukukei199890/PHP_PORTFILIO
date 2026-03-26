@@ -27,7 +27,7 @@ class UserResource extends Resource
             Forms\Components\TextInput::make('email')->email()->required()->label('メールアドレス'),
             Forms\Components\TextInput::make('icon_url')
                 ->label('アイコン')
-                ->url() // URL形式かチェックしてくれる
+                ->nullable() // 空でもOK
                 ->placeholder('https://example.com/icon.png') // 何も入っていないときの表示
                 // 保存されているURLを使って、その場で画像を表示する
                 ->hint(fn ($state) => $state 
