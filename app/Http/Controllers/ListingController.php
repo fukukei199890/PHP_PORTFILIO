@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\ListedItem;
+use Illuminate\Support\Facades\DB;
 
+use App\Models\TradeRequest;
+use App\Models\ListedItem;
+use App\Models\Thread;
 
 
 class ListingController extends Controller
@@ -28,8 +31,24 @@ class ListingController extends Controller
             abort(403); // 権限がない場合はエラーを返す
         }
 
-        // 削除実行
-        $listedItem->delete();
+        // トランザクション開始
+        DB::transaction(function() use ($listedItem) {
+            // 出品物の削除
+            $listedItem->delete();
+
+            // 関連するリクエストの削除
+            $trade_requests = TradeRequest::where('listed_item_id',$listedItem->id)->get();
+               foreach($trade_requests as $row){
+                $row->delete();
+            }
+
+            // 関連するスレッドの状態をアップデート
+            $thread = Thread::where('listed_item_id',$listedItem->id)->get();
+            foreach($thread as $row){
+                $row->update(['is_matched'=>false]);
+            }
+        });
+        
 
         return redirect()->route('listing')->with('success', '商品を削除しました');
     }

@@ -90,14 +90,17 @@ class RequestAnswerController extends Controller
                 if($current_thread){
                     // 既にスレッドが存在する場合（過去に取引をしたことがある場合）
                     // threadのlisted_item_idを現在の取引のものに書き換える
-                    $current_thread->update(['listed_item_id'=>$requestData->listed_item_id]);
+                    $current_thread->update([
+                        'listed_item_id'=>$requestData->listed_item_id,
+                        'is_matched'=>true
+                        ]);
                 }else{
                     // スレッドが存在しないとき
                     $thread = Thread::create([
                     'sender_id' => $requestData->user_id,
                     'receiver_id' => Auth::user()->id,
                     'listed_item_id' => $requestData->listed_item_id,
-                    'is_matched' => false
+                    'is_matched' => true
                     ]);
                     // current_threadを作成
                     $current_thread = Thread::where('receiver_id',Auth::user()->id)
