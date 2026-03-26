@@ -85,4 +85,36 @@ class MessageController extends Controller
 
         return view('exchangecondition', compact('thread_id'));
     }
+
+    public function update(Request $request)
+    {
+        // ヴァリデーション
+        $validated = $request->validate([
+            'messageId' => 'required|integer|exists:messages,id', //DB上に存在するidか確認
+            'messageText' => 'required|string|Max:256'
+        ]);
+
+        // メッセージの取得
+        $message = Message::where('id', $validated['messageId'])->first();
+
+        // メッセージの編集
+        $message->update(["message_text"=>$validated['messageText']]);
+
+        return redirect()->back()->with('message','メッセージを更新しました');
+    }
+
+    public function delete(Request $request)
+    {
+        $validated = $request->validate([
+            'messageId' => 'required|integer|exists:messages,id', //DB上に存在するidか確認
+        ]);
+
+         // メッセージの取得
+        $message = Message::where('id', $validated['messageId'])->first();
+
+         // メッセージの編集
+        $message->delete();
+
+        return redirect()->back()->with('message','メッセージを削除');
+    }
 }
