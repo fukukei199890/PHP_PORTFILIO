@@ -19,9 +19,8 @@
                 <label class="block mb-2 font-sm">
                     画像（1〜4枚）<span class="text-red-500 text-xs">※1枚目は必須</span>
                 </label>
-                <div class="grid grid-cols-2 gap-2">
-                    <input type="file" name="images[]" accept="image/*" required class="border p-2 rounded">
-
+                <div>
+                    <input type="file" name="images[]" accept="image/*" class="border p-2 rounded" required>
                     <input type="file" name="images[]" accept="image/*" class="border p-2 rounded">
                     <input type="file" name="images[]" accept="image/*" class="border p-2 rounded">
                     <input type="file" name="images[]" accept="image/*" class="border p-2 rounded">
@@ -54,7 +53,7 @@
 
                 <input type="text"
                     name="char_name"
-                    placeholder="ちいかわ"
+                    placeholder="例:ちいかわ"
                     required
                     class="w-full border rounded px-3 py-2">
 
@@ -63,7 +62,7 @@
             <!-- 状態 -->
             <div>
 
-                <label class="block text-sm mb-2">
+                <label class="block text-sm mb-1">
                     商品状態
                 </label>
 

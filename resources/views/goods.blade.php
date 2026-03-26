@@ -33,7 +33,9 @@
 
             <div class="flex justify-between">
                 <p>交換場所</p>
-                <p>{{ $item->exchange_area }}</p>
+                <!-- 日本語表示に変更 -->
+                <p>{{ $item->exchange_area_label }}</p>
+
             </div>
 
             <div class="flex justify-between">
@@ -60,6 +62,7 @@
             <div class="flex justify-between items-center border-b pb-2">
                 <p>求める商品</p>
                 <p>{{ $item->request_message }}</p>
+
             </div>
             <div class="py-4">
                 {{-- ログインしている場合 --}}
