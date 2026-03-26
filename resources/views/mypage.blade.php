@@ -2,7 +2,7 @@
     <div class="max-w-md mx-auto min-h-screen bg-white pb-24">
         {{-- ヘッダー --}}
         <div class="py-6 px-4">
-            <h2 class="text-center text-xl font-bold tracking-widest text-gray-900">マイページ</h2>
+            <h2>マイページ</h2>
         </div>
 
         {{-- プロフィールセクション --}}
