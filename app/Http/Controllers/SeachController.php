@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 use App\Models\ListedItem;
 use App\Models\Image;
 
@@ -27,6 +29,7 @@ class SeachController extends Controller
         ]);
             
             $results = ListedItem::with('images')
+            ->where('user_id','!=',Auth::user()->id)
             ->where('series_name','LIKE','%'. $validated['search_series'] .'%')
             ->when($validated['search_char'], function($query, $seach_char){ // 第一引数が存在するときのみ、第２引数のメソッドを実行する
                 return $query->where('char_name','LIKE','%'. $seach_char .'%');
