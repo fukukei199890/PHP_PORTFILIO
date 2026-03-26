@@ -1,9 +1,8 @@
 <x-user-layout>
     <div class="max-w-md mx-auto min-h-screen bg-gray-50 pb-20">
-        {{-- ヘッダー --}}
-        <div class="bg-white border-b py-4 px-6 mb-2">
-            <h1 class="text-xl font-bold text-gray-900 text-center">メッセージ</h1>
-        </div>
+        <!-- 見出し -->
+        <h2 class="text-center text-lg py-4 border-b text-gray-900 ">メッセージ</h2>
+
 
         <div class="divide-y divide-gray-100">
             @forelse ($requests as $thread)
@@ -12,7 +11,7 @@
 
                 {{-- アイコン代わりのアバター --}}
                 <div
-                    class="shrink-0 w-14 h-14 bg-gray-200 rounded-full flex items-center justify-center border border-gray-100">
+                    class="shrink-0 w-14 h-14 bg-gray-200 rounded-full flex items-center justify-center border border-gray-300">
                     <img src="{{ $thread->sender->icon_url ?: asset('images/default-icon.png') }}"
                         alt="{{ $thread->sender->name }}さんのアイコン"
                         class="w-full h-full rounded-full object-cover border-2 border-white shadow-sm bg-gray-200">
@@ -27,7 +26,7 @@
                         </p>
                         <span
                             class="text-[10px] text-gray-400 font-medium px-2 py-0.5 border border-gray-200 rounded-full uppercase">
-                            Matching
+                            マッチング中
                         </span>
                     </div>
 

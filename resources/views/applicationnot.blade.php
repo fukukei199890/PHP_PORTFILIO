@@ -11,7 +11,7 @@
             <p class="text-gray-400 text-xs mt-2">ログイン後、使用が可能になります。</p>
             {{-- ログインリンク --}}
             <a href="{{ route('login') }}"
-                class="mt-10 text-sky-500 font-medium hover:underline">
+                class="mt-10  font-medium hover:underline">
                 ログインする
             </a>
         </div>

@@ -14,12 +14,13 @@ class FavoriteController extends Controller
      */
     public function index()
     {
-        $favorite_items = \App\Models\FavoriteItem::where('user_id', Auth::id())
-            ->with('listedItem.images') // 商品画像も一緒に取得
+        $favorite_items = FavoriteItem::where('user_id', auth()->id())
+            ->has('listedItem') // 商品（listedItem）が存在するものだけに絞り込む
+            ->with('listedItem.images') // Eager LoadでN+1問題を防止
             ->get();
+
         return view('favorite', compact('favorite_items'));
     }
-
     /**
      * お気に入り登録処理
      */

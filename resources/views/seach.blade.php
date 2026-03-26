@@ -1,5 +1,8 @@
 <x-user-layout>
     <div>
+
+        <!-- 見出し -->
+        <h2 class="text-center text-lg py-4 border-b text-gray-900 ">検索する</h2>
         <form method="post" action="{{ route('search.result') }}">
             @csrf
             <input type="text" name="search_series" placeholder="シリーズ名"
@@ -40,10 +43,10 @@
                     </div>
                 </a>
                 <div class="p-4 text-sm">
-                    <p class="text-gray-500 mb-1">シリーズ</p>
-                    <p class="font-bold text-gray-800 mb-2">{{ $row->series_name }}</p>
-                    <p class="text-gray-500 mb-1">キャラクター</p>
-                    <p class="font-bold text-gray-800">{{ $row->char_name }}</p>
+                    <p class="font-semibold mb-1">シリーズ</p>
+                    <p class=" text-gray-800 mb-1">{{ $row->series_name }}</p>
+                    <p class="font-semibold  mb-1">キャラ名</p>
+                    <p class=" text-gray-800">{{ $row->char_name }}</p>
                 </div>
             </div>
             @endforeach

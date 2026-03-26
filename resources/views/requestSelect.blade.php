@@ -1,9 +1,7 @@
 <x-user-layout>
     <div class="max-w-md mx-auto min-h-screen bg-gray-50 pb-20">
-        {{-- ヘッダー --}}
-        <div class="bg-white border-b py-4 mb-4">
-            <h1 class="text-center text-lg font-bold text-gray-800">届いたリクエスト一覧</h1>
-        </div>
+        <!-- 見出し -->
+        <h2 class="text-center text-lg py-4 border-b text-gray-900 ">届いたリクエスト一覧</h2>
 
         <div class="px-4 space-y-4">
             @foreach ($tradeRequests as $row)

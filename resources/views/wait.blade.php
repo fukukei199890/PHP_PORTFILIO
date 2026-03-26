@@ -1,6 +1,6 @@
 <x-user-layout>
 
-    <div class="max-w-md mx-auto min-h-screen bg-gray-50 pb-20">
+    <div class="max-w-md mx-auto bg-gray-100 min-h-screen">
 
         {{-- メインコンテンツ --}}
         <div class="flex flex-col items-center pt-20 px-6 pb-24">

@@ -1,5 +1,6 @@
 <x-user-layout>
     <div class="max-w-2xl mx-auto p-4">
+        <!-- 見出し -->
         <h2 class="text-xl font-bold text-gray-800 mb-6 text-center">
             通知一覧
         </h2>

@@ -3,13 +3,12 @@
 
         {{-- カード --}}
         <div class="bg-white border border-gray-100 rounded-[40px] w-full p-10 text-center shadow-lg">
+            <h2 class="text-center text-lg py-4  ">交換を完了して<br>よろしいですか?</h2>
 
-            <h2 class="text-2xl font-bold mb-10 leading-relaxed text-gray-800">
-                交換を完了して<br>よろしいですか？
-            </h2>
+
 
             <div class="flex flex-col gap-4 items-center">
-                {{-- はい：実行フォーム --}}
+
                 <form method="POST" action="{{ route('exchange.complete') }}" class="w-full flex justify-center">
                     @csrf
                     <input type="hidden" name="thread_id" value="{{ $thread_id }}">
@@ -21,7 +20,7 @@
 
                 {{-- いいえ：戻るリンク --}}
                 <a href="{{ route('message', ['thread_id' => $thread_id]) }}"
-                    class="w-full max-w-[200px] py-3 bg-white border border-gray-300 text-black font-medium rounded-xl hover:bg-gray-100 transition shadow-sm text-center no-underline inline-block">
+                    class="w-full max-w-[200px] py-3 bg-white border border-gray-300 text-black font-medium rounded-xl">
                     いいえ
                 </a>
 

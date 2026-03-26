@@ -1,8 +1,6 @@
 <x-user-layout>
-    {{-- ページタイトル --}}
-    <h1 class="text-lg font-black mt-4 mb-6 text-center text-gray-900 w-full pb-2 border-b border-gray-100">
-        取引完了した商品
-    </h1>
+    <!-- 見出し -->
+    <h2 class="text-center text-lg py-4  ">取引完了した商品</h2>
 
     <div class="grid grid-cols-1 gap-4 px-6 pb-20">
         @forelse($completedItems as $item)

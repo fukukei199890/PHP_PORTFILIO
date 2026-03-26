@@ -1,18 +1,16 @@
 <x-user-layout>
     <div class="max-w-2xl mx-auto py-8 px-4">
         <div class="bg-white shadow-md rounded-lg p-6 border border-gray-200">
-            <h2 class="text-2xl font-bold text-gray-800 mb-6 border-b pb-2">
-                交換申請
-            </h2>
+            <h2 class="text-center text-lg py-4 border-b text-gray-900 ">交換申請</h2>
 
             <div class="mb-6 p-4 bg-gray-50 rounded-lg border">
                 <p class="text-sm font-bold text-gray-500">申請アイテム情報</p>
                 @isset($result['current_series_name'])
-                    <p class="text-sm text-gray-600">シリーズ名:{{ $result['current_series_name'] }}</p>
+                <p class="text-sm text-gray-600">シリーズ名:{{ $result['current_series_name'] }}</p>
                 @endisset
 
                 @isset($result['current_char_name'])
-                    <p class="text-sm text-gray-600">アイテム名:{{ $result['current_char_name'] }}</p>
+                <p class="text-sm text-gray-600">アイテム名:{{ $result['current_char_name'] }}</p>
                 @endisset
 
                 <p class="text-sm text-gray-600">状態:{{ ($result['current_is_opened'] ?? 0) == 0 ? '未開封' : '開封' }}</p>
@@ -48,11 +46,13 @@
                         placeholder="例：こちらのアイテムと交換をお願いしたいです。よろしくお願いします。" required></textarea>
                 </div>
 
-                <div class="flex justify-end gap-4">
+
+                <div class="pt-8 space-y-4">
                     <button type="submit"
-                        class="px-6 py-2 bg-indigo-600 text-white font-bold rounded-md hover:bg-indigo-700 transition shadow-sm">
+                        class="w-full bg-blue-500 text-white py-4 rounded-xl font-bold hover:bg-blue-600 shadow-md active:scale-[0.98] transition-all">
                         申請を送信する
                     </button>
+
                 </div>
             </form>
             {{-- フォームはここまで --}}

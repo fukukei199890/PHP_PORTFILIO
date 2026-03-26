@@ -1,6 +1,11 @@
 <x-user-layout>
     <div class="max-w-md mx-auto min-h-screen bg-white flex flex-col items-center justify-center px-6">
 
+
+        <!-- 見出し -->
+        <h2 class="text-center text-lg py-4 tracking-tighter italic uppercase">matchしました!</h2>
+
+
         {{-- マッチングアイコン（中央の円） --}}
         <div class="mb-8 flex items-center justify-center">
             <div class="relative flex items-center">
@@ -20,12 +25,6 @@
                         class="w-20 h-20 rounded-full object-cover border-2 border-white shadow-sm bg-gray-200">
                 </div>
             </div>
-        </div>
-
-        {{-- テキストエリア --}}
-        <div class="text-center space-y-2 mb-10">
-            <h1 class="text-2xl font-black text-gray-900 tracking-tighter italic uppercase">Match!</h1>
-            <p class="text-sm text-gray-500 font-medium">条件がマッチしました！</p>
         </div>
 
         {{-- ユーザー名の比較 --}}

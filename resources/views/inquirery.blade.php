@@ -1,7 +1,9 @@
 <x-user-layout>
     <div class="max-w-md mx-auto px-6 py-12 text-gray-800">
-        {{-- タイトル --}}
-        <h1 class="text-xl font-bold mb-8 text-center">お問い合わせ</h1>
+
+        <!-- 見出し -->
+        <h2 class="text-center text-lg py-4 border-b text-gray-900 ">お問い合わせ</h2>
+
 
         {{-- 案内文 --}}
         <div class="text-sm space-y-4 mb-10 leading-relaxed text-gray-600">
