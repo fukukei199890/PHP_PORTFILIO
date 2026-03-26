@@ -12,21 +12,32 @@
                     @foreach ($message_data as $row)
                         @if ($row->user_id == Auth::user()->id)
                             {{-- 自分の投稿（右側） --}}
-                            <div class="flex flex-col justify-end">
-                                <div class="bg-blue-500 text-white rounded-2xl px-4 py-2 max-w-xs shadow-sm">
-                                    <!-- <p class="text-xs opacity-75 mb-1">あなた</p> -->
-                                    <p class="text-sm">{{ $row->message_text }}</p>
-                                </div>
-                                <ul class="flex gap-3 text-xs">
-                                    <li>
+                            <div x-data="{ isEditing: false }">
+                                <template x-if="!isEditing">
+                                    <div class="flex flex-col justify-end">
+                                        <div class="bg-blue-500 text-white rounded-2xl px-4 py-2 max-w-xs shadow-sm">
+                                            <!-- <p class="text-xs opacity-75 mb-1">あなた</p> -->
+                                            <p class="text-sm">{{ $row->message_text }}</p>
+                                        </div>
+                                        <ul class="flex gap-3 text-xs">
+                                            <li>
+                                                <button @click="isEditing = true" type="submit">edit</button>
+                                            </li>
+                                            <li class="text-red-500">delete</li>
+                                        </ul>
+                                    </div>
+                                </template>
+                                <template x-if="isEditing">
+                                    <div>
                                         <form method="post" action="{{ route('message.update') }}">
                                             @csrf
                                             <input type="hidden" name="messageId" value="{{ $row->id }}">
-                                            <button type="submit">edit</button>
+                                            <input type="text" name="messageText" value="{{ $row->message_text }}">
+                                            <button type="submit">編集完了</button>
                                         </form>
-                                    </li>
-                                    <li class="text-red-500">delete</li>
-                                </ul>
+                                        <button @click="isEditing = false" type="submit">編集中止</button>
+                                    </div>
+                                </template>
                             </div>
                         @else
                             {{-- 相手の投稿（左側） --}}
