@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Thread;
 use App\Models\ListedItem;
 use App\Models\TradeRequest;
+use App\Models\Messages;
 
 class ExchangeConditionController extends Controller
 {
@@ -40,6 +41,12 @@ class ExchangeConditionController extends Controller
                     $trade_requests = TradeRequest::where('listed_item_id',$listed_item_id)->get();
                     foreach($trade_requests as $row){
                         $row->delete();
+                    }
+
+                    // 関連スレッドの更新
+                    $thread= Thread::where('listed_item_id', $listed_item_id)->get();
+                    foreach($thread as $row){
+                        $row->update(['is_matched'=>false]);
                     }
                 });
             }
