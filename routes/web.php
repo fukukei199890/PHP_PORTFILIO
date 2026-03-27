@@ -40,7 +40,6 @@ use App\Http\Controllers\TopController;
 use App\Http\Controllers\WaitController;
 use App\Http\Controllers\RequestSelectController;
 use App\Http\Controllers\MessageReceivedController;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -215,6 +214,10 @@ Route::get('/manual', [ManualController::class, 'index'])->name('manual');
 
 //取引完了商品表示ページ
 Route::get('/itemcomplete', [ItemCompleteController::class, 'index'])->name('itemcomplete');
+
+// 佐藤のテストページ
+use App\Http\Controllers\SatoTestController;
+Route::get('/satoTest',[SatoTestController::class,'index'])->name('satoTest');
 
 //東郷先生記述
 Route::get('/dashboard', function () {
