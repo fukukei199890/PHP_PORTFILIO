@@ -10,15 +10,16 @@ use Illuminate\Notifications\Notification;
 class RequestAccepted extends Notification
 {
     use Queueable;
+    protected $requestAcceptData;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($requestAccept)
+    public function __construct($requestAcceptData)
     {
-        $this->requestAcceptData = $requestAccept
+        $this->requestAcceptData = $requestAcceptData;
     }
 
     /**
@@ -55,9 +56,9 @@ class RequestAccepted extends Notification
     public function toArray($notifiable)
     {
         return [
-            'requestId'=>$this->requestAcceptData->id,
-            'senderId'=>$this->requestAcceptData->senderId,
-            'receiverId'=>$this->requestAcceptData->receiverId
+            'requestId'=>$this->requestAcceptData['requestId'],
+            'senderId'=>$this->requestAcceptData['senderId'],
+            'receiverId'=>$this->requestAcceptData['receiverId']
         ];
     }
 }
