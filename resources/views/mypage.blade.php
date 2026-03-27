@@ -1,9 +1,7 @@
 <x-user-layout>
     <div class="max-w-md mx-auto min-h-screen bg-white pb-24">
-        {{-- ヘッダー --}}
-        <div class="py-6 px-4">
-            <h2>マイページ</h2>
-        </div>
+        <!-- 各ページタイトル -->
+        <x-section-title>マイページ</x-section-title>
 
         {{-- プロフィールセクション --}}
         <div class="px-6 mb-8">
@@ -47,7 +45,7 @@
                             </button>
                         </div>
                         @error('icon')
-                            <p class="text-red-500 text-[10px] mt-1 font-bold">{{ $message }}</p>
+                        <p class="text-red-500 text-[10px] mt-1 font-bold">{{ $message }}</p>
                         @enderror
                     </div>
                 </form>

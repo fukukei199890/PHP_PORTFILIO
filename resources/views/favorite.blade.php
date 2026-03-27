@@ -1,5 +1,8 @@
 <x-user-layout>
-    <h1 class="text-lg font-black mb-6 text-center text-gray-900 w-full pb-2">お気に入り商品</h1>
+
+    <!-- 各ページタイトル -->
+    <x-section-title>お気に入り商品</x-section-title>
+
 
     <div class="grid grid-cols-1 gap-4 px-6 pb-20">
         @forelse($favorite_items as $favorite)

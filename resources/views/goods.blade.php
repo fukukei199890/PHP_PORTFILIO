@@ -3,7 +3,9 @@
     <div class="max-w-md mx-auto bg-gray-50 min-h-screen">
 
 
-        <h2 class="text-center text-lg py-4 border-b text-gray-900  ">商品ページ</h2>
+        <!-- 各ページタイトル -->
+        <x-section-title>商品ページ</x-section-title>
+
 
         <div class="p-4 border-b text-center">
             @if($item->images->first())

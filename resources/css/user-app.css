@@ -1,18 +1,4 @@
-a {
-    color: rgb(27, 35, 197) !important;
-}
-/* 
-h2 {
-  
-  font-family: var(--font-mono);
-  
-} */
-
-h2 {
-    font-family: 'Dela Gothic One', sans-serif; /* Google Fonts */
-    display: inline-block;                      /* 傾斜を綺麗に見せるため */
-    transform: rotate(-2deg) skewX(-10deg);     /* 回転と歪みの合わせ技 */
-    background: linear-gradient(120deg, #f6d365 0%, #fda085 100%); /* 背景グラデ */
-    padding: 0.5rem 2rem;
-    color: white;
+footer nav a {
+    color: blue; /* Tailwindの blue-600 相当の色 */
+    text-decoration: none;
 }
