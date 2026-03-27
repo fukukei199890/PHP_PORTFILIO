@@ -9,9 +9,7 @@
             @csrf
 
             <!-- 各ページ見出し -->
-
-            <h2 class="text-center text-lg py-4 border-b text-gray-900 ">出品する</h2>
-
+            <h2 class="text-center text-lg py-4 border-b text-gray-800 ">商品の情報を入力</h2>
 
 
             <!-- 画像 -->
