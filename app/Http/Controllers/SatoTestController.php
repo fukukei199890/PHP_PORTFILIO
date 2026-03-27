@@ -41,12 +41,15 @@ class SatoTestController extends Controller
             // 既読処理
             $notifications->markAsRead();
 
+            // 届いた時間を取得
+            $received_at = $notification->created_at->subSecond();
+
             // スレッドidの取得
             $threadId = Message::where('id',$notification->data['message_id'])->first()->thread_id;
             // セッションに保存
             session(['current_thread_id'=>$threadId]);
 
-            return redirect()->route('message');
+            return redirect()->route('message')->with('received_at',$received_at);
         }
     }
 }
