@@ -27,16 +27,6 @@ class RequestAnswerController extends Controller
             ->where('id', session('current_request_id'))
             ->first();
 
-            // --- 【追加】ここから通知を既読にする処理 ---
-        $notification = Auth::user()->unreadNotifications()
-        ->where('data->requestId', session('current_request_id'))
-        ->first();
-
-        if ($notification) {
-            $notification->markAsRead();
-        }
-    // --- 【追加】ここまで ---
-
         // リクエスト者のスコア
         $count = 0;
         $total = 0;
@@ -44,8 +34,6 @@ class RequestAnswerController extends Controller
 
         // SQLのAVG関数を使用
         $score = Review::where('reviewed_user_id', $requestData->user_id)->avg('score') ?? 0;
-
-        
 
         return  view(
             'requestanswer',
@@ -116,24 +104,16 @@ class RequestAnswerController extends Controller
                 $requestData->save();
                 // ここまでリクエストステータスの書き換え
 
-                // リクエスト承認通知の作成
-                // 通知を受信するユーザーのid
-                $recipientId = $requestData->user_id;
-                // 通知を受信するユーザー
-                $recipient = User::find($recipientId);
-
-                // リクエスト承認通知データの作成
+                // ここから通知処理の追加
                 $requestAcceptData = [
-                    'requestId'=>$requestId,
-                    'senderId'=>Auth::user()->id,
-                    'receiverId'=>$requestData->user_id
+                    'requestId' => $requestData->id,
+                    'senderId' => Auth::user()->id, // 承認した人
+                    'receiverId' => $requestData->user_id // リクエストを送った人（通知を受け取る人）
                 ];
 
-                if($recipient){
-                    // 受信ユーザーが存在
-                    $recipient->notify(new RequestAccepted($requestAcceptData));
-                }
-                // ここまでリクエスト承認通知
+                // リクエスト送信者に対して通知を送る
+                $requestData->user->notify(new RequestAccepted($requestAcceptData));
+                // -------------------------
 
                 // returnは値ひとつしか返せないので連想配列を返す。
                 return [
