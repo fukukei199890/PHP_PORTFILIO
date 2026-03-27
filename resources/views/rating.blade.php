@@ -20,7 +20,7 @@
         <!-- <img src="{{ asset('images/hand.png') }}" alt="" class="w-24 h-24 object-contain mb-6 mx-auto"> -->
         <p class="text-base mb-8">{{ $user->name ?? 'ゲスト' }}さんとの交換はどうでしたか？</p>
 
-        <form action="{{route('rating.store')}}" method="post" class="flex flex-col items-center text-center">
+        <form action="{{ route('rating.store') }}" method="post" class="flex flex-col items-center text-center">
             @csrf {{-- Laravelでフォームを送る時はこれが必要 --}}
             {{-- 追加：評価対象のユーザーIDを送信する --}}
             <input type="hidden" name="reviewed_user_id" value="{{ $user->id }}">
@@ -65,13 +65,11 @@
                 <i class="far fa-star text-gray-300 star-btn"></i>
             </div> -->
             <div class="w-full max-w-sm mb-8 px-4">
-                <textarea
-                    name="comment"
-                    rows="4"
-                    placeholder="（例）大変スムーズな取引でした。また機会があればよろしくお願いいたします。"
+                <textarea name="comment" rows="4" required placeholder="（例）大変スムーズな取引でした。また機会があればよろしくお願いいたします。"
                     class="w-full p-5 bg-gray-50 border border-gray-200 rounded-2xl text-base leading-relaxed focus:outline-none focus:ring-2 focus:ring-gray-200 focus:bg-white transition placeholder-gray-400"></textarea>
             </div>
-            <button class="px-10 bg-blue-500 text-white py-3 rounded-full font-semibold shadow-md hover:bg-blue-600 transition-all hover:shadow-lg active:scale-95">
+            <button
+                class="px-10 bg-blue-500 text-white py-3 rounded-full font-semibold shadow-md hover:bg-blue-600 transition-all hover:shadow-lg active:scale-95">
                 相手を評価する
             </button>
         </form>
