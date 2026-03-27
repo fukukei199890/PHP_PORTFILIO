@@ -23,6 +23,7 @@ class SatoTestController extends Controller
             // 通知が見つからなかったとき
             return redirect()->back()->with('message','通知が見つかりませんでした');
         }
+
         if($notification->type == "App\\Notifications\\MessageReceived"){
             // 通知タイプがメッセージ受け取りの時
             // 送信者のid
@@ -50,6 +51,14 @@ class SatoTestController extends Controller
             session(['current_thread_id'=>$threadId]);
 
             return redirect()->route('message')->with('received_at',$received_at);
+        }elseif($notification->type == "App\\Notifications\\RequestReceived"){
+            // 通知タイプがリクエスト受け取りの時
+            // 新着のリクエスト通知
+            $notifications = Auth::user()
+                ->unreadNotifications->where('type','App\\Notifications\\RequestReceived');
+            // リクエスト確認処理
+            $notifications->markAsRead();
+            return redirect()->route('requestSelect');
         }
     }
 }

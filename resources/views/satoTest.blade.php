@@ -17,13 +17,25 @@
             </li>
         @endforeach
     </ul>
-    {{-- <p>リクエスト承認の通知
+    <p>リクエストの通知</p>
     @php
-        $unreadMessage = Auth::user()->unreadNotifications->where('type', 'App\\Notifications\\RequestAccepted');
+        $unreadRequestReceived = Auth::user()->unreadNotifications->where(
+            'type',
+            'App\\Notifications\\RequestReceived',
+        );
     @endphp
     <ul>
-        @foreach ($unreadRequestAccepted as $row)
-            
+        @foreach ($unreadRequestReceived as $row)
+            <li>
+                <p>{{ $row }}</p>
+                <p>新着のリクエストがあります</p>
+                <form method="post" action="{{ route('satoTest.markAsRead') }}">
+                    @csrf
+                    <input type="hidden" name="notificationId" value="{{ $row->id }}">
+                    <button>確認</button>
+                </form>
+            </li>
         @endforeach
-    </ul> --}}
+    </ul>
+    <p>リクエスト承認の通知</p>
 </x-user-layout>

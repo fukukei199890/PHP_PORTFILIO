@@ -13,6 +13,8 @@ use App\Models\Review;
 use App\Models\ListedItem;
 use App\Models\Thread;
 
+use App\Notifications\RequestAccepted;
+
 class RequestAnswerController extends Controller
 {
     public function index(Request $request)
@@ -113,6 +115,25 @@ class RequestAnswerController extends Controller
                 $requestData->status = false;
                 $requestData->save();
                 // ここまでリクエストステータスの書き換え
+
+                // リクエスト承認通知の作成
+                // 通知を受信するユーザーのid
+                $recipientId = $requestData->user_id;
+                // 通知を受信するユーザー
+                $recipient = User::find($recipientId);
+
+                // リクエスト承認通知データの作成
+                $requestAcceptData = [
+                    'requestId'=>$requestId,
+                    'senderId'=>Auth::user()->id,
+                    'receiverId'=>$requestData->user_id
+                ];
+
+                if($recipient){
+                    // 受信ユーザーが存在
+                    $recipient->notify(new RequestAccepted($requestAcceptData));
+                }
+                // ここまでリクエスト承認通知
 
                 // returnは値ひとつしか返せないので連想配列を返す。
                 return [
