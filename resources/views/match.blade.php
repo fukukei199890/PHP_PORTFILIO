@@ -2,7 +2,7 @@
     <div class="max-w-md mx-auto min-h-screen bg-white flex flex-col items-center justify-center px-6">
 
 
-        <!-- 見出し -->
+        <!-- タイトル -->
         <h2 class="text-center text-lg py-4 tracking-tighter italic uppercase">matchしました!</h2>
 
 

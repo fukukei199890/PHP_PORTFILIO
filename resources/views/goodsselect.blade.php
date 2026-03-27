@@ -7,9 +7,10 @@
             @csrf
             <input type="hidden" name="item_id" value="{{ $itemId }}">
 
-            <h2 class="text-center text-lg font-bold text-gray-800 pb-4 border-b border-gray-100">
-                交換に出す商品
-            </h2>
+
+            <!-- 各ページタイトル -->
+            <x-section-title>交換に出す商品</x-section-title>
+
 
             <div class="space-y-4">
                 <div>
@@ -40,15 +41,15 @@
             </div>
 
             <div class="pt-6 space-y-3">
-                <button type="submit"
-                    class="w-full bg-blue-500 text-white py-4 rounded-xl font-bold hover:bg-blue-600 shadow-md active:scale-[0.98] transition-all">
-                    次へ進む
-                </button>
+                <x-original-button class="w-auto px-10">
+                    次に進む
+                </x-original-button>
 
                 <button type="button" onclick="history.back()"
-                    class="w-full text-gray-400 text-sm font-medium hover:text-gray-600 transition-colors py-2">
+                    class="w-full border border-gray-400 text-gray-500 px-4 py-2 rounded hover:bg-gray-100 transition">
                     キャンセルして戻る
                 </button>
+
             </div>
         </form>
     </div>

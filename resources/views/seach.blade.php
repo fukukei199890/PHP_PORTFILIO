@@ -1,8 +1,8 @@
 <x-user-layout>
     <div>
+        <!-- 各ページタイトル -->
+        <x-section-title>検索する</x-section-title>
 
-        <!-- 見出し -->
-        <h2 class="text-center text-lg py-4 border-b text-gray-900 ">検索する</h2>
         <form method="post" action="{{ route('search.result') }}">
             @csrf
             <input type="text" name="search_series" placeholder="シリーズ名"
@@ -15,10 +15,8 @@
                 <label>未開封</label>
                 <input type="radio" id="not_opend" name="is_opened" value="0">
             </div>
-            <button
-                class="w-full bg-blue-500 text-white py-3 rounded-full font-semibold hover:bg-blue-600 border border-white">
-                検索
-            </button>
+
+            <x-original-button>検索</x-original-button>
         </form>
         <hr class="my-8">
 

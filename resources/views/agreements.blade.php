@@ -1,7 +1,8 @@
 <x-user-layout>
     <div class="max-w-2xl mx-auto py-8 px-6 text-gray-700">
+        <!-- 各ページタイトル -->
+        <x-section-title>利用規約</x-section-title>
 
-        <h2 class="text-center text-lg py-4 border-b text-gray-900 ">利用規約</h2>
 
         <p class="mb-10 text-xs leading-relaxed text-gray-500">
             この利用規約（以下、「本規約」といいます。）は、本サービスの利用条件を定めるものです。

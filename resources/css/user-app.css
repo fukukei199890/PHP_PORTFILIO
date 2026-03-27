@@ -1,0 +1,4 @@
+footer nav a {
+    color: blue; /* Tailwindの blue-600 相当の色 */
+    text-decoration: none;
+}
