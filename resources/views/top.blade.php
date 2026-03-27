@@ -88,10 +88,10 @@
                 </div>
 
                 <a href="{{ route('manual') }}" class="inline-block mt-4">
-                    <button type="button"
-                        class="px-10 bg-blue-500 text-white py-3 rounded-full font-semibold shadow-md hover:bg-blue-600 transition-all hover:shadow-lg active:scale-95">
+
+                    <x-original-button color="emerald" class="w-auto px-10">
                         初めての方はこちら
-                    </button>
+                    </x-original-button>
                 </a>
             </div>
         </div>

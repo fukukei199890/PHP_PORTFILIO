@@ -67,12 +67,12 @@
                 <div class="flex items-center gap-6">
 
                     <label class="flex items-center gap-2">
-                        <input type="radio" name="is_opened" value="0">
+                        <input type="radio" name="is_opened" value="0" required>
                         未開封
                     </label>
 
                     <label class="flex items-center gap-2">
-                        <input type="radio" name="is_opened" value="1">
+                        <input type="radio" name="is_opened" value="1" required>
                         開封済
                     </label>
 
@@ -113,15 +113,8 @@
                 </textarea>
 
             </div>
-
-            <!-- 出品ボタン -->
-            <button
-                type="submit"
-                class="w-full bg-blue-500 text-white py-3 rounded-full font-semibold hover:bg-blue-600">
-
-                出品する
-
-            </button>
+            <!-- 共通化のボタンタグ -->
+            <x-original-button>出品する</x-original-button>
 
         </form>
     </div>

@@ -137,10 +137,9 @@
 
                 <form method="get" action="{{ route('requestanswer') }}">
                     <input type="hidden" name="request_id" value="{{ $row->id }}">
-                    <button type="submit"
-                        class="w-full bg-blue-500 text-white py-3 rounded-xl font-bold text-sm">
+                    <x-original-button class="w-auto px-10">
                         リクエスト詳細を確認する
-                    </button>
+                    </x-original-button>
                 </form>
             </div>
             @endforeach

@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\ListeditemResource\Pages;
 use App\Filament\Resources\ListeditemResource\RelationManagers;
 use App\Models\ListedItem;
+use App\Models\Image;
 use Filament\Forms;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
@@ -24,9 +25,19 @@ class ListeditemResource extends Resource
         return $form
             ->schema([
                 Forms\Components\TextInput::make('user.name')->required()->label('出品者'),
-                Forms\Components\FileUpload::make('image_path') 
-                    ->label('商品画像')
-                    ->image(), // 画像ファイルのみに制限
+                Forms\Components\TextInput::make('image_url')
+                    ->label('出品画像')
+                    ->placeholder('画像URLがここに表示されます')
+                    ->afterStateHydrated(function ($component, $record) {
+                        // 編集画面読み込み時に最初の画像のURLをセットする
+                        $component->state($record?->images->first()?->image_url);
+                    })
+                    ->hint(function ($state) {
+                        return $state 
+                            ? new \Illuminate\Support\HtmlString("<img src='{$state}' style='height:50px; border-radius:50%;'>") 
+                            : null;
+                    })
+                    ->disabled(),
                 Forms\Components\TextInput::make('series_name')->required()->label('シリーズ名'),
                 Forms\Components\TextInput::make('char_name')->required()->label('キャラ名'),
                 // 'char_name',　
@@ -43,13 +54,21 @@ class ListeditemResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('user.name')->label('出品者')->searchable(),
-                // Imagesモデルの画像を表示
-                Tables\Columns\ImageColumn::make('images.file_path') // imagesリレーションのfile_pathカラム
-                    ->label('画像')
-                    ->getStateUsing(fn ($record) => $record
-                    ? new \Illuminate\Support\HtmlString("<img src='{$record}' style='width:40px; height:40px; border-radius:50%; object-cover;'>") 
-                    : 'No Image'
-                    ),
+
+                Tables\Columns\ImageColumn::make('image_url') 
+                    ->label('出品画像')
+                    ->getStateUsing(function ($record) {
+                        // 1. リレーション先の最初の画像データからパスを取得
+                        $path = $record->images->first()?->image_url; 
+
+                        if (!$path) return null;
+
+                        // 2. public/posts/... にあるなら asset() でフルURLにする
+                        // これで https://creative-pair.com/posts/xxx.png になります
+                        return asset('strange/',$path);
+                    })
+                    ->circular()
+                    ->size(40),
                 Tables\Columns\TextColumn::make('series_name')->label('シリーズ名'),
                 Tables\Columns\TextColumn::make('char_name')->label('キャラ名'),
 
