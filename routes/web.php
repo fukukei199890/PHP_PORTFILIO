@@ -218,6 +218,7 @@ Route::get('/itemcomplete', [ItemCompleteController::class, 'index'])->name('ite
 // 佐藤のテストページ
 use App\Http\Controllers\SatoTestController;
 Route::get('/satoTest',[SatoTestController::class,'index'])->name('satoTest');
+Route::post('/satoTest/markAsRead',[SatoTestController::class,'markAsRead'])->name('satoTest.markAsRead');
 
 //東郷先生記述
 Route::get('/dashboard', function () {
