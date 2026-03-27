@@ -107,15 +107,15 @@
                 <i class="fa-solid fa-chevron-right text-xs text-gray-300 group-hover:text-gray-900"></i>
             </a>
         </div>
-
         {{-- ログアウト --}}
         <div class="mt-12 px-10">
             <form method="POST" action="{{ route('logout') }}">
                 @csrf
-                <button type="submit" class="w-full bg-blue-500 text-white py-3 rounded-xl font-bold text-sm">
 
+                <x-original-button color="red" class="w-auto px-10">
                     ログアウト
-                </button>
+                </x-original-button>
+
             </form>
         </div>
         {{-- copyright --}}

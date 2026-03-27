@@ -49,8 +49,8 @@
                 <div class="p-4">
 
                     <a href="{{ route('top') }}">
-                        <button type="submit" class="w-full bg-blue-500 text-white py-3 rounded-xl font-bold text-sm">
-                            ホームに戻る
+                        <button class="w-full border border-gray-400 text-gray-500 px-4 py-2 rounded hover:bg-gray-100 transition">
+                            ホームへ戻る
                         </button>
                     </a>
 

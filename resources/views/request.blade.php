@@ -48,10 +48,9 @@
 
 
                 <div class="pt-8 space-y-4">
-                    <button type="submit"
-                        class="w-full bg-blue-500 text-white py-4 rounded-xl font-bold hover:bg-blue-600 shadow-md active:scale-[0.98] transition-all">
+                    <x-original-button class="w-auto px-10">
                         申請を送信する
-                    </button>
+                    </x-original-button>
 
                 </div>
             </form>
