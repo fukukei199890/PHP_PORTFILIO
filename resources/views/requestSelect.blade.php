@@ -1,7 +1,9 @@
 <x-user-layout>
     <div class="max-w-md mx-auto min-h-screen bg-gray-50 pb-20">
-        <!-- 見出し -->
-        <h2 class="text-center text-lg py-4 border-b text-gray-900 ">申請したリクエスト一覧</h2>
+        <!-- 各ページタイトル -->
+        <x-section-title>申請したリクエスト一覧</x-section-title>
+
+
 
         <div class="px-4 space-y-4">
             @if ($sendRequests->isEmpty())
@@ -68,8 +70,10 @@
         </div>
     </div>
     <div class="max-w-md mx-auto min-h-screen bg-gray-50 pb-20">
+        <!-- 各ページタイトル -->
+        <x-section-title>申請したリクエスト一覧</x-section-title>
         <!-- 見出し -->
-        <h2 class="text-center text-lg py-4 border-b text-gray-900 ">届いたリクエスト一覧</h2>
+        <!-- <h2 class="text-center text-lg py-4 border-b text-gray-900 ">届いたリクエスト一覧</h2> -->
 
         <div class="px-4 space-y-4">
             {{-- リクエストがない場合の表示 --}}

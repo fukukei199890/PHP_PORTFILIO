@@ -1,8 +1,10 @@
 <x-user-layout>
     <div class="max-w-md mx-auto px-6 py-12 text-gray-800">
 
-        <!-- 見出し -->
-        <h2 class="text-center text-lg py-4 border-b text-gray-900 ">お問い合わせ</h2>
+
+        <!-- 各ページタイトル -->
+        <x-section-title>お問い合わせ</x-section-title>
+
 
 
         {{-- 案内文 --}}

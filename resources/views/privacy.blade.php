@@ -1,6 +1,7 @@
 <x-user-layout>
     <div class="max-w-2xl mx-auto py-8 px-6 text-gray-700">
-        <h2 class="text-center text-lg py-4 border-b text-gray-900 ">プライバシーポリシー</h2>
+        <!-- 各ページタイトル -->
+        <x-section-title>プライバシーポリシー</x-section-title>
 
 
         <p class="mb-10 text-xs leading-relaxed text-gray-500">

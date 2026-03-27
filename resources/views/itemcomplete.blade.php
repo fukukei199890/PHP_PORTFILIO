@@ -1,6 +1,8 @@
 <x-user-layout>
-    <!-- 見出し -->
-    <h2 class="text-center text-lg py-4  ">取引完了した商品</h2>
+
+    <!-- 各ページタイトル -->
+    <x-section-title>取引完了した商品</x-section-title>
+
 
     <div class="grid grid-cols-1 gap-4 px-6 pb-20">
         @forelse($completedItems as $item)

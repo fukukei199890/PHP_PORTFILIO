@@ -7,9 +7,10 @@
             @csrf
             <input type="hidden" name="item_id" value="{{ $itemId }}">
 
-            <h2 class="text-center text-lg font-bold text-gray-800 pb-4 border-b border-gray-100">
-                交換に出す商品
-            </h2>
+
+            <!-- 各ページタイトル -->
+            <x-section-title>交換に出す商品</x-section-title>
+
 
             <div class="space-y-4">
                 <div>
