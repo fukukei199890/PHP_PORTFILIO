@@ -11,7 +11,7 @@
             <p class="text-gray-400 text-xs mt-2">ログイン後、使用が可能になります。</p>
 
             <a href="{{ route('login') }}">
-                <x-original-button class="w-auto px-10 mt-10">
+                <x-original-button color="black" class="w-auto px-10 mt-10">
                     ログインする
                 </x-original-button>
             </a>

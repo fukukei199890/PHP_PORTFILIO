@@ -41,7 +41,7 @@
                     {{-- 交換場所などの補足情報 --}}
                     <div class="flex items-center gap-2 text-sm text-gray-500">
                         <i class="fa-solid fa-location-dot text-[12px]"></i>
-                        <p class="truncate">{{ $thread->sender->user_area ?? '場所未指定' }}</p>
+                        <p class="truncate">{{ $thread->sender->exchange_area ?? '場所未指定' }}</p>
                     </div>
 
                     <p class="text-[11px] text-gray-400 mt-1">
@@ -53,9 +53,11 @@
                 <form method="post" action="{{ route('startTalk') }}" class="shrink-0">
                     @csrf
                     <input type="hidden" name="thread_id" value="{{ $thread->id }}">
-                    <button class="px-4 bg-blue-500 text-white py-1 rounded-md font-semibold hover:bg-blue-600">
+
+                    <x-original-button class="w-auto px-10 text-xs font-bold tracking-wider">
                         開く
-                    </button>
+                    </x-original-button>
+
                 </form>
             </div>
             @empty
@@ -63,7 +65,10 @@
             <div class="flex flex-col items-center justify-center pt-32 px-10 text-center">
 
                 <p class="text-gray-500 font-medium">表示できるメッセージがありません</p>
-                <p class="text-gray-400 text-xs mt-2">交換が成立すると、ここにスレッドが表示されます。</p>
+                <a href="{{ route('login') }}">
+                    <x-original-button color="black" class=" px-10 mt-10">
+                        ログインして確認する
+                    </x-original-button>
             </div>
             @endforelse
         </div>

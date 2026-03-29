@@ -24,7 +24,7 @@
         @isset($results)
         @if ($results->isEmpty())
         <div class="text-center py-10">
-            <p class="text-gray-500 text-lg">該当する商品は見つかりませんでした。</p>
+            <p class="text-lg">該当する商品は見つかりませんでした。</p>
         </div>
         @else
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
@@ -40,10 +40,10 @@
                         @endif
                     </div>
                 </a>
-                <div class="p-4 text-sm">
-                    <p class="font-semibold mb-1">シリーズ</p>
+                <div class="p-4 text-sm text-center">
+                    <p class="font-bold mb-1">シリーズ名</p>
                     <p class=" text-gray-800 mb-1">{{ $row->series_name }}</p>
-                    <p class="font-semibold  mb-1">キャラ名</p>
+                    <p class="font-bold  mb-1">キャラ名</p>
                     <p class=" text-gray-800">{{ $row->char_name }}</p>
                 </div>
             </div>
