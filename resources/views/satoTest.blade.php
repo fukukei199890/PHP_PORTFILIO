@@ -38,4 +38,21 @@
         @endforeach
     </ul>
     <p>リクエスト承認の通知</p>
+    @php
+        $unreadRequestAccepted = Auth::user()->unreadNotifications->where(
+            'type',
+            'App\\Notifications\\RequestAccepted',
+        );
+    @endphp
+    @foreach ($unreadRequestAccepted as $row)
+        <li>
+            <p>{{ $row }}</p>
+            <p>リクエストが承認されました</p>
+            <form method="post" action="{{ route('satoTest.markAsRead') }}">
+                @csrf
+                <input type="hidden" name="notificationId" value="{{ $row->id }}">
+                <button>確認</button>
+            </form>
+        </li>
+    @endforeach
 </x-user-layout>

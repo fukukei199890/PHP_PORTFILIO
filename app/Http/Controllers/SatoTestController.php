@@ -59,6 +59,18 @@ class SatoTestController extends Controller
             // リクエスト確認処理
             $notifications->markAsRead();
             return redirect()->route('requestSelect');
+        }elseif($notification->type == "App\\Notifications\\RequestAccepted"){
+            // リクエストのid
+            $requestId = $notification->data['requestId'];
+            // 通知タイプがリクエスト承認の時
+            $notifications = Auth::user()
+                ->unreadNotifications->where('type','App\\Notifications\\RequestAccepted')
+                ->filter(function($n) use ($requestId) {
+                return $n->data['requestId'] == $requestId;
+                });
+            $notifications->markAsRead();
+
+            return redirect()->back()->with('message','通知を確認しました');
         }
     }
 }

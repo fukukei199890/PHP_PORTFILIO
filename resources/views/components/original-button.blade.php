@@ -11,26 +11,27 @@
 
 // 検討中
 $colors = [
-//ボタン
+//出品検索ボタン
 'blue' => 'bg-blue-500 hover:bg-blue-600 text-white',
 
-// メイン：元気なオレンジ（ガチャガチャのワクワク感）
-'orange' => 'bg-orange-500 hover:bg-orange-600 text-white shadow-orange-200',
-
-// サブ：優しいイエロー（お宝を見つけた感）
+// リクエスト周り
 'yellow' => 'bg-yellow-400 hover:bg-yellow-500 text-yellow-900 shadow-yellow-100',
 
-// 成功・進む：上品なエメラルド（交換成立！）
+//マニュアル
 'emerald' => 'bg-emerald-200 text-emerald-300 border border-emerald-200 hover:bg-emerald-100',
 
 // 戻る・キャンセル：四角い枠線
 'outline' => 'border border-gray-300 text-gray-500 hover:bg-gray-50',
 
-// 警告：薄い赤
-'red' => 'bg-red-50 text-red-700 border border-red-200 hover:bg-red-100',
+//ログイン周り
+'black' => 'bg-black hover:bg-gray-800 text-white shadow-gray-200',
+
 ];
+
+//変数に代入
 $colorClass = $colors[$color] ?? $colors['blue'];
 @endphp
+
 
 <button {{ $attributes->merge([
     'type' => 'submit', 
