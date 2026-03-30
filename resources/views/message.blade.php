@@ -88,30 +88,39 @@
         {{-- 4. 入力・ボタンエリア（下部に固定） --}}
         <div class="p-4 border-t bg-white sticky bottom-0 z-20">
             {{-- メッセージ送信 --}}
-            <form method="post" action="{{ route('create_message') }}" class="flex gap-2 mb-4">
-                @csrf
-                <input type="hidden" name="thread_id" value="{{ $thread_id }}">
-                <input type="text" name="message_text" placeholder="メッセージを入力..." required
-                    class="flex-1 bg-gray-50 border border-gray-200 rounded-full px-5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all">
-                <button type="submit"
-                    class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-full text-sm font-bold shadow-md transition-colors active:scale-95">
-                    送信
-                </button>
-            </form>
-            {{-- 完了ボタン --}}
-            <form method="post" action="{{ route('message.complete') }}">
+            <form method="post" action="{{ route('message.complete') }}" class="mt-6 pt-4 border-t-2 border-dashed border-gray-100">
                 @csrf
                 <input type="hidden" name="thread_id" value="{{ $thread_id }}">
 
-                <select
-                    class="flex-1 bg-gray-50 border border-gray-300 text-gray-700 text-sm rounded-xl px-4 py-2.5 focus:ring-2 focus:ring-blue-400 focus:outline-none transition-all"
-                    name="listed_item_id">
-                    @foreach ($trading_items as $row)
-                    <option value="{{ $row->id }}">{{ $row->series_name }}</option>
-                    @endforeach
-                </select>
-                <x-original-button color="emerald" class="w-auto px-10">
-                    取引を完了する
+                <div class="flex flex-col gap-2 mb-3">
+                    <label class="text-[12px] font-bold text-gray-500 ml-1 flex items-center gap-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                        完了する取引アイテムを選択
+                    </label>
+
+                    <div class="relative">
+                        <select
+                            class="w-full bg-gray-50 border border-emerald-200 text-gray-700 text-sm rounded-xl px-4 py-3 focus:ring-2 focus:ring-emerald-400 focus:outline-none appearance-none cursor-pointer transition-all hover:bg-white"
+                            name="listed_item_id">
+                            @foreach ($trading_items as $row)
+                            <option value="{{ $row->id }}">📦 {{ $row->series_name }}</option>
+                            @endforeach
+                        </select>
+                        {{-- カスタム矢印アイコン --}}
+                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-gray-400">
+                            <svg class="fill-current h-4 w-4" viewBox="0 0 20 20">
+                                <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <x-original-button color="emerald" class="w-full py-3 shadow-lg hover:shadow-emerald-100 active:scale-[0.98] transition-all">
+                    <span class="flex items-center justify-center gap-2">
+                        チェックしたアイテムの取引を完了する
+                    </span>
                 </x-original-button>
             </form>
             <p class="text-[16px] text-gray-400 text-center mt-2">※連打に注意してください</p>
