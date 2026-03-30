@@ -55,7 +55,7 @@
                     @csrf
                     <input type="hidden" name="thread_id" value="{{ $thread->id }}">
 
-                    <x-original-button class="w-auto px-10 text-xs font-bold tracking-wider">
+                    <x-original-button color="emerald" class="w-auto px-10 text-xs font-bold tracking-wider">
                         開く
                     </x-original-button>
 
