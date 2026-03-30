@@ -24,10 +24,14 @@ class MessageController extends Controller
             ->with('user') //福田追加
             ->get();
 
-        return view('message', compact([
-            'thread_id',
-            'message_data'
-        ]));
+        // threadに紐づいたアイテムの配列
+        $thread = Thread::with('listed_items')->find($thread_id);
+
+        return view('message', [
+            'thread_id' => $thread_id,
+            'message_data' => $message_data,
+            'trading_items' => $thread->listed_items
+        ]);
     }
 
     public function create_message(Request $request)
@@ -70,7 +74,7 @@ class MessageController extends Controller
 
             if ($recipient) {
                 // 通知を実行
-                $recipient->notify(new MessageReceived($message));
+                    
             }
         }
         // ここまで通知処理
@@ -82,8 +86,9 @@ class MessageController extends Controller
     public function complete(Request $request)
     {
         $thread_id = $request->input('thread_id') ?? session('current_thread_id');
+        $listed_item_id = $request->input('listed_item_id');
 
-        return view('exchangecondition', compact('thread_id'));
+        return view('exchangecondition', compact('thread_id','listed_item_id'));
     }
 
     public function update(Request $request)

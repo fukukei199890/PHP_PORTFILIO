@@ -14,13 +14,13 @@ class Thread extends Model
         // 書き込みを許可するカラム
         'sender_id',
         'receiver_id',
-        'listed_item_id',
+        'listed_item_id', //不要なので後で消す
         'is_matched'
     ];
 
-    public function listed_item()
+    public function listed_items()
     {
-        return $this->belongsTo(ListedItem::class);
+        return $this->belongsToMany(ListedItem::class); //多対多の関係に変更
     }
 
     public function sender()
