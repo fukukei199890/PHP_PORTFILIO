@@ -52,7 +52,7 @@
                 <input type="hidden" name="request_id" value="{{ $requestData->id }}">
                 <input type="hidden" name="thread_id" value="{{ $current_thread->id }}">
 
-                <x-original-button color="yellow" class="w-auto px-10">
+                <x-original-button color="emerald" class="w-auto px-10">
                     取引を開始する
                 </x-original-button>
             </form>

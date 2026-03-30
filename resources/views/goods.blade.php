@@ -1,10 +1,11 @@
 <x-user-layout>
+    <x-section-title>商品ページ</x-section-title>
 
     <div class="max-w-md mx-auto bg-gray-50 min-h-screen">
 
 
         <!-- 各ページタイトル -->
-        <x-section-title>商品ページ</x-section-title>
+
 
 
         <div class="p-4 border-b text-center">
