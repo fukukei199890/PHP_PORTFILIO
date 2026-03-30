@@ -38,30 +38,37 @@
 
 
         <!--検討中中 -->
-        <div x-data="
+        <div x-data="{ 
+    active: 0, 
+   contents: [
     { 
-            active: 0, 
-            contents:
-     [
-        { 
-            title: 'いらないガチャ、交換しませんか？', 
-            subtitle: 'あなたのダブり、誰かの欲しいかも。',
-            bg: 'bg-blue-50', glow: 'bg-blue-200/50' 
-        },
-        { 
-            title: '欲しかったあのキャラが見つかる', 
-            subtitle: '宮崎市のユーザーと直接手渡しで交換。',
-            bg: 'bg-rose-50', glow: 'bg-rose-200/50' 
-        },
-        { 
-            title: 'お金を使わずにコンプリート', 
-            subtitle: 'ダブりをお宝に変える、新しい仕組み。',
-            bg: 'bg-emerald-50', glow: 'bg-emerald-200/50' 
-        }
-     ]
-    }"
+        title: 'いらないガチャ、交換しませんか？', 
+        subtitle: 'あなたのダブり、誰かの欲しいかも。',
+        // エメラルドボタンに合わせて、少しミント系の爽やかな背景
+        bg: 'bg-emerald-50', 
+        glow: 'bg-emerald-200/40',
+        btnText: '使い方を見る', btnColor: 'emerald', btnRoute: '{{ route('manual') }}'
+    },
+    { 
+        title: '欲しかったあのキャラが見つかる', 
+        subtitle: '宮崎市のユーザーと直接手渡しで交換。',
+        // ブルーのボタンに合わせて、少し柔らかい空色の背景
+        bg: 'bg-blue-50', 
+        glow: 'bg-blue-200/40',
+        btnText: '商品を探しに行く', btnColor: 'blue', btnRoute: '{{ route('seach') }}'
+    },
+    { 
+        title: 'まずはログインして出品しよう', 
+        subtitle: '登録するとお気に入り機能が使えます。',
+        // 黒ボタンを浮かび上がらせるため、温かみのあるベージュグレー
+        bg: 'bg-slate-100', 
+        glow: 'bg-slate-300/50', 
+        btnText: 'ログインはこちら', btnColor: 'black', btnRoute: '{{ route('login') }}'
+    }
+    ]
+                        }"
             x-init="setInterval(() => active = (active + 1) % contents.length, 3500)"
-            class="text-center py-8 px-4 relative overflow-hidden transition-colors duration-1000 ease-in-out"
+            class="text-center py-8 px-4 relative overflow-hidden transition-colors duration-1000 ease-in-out h-[220px]"
             :class="contents[active].bg">
 
             <div class="absolute inset-0 flex items-center justify-center">
@@ -69,37 +76,39 @@
                     :class="contents[active].glow"></div>
             </div>
 
-            <div class="relative z-10 max-w-lg mx-auto">
-                <div class="h-28 flex flex-col justify-center relative w-full overflow-hidden">
-                    <template x-for="(item, index) in contents" :key="index">
-                        <div x-show="active === index"
-                            x-transition:enter="transition ease-out duration-1000"
-                            x-transition:enter-start="opacity-0 transform translate-x-8"
-                            x-transition:enter-end="opacity-100 transform translate-x-0"
-                            x-transition:leave="transition ease-in duration-500"
-                            x-transition:leave-start="opacity-100 transform translate-x-0"
-                            x-transition:leave-end="opacity-0 transform -translate-x-8"
-                            class="absolute inset-0 flex flex-col justify-center items-center">
+            <div class="relative z-10 max-w-lg mx-auto h-full">
+                <template x-for="(item, index) in contents" :key="index">
+                    <div x-show="active === index"
+                        x-transition:enter="transition ease-out duration-1000"
+                        x-transition:enter-start="opacity-0 transform translate-x-12"
+                        x-transition:enter-end="opacity-100 transform translate-x-0"
+                        x-transition:leave="transition ease-in duration-500"
+                        x-transition:leave-start="opacity-100 transform translate-x-0"
+                        x-transition:leave-end="opacity-0 transform -translate-x-12"
+                        class="absolute inset-0 flex flex-col justify-center items-center px-4">
 
-                            <h2 x-text="item.title" class="text-sm  font-semibold tracking-tight text-gray-800 mb-2"></h2>
-                            <p x-text="item.subtitle" class="text-sm  text-gray-600 mb-6"></p>
-                        </div>
-                    </template>
-                </div>
-
-                <a href="{{ route('manual') }}" class="inline-block mt-4">
-
-                    <x-original-button color="emerald" class="w-auto px-10">
-                        初めての方はこちら
-                    </x-original-button>
-                </a>
+                        <h2 x-text="item.title" class="text-base font-bold tracking-tight text-gray-800 mb-1"></h2>
+                        <p x-text="item.subtitle" class="text-sm text-gray-600 mb-6"></p>
+                        <a :href="item.btnRoute" class="inline-block w-full max-w-[240px]">
+                            <button
+                                type="button"
+                                :class="{
+                                            'bg-emerald-500': item.btnColor === 'emerald',
+                                            'bg-blue-500': item.btnColor === 'blue',
+                                            'bg-black': item.btnColor === 'black'
+                                        }"
+                                class="w-full text-white py-3 rounded-full font-bold shadow-lg transition-all text-sm">
+                                <span x-text="item.btnText"></span>
+                            </button>
+                        </a>
+                    </div>
+                </template>
             </div>
         </div>
-
         <div class="px-6 mt-8">
             <div class="flex items-center justify-between mb-3 px-1">
-                <h3 class="font-bold text-gray-800 text-base flex items-center gap-1">
-                    <span class="text-orange-500">🔥</span> 人気の商品
+                <h3 class="font-bold  text-base flex items-center gap-1">
+                    <span>🔥</span> 人気の商品
                 </h3>
                 {{-- <a href="#" class="text-xs text-blue-500 font-medium">すべて見る</a> --}}
             </div>
@@ -113,7 +122,7 @@
                             <img src="{{ asset('storage/'.$fav->images->first()->image_url) }}"
                                 class="border border-gray-50 mb-2 w-full aspect-square object-cover rounded-xl shadow-sm">
                         </a>
-                        <p class="text-[10px] font-bold text-gray-700 leading-tight line-clamp-1">
+                        <p class="text-[12px] font-bold text-gray-700 leading-tight line-clamp-1">
                             {{ $fav->series_name }}
                         </p>
                         <div class="flex items-center justify-center gap-1 text-red-500 mt-1">
@@ -131,8 +140,8 @@
 
         <div class="px-6 mt-8">
             <div class="flex items-center justify-between mb-3 px-1">
-                <h3 class="font-bold text-gray-800 text-base flex items-center gap-1">
-                    <span class="text-blue-500">✨</span> 新着の出品
+                <h3 class="font-bold  text-base flex items-center gap-1">
+                    <span>✨</span> 新着の出品
                 </h3>
             </div>
 
@@ -147,10 +156,10 @@
                         </a>
                         @endif
 
-                        <p class="text-[10px] font-bold text-gray-700 leading-tight line-clamp-1">
+                        <p class="text-[12px] font-bold">
                             {{ $item->series_name }}
                         </p>
-                        <p class="text-[10px] text-gray-400 line-clamp-1 mt-0.5">
+                        <p class="text-[12px] text-gray-700 mt-0.5">
                             {{ $item->char_name }}
                         </p>
                     </div>

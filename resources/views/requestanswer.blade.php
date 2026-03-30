@@ -68,10 +68,9 @@
                     class="w-full flex justify-center">
                     @csrf
                     <input type="hidden" name="action" value="yes">
-                    <button type="submit"
-                        class="w-full max-w-[280px] bg-blue-500 text-white py-3.5 rounded-full font-bold hover:bg-blue-600 shadow-md transition-all active:scale-95">
+                    <x-original-button color="yellow" class="w-auto px-10">
                         この内容で交換する
-                    </button>
+                    </x-original-button>
                 </form>
 
                 <form method="POST" action="{{ route('requestanswer.delete') }}">

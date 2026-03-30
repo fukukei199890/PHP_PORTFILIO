@@ -30,13 +30,11 @@
                 {{-- セッションデータがある場合のみ表示 --}}
                 @if(session('series_name') || session('char_name'))
                 <div class="bg-white/60 rounded-2xl p-4 mb-6 text-left border border-white/40">
-                    <div class="mb-3">
-                        <span class="text-xs text-gray-500 block mb-1">シリーズ名</span>
-                        <p class="text-gray-800 font-semibold">{{ session('series_name', '未設定') }}</p>
-                    </div>
-                    <div>
-                        <span class="text-xs text-gray-500 block mb-1">キャラクター名</span>
-                        <p class="text-gray-800 font-semibold">{{ session('char_name', '未設定') }}</p>
+                    <div class="mb-3 text-center">
+                        <span class="font-bold text-[14px] mb-1">シリーズ名</span>
+                        <p class="text-gray-800">{{ session('series_name', '未設定') }}</p>
+                        <span class="font-bold text-[14px] mb-1">キャラクター名</span>
+                        <p class="text-gray-800">{{ session('char_name', '未設定') }}</p>
                     </div>
                 </div>
                 @endif

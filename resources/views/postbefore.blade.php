@@ -9,10 +9,11 @@
 
             <p class="text-gray-500 font-medium">出品できません。</p>
             <p class="text-gray-400 text-xs mt-2">ログイン後、使用が可能になります。</p>
-            {{-- ログインリンク --}}
-            <a href="{{ route('login') }}"
-                class="mt-10 text-sky-500 font-medium hover:underline">
-                ログインする
+
+            <a href="{{ route('login') }}">
+                <x-original-button color="black" class="w-auto px-10 mt-10">
+                    ログインする
+                </x-original-button>
             </a>
         </div>
 

@@ -8,13 +8,11 @@
 
             @csrf
 
-            <!-- 各ページタイトル -->
             <x-section-title>出品する</x-section-title>
 
 
-            <!-- 画像 -->
             <div>
-                <label class="block mb-2 font-sm">
+                <label class="block mb-2 italic text-lg font-bold">
                     画像（1〜4枚）<span class="text-red-500 text-xs">※1枚目は必須</span>
                 </label>
                 <div>
@@ -25,13 +23,10 @@
                 </div>
             </div>
 
-            <!-- hidden -->
             <input type="hidden" name="is_trading" value="0">
 
-            <!-- シリーズ -->
             <div>
-
-                <label class="block text-sm mb-1">
+                <label class="block mb-1 italic text-lg font-bold">
                     シリーズ名
                 </label>
 
@@ -39,13 +34,10 @@
                     name="series_name"
                     placeholder="例：ちいかわ お座りぬいぐるみ"
                     class="w-full border rounded px-3 py-2">
-
             </div>
 
-            <!-- キャラ -->
             <div>
-
-                <label class="block text-sm mb-1">
+                <label class="block mb-1 italic text-lg font-bold">
                     キャラ名（必須）
                 </label>
 
@@ -54,18 +46,14 @@
                     placeholder="例:ちいかわ"
                     required
                     class="w-full border rounded px-3 py-2">
-
             </div>
 
-            <!-- 状態 -->
             <div>
-
-                <label class="block text-sm mb-1">
+                <label class="block mb-1 italic text-lg font-bold">
                     商品状態
                 </label>
 
                 <div class="flex items-center gap-6">
-
                     <label class="flex items-center gap-2">
                         <input type="radio" name="is_opened" value="0" required>
                         未開封
@@ -75,15 +63,11 @@
                         <input type="radio" name="is_opened" value="1" required>
                         開封済
                     </label>
-
                 </div>
-
             </div>
 
-            <!-- 交換場所 -->
             <div>
-
-                <label class="block text-sm mb-1">
+                <label class="block mb-1 italic text-lg font-bold">
                     主な交換希望場所
                 </label>
 
@@ -95,13 +79,10 @@
                     <option value="carino">カリーノ宮崎（旧ダイエー）</option>
                     <option value="other">その他（チャットで相談）</option>
                 </select>
-
             </div>
 
-            <!-- 求める商品 -->
             <div>
-
-                <label class="block text-sm mb-1">
+                <label class="block mb-1 italic text-lg font-bold">
                     探しているキャラ・条件
                 </label>
 
@@ -111,9 +92,8 @@
                     class="w-full border rounded px-3 py-2"
                     rows="3">
                 </textarea>
-
             </div>
-            <!-- 共通化のボタンタグ -->
+
             <x-original-button>出品する</x-original-button>
 
         </form>

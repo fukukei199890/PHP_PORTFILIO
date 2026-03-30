@@ -3,7 +3,7 @@
 
 
         <!-- タイトル -->
-        <h2 class="text-center text-lg py-4 tracking-tighter italic uppercase">matchしました!</h2>
+        <x-section-title class="italic uppercase">matchしました</x-section-title>
 
 
         {{-- マッチングアイコン（中央の円） --}}
@@ -52,10 +52,9 @@
                 <input type="hidden" name="request_id" value="{{ $requestData->id }}">
                 <input type="hidden" name="thread_id" value="{{ $current_thread->id }}">
 
-                <button type="submit"
-                    class="w-full max-w-[280px] bg-blue-500 text-white py-3.5 rounded-full font-bold hover:bg-blue-600 shadow-md transition-all active:scale-95">
+                <x-original-button color="yellow" class="w-auto px-10">
                     取引を開始する
-                </button>
+                </x-original-button>
             </form>
         </div>
 
