@@ -40,16 +40,13 @@ class ListeditemResource extends Resource
                     ->disabled(),
                 Forms\Components\TextInput::make('series_name')->required()->label('シリーズ名'),
                 Forms\Components\TextInput::make('char_name')->required()->label('キャラ名'),
-                // 'is＿opend', 開封状況
                 Forms\Components\Placeholder::make('is_opened_status')->label('開封状況')
+                // trueなら開封済みfalseなら未開封にしています。
                     ->content(fn ($record): string => $record?->is_opened ? '開封済み' : '未開封'),
-                // 'exchange_area', 交換場所
                 Forms\Components\TextInput::make('exchange_area')->label('交換場所'),
-                // 'is_trading', 取引状況
-                Forms\Components\TextInput::make('is_trading')->label('取引状況')
+                Forms\Components\Placeholder::make('is_trading')->label('取引状況')
                     ->content(fn ($record): string => $record?->is_trading ? '取引中' : '取引終了'),
-                // 'request_message', 求める商品
-                Forms\Components\TextInput::make('request_message')->lavbel('求める商品'),
+                Forms\Components\TextInput::make('request_message')->label('求める商品'),
                 //
             ]);
     }
@@ -63,10 +60,10 @@ class ListeditemResource extends Resource
                 Tables\Columns\ImageColumn::make('image_url') 
                     ->label('出品画像')
                     ->getStateUsing(function ($record) {
-                        // 1. リレーション先の最初の画像データからパスを取得
+                        // リレーション先の最初の画像データからパスを取得
                         $path = $record->images->first()?->image_url; 
                         if (!$path) return null;
-                        // 2. public/posts/... にあるなら asset() でフルURLにする
+                        // asset() でフルURLにする
                         return asset('storage/' . $path);
                     })
                     ->size(40),
