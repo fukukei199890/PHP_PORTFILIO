@@ -88,6 +88,17 @@
         {{-- 4. 入力・ボタンエリア（下部に固定） --}}
         <div class="p-4 border-t bg-white sticky bottom-0 z-20">
             {{-- メッセージ送信 --}}
+            <form method="post" action="{{ route('create_message') }}" class="flex gap-2 mb-4">
+                @csrf
+                <input type="hidden" name="thread_id" value="{{ $thread_id }}">
+                <input type="text" name="message_text" placeholder="メッセージを入力..." required
+                    class="flex-1 bg-gray-50 border border-gray-200 rounded-full px-5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all">
+                <button type="submit"
+                    class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-full text-sm font-bold shadow-md transition-colors active:scale-95">
+                    送信
+                </button>
+            </form>
+            {{-- 取引完了 --}}
             <form method="post" action="{{ route('message.complete') }}"
                 class="mt-6 pt-4 border-t-2 border-dashed border-gray-100">
                 @csrf
