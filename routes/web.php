@@ -40,6 +40,7 @@ use App\Http\Controllers\TopController;
 use App\Http\Controllers\WaitController;
 use App\Http\Controllers\RequestSelectController;
 use App\Http\Controllers\MessageReceivedController;
+use App\Http\Controllers\NotificationController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -214,6 +215,9 @@ Route::get('/manual', [ManualController::class, 'index'])->name('manual');
 
 //取引完了商品表示ページ
 Route::get('/itemcomplete', [ItemCompleteController::class, 'index'])->name('itemcomplete');
+
+Route::get('/notification',[NotificationController::class,'index'])->name('notification');
+Route::post('/notification/markAsRead',[NotificationTestController::class,'markAsRead'])->name('notification.markAsRead');
 
 // 佐藤のテストページ
 use App\Http\Controllers\SatoTestController;
