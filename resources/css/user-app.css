@@ -2,3 +2,18 @@ footer nav a {
     color: blue; /* Tailwindの blue-600 相当の色 */
     text-decoration: none;
 }
+
+
+/* 見出しタグ以外にタグにZen Maru Gothicを適用 */
+p,
+button, 
+input, 
+select, 
+textarea, 
+span,
+a,
+label,
+li {
+    font-family: 'Zen Maru Gothic', sans-serif;
+}
+

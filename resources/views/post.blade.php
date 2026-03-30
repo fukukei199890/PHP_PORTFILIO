@@ -1,77 +1,71 @@
 <x-user-layout>
-    <div class="max-w-md mx-auto bg-gray-100 min-h-screen">
+    <x-section-title>出品する</x-section-title>
+    <div class="max-w-md mx-auto bg-gray-50 min-h-screen pb-20">
 
         <form action="{{ route('post.store') }}"
             method="POST"
             enctype="multipart/form-data"
-            class="bg-white p-6 rounded-lg shadow space-y-4">
+            class="bg-white p-6 space-y-6">
 
             @csrf
 
-            <x-section-title>出品する</x-section-title>
 
 
-            <div>
-                <label class="block mb-2 italic text-lg font-bold">
-                    画像（1〜4枚）<span class="text-red-500 text-xs">※1枚目は必須</span>
+            {{-- 画像選択 --}}
+            <div class="space-y-2">
+                <label class="block text-sm font-bold text-gray-700" style="font-family: 'Zen Maru Gothic', sans-serif;">
+                    画像（1〜4枚）<span class="text-red-500 text-[10px] ml-1">※1枚目は必須</span>
                 </label>
-                <div>
-                    <input type="file" name="images[]" accept="image/*" class="border p-2 rounded" required>
-                    <input type="file" name="images[]" accept="image/*" class="border p-2 rounded">
-                    <input type="file" name="images[]" accept="image/*" class="border p-2 rounded">
-                    <input type="file" name="images[]" accept="image/*" class="border p-2 rounded">
+                <div class="grid grid-cols-1 gap-2">
+                    {{-- file typeはデザインが特殊なため、一旦そのままか、専用コンポーネントにするのが一般的です --}}
+                    <input type="file" name="images[]" accept="image/*" class="w-full text-xs text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-xs file:font-semibold file:bg-gray-100 file:text-gray-700 hover:file:bg-gray-200" required>
+                    <input type="file" name="images[]" accept="image/*" class="w-full text-xs text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-xs file:font-semibold file:bg-gray-100 file:text-gray-700 hover:file:bg-gray-200">
+                    <input type="file" name="images[]" accept="image/*" class="w-full text-xs text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-xs file:font-semibold file:bg-gray-100 file:text-gray-700 hover:file:bg-gray-200">
+                    <input type="file" name="images[]" accept="image/*" class="w-full text-xs text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-xs file:font-semibold file:bg-gray-100 file:text-gray-700 hover:file:bg-gray-200">
                 </div>
             </div>
 
             <input type="hidden" name="is_trading" value="0">
 
-            <div>
-                <label class="block mb-1 italic text-lg font-bold">
-                    シリーズ名
-                </label>
-
-                <input type="text"
+            {{-- シリーズ名 --}}
+            <div class="space-y-1">
+                <label class="block text-sm font-bold text-gray-700" style="font-family: 'Zen Maru Gothic', sans-serif;">シリーズ名</label>
+                <x-original-input
                     name="series_name"
-                    placeholder="例：ちいかわ お座りぬいぐるみ"
-                    class="w-full border rounded px-3 py-2">
+                    placeholder="例：ちいかわ お座りぬいぐるみ" />
             </div>
 
-            <div>
-                <label class="block mb-1 italic text-lg font-bold">
-                    キャラ名（必須）
+            {{-- キャラ名 --}}
+            <div class="space-y-1">
+                <label class="block text-sm font-bold text-gray-700" style="font-family: 'Zen Maru Gothic', sans-serif;">
+                    キャラ名<span class="text-xs font-normal ml-1">（必須）</span>
                 </label>
-
-                <input type="text"
+                <x-original-input
                     name="char_name"
                     placeholder="例:ちいかわ"
-                    required
-                    class="w-full border rounded px-3 py-2">
+                    required />
             </div>
 
-            <div>
-                <label class="block mb-1 italic text-lg font-bold">
-                    商品状態
-                </label>
-
-                <div class="flex items-center gap-6">
-                    <label class="flex items-center gap-2">
-                        <input type="radio" name="is_opened" value="0" required>
+            {{-- 商品状態 --}}
+            <div class="space-y-2">
+                <label class="block text-sm font-bold text-gray-700" style="font-family: 'Zen Maru Gothic', sans-serif;">商品状態</label>
+                <div class="flex items-center gap-8 py-3 px-5 bg-gray-50 rounded-2xl border border-gray-100">
+                    <label class="flex items-center gap-2 cursor-pointer text-sm font-medium text-gray-600" style="font-family: 'Zen Maru Gothic', sans-serif;">
+                        <input type="radio" name="is_opened" value="0" class="w-4 h-4 text-gray-900 focus:ring-gray-900 border-gray-300" required>
                         未開封
                     </label>
-
-                    <label class="flex items-center gap-2">
-                        <input type="radio" name="is_opened" value="1" required>
+                    <label class="flex items-center gap-2 cursor-pointer text-sm font-medium text-gray-600" style="font-family: 'Zen Maru Gothic', sans-serif;">
+                        <input type="radio" name="is_opened" value="1" class="w-4 h-4 text-gray-900 focus:ring-gray-900 border-gray-300" required>
                         開封済
                     </label>
                 </div>
             </div>
 
-            <div>
-                <label class="block mb-1 italic text-lg font-bold">
-                    主な交換希望場所
-                </label>
-
-                <select name="exchange_area" class="w-full border rounded px-3 py-2 text-gray-700 focus:ring-blue-500 focus:border-blue-500">
+            {{-- 交換希望場所 --}}
+            <div class="space-y-1">
+                <label class="block text-sm font-bold text-gray-700" style="font-family: 'Zen Maru Gothic', sans-serif;">主な交換希望場所</label>
+                {{-- selectはデザインが複雑なため一旦現状維持、または後でコンポーネント化 --}}
+                <select name="exchange_area" class="w-full bg-white rounded-full border border-gray-200 focus:border-gray-900 focus:ring-1 focus:ring-gray-900 text-sm py-2 px-5 outline-none appearance-none cursor-pointer" style="font-family: 'Zen Maru Gothic', sans-serif;">
                     <option value="">選択してください</option>
                     <option value="miyazaki_station">宮崎駅</option>
                     <option value="miyako_city">南宮崎駅・宮交シティ</option>
@@ -81,20 +75,18 @@
                 </select>
             </div>
 
-            <div>
-                <label class="block mb-1 italic text-lg font-bold">
-                    探しているキャラ・条件
-                </label>
-
-                <textarea
+            {{-- 探しているキャラ・条件 --}}
+            <div class="space-y-1">
+                <label class="block text-sm font-bold text-gray-700" style="font-family: 'Zen Maru Gothic', sans-serif;">探しているキャラ・条件</label>
+                <x-original-textarea
                     name="request_message"
-                    placeholder="例：同シリーズのうさぎを探しています。仕事終わりの18時以降に駅前で交換希望です。"
-                    class="w-full border rounded px-3 py-2"
-                    rows="3">
-                </textarea>
+                    rows="3"
+                    placeholder="例：同シリーズのうさぎを探しています。仕事終わりの18時以降に駅前で交換希望です。"></x-original-textarea>
             </div>
 
-            <x-original-button>出品する</x-original-button>
+            <div class="pt-4">
+                <x-original-button class="w-full">出品する</x-original-button>
+            </div>
 
         </form>
     </div>

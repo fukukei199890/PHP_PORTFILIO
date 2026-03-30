@@ -1,14 +1,16 @@
 <x-user-layout>
-    <div class="max-w-md mx-auto min-h-screen bg-gray-50 pb-20">
-        <!-- 各ページタイトル -->
-        <x-section-title>申請したリクエスト一覧</x-section-title>
+    <!-- 各ページタイトル -->
+    @auth
+    <x-section-title>申請したリクエスト一覧</x-section-title>
+    @endauth
 
+    <div class="max-w-md mx-auto min-h-screen bg-gray-50 pb-20">
 
 
         <div class="px-4 space-y-4">
             @if ($sendRequests->isEmpty())
             <div class="flex flex-col items-center justify-center pt-32 px-10 text-center">
-                <p>申請中のリクエストはありません。</p>
+                <p class="text-gray-500 font-medium">申請中のリクエストはありません。</p>
                 <a href="{{ route('login') }}">
                     <x-original-button color="black" class=" px-10 mt-10">
                         ログインして確認する
@@ -72,9 +74,9 @@
     </div>
     <div class="max-w-md mx-auto min-h-screen bg-gray-50 pb-20">
         <!-- 各ページタイトル -->
+        @auth
         <x-section-title>届いたリクエスト一覧</x-section-title>
-        <!-- 見出し -->
-        <!-- <h2 class="text-center text-lg py-4 border-b text-gray-900 ">届いたリクエスト一覧</h2> -->
+        @endauth
 
         <div class="px-4 space-y-4">
             {{-- リクエストがない場合の表示 --}}
@@ -137,7 +139,7 @@
 
                 <form method="get" action="{{ route('requestanswer') }}">
                     <input type="hidden" name="request_id" value="{{ $row->id }}">
-                    <x-original-button color="yellow" class="w-auto px-10">
+                    <x-original-button color="emerald" class="w-auto px-10">
                         リクエスト詳細を確認する
                     </x-original-button>
                 </form>

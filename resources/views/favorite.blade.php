@@ -27,7 +27,7 @@
                         <p class="text-[11px] text-gray-500 truncate">アイテム名:{{ $item->char_name }}</p>
 
                         <div class="flex items-center text-gray-400 mt-2">
-                            <span class="text-[10px] italic">交換場所: {{ $item->exchange_area }}</span>
+                            <span class="text-[10px] italic">交換場所: {{ $item->exchange_area_label }}</span>
                         </div>
                     </div>
 

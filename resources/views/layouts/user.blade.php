@@ -14,7 +14,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/css/user-app.css'])
 </head>
 
-<body class="font-sans antialiased">
+<body>
     @if (session('message') || session('error'))
     <div class="max-w-md mx-auto mt-4 px-4">
         {{-- 動的にクラスを切り替え：errorがあれば赤、なければ緑 --}}
@@ -27,7 +27,7 @@
 
 
     <!-- Page Content -->
-    <div class="min-h-screen flex flex-col pb-20">
+    <div class="min-h-screen flex flex-col pb-10">
 
         <main class="flex-grow">
             <div class="max-w-md mx-auto px-4 py-6">

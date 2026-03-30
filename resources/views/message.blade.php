@@ -103,7 +103,7 @@
                 @csrf
                 <input type="hidden" name="thread_id" value="{{ $thread_id }}">
 
-                <x-original-button color="yellow" class="w-auto px-10">
+                <x-original-button color="emerald" class="w-auto px-10">
                     取引を完了する
                 </x-original-button>
             </form>
