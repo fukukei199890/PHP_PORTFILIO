@@ -21,10 +21,6 @@
                         <div class="flex-1">
                             <p class="text-xl font-black text-gray-900">{{ Auth::user()->name }}</p>
                             <div class="flex items-center gap-1 mt-1">
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/main
                                 <span class="text-sm font-bold text-gray-400 italic">評価</span>
                                 <span class="text-lg font-black text-gray-900">★{{ sprintf('%.2f', $score) }}</span>
                             </div>
@@ -49,7 +45,7 @@
                             </button>
                         </div>
                         @error('icon')
-                        <p class="text-red-500 text-[10px] mt-1 font-bold">{{ $message }}</p>
+                            <p class="text-red-500 text-[10px] mt-1 font-bold">{{ $message }}</p>
                         @enderror
                     </div>
                 </form>
@@ -129,29 +125,23 @@
         </div>
     </div>
 
-<<<<<<< HEAD
+    <<<<<<< HEAD <<<<<<< HEAD {{-- 佐藤のテスト用ページへのリンク --}} <a href="{{ route('satoTest') }}">佐藤のテスト用ページへのリンク</a>
+</x-user-layout>
+=======
+=======
+<<<<<<< HEAD>>>>>>> origin/main
+
+    </x-user-layout>
+
+
+    {{-- 佐藤のテスト用ページへのリンク --}}
+    <a href="{{ route('satoTest') }}">佐藤のテスト用ページへのリンク</a>
+    =======
+    {{-- 佐藤のテスト用ページへのリンク --}}
+    <a href="{{ route('satoTest') }}">佐藤のテスト用ページへのリンク</a>
+    </x-user-layout>
     <<<<<<< HEAD {{-- 佐藤のテスト用ページへのリンク --}} <a href="{{ route('satoTest') }}">佐藤のテスト用ページへのリンク</a>
-</x-user-layout>
-=======
-=======
-    <<<<<<< HEAD
->>>>>>> origin/main
-
-        </x-user-layout>
-
-
-        {{-- 佐藤のテスト用ページへのリンク --}}
-        <a href="{{ route('satoTest') }}">佐藤のテスト用ページへのリンク</a>
+        >>>>>>> origin/main
         =======
-        {{-- 佐藤のテスト用ページへのリンク --}}
-        <a href="{{ route('satoTest') }}">佐藤のテスト用ページへのリンク</a>
-</x-user-layout>
-<<<<<<< HEAD
-
-
-{{-- 佐藤のテスト用ページへのリンク --}}
-<a href="{{ route('satoTest') }}">佐藤のテスト用ページへのリンク</a>
->>>>>>> origin/main
-=======
->>>>>>> origin/notificaion-create-sato-0330
->>>>>>> origin/main
+        >>>>>>> origin/notificaion-create-sato-0330
+        >>>>>>> origin/main
