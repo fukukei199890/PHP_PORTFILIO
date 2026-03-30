@@ -12,14 +12,14 @@
 
                 @isset($result['current_series_name'])
                 <p class="text-base font-bold text-gray-800">
-                    {{ $result['current_series_name'] }}
+                    シリーズ名:{{ $result['current_series_name'] }}
                 </p>
                 @endisset
 
                 <div class="flex items-center gap-4">
                     @isset($result['current_char_name'])
                     <p class="text-base text-gray-600">
-                        キャラ: {{ $result['current_char_name'] }}
+                        キャラ名: {{ $result['current_char_name'] }}
                     </p>
                     @endisset
                     <p class="text-[10px] px-2 py-0.5 bg-white border border-gray-200 rounded-full text-gray-500">
