@@ -5,7 +5,7 @@
 
         {{-- プロフィールセクション --}}
         <div class="px-6 mb-8">
-            <div class="bg-gray-50 border border-gray-100 rounded-[32px] p-6 shadow-sm">
+            <div class="bg-white border border-cyan-400 rounded-[32px] p-6 shadow-sm">
                 <form action="{{ route('profile.update_icon') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PATCH')
@@ -21,16 +21,16 @@
                         <div class="flex-1">
                             <p class="text-xl font-black text-gray-900">{{ Auth::user()->name }}</p>
                             <div class="flex items-center gap-1 mt-1">
-                                <span class="text-sm font-bold text-gray-400 italic">評価</span>
-                                <span class="text-lg font-black text-gray-900">★{{ $score }}</span>
+                                <span class="text-sm font-bold text-gray-800 italic">評価</span>
+                                <span class="text-lg font-black ">★{{ $score }}</span>
                             </div>
                         </div>
                     </div>
 
                     {{-- アイコン更新エリア --}}
-                    <div class="border-t border-gray-200 pt-4 mt-2">
+                    <div class="border-t border-cyan-200 pt-4 mt-2">
                         <label
-                            class="block text-[10px] font-bold text-gray-400 uppercase tracking-tighter mb-2">アイコンを更新する</label>
+                            class="block text-[10px] font-bold text-gray-700  mb-2">アイコンを更新する</label>
                         <div class="flex items-center gap-2">
                             <input type="file" name="icon"
                                 class="block w-full text-[10px] text-gray-500
@@ -39,8 +39,8 @@
                                         file:bg-white file:text-gray-700 file:text-[10px] file:font-bold
                                         hover:file:bg-gray-50" />
 
-                            <button type="submit"
-                                class="shrink-0 bg-blue-600 text-white text-[10px] font-bold px-4 py-2 rounded-full transition">
+                            {{-- 更新ボタン --}}
+                            <button type="submit" class="bg-cyan-500 text-white text-[10px] font-bold px-4 py-2 rounded-full hover:bg-cyan-600 transition shadow-sm whitespace-nowrap">
                                 更新
                             </button>
                         </div>
@@ -125,6 +125,9 @@
         </div>
     </div>
 
-    {{-- 佐藤のテスト用ページへのリンク --}}
-    <a href="{{ route('satoTest') }}">佐藤のテスト用ページへのリンク</a>
+
 </x-user-layout>
+
+
+{{-- 佐藤のテスト用ページへのリンク --}}
+<a href="{{ route('satoTest') }}">佐藤のテスト用ページへのリンク</a>

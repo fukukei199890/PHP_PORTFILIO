@@ -64,7 +64,7 @@
             {{-- データがない時の表示 --}}
             <div class="flex flex-col items-center justify-center pt-32 px-10 text-center">
 
-                <p class="text-gray-500 font-medium">表示できるメッセージがありません</p>
+                <p class="text-gray-500 font-medium">表示できるメッセージがありません。</p>
                 <a href="{{ route('login') }}">
                     <x-original-button color="black" class=" px-10 mt-10">
                         ログインして確認する

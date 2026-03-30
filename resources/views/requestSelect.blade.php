@@ -7,10 +7,10 @@
 
         <div class="px-4 space-y-4">
             @if ($sendRequests->isEmpty())
-            <div class="text-center py-20 text-gray-400">
-                <p>申請中のリクエストはありません</p>
+            <div class="flex flex-col items-center justify-center pt-32 px-10 text-center">
+                <p>申請中のリクエストはありません。</p>
                 <a href="{{ route('login') }}">
-                    <x-original-button color="black" class=" px-5 mt-5">
+                    <x-original-button color="black" class=" px-10 mt-10">
                         ログインして確認する
                     </x-original-button>
             </div>
