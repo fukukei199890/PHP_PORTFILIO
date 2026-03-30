@@ -22,7 +22,7 @@
                             <p class="text-xl font-black text-gray-900">{{ Auth::user()->name }}</p>
                             <div class="flex items-center gap-1 mt-1">
                                 <span class="text-sm font-bold text-gray-400 italic">評価</span>
-                                <span class="text-lg font-black text-gray-900">★{{ $score }}</span>
+                                <span class="text-lg font-black text-gray-900">★{{ sprintf('%.2f', $score) }}</span>
                             </div>
                         </div>
                     </div>
@@ -45,7 +45,7 @@
                             </button>
                         </div>
                         @error('icon')
-                        <p class="text-red-500 text-[10px] mt-1 font-bold">{{ $message }}</p>
+                            <p class="text-red-500 text-[10px] mt-1 font-bold">{{ $message }}</p>
                         @enderror
                     </div>
                 </form>

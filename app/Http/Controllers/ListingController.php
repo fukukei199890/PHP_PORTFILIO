@@ -33,20 +33,28 @@ class ListingController extends Controller
 
         // トランザクション開始
         DB::transaction(function() use ($listedItem) {
+
             // 出品物の削除
             $listedItem->delete();
-
             // 関連するリクエストの削除
             $trade_requests = TradeRequest::where('listed_item_id',$listedItem->id)->get();
                foreach($trade_requests as $row){
                 $row->delete();
             }
 
-            // 関連するスレッドの状態をアップデート
-            $thread = Thread::where('listed_item_id',$listedItem->id)->get();
-            foreach($thread as $row){
-                $row->update(['is_matched'=>false]);
+            // ここから関連スレッドの状態をアップデート
+            $relatedThreads = $listedItem->threads; 
+
+            foreach($relatedThreads as $row){
+                // count() は自動的に削除済みのものを除外してくれます
+                $remainingItemsCount = $row->listed_items()->count();
+
+                // 3. アイテムが1つも残っていない場合のみ、マッチングを解除
+                if ($remainingItemsCount === 0) {
+                    $row->update(['is_matched' => false]);
+                }
             }
+            // ここまで関連スレッドの状態のアップデート
         });
         
 

@@ -12,6 +12,7 @@
                 <form method="POST" action="{{ route('exchange.complete') }}" class="w-full flex justify-center">
                     @csrf
                     <input type="hidden" name="thread_id" value="{{ $thread_id }}">
+                    <input type="hidden" name="listed_item_id" value="{{ $listed_item_id }}">
                     <button type="submit"
                         class="w-full max-w-[200px] py-3 bg-white border border-gray-300 text-gray-600 font-medium rounded-xl ">
                         はい

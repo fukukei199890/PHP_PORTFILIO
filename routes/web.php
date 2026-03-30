@@ -217,7 +217,7 @@ Route::get('/manual', [ManualController::class, 'index'])->name('manual');
 Route::get('/itemcomplete', [ItemCompleteController::class, 'index'])->name('itemcomplete');
 
 Route::get('/notification',[NotificationController::class,'index'])->name('notification');
-Route::post('/notification/markAsRead',[NotificationTestController::class,'markAsRead'])->name('notification.markAsRead');
+Route::post('/notification/markAsRead',[NotificationController::class,'markAsRead'])->name('notification.markAsRead');
 
 // 佐藤のテストページ
 use App\Http\Controllers\SatoTestController;
