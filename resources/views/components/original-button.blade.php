@@ -18,7 +18,7 @@ $colors = [
 'yellow' => 'bg-yellow-400 hover:bg-yellow-500 text-yellow-900 shadow-yellow-100',
 
 //マニュアル
-'emerald' => 'bg-emerald-200 text-emerald-300 border border-emerald-200 hover:bg-emerald-100',
+'emerald' => 'bg-emerald-300 text-gray-700 border border-emerald-200 hover:bg-emerald-100',
 
 // 戻る・キャンセル：四角い枠線
 'outline' => 'border border-gray-300 text-gray-500 hover:bg-gray-50',
@@ -35,7 +35,8 @@ $colorClass = $colors[$color] ?? $colors['blue'];
 
 <button {{ $attributes->merge([
     'type' => 'submit', 
-    'class' => "w-full $colorClass py-3 rounded-full font-semibold shadow-sm transition-all active:scale-95 flex items-center justify-center"
+    'class' => "w-full $colorClass py-3 rounded-full font-semibold shadow-sm transition-all active:scale-95 flex items-center justify-center",
+    'style'=>"font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700;"
 ]) }}>
     {{ $slot }}
 </button>

@@ -39,7 +39,7 @@ class ListedItem extends Model
 
     public function threads()
     {
-        return $this->hasMany(Thread::class);
+        return $this->belongsToMany(Thread::class);
     }
 
     //追記福田お気に入り登録をしているかの判定

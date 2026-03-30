@@ -68,7 +68,7 @@
                     class="w-full flex justify-center">
                     @csrf
                     <input type="hidden" name="action" value="yes">
-                    <x-original-button color="yellow" class="w-auto px-10">
+                    <x-original-button color="emerald" class="w-auto px-10">
                         この内容で交換する
                     </x-original-button>
                 </form>

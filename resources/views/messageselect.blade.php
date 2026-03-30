@@ -1,8 +1,9 @@
 <x-user-layout>
-    <div class="max-w-md mx-auto min-h-screen bg-gray-50 pb-20">
-        <!-- 各ページタイトル -->
-        <x-section-title>メッセージ</x-section-title>
+    @auth
+    <x-section-title>メッセージ</x-section-title>
+    @endauth
 
+    <div class="max-w-md mx-auto min-h-screen bg-gray-50 pb-20">
 
 
         <div class="divide-y divide-gray-100">
@@ -54,7 +55,7 @@
                     @csrf
                     <input type="hidden" name="thread_id" value="{{ $thread->id }}">
 
-                    <x-original-button class="w-auto px-10 text-xs font-bold tracking-wider">
+                    <x-original-button color="emerald" class="w-auto px-10 text-xs font-bold tracking-wider">
                         開く
                     </x-original-button>
 

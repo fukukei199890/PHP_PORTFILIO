@@ -89,7 +89,7 @@ class RequestAnswerController extends Controller
                     $thread = Thread::create([
                     'sender_id' => $requestData->user_id,
                     'receiver_id' => Auth::user()->id,
-                    'listed_item_id' => $requestData->listed_item_id,
+                    'listed_item_id' => $requestData->listed_item_id, //削除予定
                     'is_matched' => true
                     ]);
                     // current_threadを作成
@@ -99,7 +99,11 @@ class RequestAnswerController extends Controller
                 }
                 // ここまでスレッド作成処理
 
-                // ここからリクエストステータスの書き換え
+                // ここから中間テーブルの書き込み
+                $current_thread->listed_items()->syncWithoutDetaching([$requestData->listed_item_id]);
+                // ここまで中間テーブルの書き込み
+                
+                // ここからリクエストステータスの書き換え(flase:処理済み)
                 $requestData->status = false;
                 $requestData->save();
                 // ここまでリクエストステータスの書き換え

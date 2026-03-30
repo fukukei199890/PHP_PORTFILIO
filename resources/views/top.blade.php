@@ -5,16 +5,20 @@
             class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100 px-4 h-16 flex justify-between items-center">
             <a href="/" class="flex items-center gap-2">
                 <img src="{{ asset('images/logo.png') }}" class="h-10 w-10 object-contain">
-                <h1 class="text-lg font-bold tracking-tighter text-gray-800 tracking-tighter italic uppercase">
+                <h1 class="text-xl font-bold tracking-tighter text-gray-800 t italic uppercase"
+                    style="font-family: 'M PLUS Rounded 1c', sans-serif;">
                     capsule link
                 </h1>
+
+                <!-- <h1 class="text-2xl font-black tracking-tighter text-cyan-600 italic uppercase drop-shadow-sm"
+                    style="font-family: 'M PLUS Rounded 1c', sans-serif;">
+                    Capsule <span class="text-cyan-400">Link</span>
+                </h1> -->
             </a>
 
-            @auth
-                <a href = "{{ route('notification') }}">通知</a>
-            @endauth
 
             <div class="flex items-center gap-3">
+                @guest
                 <a href="{{ route('seach') }}" class="p-2 text-gray-500 hover:bg-gray-100 rounded-full transition-all">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor">
@@ -22,6 +26,12 @@
                             d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                     </svg>
                 </a>
+                @endguest
+
+                @auth
+                <a href="{{ route('notification') }}">通知</a>
+                @endauth
+
             </div>
         </header>
         <!-- 元々の記述 -->
@@ -97,8 +107,15 @@
                         x-transition:leave-end="opacity-0 transform -translate-x-12"
                         class="absolute inset-0 flex flex-col justify-center items-center px-4">
 
-                        <h2 x-text="item.title" class="text-base font-bold tracking-tight text-gray-800 mb-1"></h2>
-                        <p x-text="item.subtitle" class="text-sm text-gray-600 mb-6"></p>
+                        <h2 x-text="item.title"
+                            class="text-base font-black tracking-wider text-gray-800 mb-1"
+                            style="font-family: 'M PLUS Rounded 1c', sans-serif;">
+                        </h2>
+
+                        <p x-text="item.subtitle"
+                            class="text-sm leading-relaxed text-gray-500 mb-6"
+                            style="font-family: 'Zen Maru Gothic', sans-serif; font-weight: 500;">
+                        </p>
                         <a :href="item.btnRoute" class="inline-block w-full max-w-[240px]">
                             <button type="button"
                                 :class="{
@@ -106,8 +123,9 @@
                                     'bg-blue-500': item.btnColor === 'blue',
                                     'bg-black': item.btnColor === 'black'
                                 }"
-                                class="w-full text-white py-3 rounded-full font-bold shadow-lg transition-all text-sm">
-                                <span x-text="item.btnText"></span>
+                                class="w-full text-white py-3 rounded-full font-bold shadow-lg transition-all text-sm"
+                                style="font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700;">
+                                <span x-text=" item.btnText"></span>
                             </button>
                         </a>
                     </div>
@@ -116,35 +134,37 @@
         </div>
         <div class="px-6 mt-8">
             <div class="flex items-center justify-between mb-3 px-1">
-                <h3 class="font-bold  text-base flex items-center gap-1">
-                    <span>🔥</span> 人気の商品
-                </h3>
-                {{-- <a href="#" class="text-xs text-blue-500 font-medium">すべて見る</a> --}}
+
+                <x-section-title>
+                    <span>🔥</span>
+                    人気の商品
+                </x-section-title>
+
             </div>
 
             <div class="bg-white rounded-[24px] p-4 shadow-sm border border-gray-100">
                 <div class="flex overflow-x-auto gap-4 pb-2 snap-x snap-mandatory">
                     @foreach ($favorite_item as $fav)
-                        <div class="text-center flex-shrink-0 w-24 snap-start">
-                            @if ($fav->images->isNotEmpty())
-                                <a href="{{ route('goods', $fav->id) }}">
-                                    <img src="{{ asset('storage/' . $fav->images->first()->image_url) }}"
-                                        class="border border-gray-50 mb-2 w-full aspect-square object-cover rounded-xl shadow-sm">
-                                </a>
-                                <p class="text-[12px] font-bold text-gray-700 leading-tight line-clamp-1">
-                                    {{ $fav->series_name }}
-                                </p>
-                                <div class="flex items-center justify-center gap-1 text-red-500 mt-1">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" viewBox="0 0 20 20"
-                                        fill="currentColor">
-                                        <path fill-rule="evenodd"
-                                            d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
-                                            clip-rule="evenodd" />
-                                    </svg>
-                                    <span class="text-[10px] font-bold">{{ $fav->favorite_item_count ?? 0 }}</span>
-                                </div>
-                            @endif
+                    <div class="text-center flex-shrink-0 w-24 snap-start">
+                        @if ($fav->images->isNotEmpty())
+                        <a href="{{ route('goods', $fav->id) }}">
+                            <img src="{{ asset('storage/' . $fav->images->first()->image_url) }}"
+                                class="border border-gray-50 mb-2 w-full aspect-square object-cover rounded-xl shadow-sm">
+                        </a>
+                        <p class="text-[12px] font-bold text-gray-700 leading-tight line-clamp-1">
+                            {{ $fav->series_name }}
+                        </p>
+                        <div class="flex items-center justify-center gap-1 text-red-500 mt-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" viewBox="0 0 20 20"
+                                fill="currentColor">
+                                <path fill-rule="evenodd"
+                                    d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                            <span class="text-[10px] font-bold">{{ $fav->favorite_item_count ?? 0 }}</span>
                         </div>
+                        @endif
+                    </div>
                     @endforeach
                 </div>
             </div>
@@ -152,29 +172,32 @@
 
         <div class="px-6 mt-8">
             <div class="flex items-center justify-between mb-3 px-1">
-                <h3 class="font-bold  text-base flex items-center gap-1">
-                    <span>✨</span> 新着の出品
-                </h3>
+
+                <x-section-title>
+                    <span>✨</span>
+                    新着の商品
+                </x-section-title>
+
             </div>
 
             <div class="bg-white rounded-[24px] p-4 shadow-sm border border-gray-100">
                 <div class="flex overflow-x-auto gap-4 pb-2 snap-x snap-mandatory">
                     @foreach ($items as $item)
-                        <div class="text-center flex-shrink-0 w-24 snap-start">
-                            @if ($item->images->isNotEmpty())
-                                <a href="{{ route('goods', $item->id) }}">
-                                    <img src="{{ asset('storage/' . $item->images->first()->image_url) }}"
-                                        class="border border-gray-50 mb-2 w-full aspect-square object-cover rounded-xl shadow-sm">
-                                </a>
-                            @endif
+                    <div class="text-center flex-shrink-0 w-24 snap-start">
+                        @if ($item->images->isNotEmpty())
+                        <a href="{{ route('goods', $item->id) }}">
+                            <img src="{{ asset('storage/' . $item->images->first()->image_url) }}"
+                                class="border border-gray-50 mb-2 w-full aspect-square object-cover rounded-xl shadow-sm">
+                        </a>
+                        @endif
 
-                            <p class="text-[12px] font-bold">
-                                {{ $item->series_name }}
-                            </p>
-                            <p class="text-[12px] text-gray-700 mt-0.5">
-                                {{ $item->char_name }}
-                            </p>
-                        </div>
+                        <p class="text-[12px] font-bold">
+                            {{ $item->series_name }}
+                        </p>
+                        <p class="text-[12px] text-gray-700 mt-0.5">
+                            {{ $item->char_name }}
+                        </p>
+                    </div>
                     @endforeach
                 </div>
             </div>
