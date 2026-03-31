@@ -10,6 +10,7 @@ use App\Notifications\MessageReceived;
 use App\Models\Message;
 use App\Models\User;
 use App\Models\Thread;
+use App\Models\ListedItem;
 
 class MessageController extends Controller
 {
@@ -27,10 +28,15 @@ class MessageController extends Controller
         // threadに紐づいたアイテムの配列
         $thread = Thread::with('listed_items')->find($thread_id);
 
+        // threadに紐づいた出品物
+        $listedItems = ListedItem::whereRelation('threads','threads.id',$thread_id)
+            ->where('user_id',Auth::user()->id)
+            ->get();
+
         return view('message', [
             'thread_id' => $thread_id,
             'message_data' => $message_data,
-            'trading_items' => $thread->listed_items
+            'trading_items' => $listedItems
         ]);
     }
 

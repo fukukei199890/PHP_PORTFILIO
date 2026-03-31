@@ -99,45 +99,50 @@
                 </button>
             </form>
             {{-- 取引完了 --}}
-            <form method="post" action="{{ route('message.complete') }}"
-                class="mt-6 pt-4 border-t-2 border-dashed border-gray-100">
-                @csrf
-                <input type="hidden" name="thread_id" value="{{ $thread_id }}">
+            @if (isset($trading_items) && $trading_items->count() > 0)
+                {{-- スレッドに関連した出品物が一つでもあるとき --}}
+                <form method="post" action="{{ route('message.complete') }}"
+                    class="mt-6 pt-4 border-t-2 border-dashed border-gray-100">
+                    @csrf
+                    <input type="hidden" name="thread_id" value="{{ $thread_id }}">
 
-                <div class="flex flex-col gap-2 mb-3">
-                    <label class="text-[12px] font-bold text-gray-500 ml-1 flex items-center gap-1">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24"
-                            stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                        </svg>
-                        完了する取引アイテムを選択
-                    </label>
-
-                    <div class="relative">
-                        <select
-                            class="w-full bg-gray-50 border border-emerald-200 text-gray-700 text-sm rounded-xl px-4 py-3 focus:ring-2 focus:ring-emerald-400 focus:outline-none appearance-none cursor-pointer transition-all hover:bg-white"
-                            name="listed_item_id">
-                            @foreach ($trading_items as $row)
-                                <option value="{{ $row->id }}">📦 {{ $row->series_name }}</option>
-                            @endforeach
-                        </select>
-                        {{-- カスタム矢印アイコン --}}
-                        <div
-                            class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-gray-400">
-                            <svg class="fill-current h-4 w-4" viewBox="0 0 20 20">
-                                <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                    <div class="flex flex-col gap-2 mb-3">
+                        <label class="text-[12px] font-bold text-gray-500 ml-1 flex items-center gap-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 13l4 4L19 7" />
                             </svg>
+                            完了する取引アイテムを選択
+                        </label>
+
+                        <div class="relative">
+                            <select
+                                class="w-full bg-gray-50 border border-emerald-200 text-gray-700 text-sm rounded-xl px-4 py-3 focus:ring-2 focus:ring-emerald-400 focus:outline-none appearance-none cursor-pointer transition-all hover:bg-white"
+                                name="listed_item_id">
+                                @foreach ($trading_items as $row)
+                                    <option value="{{ $row->id }}">📦 {{ $row->series_name }}</option>
+                                @endforeach
+                            </select>
+                            {{-- カスタム矢印アイコン --}}
+                            <div
+                                class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-gray-400">
+                                <svg class="fill-current h-4 w-4" viewBox="0 0 20 20">
+                                    <path
+                                        d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                                </svg>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <x-original-button color="emerald"
-                    class="w-full py-3 shadow-lg hover:shadow-emerald-100 active:scale-[0.98] transition-all">
-                    <span class="flex items-center justify-center gap-2">
-                        チェックしたアイテムの取引を完了する
-                    </span>
-                </x-original-button>
-            </form>
+                    <x-original-button color="emerald"
+                        class="w-full py-3 shadow-lg hover:shadow-emerald-100 active:scale-[0.98] transition-all">
+                        <span class="flex items-center justify-center gap-2">
+                            チェックしたアイテムの取引を完了する
+                        </span>
+                    </x-original-button>
+                </form>
+            @endif
             <p class="text-[16px] text-gray-400 text-center mt-2">※連打に注意してください</p>
         </div>
     </div>
