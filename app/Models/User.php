@@ -55,4 +55,15 @@ class User extends Authenticatable
     {
         return $this->hasOne(TradeRequest::class);
     }
+
+    public function notifications()
+    {
+        // morphManyを使用して、自作したNotificationクラスを指定します
+        return $this->morphMany(Notification::class, 'notifiable')->orderBy('created_at', 'desc');
+    }
+
+    public function unreadNotifications()
+    {
+        return $this->notifications()->whereNull('read_at');
+    }
 }
