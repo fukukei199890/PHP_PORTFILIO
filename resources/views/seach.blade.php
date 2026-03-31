@@ -27,17 +27,17 @@
                 <div class="flex items-center justify-center gap-8 py-3 bg-white rounded-2xl border border-gray-100 shadow-sm">
                     <div class="flex items-center gap-2 cursor-pointer group">
                         <input type="radio" id="opend" name="is_opened" value="1" class="w-4 h-4 text-gray-900 focus:ring-gray-900 border-gray-300">
-                        <label for="opend" class="text-sm font-bold text-gray-500 group-hover:text-gray-900 transition-colors" style="font-family: 'Zen Maru Gothic', sans-serif;">開封済み</label>
+                        <label for="opend" class="text-sm font-bold text-gray-500 group-hover:text-gray-900 transition-colors">開封済み</label>
                     </div>
                     <div class="flex items-center gap-2 cursor-pointer group">
                         <input type="radio" id="not_opend" name="is_opened" value="0" class="w-4 h-4 text-gray-900 focus:ring-gray-900 border-gray-300">
-                        <label for="not_opend" class="text-sm font-bold text-gray-500 group-hover:text-gray-900 transition-colors" style="font-family: 'Zen Maru Gothic', sans-serif;">未開封</label>
+                        <label for="not_opend" class="text-sm font-bold text-gray-500 group-hover:text-gray-900 transition-colors">未開封</label>
                     </div>
                 </div>
 
                 {{-- 検索ボタン --}}
                 <div class="pt-2">
-                    <x-original-button color="blue" class="w-full py-4 shadow-sm">検索</x-original-button>
+                    <x-original-button color="blue" class="w-full">検索</x-original-button>
                 </div>
             </form>
         </div>
@@ -50,7 +50,7 @@
             @if ($results->isEmpty())
             <div class="text-center py-20">
                 <i class="fa-solid fa-ghost text-4xl text-gray-200 mb-4"></i>
-                <p class="text-gray-400 font-bold" style="font-family: 'Zen Maru Gothic', sans-serif;">見つかりませんでした</p>
+                <p class="text-gray-400 font-bold">見つかりませんでした</p>
             </div>
             @else
             <div class="grid grid-cols-2 gap-4">
@@ -65,7 +65,7 @@
                             @endif
                         </div>
                     </a>
-                    <div class="p-4 text-center" style="font-family: 'Zen Maru Gothic', sans-serif;">
+                    <div class="p-4 text-center">
                         <p class="text-xs font-bold text-gray-800 truncate mb-1">{{ $row->series_name }}</p>
                         <p class="text-[10px] text-gray-400 truncate">{{ $row->char_name }}</p>
                     </div>

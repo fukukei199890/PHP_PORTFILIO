@@ -8,12 +8,13 @@
         <div class="px-4 space-y-4">
 
             @guest
+
             {{-- 【修正ポイント】ログインしていない場合のみ、このブロックを表示 --}}
             <div class="flex flex-col items-center justify-center pt-32 px-10 text-center">
-                <p class="text-gray-500 font-medium" style="font-family: 'Zen Maru Gothic', sans-serif;">ログインすると申請状況を確認できます</p>
+                <p class="text-gray-500 font-medium">ログインすると申請状況を確認できます</p>
                 <a href="{{ route('login') }}" class="w-full">
-                    <x-original-button class="w-full mt-6 py-4 shadow-md">
-                        ログインする
+                    <x-original-button color="black" class=" px-10 mt-10">
+                        ログインして確認する
                     </x-original-button>
                 </a>
             </div>
@@ -25,7 +26,7 @@
             {{-- ログインしているが、リクエストが0件の場合 --}}
             <div class="flex flex-col items-center justify-center pt-32 px-10 text-center text-gray-400">
                 <i class="fa-regular fa-paper-plane text-5xl mb-5"></i>
-                <p class="font-medium text-base" style="font-family: 'Zen Maru Gothic', sans-serif;">申請中のリクエストはありません</p>
+                <p class="font-medium text-base">申請中のリクエストはありません</p>
             </div>
             @else
             {{-- ログインしていて、リクエストがある場合：元の画像を表示--}}
@@ -34,14 +35,14 @@
 
                 {{-- タイトル --}}
                 <div class="flex justify-between items-start mb-5 border-b border-gray-100 pb-3">
-                    <p class="font-bold text-xl text-gray-900 tracking-tight" style="font-family: 'Zen Maru Gothic', sans-serif;">
+                    <p class="font-bold text-xl text-gray-900 tracking-tight">
                         {{ $row->listed_item->user->name }} さんへのリクエスト
                     </p>
                 </div>
 
                 {{-- 相手のアイテム情報 --}}
                 <div class="mb-6">
-                    <p class="text-xs font-bold text-yellow-500 mb-2 uppercase tracking-wider" style="font-family: 'Zen Maru Gothic', sans-serif;">希望する商品</p>
+                    <p class="text-xs font-bold text-yellow-500 mb-2 uppercase tracking-wider">希望する商品</p>
                     <div class="bg-gray-50 rounded-2xl p-4 text-center border border-gray-100">
                         {{-- ここから画像表示表示 --}}
                         @if ($row->listed_item->images->first())
@@ -62,7 +63,7 @@
 
                 {{--分の出品物情報 --}}
                 <div class="mb-6">
-                    <p class="text-xs font-bold text-blue-500 mb-2 uppercase tracking-wider" style="font-family: 'Zen Maru Gothic', sans-serif;">申請した商品</p>
+                    <p class="text-xs font-bold text-blue-500 mb-2 uppercase tracking-wider">申請した商品</p>
                     <div class="bg-gray-50 rounded-2xl p-4 text-center border border-gray-100 mb-3">
                         {{-- ここから画像表示表示 --}}
                         @if ($row->image_url)
@@ -97,7 +98,7 @@
             @if ($tradeRequests->isEmpty())
             <div class="text-center py-20 text-gray-400">
                 <i class="fa-regular fa-folder-open text-5xl mb-5 block"></i>
-                <p class="text-base" style="font-family: 'Zen Maru Gothic', sans-serif;">現在届いているリクエストはありません</p>
+                <p class="text-base">現在届いているリクエストはありません</p>
             </div>
             @else
             @foreach ($tradeRequests as $row)
@@ -105,14 +106,14 @@
 
                 {{-- タイトル --}}
                 <div class="flex justify-between items-start mb-5 border-b border-gray-100 pb-3">
-                    <p class="font-bold text-xl text-gray-900 tracking-tight" style="font-family: 'Zen Maru Gothic', sans-serif;">
+                    <p class="font-bold text-xl text-gray-900 tracking-tight">
                         {{ $row->user->name }} さんからのリクエスト
                     </p>
                 </div>
 
                 {{-- 【画像復活】相手の提示商品 --}}
                 <div class="mb-6">
-                    <p class="text-xs font-bold text-blue-500 mb-2 uppercase tracking-wider" style="font-family: 'Zen Maru Gothic', sans-serif;">相手の提示商品</p>
+                    <p class="text-xs font-bold text-blue-500 mb-2 uppercase tracking-wider">相手の提示商品</p>
                     <div class="bg-gray-50 rounded-2xl p-4 text-center border border-gray-100">
                         {{-- ここから画像表示表示 --}}
                         @if ($row->image_url)
@@ -133,7 +134,7 @@
 
                 {{-- 自分の出品物情報 --}}
                 <div class="mb-6">
-                    <p class="text-xs font-bold text-yellow-500 mb-2 uppercase tracking-wider" style="font-family: 'Zen Maru Gothic', sans-serif;">自分の出品物</p>
+                    <p class="text-xs font-bold text-yellow-500 mb-2 uppercase tracking-wider">自分の出品物</p>
                     <div class="bg-gray-50 rounded-2xl p-4 text-center border border-gray-100 mb-3">
                         {{-- ここから画像表示表示 --}}
                         @if ($row->listed_item->images->first())

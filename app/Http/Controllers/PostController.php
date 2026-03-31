@@ -22,6 +22,7 @@ class PostController extends Controller
 
         DB::transaction(function () use ($request) {
             // listed_itemsにデータを作成する
+            //SQL文になる↓
             $register = ListedItem::create([
                 'user_id' => Auth::id(),
                 'series_name' => $request->series_name,
@@ -29,7 +30,7 @@ class PostController extends Controller
                 'is_opened' => $request->is_opened,
                 'exchange_area' => $request->exchange_area,
                 // 'is_trading' => $request->integer('is_trading'),
-                'is_trading' =>1,
+                'is_trading' => 1,
                 'request_message' => $request->request_message
             ]);
 
@@ -40,13 +41,18 @@ class PostController extends Controller
 
             //画像保存
             if ($request->hasFile('images')) {
-
+                //　フォーム送信がimagesファイルを持っている 
                 foreach ($request->file('images') as $image) {
 
                     if ($image) {
+                        //変数imageが存在 
 
+                        // ストレージに画像を保存
+                        //store()は第一引数が保存先ディレクトリ、第2引数保存先ディスク
+                        //実行すると、指定した保存先にファイル名を自動生成して保存される
+                        //戻り値は保存先のpath /file名
                         $path = $image->store('posts', 'public');
-
+                        //createは引数の連想配列をデータとしてsql分のクエリを作っている 
                         Image::create([
                             'listed_item_id' => $register->id,
                             'image_url' => $path
@@ -72,7 +78,7 @@ class PostController extends Controller
             ]);
         });
 
-        return redirect()->route('wait');
+        // return redirect()->route('wait');
     }
 
     //
