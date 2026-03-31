@@ -79,7 +79,7 @@ class MessageController extends Controller
 
             if ($recipient) {
                 // 通知を実行
-                    
+                $recipient->notify(new MessageReceived($message));
             }
         }
         // ここまで通知処理
