@@ -49,12 +49,6 @@
                             @endif
                         </div>
 
-                        {{-- 交換場所などの補足情報 --}}
-                        <div class="flex items-center gap-2 text-sm text-gray-500">
-                            <i class="fa-solid fa-location-dot text-[12px]"></i>
-                            <p class="truncate">{{ $thread->sender->exchange_area ?? '場所未指定' }}</p>
-                        </div>
-
                         <p class="text-[11px] text-gray-400 mt-1">
                             @if (Auth::user()->id == $thread->receiver->id)
                                 出品者：自分

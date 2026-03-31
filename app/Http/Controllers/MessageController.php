@@ -14,7 +14,6 @@ use App\Models\ListedItem;
 
 class MessageController extends Controller
 {
-    //
     public function index(Request $request)
     {
         // thread_id
