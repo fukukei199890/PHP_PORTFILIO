@@ -27,9 +27,6 @@ class MessageResource extends Resource
                 Forms\Components\Placeholder::make('sender_name')
                     ->label('メッセージ送信ユーザー')
                     ->content(fn ($record) => $record?->sender?->name ?? '不明'),
-                Forms\Components\Placeholder::make('user_id')
-                    ->label('メッセージ受信ユーザー')
-                    ->content(fn ($record) => $record?->user?->name ?? '不明'),
                 Forms\Components\TextInput::make('message_text')->label('メッセージ'),
                 //
             ]);
@@ -39,11 +36,9 @@ class MessageResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('sender.user.name')
+                Tables\Columns\TextColumn::make('sender.name')
                     ->label('メッセージ送信ユーザー')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('user.name')
-                    ->label('メッセージ受信ユーザー'),
                 Tables\Columns\TextColumn::make('message_text')->label('メッセージ'),
                 //
             ])
