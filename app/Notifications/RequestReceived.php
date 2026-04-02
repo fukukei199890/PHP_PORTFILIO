@@ -6,6 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
+use Illuminate\Support\Facades\Auth;
 
 class RequestReceived extends Notification
 {
@@ -59,8 +60,8 @@ class RequestReceived extends Notification
             // この配列が自動的にJSONに変換され
             // notificationテーブルのdataに書き込まれる
             'requestId' => $this->requestData->id,
-            'sender_id' => $this->requestData->sender_id,
-            'sender_name' => $this->requestData->sender_name
+            'sender_id' => Auth::user()->id,
+            'sender_name' => Auth::user()->name
         ];
     }
 }
