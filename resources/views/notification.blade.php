@@ -7,7 +7,7 @@
     <ul>
         @foreach ($unreadMessage as $row)
             <li>
-                <p>{{ $row->data['sender_name'] }}からのメッセージです（{{ $row['created_at'] }}）</p>
+                <p>{{ $row->data['sender_name'] ?? '不明なユーザー' }}さんからのメッセージです（{{ $row['created_at'] }}）</p>
                 <form method="post" action="{{ route('notification.markAsRead') }}">
                     @csrf
                     <input type="hidden" name="notificationId" value="{{ $row->id }}">
@@ -27,7 +27,7 @@
         @foreach ($unreadRequestReceived as $row)
             <li>
                 <p></p>
-                <p>{{ $row->sender->name }}さんから新着のリクエストがあります（{{ $row->created_at }}）</p>
+                <p>{{ $row->sender->name ?? '不明なユーザー' }}さんから新着のリクエストがあります（{{ $row->created_at }}）</p>
                 <form method="post" action="{{ route('notification.markAsRead') }}">
                     @csrf
                     <input type="hidden" name="notificationId" value="{{ $row->id }}">
@@ -46,7 +46,7 @@
     <ul>
         @foreach ($unreadRequestAccepted as $row)
             <li>
-                <p>{{ $row->sender->name }}さんへのリクエストが承認されました（{{ $row->created_at }}）</p>
+                <p>{{ $row->sender->name ?? '不明なユーザー' }}さんへのリクエストが承認されました（{{ $row->created_at }}）</p>
                 <form method="post" action="{{ route('notification.markAsRead') }}">
                     @csrf
                     <input type="hidden" name="notificationId" value="{{ $row->id }}">
