@@ -35,7 +35,7 @@
                 {{-- 画像アップロード --}}
                 <div class="space-y-3">
                     <label class="block text-sm font-bold text-gray-700">
-                        提示商品の画像
+                        提示商品の画像<span class="ml-1">（必須）</span>
                     </label>
                     <div class="grid grid-cols-1">
                         <input type="file" name="image" accept="image/*"
@@ -46,8 +46,8 @@
                 {{-- メッセージ入力：コンポーネント化 --}}
                 <div class="space-y-3">
                     <div class="space-y-1">
-                        <label for="message" class="block text-sm font-bold text-gray-700">
-                            申請内容 / メッセージ
+                        <label for="message" class="block text-sm font-bold text-gray-700" required>
+                            申請内容 / メッセージ<span class="ml-1">（必須）</span>
                         </label>
 
                     </div>

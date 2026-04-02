@@ -68,10 +68,12 @@
                 <textarea name="comment" rows="4" required placeholder="（例）大変スムーズな取引でした。また機会があればよろしくお願いいたします。"
                     class="w-full p-5 bg-gray-50 border border-gray-200 rounded-2xl text-base leading-relaxed focus:outline-none focus:ring-2 focus:ring-gray-200 focus:bg-white transition placeholder-gray-400"></textarea>
             </div>
-            <button
-                class="px-10 bg-blue-500 text-white py-3 rounded-full font-semibold shadow-md hover:bg-blue-600 transition-all hover:shadow-lg active:scale-95">
-                相手を評価する
-            </button>
+            <x-original-button color="emerald"
+                class="w-full py-3 shadow-lg hover:shadow-emerald-100 active:scale-[0.98] transition-all">
+                <span class="flex items-center justify-center gap-2">
+                    相手を評価する
+                </span>
+            </x-original-button>
         </form>
     </div>
 </x-user-layout>

@@ -13,15 +13,16 @@
             <div class="space-y-4">
                 {{-- シリーズ名：コンポーネント化 --}}
                 <div class="space-y-1">
-                    <label class="block text-xs font-bold text-gray-400 uppercase ml-2" style="font-family: 'Zen Maru Gothic', sans-serif;">シリーズ名</label>
+                    <label class="block text-xs font-bold text-gray-400 uppercase ml-2">シリーズ名<span class="ml-1">（必須）</span></label>
                     <x-original-input
                         name="series_name"
-                        placeholder="例：ちいかわ お座りぬいぐるみ" />
+                        placeholder="例：ちいかわ お座りぬいぐるみ"
+                        required />
                 </div>
 
                 {{-- キャラ名：コンポーネント化 --}}
                 <div class="space-y-1">
-                    <label class="block text-xs font-bold text-gray-400 uppercase ml-2" style="font-family: 'Zen Maru Gothic', sans-serif;">キャラ名（必須）</label>
+                    <label class="block text-xs font-bold text-gray-400 uppercase ml-2">キャラ名<span class="ml-1">（必須）</span></label>
                     <x-original-input
                         name="char_name"
                         placeholder="例：ハチワレ"
@@ -31,7 +32,7 @@
 
             {{-- 商品状態：ラジオボタンのデザインを他画面と統一 --}}
             <div class="space-y-2">
-                <label class="block text-xs font-bold text-gray-400 uppercase ml-2" style="font-family: 'Zen Maru Gothic', sans-serif;">商品状態</label>
+                <label class="block text-xs font-bold text-gray-400 uppercase ml-2" required>商品状態<span class="ml-1">（必須）</span></label>
                 <div class="flex items-center gap-8 py-3 px-5 bg-gray-50 rounded-2xl border border-gray-100">
                     <label class="flex items-center gap-2 cursor-pointer text-sm font-medium text-gray-600" style="font-family: 'Zen Maru Gothic', sans-serif;">
                         <input type="radio" name="is_opened" value="0" checked class="w-4 h-4 text-gray-900 focus:ring-gray-900 border-gray-300">

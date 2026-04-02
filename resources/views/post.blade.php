@@ -29,16 +29,17 @@
 
             {{-- シリーズ名 --}}
             <div class="space-y-1">
-                <label class="block text-sm font-bold text-gray-700">シリーズ名</label>
+                <label class="block text-sm font-bold text-gray-700">シリーズ名<span class="ml-1">（必須）</span></label>
                 <x-original-input
                     name="series_name"
-                    placeholder="例：ちいかわ お座りぬいぐるみ" />
+                    placeholder="例：ちいかわ お座りぬいぐるみ"
+                    required />
             </div>
 
             {{-- キャラ名 --}}
             <div class="space-y-1">
                 <label class="block text-sm font-bold text-gray-700">
-                    キャラ名<span class="text-xs font-normal ml-1">（必須）</span>
+                    キャラ名<span class=" ml-1">（必須）</span>
                 </label>
                 <x-original-input
                     name="char_name"
@@ -48,7 +49,7 @@
 
             {{-- 商品状態 --}}
             <div class="space-y-2">
-                <label class="block text-sm font-bold text-gray-700">商品状態<span class="text-xs font-normal ml-1">（必須）</span></label>
+                <label class="block text-sm font-bold text-gray-700">商品状態<span class=" ml-1">（必須）</span></label>
                 <div class="flex items-center gap-8 py-3 px-5 bg-gray-50 rounded-2xl border border-gray-100">
                     <label class="flex items-center gap-2 cursor-pointer text-sm font-medium text-gray-600">
                         <input type="radio" name="is_opened" value="0" class="w-4 h-4 text-gray-900 focus:ring-gray-900 border-gray-300" required>
@@ -63,9 +64,9 @@
 
             {{-- 交換希望場所 --}}
             <div class="space-y-1">
-                <label class="block text-sm font-bold text-gray-700">主な交換希望場所</label>
+                <label class="block text-sm font-bold text-gray-700">主な交換希望場所<span class="ml-1">（必須）</span></label>
                 {{-- selectはデザインが複雑なため一旦現状維持、または後でコンポーネント化 --}}
-                <select name="exchange_area" class="w-full bg-white rounded-full border border-gray-200 focus:border-gray-900 focus:ring-1 focus:ring-gray-900 text-sm py-2 px-5 outline-none appearance-none cursor-pointer" style="font-family: 'Zen Maru Gothic', sans-serif;">
+                <select name="exchange_area" class="w-full bg-white rounded-full border border-gray-200 focus:border-gray-900 focus:ring-1 focus:ring-gray-900 text-sm py-2 px-5 outline-none appearance-none cursor-pointer" required>
                     <option value="">選択してください</option>
                     <option value="miyazaki_station">宮崎駅</option>
                     <option value="miyako_city">南宮崎駅・宮交シティ</option>
@@ -77,7 +78,7 @@
 
             {{-- 探しているキャラ・条件 --}}
             <div class="space-y-1">
-                <label class="block text-sm font-bold text-gray-700">探しているキャラ・条件<span>(必須)</span></label>
+                <label class="block text-sm font-bold text-gray-700">探しているキャラ・条件<span class=" ml-1">（必須）</span></label>
                 <x-original-textarea
                     name="request_message"
                     rows="3"

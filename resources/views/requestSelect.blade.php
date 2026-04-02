@@ -157,7 +157,7 @@
                 <div class="pt-4 text-center">
                     <form method="get" action="{{ route('requestanswer') }}" class="w-full">
                         <input type="hidden" name="request_id" value="{{ $row->id }}">
-                        <x-original-button class="w-full py-4 text-base shadow-xl">
+                        <x-original-button color="emerald" class="w-full py-4 text-base shadow-xl">
                             詳細を確認する
                         </x-original-button>
                     </form>
