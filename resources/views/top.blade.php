@@ -141,12 +141,12 @@
                 </x-section-title>
 
             </div>
-
             <div class="bg-white rounded-[24px] p-4 shadow-sm border border-gray-100">
                 <div class="flex overflow-x-auto gap-4 pb-2 snap-x snap-mandatory">
                     @foreach ($favorite_item as $fav)
+                    @if ($fav->images->isNotEmpty())
                     <div class="text-center flex-shrink-0 w-24 snap-start">
-                        @if ($fav->images->isNotEmpty())
+
                         <a href="{{ route('goods', $fav->id) }}">
                             <img src="{{ asset('storage/' . $fav->images->first()->image_url) }}"
                                 class="border border-gray-50 mb-2 w-full aspect-square object-cover rounded-xl shadow-sm">
@@ -163,8 +163,8 @@
                             </svg>
                             <span class="text-[10px] font-bold">{{ $fav->favorite_item_count ?? 0 }}</span>
                         </div>
-                        @endif
                     </div>
+                    @endif
                     @endforeach
                 </div>
             </div>
@@ -183,14 +183,13 @@
             <div class="bg-white rounded-[24px] p-4 shadow-sm border border-gray-100">
                 <div class="flex overflow-x-auto gap-4 pb-2 snap-x snap-mandatory">
                     @foreach ($items as $item)
+                    @if ($item->images->isNotEmpty())
                     <div class="text-center flex-shrink-0 w-24 snap-start">
-                        @if ($item->images->isNotEmpty())
+
                         <a href="{{ route('goods', $item->id) }}">
                             <img src="{{ asset('storage/' . $item->images->first()->image_url) }}"
                                 class="border border-gray-50 mb-2 w-full aspect-square object-cover rounded-xl shadow-sm">
                         </a>
-                        @endif
-
                         <p class="text-[12px] font-bold">
                             {{ $item->series_name }}
                         </p>
@@ -198,6 +197,7 @@
                             {{ $item->char_name }}
                         </p>
                     </div>
+                    @endif
                     @endforeach
                 </div>
             </div>
