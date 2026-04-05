@@ -158,7 +158,7 @@
                     <form method="get" action="{{ route('requestanswer') }}" class="w-full">
                         <input type="hidden" name="request_id" value="{{ $row->id }}">
                         <x-original-button color="emerald" class="w-full py-4 text-base shadow-xl">
-                            詳細を確認する
+                            リクエスト詳細を確認する
                         </x-original-button>
                     </form>
                 </div>

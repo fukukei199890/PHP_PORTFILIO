@@ -15,11 +15,11 @@
                     w-full max-w-md 
                     p-10 text-center shadow-sm">
 
-                <p class="text-lg font-medium mb-4">
+                <p>
                     評価を送信しました
                 </p>
 
-                <p class="text-base">
+                <p>
                     評価が完了しました！スムーズな取引をありがとうございました。また素敵な出会いがありますように！
                 </p>
             </div>
