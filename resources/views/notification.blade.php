@@ -102,9 +102,9 @@
                 @else
                 <ul class="space-y-3">
                     @foreach ($unreadRequestAccepted as $row)
-                    <li class="bg-white p-4 rounded-xl shadow-sm border-l-4 border-l-green-400 border-y border-r border-gray-100">
+                    <li class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 transition-active active:bg-gray-50">
                         <p class="text-sm text-gray-800 mb-3">
-                            <span class="font-bold underline decoration-green-300">{{ $row->sender->name ?? '不明なユーザー' }}</span> さんへのリクエストが承認されました！
+                            <span class="font-bold text-gray-600">{{ $row->sender->name ?? '不明なユーザー' }}</span> さんへのリクエストが承認されました！
                         </p>
                         <div class="flex items-center justify-between">
                             <span class="text-[10px] font-medium text-gray-400">{{ $row->created_at->diffForHumans() }}</span>

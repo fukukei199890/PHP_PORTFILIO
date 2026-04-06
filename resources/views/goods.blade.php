@@ -80,7 +80,7 @@
 
                 @guest
                 <a href="{{ route('login') }}" class="block">
-                    <x-original-button class="w-full py-4 shadow-xl">
+                    <x-original-button color="black" class="w-full py-4 shadow-xl">
                         ログインして申し込む
                     </x-original-button>
                 </a>

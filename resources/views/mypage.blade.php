@@ -45,7 +45,7 @@
                             </button>
                         </div>
                         @error('icon')
-                            <p class="text-red-500 text-[10px] mt-1 font-bold">{{ $message }}</p>
+                        <p class="text-red-500 text-[10px] mt-1 font-bold">{{ $message }}</p>
                         @enderror
                     </div>
                 </form>
@@ -125,6 +125,4 @@
         </div>
     </div>
 
-    {{-- 佐藤のテスト用ページへのリンク --}}
-    <a href="{{ route('satoTest') }}">佐藤のテスト用ページへのリンク</a>
 </x-user-layout>
