@@ -9,8 +9,11 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Filament\Models\Contracts\FilamentUser; // 追加
+use Filament\Panel;
 
-class User extends Authenticatable
+
+class User extends Authenticatable implements FilamentUser
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -65,5 +68,21 @@ class User extends Authenticatable
     public function unreadNotifications()
     {
         return $this->notifications()->whereNull('read_at');
+    }
+
+    /**
+     * Filament管理画面へのアクセス権限を定義
+     */
+    public function canAccessFilament(): bool
+    {
+
+        // 2. アクセスを許可するチームメンバーのメールアドレスを配列に入れる
+        $adminEmails = [
+            'futianqijie560@gmail.com',
+            'root@root',
+        ];
+
+        // ログイン中のメールアドレスを小文字にして比較
+        return in_array(strtolower($this->email), $adminEmails);
     }
 }

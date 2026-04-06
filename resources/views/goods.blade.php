@@ -68,23 +68,19 @@
 
             {{-- 4. アクションボタン --}}
             <div class="pt-6 space-y-4 text-center">
-                @auth
+
                 <form method="post" action="{{ route('goods.select') }}">
                     @csrf
                     <input type="hidden" name="listed_item_id" value="{{ $item->id }}">
                     <x-original-button class="w-full py-4 shadow-xl">
+                        @auth
                         交換する商品を選択する
+                        @endauth
+                        @guest
+                        ログインして申し込む
+                        @endguest
                     </x-original-button>
                 </form>
-                @endauth
-
-                @guest
-                <a href="{{ route('login') }}" class="block">
-                    <x-original-button class="w-full py-4 shadow-xl">
-                        ログインして申し込む
-                    </x-original-button>
-                </a>
-                @endguest
 
                 <a href="{{ route('top') }}" class="block text-sm text-gray-400 font-bold hover:text-gray-600 transition pt-2" style="font-family: 'Zen Maru Gothic', sans-serif;">
                     ホームへ戻る
