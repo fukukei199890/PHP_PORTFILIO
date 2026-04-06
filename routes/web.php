@@ -72,6 +72,7 @@ Route::get('/privacy', [PrivacyController::class, 'index'])->name('privacy');
 
 // 福田お問い合わせページ作成
 Route::get('/inquirery', [InquireryController::class, 'index'])->name('inquirery');
+Route::post('/inquirery', [InquireryController::class, 'store'])->name('inquirery.store');
 
 // 利用規約
 // // 利用規約
@@ -131,8 +132,8 @@ Route::post('/rating/{id?}', [RatingController::class, 'store'])->name('rating.s
 Route::get('/message', [MessageController::class, 'index'])->name('message');
 Route::post('/message/send', [MessageController::class, 'create_message'])->name('create_message');
 Route::post('/message/complete', [MessageController::class, 'complete'])->name('message.complete');
-Route::post('/message/edit',[MessageController::class, 'update'])->name('message.update');
-Route::post('/message/delete',[MessageController::class, 'delete'])->name('message.delete');
+Route::post('/message/edit', [MessageController::class, 'update'])->name('message.update');
+Route::post('/message/delete', [MessageController::class, 'delete'])->name('message.delete');
 
 //ログイン後マイページ
 Route::get('/mypage', [MypageController::class, 'index'])->name('mypage');
@@ -216,13 +217,14 @@ Route::get('/manual', [ManualController::class, 'index'])->name('manual');
 //取引完了商品表示ページ
 Route::get('/itemcomplete', [ItemCompleteController::class, 'index'])->name('itemcomplete');
 
-Route::get('/notification',[NotificationController::class,'index'])->name('notification');
-Route::post('/notification/markAsRead',[NotificationController::class,'markAsRead'])->name('notification.markAsRead');
+Route::get('/notification', [NotificationController::class, 'index'])->name('notification');
+Route::post('/notification/markAsRead', [NotificationController::class, 'markAsRead'])->name('notification.markAsRead');
 
 // 佐藤のテストページ
 use App\Http\Controllers\SatoTestController;
-Route::get('/satoTest',[SatoTestController::class,'index'])->name('satoTest');
-Route::post('/satoTest/markAsRead',[SatoTestController::class,'markAsRead'])->name('satoTest.markAsRead');
+
+Route::get('/satoTest', [SatoTestController::class, 'index'])->name('satoTest');
+Route::post('/satoTest/markAsRead', [SatoTestController::class, 'markAsRead'])->name('satoTest.markAsRead');
 
 //東郷先生記述
 Route::get('/dashboard', function () {
