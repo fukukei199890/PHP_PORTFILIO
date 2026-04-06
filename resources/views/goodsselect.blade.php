@@ -6,8 +6,10 @@
             class="bg-white p-6 rounded-2xl shadow-sm space-y-6">
 
             @csrf
-            <input type="hidden" name="item_id" value="{{ $itemId }}">
-
+            <input type="hidden" name="item_id" value="{{ $itemId ?? session('current_item_id') }}">
+            @php
+            session()->forget('current_item_id');
+            @endphp
 
 
             <div class="space-y-4">

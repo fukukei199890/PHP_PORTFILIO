@@ -29,7 +29,9 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(RouteServiceProvider::HOME);
+        $uri =  session('current_goods_item_id') ? '/goodsselect' : RouteServiceProvider::HOME;
+
+        return redirect()->intended($uri);
     }
 
     /**
