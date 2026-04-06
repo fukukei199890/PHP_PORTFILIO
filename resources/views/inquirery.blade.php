@@ -1,5 +1,11 @@
 <x-user-layout>
     <div class="max-w-md mx-auto px-6 py-12 text-gray-800">
+        {{-- 完了メッセージの表示 --}}
+        @if (session('status'))
+        <div class="p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg">
+            {{ session('status') }}
+        </div>
+        @endif
 
 
         <!-- 各ページタイトル -->
@@ -17,8 +23,17 @@
         </div>
 
         {{-- フォーム --}}
-        <form method="POST" action="#" class="space-y-8">
+        <form method="POST" action="route{{ ('inquiry.store') }}" class="space-y-8">
             @csrf
+            {{-- name, email, subject などを追加する例 --}}
+            <div>
+                <label for="name" class="block text-sm font-bold mb-3">お名前</label>
+                <input type="text" name="name" id="name" required class="..." value="{{ old('name') }}">
+            </div>
+            <div>
+                <label for="email" class="block text-sm font-bold mb-3">メールアドレス</label>
+                <input type="email" name="email" id="email" required class="..." value="{{ old('email') }}">
+            </div>
             <div>
                 <label for="message" class="block text-sm font-bold mb-3">お問い合わせ内容</label>
                 <textarea
@@ -29,6 +44,7 @@
                     class="w-full border-gray-300 rounded-lg shadow-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
                     placeholder="内容を入力してください"></textarea>
             </div>
+
 
             <div class="flex justify-center">
                 <button type="submit"
