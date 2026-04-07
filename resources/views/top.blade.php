@@ -77,16 +77,18 @@
                     btnColor: 'blue',
                     btnRoute: '{{ route('seach') }}'
                 },
-                {
-                    title: 'まずはログインして出品しよう',
-                    subtitle: '登録するとお気に入り機能が使えます。',
-                    // 黒ボタンを浮かび上がらせるため、温かみのあるベージュグレー
-                    bg: 'bg-slate-100',
-                    glow: 'bg-slate-300/50',
-                    btnText: 'ログインはこちら',
-                    btnColor: 'black',
-                    btnRoute: '{{ route('login') }}'
-                }
+                @guest
+                    {
+                        title: 'まずはログインして出品しよう',
+                        subtitle: '登録するとお気に入り機能が使えます。',
+                        // 黒ボタンを浮かび上がらせるため、温かみのあるベージュグレー
+                        bg: 'bg-slate-100',
+                        glow: 'bg-slate-300/50',
+                        btnText: 'ログインはこちら',
+                        btnColor: 'black',
+                        btnRoute: '{{ route('login') }}'
+                    }
+                @endguest
             ]
         }" x-init="setInterval(() => active = (active + 1) % contents.length, 3500)"
             class="text-center py-8 px-4 relative overflow-hidden transition-colors duration-1000 ease-in-out h-[220px]"
