@@ -121,7 +121,7 @@
         {{-- copyright --}}
 
         <div class="mt-16 text-center text-[10px] text-gray-300">
-            <p>© 2026 MyService. All Rights Reserved.</p>
+            <p>© capusel Link. All Rights Reserved.</p>
         </div>
     </div>
 

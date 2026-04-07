@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('icon_url')->after('password');
+            $table->string('icon_url')->default('images/default-icon.png')->after('password');
         });
     }
 
