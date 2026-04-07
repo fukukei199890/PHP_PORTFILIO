@@ -1,7 +1,11 @@
 # [サービス名：例：capsuleLink]
 ### 推し活をより安全に。アニメグッズ・アイテムの個人間交換プラットフォーム
 
-![TOP画面イメージ](https://via.placeholder.com/800x450.png?text=Service+Screenshot)
+<img width="1920" height="1080" alt="Image" src="https://github.com/user-attachments/assets/67cfc9b7-b0f4-4067-a6be-d76183f0e45b" />
+<img width="1920" height="1080" alt="Image" src="https://github.com/user-attachments/assets/fc3b26de-4006-4497-858e-42bb50d4c2d1" />
+<img width="1920" height="1080" alt="Image" src="https://github.com/user-attachments/assets/58099b83-78c6-4ef7-983c-15173dda76d7" />
+<img width="1920" height="1080" alt="Image" src="https://github.com/user-attachments/assets/ff7ace27-b372-4235-b0ee-bbe53ddbf034" />
+
 
 ## 📋 サービス概要
 「ダブったガチャガチャを交換したい」「SNSでの個人間取引は住所公開などの心理的ハードルが高い」という課題を解決するための、トイカプセル交換専用のマッチングサービスです。
