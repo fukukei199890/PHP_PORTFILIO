@@ -2,16 +2,33 @@
     <x-section-title>商品詳細</x-section-title>
     <div class="max-w-md mx-auto bg-white min-h-screen pb-20">
 
+        {{-- 画像セクション --}}
+        <div class="bg-gray-50/50 border-b border-gray-100 relative">
+            @if($item->images->count() > 0)
+            <div class="relative group">
+                {{-- 横スクロールコンテナ --}}
+                <div class="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide">
+                    @foreach($item->images as $image)
+                    <div class="flex-none w-full snap-center py-10 text-center">
+                        <div class="inline-block relative">
+                            <img src="{{ asset('storage/'.$image->image_url) }}"
+                                class="mx-auto w-64 h-64 object-cover rounded-2xl shadow-md border-4 border-white">
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
 
-        {{-- 画像 --}}
-        <div class="py-10 text-center bg-gray-50/50 border-b border-gray-100 relative">
-            @if($item->images->first())
-            <div class="inline-block relative">
-                <img src="{{ asset('storage/'.$item->images->first()->image_url) }}"
-                    class="mx-auto w-40 h-40 object-cover rounded-2xl shadow-md border-4 border-white">
+                {{-- 枚数インジケーター (複数枚ある場合のみ表示) --}}
+                @if($item->images->count() > 1)
+                <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5">
+                    @foreach($item->images as $index => $image)
+                    <div class="w-1.5 h-1.5 rounded-full bg-gray-300"></div>
+                    @endforeach
+                </div>
+                @endif
 
-                {{-- お気に入りボタンを大きく、押しやすく --}}
-                <form action="{{ route('favorites.store',$item->id) }}" method="POST" class="absolute -bottom-3 -right-3">
+                {{-- お気に入りボタン (画像コンテナに対して絶対配置) --}}
+                <form action="{{ route('favorites.store',$item->id) }}" method="POST" class="absolute bottom-6 right-10 z-10">
                     @csrf
                     <button type="submit" class="bg-white p-3 rounded-full shadow-lg hover:scale-110 transition text-red-400 border border-gray-100">
                         <span class="text-2xl">♥</span>
@@ -20,6 +37,7 @@
             </div>
             @endif
         </div>
+
 
         {{-- 2. 出品者情報 --}}
         <div class="flex items-center gap-4 p-6 bg-white border-b border-gray-50">
