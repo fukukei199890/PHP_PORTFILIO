@@ -38,6 +38,15 @@
 
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>
+        <!-- checkbox -->
+        <div class="mt-4">
+            <label class="flex items-center">
+                <input type="checkbox" name="terms" class="form-checkbox" required>
+                <span class="ml-2 text-sm text-gray-600">
+                    <a href="{{ route('agreements') }}" target="_blank" class="underline text-blue-600">利用規約</a>に同意します
+                </span>
+            </label>
+        </div>
 
         <div class="flex items-center justify-end mt-4">
             <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
