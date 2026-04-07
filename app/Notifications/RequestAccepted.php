@@ -30,7 +30,7 @@ class RequestAccepted extends Notification
      */
     public function via($notifiable)
     {
-        return ['database'];
+        return ['mail','database'];
     }
 
     /**
@@ -42,9 +42,7 @@ class RequestAccepted extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+                    ->line('あなたの送信したリクエストが承認されました');
     }
 
     /**

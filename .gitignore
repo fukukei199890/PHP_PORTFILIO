@@ -16,3 +16,7 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+resources/views/message.blade_REMOTE_1107.php
+resources/views/message.blade_BACKUP_1107.php
+resources/views/message.blade_BASE_1107.php
+resources/views/message.blade_LOCAL_1107.php
