@@ -45,36 +45,44 @@
             <nav class="flex items-center justify-between flex-wrap max-w-md mx-auto">
 
                 <!-- ホーム -->
-                <div class="flex flex-col items-center">
-                    <span class="text-xl">🏠</span>
-                    <span><a href="{{ route('top') }}">ホーム</a></span>
+                <div class="flex flex-col items-center flex-1">
+                    <a href="{{ route('top') }}" class="flex flex-col items-center">
+                        <span class="text-xl h-8 flex items-center justify-center">🏠</span>
+                        <span class="text-[13px]">ホーム</span>
+                    </a>
                 </div>
 
                 <!-- 探す -->
-                <div class="flex flex-col items-center">
-                    <span class="text-xl">🔍</span>
-                    <span><a href="{{ route('seach') }}">探す</a></span>
+                <div class="flex flex-col items-center flex-1">
+                    <a href="{{ route('seach') }}" class="flex flex-col item-center">
+                        <span class="text-xl h-8 flex items-center justify-center">🔍</span>
+                        <span class="text-[13px]">探す</span>
+                    </a>
                 </div>
 
                 <!-- 出品（ログイン前後で遷移先変更） -->
-                <div class="flex flex-col items-center">
-                    <span class="text-xl">📷</span>
+                <div class="flex flex-col items-center flex-1">
 
                     {{-- ログイン後 --}}
                     @auth
-                        <span><a href="{{ route('post') }}">出品</a></span>
+                        <a href="{{ route('post') }}" class="flex flex-col items-center">
+                            <span class="text-xl h-8 flex items-center justify-center">📷</span>
+                            <span class="text-[13px]">出品</span>
+                        </a>
                     @endauth
 
                     {{-- ログイン前 --}}
                     @guest
-                        <span><a href="{{ route('postbefore') }}">出品</a></span>
+                        <a href="{{ route('postbefore') }}" class="flex flex-col items-center">
+                            <span class="text-xl h-8 flex items-center justify-center">📷</span>
+                            <span class="text-[13px]">出品</span>
+                        </a>
                     @endguest
 
                 </div>
 
                 <!-- 通知 -->
-                <div class="flex flex-col items-center relative">
-                    <span class="text-xl">🔔</span>
+                <div class="flex flex-col items-center relative flex-1">
                     {{-- ログイン後 --}}
                     @auth
                         {{-- 通知の数を表示 --}}
@@ -85,22 +93,36 @@
                                 ->count(); // 数を取得
                         @endphp
                         @if ($count > 0)
-                            <a href="{{ route('messageReceived') }}">{{ Auth::user()->unreadNotifications->count() }}</a>
+                            <a href="{{ route('messageReceived') }}" class="flex flex-col items-center">
+                                <span class="text-xl h-8 flex items-center justify-center relative">
+                                    🔔
+                                    {{-- 赤丸バッジ --}}
+                                    <span class="absolute -top-1 -right-2 bg-red-500 text-white text-[10px] font-bold rounded-full h-4 w-4 flex items-center justify-center border border-white">
+                                        {{ Auth::user()->unreadNotifications->count() }}
+                                    </span>
+                                </span>
+                                <!-- <span class="text-xl h-8 flex items-center justify-center">🔔</span>
+                                {{ Auth::user()->unreadNotifications->count() }}
+                            </a> -->
                         @else
-                            <span><a href={{ route('messageselect') }}>メッセージ</a></span>
+                            <a href={{ route('messageselect') }} class="flex flex-col items-center">
+                                <span class="text-xl h-8 flex items-center justify-center">🔔</span>
+                                <span class="text-[13px]">メッセージ</span>
+                            </a>
                         @endif
                     @endauth
 
                     {{-- ログイン前 --}}
                     @guest
-                        <span><a href="{{ route('messageselect') }}">通知</a></span>
+                        <a href="{{ route('messageselect') }}" class="flex flex-col items-center">
+                            <span class="text-xl h-8 flex items-center justify-center">🔔</span>
+                            <span class="text-[13px]">通知</span>
+                        </a>
                     @endguest
                 </div>
 
                 <!-- リクエストメッセージ -->
-                <div class="flex flex-col items-center">
-                    <span class="text-xl">✉</span>
-
+                <div class="flex flex-col items-center flex-1">
                     {{-- ログイン後 --}}
                     @auth
                         @php
@@ -114,30 +136,43 @@
                                 ->count();
                         @endphp
                         @if ($count > 0)
-                            <span><a href="{{ route('requestSelect') }}">{{ $count }}</a></span>
+                            <a href="{{ route('requestSelect') }}" class="flex flex-col items-center">
+                                <span class="text-xl h-8 flex items-center justify-center">✉️</span>
+                                <span class="text-[13px]">{{ $count }}</span>
+                            </a>
                         @else
-                            <span><a href="{{ route('requestSelect') }}">リクエスト</a></span>
+                            <a href="{{ route('requestSelect') }}" class="flex flex-col items-center">
+                                <span class="text-xl h-8 flex items-center justify-center">✉️</span>
+                                <span class="text-[13px]">リクエスト</span>
+                            </a>
                         @endif
                     @endauth
 
                     {{-- ログイン前 --}}
                     @guest
-                        <span><a href="{{ route('requestSelect') }}">リクエスト</a></span>
+                        <a href="{{ route('requestSelect') }}" class="flex flex-col items-center">
+                            <span class="text-xl h-8 flex items-center justify-center">✉️</span>
+                            <span class="text-[13px]">リクエスト</span>
+                        </a>
                     @endguest
                 </div>
 
                 <!-- マイページ -->
-                <div class="flex flex-col items-center">
-                    <span class="text-xl">👤</span>
-
+                <div class="flex flex-col items-center flex-1">
                     {{-- ログイン後 --}}
                     @auth
-                        <span><a href="{{ route('mypage') }}">マイページ</a></span>
+                        <a href="{{ route('mypage') }}" class="flex flex-col items-center">
+                            <span class="text-xl h-8 flex items-center justify-center">👤</span>
+                            <span class="text-[13px]">マイページ</span>
+                        </a>
                     @endauth
 
                     {{-- ログイン前 --}}
                     @guest
-                        <span><a href="{{ route('mypagebefore') }}">マイページ</a></span>
+                        <a href="{{ route('mypagebefore') }}" class="flex flex-col items-center">
+                            <span class="text-xl h-8 flex items-center justify-center">👤</span>
+                            <span class="text-[13px]">マイページ</span>
+                        </a>
                     @endguest
                 </div>
 
