@@ -23,17 +23,9 @@
         </div>
 
         {{-- フォーム --}}
-        <form method="POST" action="route{{ ('inquiry.store') }}" class="space-y-8">
+        <form method="POST" action="{{ route('inquirery.store') }}" class="space-y-8">
             @csrf
-            {{-- name, email, subject などを追加する例 --}}
-            <div>
-                <label for="name" class="block text-sm font-bold mb-3">お名前</label>
-                <input type="text" name="name" id="name" required class="..." value="{{ old('name') }}">
-            </div>
-            <div>
-                <label for="email" class="block text-sm font-bold mb-3">メールアドレス</label>
-                <input type="email" name="email" id="email" required class="..." value="{{ old('email') }}">
-            </div>
+
             <div>
                 <label for="message" class="block text-sm font-bold mb-3">お問い合わせ内容</label>
                 <textarea

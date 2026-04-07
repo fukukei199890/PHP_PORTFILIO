@@ -1,66 +1,42 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# [サービス名：例：capsuleLink]
+### 推し活をより安全に。アニメグッズ・アイテムの個人間交換プラットフォーム
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+![TOP画面イメージ](https://via.placeholder.com/800x450.png?text=Service+Screenshot)
 
-## About Laravel
+## 📋 サービス概要
+「ダブったガチャガチャを交換したい」「SNSでの個人間取引は住所公開などの心理的ハードルが高い」という課題を解決するための、トイカプセル交換専用のマッチングサービスです。
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## ✨ 主な機能
+- **アイテム出品・管理機能**: 最大4枚の画像投稿に対応。商品の細かな状態まで共有可能です。
+- **スワイプ式画像ビューワー**: Tailwind CSSを用いたモバイルフレンドリーなスライダー実装。
+- **リアルタイムチャット**: 交換の待ち合わせや詳細確認のための専用スレッド。
+- **安全ガイドライン表示**: トラブル防止のため、公共の場での取引を促すメッセージを常設。
+- **お気に入り機能**: 気になるアイテムを保存し、後から比較検討が可能。
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 🛠 使用技術
+### Backend
+- **PHP 8.2 / Laravel 10.x**
+- **MySQL** (データベース設計・Eloquent ORM)
+- **DB Transaction**: 複数テーブルへのデータ整合性を担保
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Frontend
+- **Tailwind CSS**: レスポンシブデザインの高速実装
+- **Blade Template Engine**: コンポーネント化によるコードの再利用
+- **JavaScript (Alpine JS)**: 動的なUI操作
 
-## Learning Laravel
+## 💡 こだわったポイント（課題解決）
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### 1. 取引の透明性を高める画像複数投稿（1対多リレーション）
+- **課題**: 1枚の画像では商品の裏面の傷や「銀袋（パッケージ）」の有無が判別できず、取引トラブルの原因になっていました。
+- **解決**: `ListedItem`テーブルと`Images`テーブルを1対多で紐付け、最大4枚の画像を投稿・閲覧できるよう改修。画像保存時にはDBトランザクションを用い、データの不整合が起きないよう堅牢性を高めました。
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+### 2. モバイルファーストなUI/UX設計
+- **課題**: 交換場所（イベント会場付近）ではスマホ操作が主となるため、PC向けの複雑な操作は不向きでした。
+- **解決**: 
+    - 画像閲覧にCSSのスクロールスナップ機能を活用し、片手でスワイプして状態を確認できるスライダーを実装。
+    - チャット送信ボタンがスマホ画面で潰れないよう、`flex-shrink-0`を活用したレスポンシブ調整を行いました。
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### 3. トラブルを未然に防ぐ安全設計
+- **課題**: 個人間取引における「密室での接触」や「マナー違反」のリスク。
+- **解決**: チャット画面上部に「駅やカフェなどの公共の場」での交換を推奨するガイドラインを常設。技術的な実装だけでなく、サービス運用上の安全性（Safety First）を意識したUI設計を行いました。
 
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
