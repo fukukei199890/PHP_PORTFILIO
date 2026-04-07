@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 class RequestReceived extends Notification
 {
     use Queueable;
+    public $requestData;
 
     /**
      * Create a new notification instance.
@@ -18,6 +19,7 @@ class RequestReceived extends Notification
      * @return void
      */
     public function __construct($request)
+
     {
         $this->requestData = $request;
     }
@@ -31,7 +33,7 @@ class RequestReceived extends Notification
     public function via($notifiable)
     {
         // 通知方法
-        return ['database'];
+        return ['mail','database'];
     }
 
     /**
@@ -43,9 +45,7 @@ class RequestReceived extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+                    ->line('あなたの出品したグッズに対して交換リクエストが届きました');
     }
 
     /**
