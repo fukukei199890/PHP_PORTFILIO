@@ -55,11 +55,11 @@
 
 ## 🛠 使用技術
 ### Backend
-- **PHP 8.2 / Laravel 10.x**
-- **MySQL** (データベース設計・Eloquent ORM)
+- **PHP 8.0.30 / Laravel 9.52.21**
+- **MariaDB10.5.x** (データベース設計・Eloquent ORM)
 - **DB Transaction**: 複数テーブルへのデータ整合性を担保
 
 ### Frontend
 - **Tailwind CSS**: レスポンシブデザインの高速実装
 - **Blade Template Engine**: コンポーネント化によるコードの再利用
-- **JavaScript (Alpine JS / Vanilla JS)**
+- **JavaScript (Alpine JS)**
