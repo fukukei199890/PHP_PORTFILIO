@@ -7,6 +7,8 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Lang;
+use Illuminate\SUpport\Facades\URL;
 
 class RequestReceived extends Notification
 {
@@ -44,8 +46,13 @@ class RequestReceived extends Notification
      */
     public function toMail($notifiable)
     {
+
         return (new MailMessage)
-                    ->line('あなたの出品したグッズに対して交換リクエストが届きました');
+            ->subject(Lang::get('通知を受け取りました'))
+            ->line(Lang::get('あなたの出品したグッズに対して交換リクエストが届きました'))
+            ->line(Lang::get('下記のアドレスを確認してください'))
+            ->action(Lang::get('通知を確認する'),route('requestSelect'))
+            ->line(Lang::get('身に覚えがない時はクリックしないで下さいね。'));
     }
 
     /**

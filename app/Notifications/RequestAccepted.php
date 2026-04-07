@@ -6,6 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
+use Illuminate\Support\Facades\Lang;
 
 class RequestAccepted extends Notification
 {
@@ -42,9 +43,12 @@ class RequestAccepted extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('あなたの送信したリクエストが承認されました');
+            ->subject(Lang::get('リクエストが承認されました'))
+            ->line(Lang::get('あなたが申請していた交換リクエストが承認されました。'))
+            ->line(Lang::get('交換を開始しましょう'))
+            ->action(Lang::get('取引メッセージ画面'),route('messageselect'))
+            ->line(Lang::get('身に覚えがない時は無視してね'));
     }
-
     /**
      * Get the array representation of the notification.
      *
