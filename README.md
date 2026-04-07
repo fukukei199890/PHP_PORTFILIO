@@ -5,21 +5,21 @@
   <tr>
     <td width="50%" align="center">
       <img src="https://github.com/user-attachments/assets/67cfc9b7-b0f4-4067-a6be-d76183f0e45b" alt="出品画面" style="max-width:100%;">
-      
+      <br><b>出品画面</b>
     </td>
     <td width="50%" align="center">
       <img src="https://github.com/user-attachments/assets/fc3b26de-4006-4497-858e-42bb50d4c2d1" alt="検索画面" style="max-width:100%;">
-     
+      <br><b>検索画面</b>
     </td>
   </tr>
   <tr>
     <td width="50%" align="center">
       <img src="https://github.com/user-attachments/assets/58099b83-78c6-4ef7-983c-15173dda76d7" alt="メッセージ画面" style="max-width:100%;">
-   
+      <br><b>メッセージ画面</b>
     </td>
     <td width="50%" align="center">
       <img src="https://github.com/user-attachments/assets/ff7ace27-b372-4235-b0ee-bbe53ddbf034" alt="トップ画面" style="max-width:100%;">
-     
+      <br><b>トップ画面</b>
     </td>
   </tr>
 </table>
