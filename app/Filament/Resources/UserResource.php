@@ -33,9 +33,14 @@ class UserResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
+            //　一覧画面行の追加
             ->columns([
-            Tables\Columns\TextColumn::make('name')->label('名前')->searchable(),
-            Tables\Columns\TextColumn::make('email')->label('メールアドレス'),
+            Tables\Columns\TextColumn::make('name')
+                ->label('名前')
+                ->searchable(),
+            Tables\Columns\TextColumn::make('email')
+                ->label('メールアドレス')
+                ->searchable(),
             Tables\Columns\ImageColumn::make('icon_url')->label('アイコン')
                 ->getStateUsing(function ($record): ?string {
                     if (!$record->icon_url) return null;
@@ -44,13 +49,17 @@ class UserResource extends Resource
                 ->circular(),
 
             ])
+            // 絞り込み
             ->filters([
                 //
             ])
+            // ボタン
             ->actions([
                 Tables\Actions\EditAction::make(),
             ])
+            // 一括操作
             ->bulkActions([
+                // 選択した行を全て削除
                 Tables\Actions\DeleteBulkAction::make(),
             ]);
     }
