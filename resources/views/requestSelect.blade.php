@@ -61,7 +61,7 @@
                     </div>
                 </div>
 
-                {{--分の出品物情報 --}}
+                {{--自分の出品物情報 --}}
                 <div class="mb-6">
                     <p class="text-xs font-bold text-blue-500 mb-2 uppercase tracking-wider">申請した商品</p>
                     <div class="bg-gray-50 rounded-2xl p-4 text-center border border-gray-100 mb-3">
@@ -76,10 +76,18 @@
                         @endif
 
                     </div>
+
                     <div class="bg-gray-50 rounded-2xl p-4 border border-gray-100">
                         <p class="text-base font-bold text-gray-900">{{ $row->request_series }}</p>
                         <p class="text-sm text-gray-600">{{ $row->request_char }}</p>
                     </div>
+                    <p class="mt-3 text-sm">リクエスト申請メッセージ</p>
+                    <div class="bg-gray-50 rounded-2xl p-4 border border-gray-100">
+
+                        <p class="text-base font-bold text-gray-900">{{ $row->request_message }}</p>
+
+                    </div>
+
                 </div>
             </div>
             @endforeach
@@ -129,6 +137,12 @@
                     <div class="bg-gray-50 rounded-2xl p-4 mt-3 border border-gray-100">
                         <p class="text-base font-bold text-gray-900">{{ $row->request_series }}</p>
                         <p class="text-sm text-gray-600">{{ $row->request_char }}</p>
+                    </div>
+
+                    <p class="mt-3 text-sm">相手からのリクエスト申請メッセージ</p>
+                    <div class="bg-gray-50 rounded-2xl p-4 mt-3 border border-gray-100">
+
+                        <p class="text-base font-bold text-gray-900">{{ $row->request_message }}</p>
                     </div>
                 </div>
 

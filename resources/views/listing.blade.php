@@ -45,6 +45,7 @@
         @empty
         <div class="text-center py-20">
             <p class="text-gray-400 text-sm">出品中のアイテムはありません</p>
+            <a href="{{ route('post') }}" class="text-indigo-500 text-xs underline mt-2 inline-block">商品を出品する</a>
         </div>
         @endforelse
     </div>
