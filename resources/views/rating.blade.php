@@ -55,6 +55,7 @@
                     });
                 </script>
             </div>
+            <p class="text-base text-gray-400 mb-2">※交換の感想をお願いします</p>
             <!-- <div class="flex justify-center space-x-2 text-4xl mb-6" id="star-group">
                 {{-- 黄色の塗りつぶし星 --}}
                 <i class="fas fa-star text-yellow-400"></i>
@@ -65,8 +66,8 @@
                 <i class="far fa-star text-gray-300 star-btn"></i>
             </div> -->
             <div class="w-full max-w-sm mb-8 px-4">
-                <textarea name="comment" rows="4" required placeholder="（例）大変スムーズな取引でした。また機会があればよろしくお願いいたします。"
-                    class="w-full p-5 bg-gray-50 border border-gray-200 rounded-2xl text-base leading-relaxed focus:outline-none focus:ring-2 focus:ring-gray-200 focus:bg-white transition placeholder-gray-400"></textarea>
+                <textarea name="comment" rows="4" required
+                    class="w-full p-5 bg-gray-50 border border-gray-200 rounded-xl text-base leading-relaxed focus:outline-none focus:ring-2 focus:ring-gray-200 focus:bg-white transition ">大変スムーズな取引でした。また機会があればよろしくお願いいたします。</textarea>
             </div>
             <x-original-button color="emerald"
                 class="w-full py-3 shadow-lg hover:shadow-emerald-100 active:scale-[0.98] transition-all">
