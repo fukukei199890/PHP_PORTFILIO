@@ -76,6 +76,13 @@
                 </select>
             </div>
 
+            <div class="space-y-1">
+                <label class="block text-sm font-bold text-gray-700">
+                    商品詳細
+                </label>
+                <textarea name="description">できるだけ細かく書いてください</textarea>
+            </div>
+
             {{-- 探しているキャラ・条件 --}}
             <div class="space-y-1">
                 <label class="block text-sm font-bold text-gray-700">探しているキャラ・条件<span class=" ml-1">（必須）</span></label>

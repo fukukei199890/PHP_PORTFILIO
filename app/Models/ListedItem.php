@@ -24,6 +24,7 @@ class ListedItem extends Model
         'is_opend',
         'exchange_area',
         'is_trading',
+        'description',
         'request_message'
     ];
 

@@ -24,6 +24,7 @@ class PostController extends Controller
             'images.*' => 'image|mimes:jpeg,png,jpg|max:2048',
             'series_name' => 'required|string|max:255',
             'char_name' => 'required|string|max:255',
+            'description' => 'required'
         ]);
 
         // トランザクションの結果を $resultData に格納する
@@ -39,6 +40,7 @@ class PostController extends Controller
                 'exchange_area' => $request->exchange_area,
                 // 'is_trading' => $request->integer('is_trading'),
                 'is_trading' => 1,
+                'description' => $request->description,
                 'request_message' => $request->request_message
             ]);
 
