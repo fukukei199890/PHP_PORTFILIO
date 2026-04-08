@@ -1,4 +1,8 @@
 <x-user-layout>
+    {{-- ここからSEO対策--}}
+    <x-slot name="title">CAPSULE LINK | 宮崎市内で直接手渡し！ガチャガチャ交換掲示板</x-slot>
+    <x-slot name="description">宮崎のガチャガチャ交換所「CAPSULE LINK」。回しすぎたダブりや推し以外のカプセルトイを、送料なしの直接手渡しで交換しましょう。宮崎駅やイオンモール宮崎などで安心・おトクに取引！</x-slot>
+    {{-- SEO対策ここまで --}}
     <div class="pb-10 bg-gray-50 min-h-screen">
 
         <header
