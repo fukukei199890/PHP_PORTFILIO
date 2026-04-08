@@ -1,4 +1,9 @@
 <x-user-layout>
+        {{-- ここからSEO対策--}}
+    <x-slot name="title">CAPSULE LINK | {{$item->series_name ?? 'シリーズ名'}} : {{$item->char_name ?? 'キャラ名'}}</x-slot>
+    <x-slot name="description">宮崎のガチャガチャ交換所「CAPSULE LINK」。{{$item->series_name ?? 'シリーズ名'}} : {{$item->char_name ?? 'キャラ名'}}/{{$item->description ?? '商品詳細'}}</x-slot>
+    {{-- SEO対策ここまで --}}
+
     <x-section-title>商品詳細</x-section-title>
     <div class="max-w-md mx-auto bg-white min-h-screen pb-20">
 

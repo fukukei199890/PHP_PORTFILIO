@@ -77,10 +77,11 @@
             </div>
 
             <div class="space-y-1">
-                <label class="block text-sm font-bold text-gray-700">
-                    商品詳細
-                </label>
-                <textarea name="description">できるだけ細かく書いてください</textarea>
+                <label class="block text-sm font-bold text-gray-700">詳細な条件<span class=" ml-1">（必須）</span></label>
+                <x-original-textarea
+                    name="request_message"
+                    rows="3"
+                    placeholder="細かく書くと相手が見つかりやすいです。" required></x-original-textarea>
             </div>
 
             {{-- 探しているキャラ・条件 --}}
