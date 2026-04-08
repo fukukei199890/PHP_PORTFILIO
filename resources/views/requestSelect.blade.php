@@ -1,7 +1,7 @@
 <x-user-layout>
     {{-- 1. 申請したリクエスト一覧 --}}
     @auth
-    <x-section-title>申請したリクエスト一覧</x-section-title>
+    <x-section-title>交換リクエスト一覧</x-section-title>
     @endauth
 
     <div class="max-w-md mx-auto bg-gray-50 pb-10">
