@@ -1,4 +1,5 @@
 <x-user-layout>
+
     {{-- タイトル --}}
     <x-section-title>検索する</x-section-title>
     <div class="max-w-md mx-auto min-h-screen bg-gray-50/50 pb-20">

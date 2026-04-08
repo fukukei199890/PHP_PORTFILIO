@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>CAPSULE LINK | 宮崎市内で直接手渡し！ガチャガチャ交換</title>
-    <meta name="description" content="宮崎のガチャガチャ交換所「CAPSULE LINK」。回しすぎたダブりや推し以外のカプセルトイを、送料なしの直接手渡しで交換しましょう。宮崎駅や中心市街地で安心・おトクに取引！">
+    <title>{{ config('app.name', 'Laravel') }}</title>
+
     <!-- Fonts -->
     <!-- <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" /> -->
