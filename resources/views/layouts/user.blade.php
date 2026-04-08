@@ -95,18 +95,18 @@
                         @if ($count > 0)
                             <a href="{{ route('messageReceived') }}" class="flex flex-col items-center">
                                 <span class="text-xl h-8 flex items-center justify-center relative">
-                                    🔔
+                                    ✉️
                                     {{-- 赤丸バッジ --}}
-                                    <span class="absolute -top-1 -right-2 bg-red-500 text-white text-[10px] font-bold rounded-full h-4 w-4 flex items-center justify-center border border-white">
+                                    <span class="absolute -top-1 -right-2 bg-red-500 text-white text-[13px] font-bold rounded-full h-4 w-4 flex items-center justify-center border border-white">
                                         {{ Auth::user()->unreadNotifications->count() }}
                                     </span>
                                 </span>
-                                <!-- <span class="text-xl h-8 flex items-center justify-center">🔔</span>
+                                <!-- <span class="text-xl h-8 flex items-center justify-center">✉️</span>
                                 {{ Auth::user()->unreadNotifications->count() }}
                             </a> -->
                         @else
                             <a href={{ route('messageselect') }} class="flex flex-col items-center">
-                                <span class="text-xl h-8 flex items-center justify-center">🔔</span>
+                                <span class="text-xl h-8 flex items-center justify-center">✉️</span>
                                 <span class="text-[13px]">メッセージ</span>
                             </a>
                         @endif
@@ -115,8 +115,8 @@
                     {{-- ログイン前 --}}
                     @guest
                         <a href="{{ route('messageselect') }}" class="flex flex-col items-center">
-                            <span class="text-xl h-8 flex items-center justify-center">🔔</span>
-                            <span class="text-[13px]">通知</span>
+                            <span class="text-xl h-8 flex items-center justify-center">✉️</span>
+                            <span class="text-[13px]">メッセージ</span>
                         </a>
                     @endguest
                 </div>
@@ -137,13 +137,13 @@
                         @endphp
                         @if ($count > 0)
                             <a href="{{ route('requestSelect') }}" class="flex flex-col items-center">
-                                <span class="text-xl h-8 flex items-center justify-center">✉️</span>
+                                <span class="text-xl h-8 flex items-center justify-center">🤝</span>
                                 <span class="text-[13px]">{{ $count }}</span>
                             </a>
                         @else
                             <a href="{{ route('requestSelect') }}" class="flex flex-col items-center">
-                                <span class="text-xl h-8 flex items-center justify-center">✉️</span>
-                                <span class="text-[13px]">リクエスト</span>
+                                <span class="text-xl h-8 flex items-center justify-center">🤝</span>
+                                <span class="text-[13px]">交換</span>
                             </a>
                         @endif
                     @endauth
@@ -151,8 +151,8 @@
                     {{-- ログイン前 --}}
                     @guest
                         <a href="{{ route('requestSelect') }}" class="flex flex-col items-center">
-                            <span class="text-xl h-8 flex items-center justify-center">✉️</span>
-                            <span class="text-[13px]">リクエスト</span>
+                            <span class="text-xl h-8 flex items-center justify-center">🤝</span>
+                            <span class="text-[13px]">交換</span>
                         </a>
                     @endguest
                 </div>
