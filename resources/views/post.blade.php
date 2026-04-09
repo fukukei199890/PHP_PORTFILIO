@@ -10,7 +10,6 @@
             @csrf
 
 
-
             {{-- 画像選択 --}}
             <div class="space-y-2">
                 <label class="block text-sm font-bold text-gray-700" style="font-family: 'Zen Maru Gothic', sans-serif;">

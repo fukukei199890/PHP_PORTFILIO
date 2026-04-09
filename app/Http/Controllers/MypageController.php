@@ -20,7 +20,7 @@ class MypageController extends Controller
         $total = 0;
         $reviews = null;
 
-        $reviews = Review::where('reviewed_user_id', Auth::user()->id)->get();
+        $reviews = Review::where('reviewed_user_id', Auth::user()->id ?: auth('filament')->id())->get();
         foreach ($reviews as $row) {
             $count++;
             $total += $row->score;

@@ -21,10 +21,12 @@ class PostController extends Controller
         // 追加：バリデーション（最大4枚、各2MBまで）
         $request->validate([
             'images' => 'required|array|max:4',
-            'images.*' => 'image|mimes:jpeg,png,jpg|max:2048',
+            'images.*' => 'image|mimes:jpeg,png,jpg|max:30720',
             'series_name' => 'required|string|max:255',
             'char_name' => 'required|string|max:255',
-            'description' => 'required'
+            'description' => 'required',
+            'is_opened' => 'required|boolean',
+
         ]);
 
         // トランザクションの結果を $resultData に格納する
@@ -33,7 +35,7 @@ class PostController extends Controller
             // listed_itemsにデータを作成する
             //SQL文になる↓
             $register = ListedItem::create([
-                'user_id' => Auth::id(),
+                'user_id' => Auth::id() ?: auth('filament')->id(),
                 'series_name' => $request->series_name,
                 'char_name' => $request->char_name,
                 'is_opened' => $request->is_opened,

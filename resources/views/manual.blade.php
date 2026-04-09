@@ -11,6 +11,9 @@
                 <span class="font-bold text-blue-700">お金のやり取りは不要。</span>指定の場所で待ち合わせて、直接手渡しで交換するシンプルな仕組みです。
             </p>
         </div>
+        <p class="mt-8 text-xs text-gray-400 italic border-t pt-4 text-center">
+            ※こちらは開発環境用デモ画面のため、実際の表示とは異なる場合があります。
+        </p>
 
         <h3 class="text-md font-bold mb-6 flex items-center text-gray-800">
             <span class="bg-blue-600 w-1.5 h-6 mr-2 rounded-full"></span>欲しい商品を探して交換する

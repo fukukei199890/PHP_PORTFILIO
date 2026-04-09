@@ -41,7 +41,9 @@
 
         {{-- 2. 出品者情報 --}}
         <div class="flex items-center gap-4 p-6 bg-white border-b border-gray-50">
-            <img src="{{ $item->user->icon_url ?: asset('images/default-icon.png') }}"
+            {{-- デバッグ用：中身が何か確認する --}}
+
+            <img src="{{ asset($item->user->icon_url ?: 'images/default-icon.png') }}"
                 class="w-14 h-14 rounded-full object-cover border border-gray-200">
             <div>
                 <p class="text-xs text-gray-400 font-bold mb-1" style="font-family: 'Zen Maru Gothic', sans-serif;">出品者</p>
