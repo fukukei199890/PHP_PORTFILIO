@@ -79,7 +79,8 @@ class User extends Authenticatable implements FilamentUser
         // 2. アクセスを許可するチームメンバーのメールアドレスを配列に入れる
         $adminEmails = [
             'futianqijie560@gmail.com',
-            'root@root',
+            'tarochiku2002@icloud.com',
+            'cupsuleLink@proton.me',
         ];
 
         // ログイン中のメールアドレスを小文字にして比較
