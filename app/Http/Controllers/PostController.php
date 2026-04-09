@@ -35,7 +35,7 @@ class PostController extends Controller
             // listed_itemsにデータを作成する
             //SQL文になる↓
             $register = ListedItem::create([
-                'user_id' => Auth::id() ?: auth('filament')->id(),
+                // 'user_id' => Auth::id() ?: auth('filament')->id(),
                 'series_name' => $request->series_name,
                 'char_name' => $request->char_name,
                 'is_opened' => $request->is_opened,

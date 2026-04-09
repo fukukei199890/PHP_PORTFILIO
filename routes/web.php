@@ -226,6 +226,39 @@ use App\Http\Controllers\SatoTestController;
 Route::get('/satoTest', [SatoTestController::class, 'index'])->name('satoTest');
 Route::post('/satoTest/markAsRead', [SatoTestController::class, 'markAsRead'])->name('satoTest.markAsRead');
 
+use Spatie\Sitemap\SitemapGenerator;
+
+use Spatie\Sitemap\Sitemap;
+use Spatie\Sitemap\Tags\Url;
+use App\Models\ListedItem; // あなたのアイテムモデル
+
+Route::get('/sitemap.xml', function () {
+    $sitemap = Sitemap::create()
+        ->add(Url::create('/')); // トップページ
+
+    // DBから「公開中」のガチャガチャアイテムをすべて取得
+    $items = ListedItem::all();
+
+    $sitemap->add(Url::create('/seach/'));
+
+    $sitemap->add(Url::create('/postbefore/'));
+
+    $sitemap->add(Url::create('/messageselect/'));
+
+    $sitemap->add(Url::create('/requestSelect/'));
+
+    $sitemap->add(Url::create('/mypagebefore/'));
+
+    // 各出品物
+    foreach ($items as $item) {
+        // 各アイテムのURLをサイトマップに追加
+        $sitemap->add(Url::create("/goods
+        /{$item->id}"));
+    }
+
+    return $sitemap->toResponse(request());
+});
+
 //東郷先生記述
 Route::get('/dashboard', function () {
     return view('dashboard');
