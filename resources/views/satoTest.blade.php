@@ -1,5 +1,6 @@
 <x-user-layout>
     <h1 class="font-xl">佐藤のテストページです</h1>
+    <p>test260416</p>
     <p>新着メッセージの通知</p>
     @php
         $unreadMessage = Auth::user()->unreadNotifications->where('type', 'App\\Notifications\\MessageReceived');
